@@ -1,0 +1,76 @@
+{
+  "env": {
+    "browser": true,
+    "jest": true
+  },
+  "extends": [
+    "airbnb",
+    "eslint:recommended",
+    "prettier",
+    "prettier/react",
+  ],
+  "globals": {
+    "__DEV__": true,
+  },
+  "parser": "babel-eslint",
+  "plugins": [
+    "jest",
+    "react",
+    "prettier"
+  ],
+  "rules": {
+    "function-paren-newline": "off",
+    "import/extensions": "error",
+    "import/no-extraneous-dependencies": "off",
+    "import/no-named-as-default": "off",
+    "import/no-named-as-default-member": "off",
+    "indent": "error",
+    "jsx-a11y/anchor-is-valid": ["error", {
+      "components": ["Link"],
+      "specialLink": ["to"]
+    }],
+    "jsx-a11y/iframe-has-title": "error",
+    "jsx-a11y/label-has-for": [2, {
+      "required": {
+        "every": ["id"]
+      }
+    }],
+    "jsx-a11y/max-props-per-line": "off",
+    "jsx-a11y/media-has-caption": "warn",
+    "jsx-a11y/no-noninteractive-element-interactions": "off",
+    "jsx-a11y/click-events-have-key-events": "off",
+    "max-len": [
+      1,
+      80,
+      2,
+      {
+        "ignoreComments": true,
+        "ignoreStrings": true,
+        "ignoreTemplateLiterals": true,
+        "ignoreTrailingComments": true,
+        "ignoreUrls": true
+      }
+    ],
+    "no-console": "warn",
+    "no-multi-spaces": "error",
+    "no-restricted-globals": "warn",
+    "no-undef": "warn",
+    "object-curly-newline": "off",
+    "padded-blocks": "warn",
+    "prefer-destructuring": "warn",
+    "prettier/prettier": "warn",
+    "react/default-props-match-prop-types": "warn",
+    "react/jsx-closing-tag-location": "warn",
+    "react/jsx-curly-brace-presence": "warn",
+    "react/jsx-filename-extension": "off",
+    "react/jsx-first-prop-new-line": "warn",
+    "react/jsx-indent": "off",
+    "react/jsx-max-props-per-line": "warn",
+    "react/jsx-wrap-multilines": "warn",
+    "react/no-did-update-set-state": "off",
+    "react/no-unused-state": "warn",
+    "react/no-will-update-set-state": "warn",
+    "react/prefer-stateless-function": "warn",
+    "switch-colon-spacing": "warn"
+  }
+}
