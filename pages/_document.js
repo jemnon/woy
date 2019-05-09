@@ -7,11 +7,15 @@ class MyDocument extends Document {
       <Html lang="en">
         <Head>
           <link
-            href="https://fonts.googleapis.com/css?family=Lato|Noto+Serif+TC"
+            href="https://fonts.googleapis.com/css?family=Lato:400,400i,700|Noto+Serif+TC"
+            rel="stylesheet"
+          />
+          <link
+            href="https://jemnon.github.io/sunny-sloth-css-utils/css/tachyons.min.css"
             rel="stylesheet"
           />
         </Head>
-        <body>
+        <body className="lato vh-100 bg-ss-cream near-black">
           <Main />
           <NextScript />
         </body>
