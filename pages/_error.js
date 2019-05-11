@@ -19,7 +19,7 @@ class Error extends React.Component {
 }
 
 Error.propTypes = {
-  statusCode: PropTypes.string.isRequired,
+  statusCode: PropTypes.number.isRequired,
 };
 
 export default Error;

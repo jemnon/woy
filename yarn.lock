@@ -7736,9 +7736,9 @@ table@^5.2.3:
     slice-ansi "^2.1.0"
     string-width "^3.0.0"
 
-"tachyons@https://github.com/jemnon/sunny-sloth-css-utils.git":
+"tachyons@https://github.com/jemnon/wof-css-utils.git":
   version "4.11.2"
-  resolved "https://github.com/jemnon/sunny-sloth-css-utils.git#542944644e5cd42a18b61db961a757ed1e885a31"
+  resolved "https://github.com/jemnon/wof-css-utils.git#8ed560142b9968216989ef9a1d8e0fd0c4d77d18"
 
 tapable@^1.0.0, tapable@^1.1.0:
   version "1.1.3"

@@ -11,7 +11,11 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
           <link
-            href="https://jemnon.github.io/sunny-sloth-css-utils/css/tachyons.min.css"
+            href="https://jemnon.github.io/wof-css-utils/css/tachyons.min.css"
+            rel="stylesheet"
+          />
+          <link
+            href="https://jemnon.github.io/icon-library/style.css"
             rel="stylesheet"
           />
         </Head>

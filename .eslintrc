@@ -67,6 +67,7 @@
     "react/jsx-indent": "off",
     "react/jsx-max-props-per-line": "warn",
     "react/jsx-wrap-multilines": "warn",
+    "react/no-array-index-key": "off",
     "react/no-did-update-set-state": "off",
     "react/no-unused-state": "warn",
     "react/no-will-update-set-state": "warn",

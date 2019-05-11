@@ -1,7 +1,7 @@
 {
   "name": "sunny-sloth",
   "version": "0.1.0.beta.0",
-  "description": "Sunny Sloth Blog Front End",
+  "description": "Whisper of Yum Blog Front End",
   "main": "index.js",
   "scripts": {
     "dev": "next",
@@ -17,7 +17,7 @@
     "next": "^8.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
-    "tachyons": "https://github.com/jemnon/sunny-sloth-css-utils.git"
+    "tachyons": "https://github.com/jemnon/wof-css-utils.git"
   },
   "devDependencies": {
     "@babel/core": "^7.4.3",
@@ -63,5 +63,5 @@
       "git add"
     ]
   },
-  "repository": "https://github.com/jemnon/sunny-sloth.git"
+  "repository": "https://github.com/jemnon/wof.git"
 }
