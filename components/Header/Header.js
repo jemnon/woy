@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import ActiveLink from './ActiveLink';
 import Divider from './Divider';
 import Logo from './Logo';
+import MobileButton from './MobileButton';
 import HEADER_HEIGHT from '../../utils/constants';
 
 const links = [
@@ -22,7 +23,7 @@ const Header = ({ pathname }) => {
     >
       <Logo />
       <nav>
-        <ul className="pl0 ma0 list flex items-center tracked">
+        <ul className="pl0 ma0 list dn flex-l items-center tracked">
           {links.map((link, key) => (
             <li
               key={`${link.id}-${key}`}
@@ -53,6 +54,7 @@ const Header = ({ pathname }) => {
             </a>
           </li>
         </ul>
+        <MobileButton />
       </nav>
     </header>
   );
