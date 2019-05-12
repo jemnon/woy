@@ -4,7 +4,7 @@ const Logo = () => (
   <img
     alt="whisper-of-yum"
     className="w-25 w-auto-l"
-    src="/static/logo-horizontal.svg"
+    src="/static/logo-black-horizontal.svg"
     style={{ minWidth: '11.75rem' }}
   />
 );
