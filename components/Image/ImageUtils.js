@@ -1,4 +1,4 @@
-import isDomUsable from '../../utils/utils';
+import { isDomUsable } from '../../utils/utils';
 
 /**
  * Itereates through images and generates image sizes,

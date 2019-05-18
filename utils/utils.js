@@ -5,5 +5,11 @@ function isDomUsable() {
     window.document.createElement
   );
 }
+function isEven(number) {
+  if (number && typeof number === 'number') {
+    return number % 2 === 0;
+  }
+  return false;
+}
 
-export default isDomUsable;
+export { isDomUsable, isEven };

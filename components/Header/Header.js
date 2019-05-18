@@ -4,13 +4,11 @@ import ActiveLink from './ActiveLink';
 import Divider from './Divider';
 import Logo from './Logo';
 import MobileButton from './MobileButton';
-import HEADER_HEIGHT from '../../utils/constants';
+import { HEADER_HEIGHT } from '../../utils/constants';
 
 const links = [
   { id: 'blog', label: 'blog', url: '/blog' },
-  { id: 'divider' },
   { id: 'about', label: 'about', url: '/about' },
-  { id: 'divider' },
   { id: 'contact', label: 'contact', url: '/contact' },
 ];
 
@@ -39,7 +37,7 @@ const Header = ({ pathname }) => {
                   {pathname === link.url ? <ActiveLink /> : null}
                 </a>
               ) : null}
-              {link.id === 'divider' ? <Divider /> : null}
+              {key !== links.length - 1 ? <Divider /> : null}
             </li>
           ))}
           <li className="ml3">
