@@ -3,13 +3,14 @@ import PropTypes from 'prop-types';
 import loadImage from '../Image/ImageLoader';
 import { imageForLoad } from '../Image/ImageUtils';
 
-const HeroImage = ({ images }) => {
+const HeroImage = ({ images, onLoaded }) => {
   const image = imageForLoad(images);
   const [status, setLoaded] = useState(null);
   useEffect(() => {
     const handleLoad = resp => {
       const { status } = resp || {};
       setLoaded(status);
+      onLoaded(status);
     };
     loadImage(image, handleLoad);
   });
@@ -31,6 +32,7 @@ const HeroImage = ({ images }) => {
 
 HeroImage.propTypes = {
   images: PropTypes.arrayOf(PropTypes.string).isRequired,
+  onLoaded: PropTypes.func.isRequired,
 };
 
 export default HeroImage;

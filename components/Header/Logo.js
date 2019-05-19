@@ -1,21 +1,22 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Logo = ({ color }) => (
+const Logo = ({ color, styles }) => (
   <img
     alt="whisper-of-yum"
-    className={`${color === 'black' ? 'w-25 w-auto-l' : ''}`}
+    className={styles}
     src={`/static/logo-${color}-horizontal.svg`}
-    style={{ minWidth: '11.75rem' }}
   />
 );
 
 Logo.propTypes = {
   color: PropTypes.string,
+  styles: PropTypes.string,
 };
 
 Logo.defaultProps = {
   color: 'black',
+  styles: null,
 };
 
 export default Logo;

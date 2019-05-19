@@ -19,7 +19,12 @@ const Header = ({ pathname }) => {
       className="header h3 ph3 flex justify-between items-center"
       style={{ height: HEADER_HEIGHT }}
     >
-      <Logo />
+      <div className="dn db-l">
+        <Logo />
+      </div>
+      <div className="dn-l" style={{ width: '11.75rem' }}>
+        <Logo />
+      </div>
       <nav>
         <ul className="pl0 ma0 list dn flex-l items-center tracked">
           {links.map((link, key) => (

@@ -4,9 +4,7 @@ import { withRouter } from 'next/router';
 import { compose } from 'redux';
 
 const Layout = ({ children }) => (
-  <section className="layout lato vh-100 bg-ss-cream near-black">
-    {children}
-  </section>
+  <section className="layout vh-100">{children}</section>
 );
 
 Layout.propTypes = {
