@@ -19,7 +19,7 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body className="lato vh-100 bg-ss-cream near-black">
+        <body>
           <Main />
           <NextScript />
         </body>

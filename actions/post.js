@@ -1,4 +1,4 @@
-import get from '../lib/api';
+import { getById } from '../lib/posts';
 
 export const actionTypes = {
   POST_GET_BY_ID_ERROR: 'POST_GET_BY_ID_ERROR',
@@ -23,7 +23,7 @@ export const postGetByIdError = error => ({
 export const getPostById = id => async dispatch => {
   dispatch(postGetByIdLoading());
   try {
-    const resp = await get(`/posts/${id}`);
+    const resp = await getById(id);
     dispatch(postGetByIdSuccess(resp));
   } catch (error) {
     dispatch(postGetByIdError(error));

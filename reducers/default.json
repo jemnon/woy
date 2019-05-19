@@ -1,4 +1,9 @@
 {
+  "hero": {
+    "data": {},
+    "error": null,
+    "isLoading": false
+  },
   "post": {
     "data": {},
     "error": null,

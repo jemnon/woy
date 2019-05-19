@@ -1,17 +1,18 @@
-import React from 'react';
+import React, { Component } from 'react';
 import Header from '../components/Header/Header';
 import Hero from '../components/Hero/Hero';
+import Posts from '../components/Posts/Posts';
 
-const images = [
-  'https://res.cloudinary.com/dd8c1nipl/image/upload/v1558212779/wof/hero.jpg',
-  'https://res.cloudinary.com/dd8c1nipl/image/upload/v1558212781/wof/hero_2x.jpg',
-];
+class Home extends Component {
+  render() {
+    return (
+      <section className="home">
+        <Hero />
+        <Header pathname="/blog" />
+        <Posts />
+      </section>
+    );
+  }
+}
 
-const Index = () => (
-  <section>
-    <Hero images={images} />
-    <Header pathname="/blog" />
-  </section>
-);
-
-export default Index;
+export default Home;
