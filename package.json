@@ -13,12 +13,19 @@
   "license": "ISC",
   "dependencies": {
     "@zeit/next-css": "^1.0.1",
+    "axios": "^0.18.0",
+    "dotenv-webpack": "^1.7.0",
     "lodash.union": "^4.6.0",
+    "moment": "^2.24.0",
     "next": "^8.0.4",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-markdown": "https://github.com/rexxars/react-markdown.git",
     "react-media": "^1.9.2",
+    "react-redux": "^7.0.3",
+    "redux": "^4.0.1",
+    "redux-devtools-extension": "^2.13.8",
+    "redux-thunk": "^2.3.0",
     "tachyons": "https://github.com/jemnon/wof-css-utils.git"
   },
   "devDependencies": {
