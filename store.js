@@ -1,72 +1,31 @@
-import { createStore, applyMiddleware } from 'redux'
-import { composeWithDevTools } from 'redux-devtools-extension'
-import thunkMiddleware from 'redux-thunk'
+import { createStore, combineReducers, applyMiddleware } from 'redux';
+import { composeWithDevTools } from 'redux-devtools-extension';
+import thunkMiddleware from 'redux-thunk';
+import defaultState from './reducers/default.json';
+import post from './reducers/post';
+import posts from './reducers/posts';
 
-const exampleInitialState = {
-  lastUpdate: 0,
-  light: false,
-  count: 0
-}
+const rootReducer = combineReducers({
+  post,
+  posts,
+});
 
-export const actionTypes = {
-  TICK: 'TICK',
-  INCREMENT: 'INCREMENT',
-  DECREMENT: 'DECREMENT',
-  RESET: 'RESET'
-}
+const composeEnhancers = composeWithDevTools({
+  stateSanitizer: state => {
+    // objectMaps can get huge and slow down dev tools.
+    // So in dev, tell dev tools not to render them.
+    const objectMaps = {
+      fetching: state.objectMaps.fetching,
+      note: 'OBJECT MAPS SANITIZED',
+    };
+    return { ...state, objectMaps };
+  },
+});
 
-// REDUCERS
-export const reducer = (state = exampleInitialState, action) => {
-  switch (action.type) {
-    case actionTypes.TICK:
-      return Object.assign({}, state, {
-        lastUpdate: action.ts,
-        light: !!action.light
-      })
-    case actionTypes.INCREMENT:
-      return Object.assign({}, state, {
-        count: state.count + 1
-      })
-    case actionTypes.DECREMENT:
-      return Object.assign({}, state, {
-        count: state.count - 1
-      })
-    case actionTypes.RESET:
-      return Object.assign({}, state, {
-        count: exampleInitialState.count
-      })
-    default:
-      return state
-  }
-}
-
-// ACTIONS
-export const serverRenderClock = isServer => dispatch => {
-  return dispatch({ type: actionTypes.TICK, light: !isServer, ts: Date.now() })
-}
-
-export const startClock = dispatch => {
-  return setInterval(() => {
-    dispatch({ type: actionTypes.TICK, light: true, ts: Date.now() })
-  }, 1000)
-}
-
-export const incrementCount = () => dispatch => {
-  return dispatch({ type: actionTypes.INCREMENT })
-}
-
-export const decrementCount = () => dispatch => {
-  return dispatch({ type: actionTypes.DECREMENT })
-}
-
-export const resetCount = () => dispatch => {
-  return dispatch({ type: actionTypes.RESET })
-}
-
-export function initializeStore (initialState = exampleInitialState) {
+export function initializeStore(initialState = defaultState) {
   return createStore(
-    reducer,
+    rootReducer,
     initialState,
-    composeWithDevTools(applyMiddleware(thunkMiddleware))
-  )
+    composeEnhancers(applyMiddleware(thunkMiddleware)),
+  );
 }

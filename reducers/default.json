@@ -1,10 +1,12 @@
 {
   "post": {
     "data": {},
-    "error": null
+    "error": null,
+    "isLoading": false
   },
   "posts": {
     "data": {},
-    "error": null
+    "error": null,
+    "isLoading": false
   }
 }
