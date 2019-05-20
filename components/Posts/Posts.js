@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import MarkdownRenderer from 'react-markdown-renderer';
 import { getPosts } from '../../actions/posts';
 
 class Posts extends Component {
@@ -11,7 +12,20 @@ class Posts extends Component {
   }
   render() {
     const { data } = this.props;
-    return <section className="posts" />;
+    return (
+      <section className="posts ph3">
+        <ul className="list ma0 pl0">
+          {data && Array.isArray(data)
+            ? data.map(post => (
+                <li>
+                  <h1 className="ma0 mb4 f1 noto-serif-tc">{post.title}</h1>
+                  <MarkdownRenderer markdown={post.body} />
+                </li>
+              ))
+            : null}
+        </ul>
+      </section>
+    );
   }
 }
 
@@ -25,11 +39,15 @@ Posts.defaultProps = {
   data: null,
 };
 
-const mapStateToProps = state => ({
-  data: state.data,
-  error: state.error,
-  isLoading: state.isLoading,
-});
+const mapStateToProps = state => {
+  const { posts } = state;
+  const { data, error, isLoading } = posts;
+  return {
+    data,
+    error,
+    isLoading,
+  };
+};
 
 const mapDispatchToProps = dispatch =>
   bindActionCreators({ getPosts }, dispatch);
