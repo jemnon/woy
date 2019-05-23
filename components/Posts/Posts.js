@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import MarkdownRenderer from 'react-markdown-renderer';
+import Link from 'next/link';
 import { getPosts } from '../../actions/posts';
+import Post from './Post';
 
 class Posts extends Component {
   componentDidMount() {
@@ -13,13 +14,24 @@ class Posts extends Component {
   render() {
     const { data } = this.props;
     return (
-      <section className="posts ph3">
+      <section className="posts">
         <ul className="list ma0 pl0">
-          {data && Array.isArray(data)
-            ? data.map(post => (
-                <li>
-                  <h1 className="ma0 mb4 f1 noto-serif-tc">{post.title}</h1>
-                  <MarkdownRenderer markdown={post.body} />
+          {Array.isArray(data)
+            ? data.map((post, key) => (
+                <li key={`post-${key}`}>
+                  <Link href={`/posts/${post.id}`}>
+                    <a className="black no-underline">
+                      <Post
+                        body={post.body}
+                        categories={post.categories}
+                        id={post.id}
+                        images={post.images}
+                        publishDate={post['publish-date']}
+                        tiny={post.tiny}
+                        title={post.title}
+                      />
+                    </a>
+                  </Link>
                 </li>
               ))
             : null}

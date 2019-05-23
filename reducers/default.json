@@ -5,12 +5,12 @@
     "isLoading": false
   },
   "post": {
-    "data": {},
+    "data": null,
     "error": null,
     "isLoading": false
   },
   "posts": {
-    "data": {},
+    "data": null,
     "error": null,
     "isLoading": false
   }

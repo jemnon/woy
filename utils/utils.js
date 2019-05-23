@@ -11,5 +11,13 @@ function isEven(number) {
   }
   return false;
 }
+function parsedCategories(categories) {
+  const list = [];
+  if (categories && Array.isArray(categories)) {
+    categories.forEach(category => list.push(category.name));
+    return list;
+  }
+  return null;
+}
 
-export { isDomUsable, isEven };
+export { isDomUsable, isEven, parsedCategories };
