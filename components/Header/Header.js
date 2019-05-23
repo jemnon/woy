@@ -13,20 +13,21 @@ const links = [
 ];
 
 const Header = ({ pathname }) => {
-  const linkStyles = 'dib black ttu no-underline relative';
+  const linkStyles =
+    'inline-flex self-stretch items-center black ttu no-underline relative';
   return (
     <header
-      className="header h3 ph3 flex justify-between items-center"
-      style={{ height: HEADER_HEIGHT }}
+      className="header o-0 fixed top-0 left-0 bg-ss-cream w-100 z-5 h3 ph3 flex justify-between items-center bb b--black-10"
+      style={{ transform: 'translate3D(0, -100%, 0)', height: HEADER_HEIGHT }}
     >
-      <div className="dn db-l">
+      <div
+        className="flex self-stretch items-center"
+        style={{ width: '11.75rem' }}
+      >
         <Logo />
       </div>
-      <div className="dn-l" style={{ width: '11.75rem' }}>
-        <Logo />
-      </div>
-      <nav>
-        <ul className="pl0 ma0 list dn flex-l items-center tracked">
+      <nav className="flex self-stretch items-center">
+        <ul className="pl0 ma0 list dn flex-l items-center self-stretch tracked">
           {links.map((link, key) => (
             <li
               key={`${link.id}-${key}`}
