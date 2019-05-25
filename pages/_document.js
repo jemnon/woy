@@ -19,7 +19,10 @@ class MyDocument extends Document {
             rel="stylesheet"
           />
         </Head>
-        <body className="lato near-black bg-ss-cream">
+        <body
+          className="lato near-black bg-ss-cream tracked"
+          style={{ fontWeight: 'normal' }}
+        >
           <Main />
           <NextScript />
         </body>

@@ -11,6 +11,13 @@ function isEven(number) {
   }
   return false;
 }
+function calculateHeight(element) {
+  if (isDomUsable()) {
+    const el = document.querySelector(element);
+    return el.clientHeight;
+  }
+  return null;
+}
 function parsedCategories(categories) {
   const list = [];
   if (categories && Array.isArray(categories)) {
@@ -20,4 +27,4 @@ function parsedCategories(categories) {
   return null;
 }
 
-export { isDomUsable, isEven, parsedCategories };
+export { calculateHeight, isDomUsable, isEven, parsedCategories };

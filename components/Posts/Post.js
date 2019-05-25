@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import MarkdownRenderer from 'react-markdown-renderer';
+import moment from 'moment';
 import Image from '../Image/Image';
 import { generateImagesArry } from '../../lib/images';
 import { parsedCategories } from '../../utils/utils';
@@ -15,13 +16,22 @@ const Post = ({
   title,
 }) => {
   const parsedImages = generateImagesArry(images);
+  const date = moment(publishDate).format('MMMM Do YYYY');
   return (
     <article className="post tracked">
-      <h6 className="ma0 mb4 f6 noto-serif-tc lh-title">
-        {publishDate} -{' '}
+      <h6
+        className="ma0 mb4 f4 noto-serif-tc lh-title ttl"
+        style={{ fontWeight: 'normal' }}
+      >
+        {date} -{' '}
         <span className="ss-orange">{parsedCategories(categories)}</span>
       </h6>
-      <h1 className="ma0 mb4 f1 noto-serif-tc lh-title">{title}</h1>
+      <h1
+        className="ma0 mb4 f1 noto-serif-tc lh-title"
+        style={{ fontWeight: 'normal' }}
+      >
+        {title}
+      </h1>
       <div className="mb4">
         <Image
           tiny={tiny}

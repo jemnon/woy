@@ -7,18 +7,25 @@ import MobileButton from './MobileButton';
 import { HEADER_HEIGHT } from '../../utils/constants';
 
 const links = [
-  { id: 'blog', label: 'blog', url: '/blog' },
+  { id: 'blog', label: 'blog', url: '/' },
   { id: 'about', label: 'about', url: '/about' },
   { id: 'contact', label: 'contact', url: '/contact' },
 ];
 
-const Header = ({ pathname }) => {
+const Header = ({ isEnabled, pathname }) => {
   const linkStyles =
     'inline-flex self-stretch items-center black ttu no-underline relative';
   return (
     <header
-      className="header o-0 fixed top-0 left-0 bg-ss-cream w-100 z-5 h3 ph3 flex justify-between items-center bb b--black-10"
-      style={{ transform: 'translate3D(0, -100%, 0)', height: HEADER_HEIGHT }}
+      className={`header ${
+        isEnabled ? 'o-100' : 'o-0'
+      } fixed top-0 left-0 bg-ss-cream w-100 z-5 h3 ph3 flex justify-between items-center bb b--black-10`}
+      data-id="header"
+      style={{
+        transform: `translate3D(0, ${isEnabled ? '0' : '-100%'}, 0)`,
+        height: HEADER_HEIGHT,
+        transition: 'all .47s ease',
+      }}
     >
       <div
         className="flex self-stretch items-center"
@@ -65,7 +72,12 @@ const Header = ({ pathname }) => {
 };
 
 Header.propTypes = {
+  isEnabled: PropTypes.bool,
   pathname: PropTypes.string.isRequired,
+};
+
+Header.defaultProps = {
+  isEnabled: false,
 };
 
 export default Header;

@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import Link from 'next/link';
 import { getPosts } from '../../actions/posts';
 import Post from './Post';
 
@@ -19,19 +18,15 @@ class Posts extends Component {
           {Array.isArray(data)
             ? data.map((post, key) => (
                 <li key={`post-${key}`}>
-                  <Link href={`/posts/${post.id}`}>
-                    <a className="black no-underline">
-                      <Post
-                        body={post.body}
-                        categories={post.categories}
-                        id={post.id}
-                        images={post.images}
-                        publishDate={post['publish-date']}
-                        tiny={post.tiny}
-                        title={post.title}
-                      />
-                    </a>
-                  </Link>
+                  <Post
+                    body={post.body}
+                    categories={post.categories}
+                    id={post.id}
+                    images={post.images}
+                    publishDate={post['publish-date']}
+                    tiny={post.tiny}
+                    title={post.title}
+                  />
                 </li>
               ))
             : null}

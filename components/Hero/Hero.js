@@ -25,7 +25,7 @@ class Hero extends Component {
   render() {
     const { images } = this.props;
     const { loadStatus } = this.state;
-    const baseStyles = 'relative w-100 vh-100 bg-near-white';
+    const baseStyles = 'relative w-100 vh-100';
     const logoColor = loadStatus ? 'white' : 'black';
     return (
       <section className={`hero ${baseStyles}`}>
@@ -36,11 +36,17 @@ class Hero extends Component {
           className={`${
             loadStatus ? 'bg-black-60' : ''
           } z-2 absolute left-0 top-0 w-100 h-100 flex items-center justify-center`}
-          style={{ transition: 'opacity .3s ease' }}
+          style={{ transition: 'opacity 1.5s ease' }}
         >
           <Logo color={logoColor} />
         </div>
-        {!loadStatus ? <PlaceholderLoader heightClass="vh-100" /> : null}
+        {!loadStatus ? (
+          <PlaceholderLoader
+            ease="bg-white"
+            endColor="bg-ss-cream"
+            heightClass="vh-100"
+          />
+        ) : null}
       </section>
     );
   }

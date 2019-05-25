@@ -24,7 +24,7 @@ const HeroImage = ({ images, onLoaded }) => {
         backgroundPosition: 'center',
         backgroundRepeat: 'none',
         backgroundSize: 'cover',
-        transition: 'opacity .3s ease',
+        transition: 'opacity 1.5s ease',
       }}
     />
   );
