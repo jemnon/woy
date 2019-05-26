@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Link from 'next/link';
 import PostBody from './PostBody';
 import PostHeader from './PostHeader';
 import Image from '../Image/Image';
 import { generateImagesArry } from '../../lib/images';
 
-const Post = ({
+const PostPreview = ({
   author,
   body,
   categories,
@@ -20,23 +21,30 @@ const Post = ({
     <article className="post">
       <PostHeader
         categories={categories}
+        id={id}
         publishDate={publishDate}
         title={title}
       />
-      <div className="mb4">
-        <Image
-          tiny={tiny}
-          images={parsedImages}
-          ratio={3 / 4}
-          transition="opacity .3s ease"
-        />
+      <div className="mb4 overflow-hidden">
+        <div className="grow">
+          <Link href={`/post/${id}`} prefetch>
+            <a className="no-underline black">
+              <Image
+                tiny={tiny}
+                images={parsedImages}
+                ratio={3 / 4}
+                transition="opacity .3s ease"
+              />
+            </a>
+          </Link>
+        </div>
       </div>
       <PostBody author={author} body={body} />
     </article>
   );
 };
 
-Post.propTypes = {
+PostPreview.propTypes = {
   author: PropTypes.string,
   body: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
@@ -47,9 +55,9 @@ Post.propTypes = {
   title: PropTypes.string.isRequired,
 };
 
-Post.defaultProps = {
-  author: 'Jeri',
+PostPreview.defaultProps = {
+  author: 'jeri',
   tiny: null,
 };
 
-export default Post;
+export default PostPreview;

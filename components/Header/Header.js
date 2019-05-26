@@ -55,7 +55,7 @@ const Header = ({ isEnabled, pathname }) => {
           ))}
           <li className="ml3">
             <a
-              className="no-underline black inline-flex items-center f3 nl1 nr1"
+              className="no-underline ss-orange inline-flex items-center f3 nl1 nr1"
               href="https://www.instagram.com/whisperofyum/?hl=en"
               rel="noopener noreferrer"
               style={{ marginTop: '0.125rem' }}

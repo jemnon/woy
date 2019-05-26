@@ -2,8 +2,9 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
+import Link from 'next/link';
 import { getPosts } from '../../actions/posts';
-import Post from './Post';
+import PostPreview from './PostPreview';
 
 class Posts extends Component {
   componentDidMount() {
@@ -17,9 +18,9 @@ class Posts extends Component {
         <ul className="list ma0 pl0">
           {Array.isArray(data)
             ? data.map((post, key) => (
-                <li key={`post-${key}`}>
-                  <Post
-                    body={post.body}
+                <li className="pb4 bb b--ss-orange mb4" key={`post-${key}`}>
+                  <PostPreview
+                    body={post['body-short']}
                     categories={post.categories}
                     id={post.id}
                     images={post.images}
@@ -27,6 +28,13 @@ class Posts extends Component {
                     tiny={post.tiny}
                     title={post.title}
                   />
+                  <div className="tr">
+                    <Link href={`/post/${post.id}`} prefetch>
+                      <a className="no-underline ss-orange hover-near-black">
+                        ...read more
+                      </a>
+                    </Link>
+                  </div>
                 </li>
               ))
             : null}

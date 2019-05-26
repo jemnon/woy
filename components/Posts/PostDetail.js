@@ -1,15 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import Image from '../Image/Image';
 import PostBody from './PostBody';
 import PostHeader from './PostHeader';
-import Image from '../Image/Image';
 import { generateImagesArry } from '../../lib/images';
 
-const Post = ({
+const PostDetail = ({
   author,
   body,
   categories,
-  id,
   images,
   publishDate,
   tiny,
@@ -17,7 +16,7 @@ const Post = ({
 }) => {
   const parsedImages = generateImagesArry(images);
   return (
-    <article className="post">
+    <article className="post tracked">
       <PostHeader
         categories={categories}
         publishDate={publishDate}
@@ -36,20 +35,19 @@ const Post = ({
   );
 };
 
-Post.propTypes = {
+PostDetail.propTypes = {
   author: PropTypes.string,
   body: PropTypes.string.isRequired,
   categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  id: PropTypes.string.isRequired,
   images: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
   publishDate: PropTypes.string.isRequired,
   tiny: PropTypes.string,
   title: PropTypes.string.isRequired,
 };
 
-Post.defaultProps = {
+PostDetail.defaultProps = {
   author: 'Jeri',
   tiny: null,
 };
 
-export default Post;
+export default PostDetail;
