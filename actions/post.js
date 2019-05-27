@@ -24,7 +24,8 @@ export const getPostById = id => async dispatch => {
   dispatch(postGetByIdLoading());
   try {
     const resp = await getById(id);
-    dispatch(postGetByIdSuccess(resp));
+    const { data } = resp;
+    dispatch(postGetByIdSuccess(data));
   } catch (error) {
     dispatch(postGetByIdError(error));
   }
