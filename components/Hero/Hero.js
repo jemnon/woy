@@ -25,7 +25,7 @@ class Hero extends Component {
   render() {
     const { images } = this.props;
     const { loadStatus } = this.state;
-    const baseStyles = 'relative w-100 vh-100';
+    const baseStyles = 'relative w-100 vh-100-ns h5';
     const logoColor = loadStatus ? 'white' : 'black';
     return (
       <section className={`hero ${baseStyles}`}>
@@ -42,7 +42,7 @@ class Hero extends Component {
         </div>
         {!loadStatus ? (
           <PlaceholderLoader
-            ease="bg-white"
+            ease="bg-white-40"
             endColor="bg-ss-cream"
             heightClass="vh-100"
           />

@@ -6,6 +6,7 @@ import { getPostById } from '../../actions/post';
 import Image from '../Image/Image';
 import PostBody from './PostBody';
 import PostHeader from './PostHeader';
+import Spinner from '../Spinner';
 import { generateImagesArry } from '../../lib/images';
 
 class PostDetail extends Component {
@@ -13,7 +14,7 @@ class PostDetail extends Component {
     const { getPostById, id } = this.props;
     if (id) getPostById(id);
   }
-  render() {
+  renderContent() {
     const {
       author,
       body,
@@ -25,7 +26,7 @@ class PostDetail extends Component {
     } = this.props;
     const parsedImages = generateImagesArry(images);
     return (
-      <article className="post tracked">
+      <article>
         <PostHeader
           categories={categories}
           publishDate={publishDate}
@@ -43,23 +44,45 @@ class PostDetail extends Component {
       </article>
     );
   }
+  renderLoading() {
+    return (
+      <div className="flex flex-auto flex-column justify-center items-center">
+        <Spinner />
+      </div>
+    );
+  }
+  render() {
+    const { isLoading } = this.props;
+    return (
+      <article className="post tracked">
+        {isLoading ? this.renderLoading() : this.renderContent()}
+      </article>
+    );
+  }
 }
 
 PostDetail.propTypes = {
   author: PropTypes.string,
-  body: PropTypes.string.isRequired,
-  categories: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
+  body: PropTypes.string,
+  categories: PropTypes.arrayOf(PropTypes.shape({})),
   getPostById: PropTypes.func.isRequired,
-  id: PropTypes.string.isRequired,
-  images: PropTypes.arrayOf(PropTypes.shape({})).isRequired,
-  publishDate: PropTypes.string.isRequired,
+  id: PropTypes.string,
+  images: PropTypes.arrayOf(PropTypes.shape({})),
+  isLoading: PropTypes.bool.isRequired,
+  publishDate: PropTypes.string,
   tiny: PropTypes.string,
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 };
 
 PostDetail.defaultProps = {
   author: 'Jeri',
+  body: null,
+  categories: null,
+  id: null,
+  images: [],
+  publishDate: null,
   tiny: null,
+  title: null,
 };
 
 const mapStateToProps = state => {

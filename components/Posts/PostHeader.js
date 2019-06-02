@@ -6,9 +6,7 @@ import { parsedCategories } from '../../utils/utils';
 
 const renderTitle = (id, title) => {
   const heading = (
-    <h1 className="ma0 mb4 f1 noto-serif-tc lh-title normal pl4 bl b--ss-orange">
-      {title}
-    </h1>
+    <h1 className="ma0 mb4 f1-ns f3 noto-serif-tc lh-title normal">{title}</h1>
   );
   const link = (
     <Link href={`/post/${id}`} prefetch>
@@ -19,14 +17,14 @@ const renderTitle = (id, title) => {
 };
 
 const PostHeader = ({ categories, id, publishDate, title }) => {
-  const date = moment(publishDate).format('MMMM Do YYYY');
+  const date = publishDate ? moment(publishDate).format('MMMM Do YYYY') : null;
   return (
     <header className="post-header tracked">
-      <h6 className="ma0 mb4 f4 noto-serif-tc lh-title ttl normal">
-        {date} -{' '}
+      {id && title ? renderTitle(id, title) : null}
+      <h6 className="ma0 mb4 f5 noto-serif-tc lh-title ttl normal">
+        <span>{date ? `${date} - ` : null}</span>
         <span className="ss-orange">{parsedCategories(categories)}</span>
       </h6>
-      {renderTitle(id, title)}
     </header>
   );
 };

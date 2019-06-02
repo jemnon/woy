@@ -18,7 +18,7 @@ class Post extends Component {
     return (
       <article className="post" style={{ paddingTop: HEADER_HEIGHT }}>
         <Header isEnabled pathname={pathname} />
-        <div className="flex nl3 nr3 mw9 center pt4">
+        <div className="flex nl3 nr3 mw8 center pt4">
           <div className="w-two-thirds-l w-100 ph3">
             <PostDetail id={id} />
           </div>

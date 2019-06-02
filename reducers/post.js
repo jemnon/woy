@@ -17,6 +17,7 @@ const handlers = {
       author: resp.author,
       body: resp.body,
       categories: resp.categories,
+      data: resp,
       images: resp.images,
       publishDate: resp['publish-date'],
       tiny: resp.tiny,

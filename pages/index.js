@@ -49,7 +49,7 @@ class Home extends Component {
       <section className="home">
         <Header isEnabled={enableHeader} pathname={pathname} />
         <Hero />
-        <div className="flex nl3 nr3 mw9 center pt4">
+        <div className="flex nl3 nr3 mw8 center pt4">
           <div className="w-two-thirds-l w-100 ph3">
             <Posts />
           </div>

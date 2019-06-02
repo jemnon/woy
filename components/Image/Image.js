@@ -52,7 +52,7 @@ Image.propTypes = {
 
 Image.defaultProps = {
   alt: '',
-  bgColor: 'near-white',
+  bgColor: 'white-40',
   images: [],
   onLoaded: () => {},
   ratio: 9 / 16,
