@@ -1,4 +1,4 @@
-import { get } from '../lib/posts';
+import { get } from '../lib/api';
 
 export const actionTypes = {
   POSTS_GET_ERROR: 'POSTS_GET_ERROR',
@@ -20,10 +20,10 @@ export const postsGetError = error => ({
   error,
 });
 
-export const getPosts = (limit, start) => async dispatch => {
+export const getPosts = (limit, skip) => async dispatch => {
   dispatch(postGetLoading());
   try {
-    const resp = await get(limit, start);
+    const resp = await get(limit, skip, 'post');
     const { data } = resp;
     dispatch(postsGetSuccess(data));
   } catch (error) {

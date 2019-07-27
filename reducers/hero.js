@@ -1,6 +1,6 @@
 import { actionTypes } from '../actions/hero';
 import { hero as defaultState } from './default.json';
-import { generateImageUrls } from '../lib/images';
+import generateImageUrls from '../lib/images';
 
 const handlers = {
   [actionTypes.HERO_GET_ERROR]: (state, action) => ({

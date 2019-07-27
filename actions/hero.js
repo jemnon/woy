@@ -1,4 +1,4 @@
-import get from '../lib/hero';
+import { get } from '../lib/api';
 
 export const actionTypes = {
   HERO_GET_ERROR: 'HERO_GET_ERROR',
@@ -23,7 +23,7 @@ export const heroGetError = error => ({
 export const getHero = () => async dispatch => {
   dispatch(heroGetLoading());
   try {
-    const resp = await get();
+    const resp = await get(1, 0, 'heroes');
     const { data } = resp;
     dispatch(heroGetSuccess(data));
   } catch (error) {

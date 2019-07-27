@@ -1,6 +1,10 @@
 import { actionTypes } from '../actions/posts';
 import { posts as defaultState } from './default.json';
 
+const parseData = data => {
+  console.log(data);
+};
+
 const handlers = {
   [actionTypes.POSTS_GET_ERROR]: (state, action) => ({
     ...state,
@@ -13,7 +17,7 @@ const handlers = {
   }),
   [actionTypes.POSTS_GET_SUCCESS]: (state, action) => ({
     ...state,
-    data: action.resp,
+    data: parseData(action.resp),
     error: null,
     isLoading: false,
   }),

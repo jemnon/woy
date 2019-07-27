@@ -1,4 +1,4 @@
-import { getById } from '../lib/posts';
+import { getById } from '../lib/api';
 
 export const actionTypes = {
   POST_GET_BY_ID_ERROR: 'POST_GET_BY_ID_ERROR',

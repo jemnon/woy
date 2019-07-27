@@ -4,7 +4,6 @@ import Link from 'next/link';
 import PostBody from './PostBody';
 import PostHeader from './PostHeader';
 import Image from '../Image/Image';
-import { generateImagesArry } from '../../lib/images';
 
 const PostPreview = ({
   author,
@@ -16,7 +15,7 @@ const PostPreview = ({
   tiny,
   title,
 }) => {
-  const parsedImages = generateImagesArry(images);
+  const parsedImages = images;
   return (
     <article className="post">
       <PostHeader
