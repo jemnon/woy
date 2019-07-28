@@ -2,7 +2,11 @@ import { actionTypes } from '../actions/posts';
 import { posts as defaultState } from './default.json';
 
 const parseData = data => {
-  console.log(data);
+  if (data) {
+    const { items } = data;
+    return items;
+  }
+  return null;
 };
 
 const handlers = {

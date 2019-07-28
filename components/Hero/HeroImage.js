@@ -6,14 +6,16 @@ import { imageForLoad } from '../Image/ImageUtils';
 const HeroImage = ({ images, onLoaded }) => {
   const image = imageForLoad(images);
   const [status, setLoaded] = useState(null);
+  const handleLoad = resp => {
+    const { status } = resp || {};
+    setLoaded(status);
+    onLoaded(status);
+  };
   useEffect(() => {
-    const handleLoad = resp => {
-      const { status } = resp || {};
-      setLoaded(status);
-      onLoaded(status);
-    };
-    loadImage(image, handleLoad);
-  });
+    if (!status) {
+      loadImage(image, handleLoad);
+    }
+  }, [status]);
   return (
     <div
       className={`hero-image absolute w-100 h-100 z-0 ${

@@ -2,12 +2,11 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { getPostById } from '../../actions/post';
+import { getPostById, getPostBySlug } from '../../actions/post';
 import Image from '../Image/Image';
 import PostBody from './PostBody';
 import PostHeader from './PostHeader';
 import Spinner from '../Spinner';
-import { generateImagesArry } from '../../lib/images';
 
 class PostDetail extends Component {
   componentDidMount() {
@@ -24,7 +23,6 @@ class PostDetail extends Component {
       tiny,
       title,
     } = this.props;
-    const parsedImages = generateImagesArry(images);
     return (
       <article>
         <PostHeader
@@ -35,7 +33,7 @@ class PostDetail extends Component {
         <div className="mb4">
           <Image
             tiny={tiny}
-            images={parsedImages}
+            images={images || null}
             ratio={3 / 4}
             transition="opacity .3s ease"
           />
@@ -66,8 +64,8 @@ PostDetail.propTypes = {
   body: PropTypes.string,
   categories: PropTypes.arrayOf(PropTypes.shape({})),
   getPostById: PropTypes.func.isRequired,
-  id: PropTypes.string,
   images: PropTypes.arrayOf(PropTypes.shape({})),
+  id: PropTypes.string,
   isLoading: PropTypes.bool.isRequired,
   publishDate: PropTypes.string,
   tiny: PropTypes.string,
@@ -91,7 +89,7 @@ const mapStateToProps = state => {
 };
 
 const mapDispatchToProps = dispatch =>
-  bindActionCreators({ getPostById }, dispatch);
+  bindActionCreators({ getPostById, getPostBySlug }, dispatch);
 
 export default connect(
   mapStateToProps,

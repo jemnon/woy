@@ -20,7 +20,7 @@ PlaceholderLoader.propTypes = {
 
 PlaceholderLoader.defaultProps = {
   ease: 'ease-in-out',
-  endColor: 'moon-gray',
+  endColor: 'light-silver',
   heightClass: 'h3',
   startColor: 'near-white',
 };

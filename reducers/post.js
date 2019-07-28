@@ -1,4 +1,5 @@
 import { actionTypes } from '../actions/post';
+import { parseData } from '../lib/api';
 import { post as defaultState } from './default.json';
 
 const handlers = {
@@ -13,19 +14,27 @@ const handlers = {
   }),
   [actionTypes.POST_GET_BY_ID_SUCCESS]: (state, action) => {
     const { resp } = action;
-    const dataMap = {
-      author: resp.author,
-      body: resp.body,
-      categories: resp.categories,
-      data: resp,
-      images: resp.images,
-      publishDate: resp['publish-date'],
-      tiny: resp.tiny,
-      title: resp.title,
-    };
     return {
       ...state,
-      ...dataMap,
+      ...parseData(resp),
+      error: null,
+      isLoading: false,
+    };
+  },
+  [actionTypes.POST_GET_BY_SLUG_ERROR]: (state, action) => ({
+    ...state,
+    error: action.error,
+    isLoading: false,
+  }),
+  [actionTypes.POST_GET_BY_SLUG_LOADING]: state => ({
+    ...state,
+    isLoading: true,
+  }),
+  [actionTypes.POST_GET_BY_SLUG_SUCCESS]: (state, action) => {
+    const { resp } = action;
+    return {
+      ...state,
+      ...parseData(resp),
       error: null,
       isLoading: false,
     };

@@ -13,31 +13,31 @@ class Posts extends Component {
   }
   render() {
     const { data } = this.props;
+    if (!Array.isArray(data)) return null;
     return (
       <section className="posts">
         <ul className="list ma0 pl0">
-          {Array.isArray(data)
-            ? data.map((post, key) => (
-                <li className="pb4 bb b--ss-orange mb4" key={`post-${key}`}>
-                  <PostPreview
-                    body={post['body-short']}
-                    categories={post.categories}
-                    id={post.id}
-                    images={post.images}
-                    publishDate={post['publish-date']}
-                    tiny={post.tiny}
-                    title={post.title}
-                  />
-                  <div className="tr">
-                    <Link href={`/post/${post.id}`} prefetch>
-                      <a className="no-underline ss-orange hover-near-black">
-                        ...read more
-                      </a>
-                    </Link>
-                  </div>
-                </li>
-              ))
-            : null}
+          {data.map((post, key) => (
+            <li className="pb4 bb b--ss-orange mb4" key={`post-${key}`}>
+              <PostPreview
+                body={post.fields.bodyShort}
+                categories={null}
+                id={post.sys.id}
+                images={null}
+                publishDate={post.fields.publishDate}
+                slug={post.fields.slug}
+                tiny={null}
+                title={post.fields.title}
+              />
+              <div className="tr">
+                <Link href={`/post/${post.fields.slug}`} prefetch>
+                  <a className="no-underline ss-orange hover-near-black">
+                    ...read more
+                  </a>
+                </Link>
+              </div>
+            </li>
+          ))}
         </ul>
       </section>
     );

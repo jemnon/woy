@@ -7,16 +7,17 @@ import { generateSrcSet, imageForLoad, parseRatio } from './ImageUtils';
 const Image = ({ alt, bgColor, images, onLoaded, ratio, tiny, transition }) => {
   const [status, setLoaded] = useState(null);
   const srcSet = generateSrcSet(images);
+  const handleLoad = resp => {
+    const { status } = resp || {};
+    setLoaded(status);
+    onLoaded();
+  };
   useEffect(() => {
     const image = imageForLoad(images);
-    /* istanbul ignore next */
-    const handleLoad = resp => {
-      const { status } = resp || {};
-      setLoaded(status);
-      onLoaded();
-    };
-    loadImage(image, handleLoad);
-  });
+    if (!status) {
+      loadImage(image, handleLoad);
+    }
+  }, [status]);
   return (
     <div
       className={`image aspect-ratio w-100 overflow-hidden z-0 bg-${bgColor}`}
