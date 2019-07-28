@@ -1,6 +1,6 @@
 {
-  "name": "sunny-sloth",
-  "version": "0.1.0.beta.0",
+  "name": "wof",
+  "version": "0.1.0",
   "description": "Whisper of Yum Blog Front End",
   "main": "index.js",
   "scripts": {
