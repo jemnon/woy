@@ -18,6 +18,7 @@ class PostDetail extends Component {
       author,
       body,
       categories,
+      id,
       images,
       publishDate,
       tiny,
@@ -27,6 +28,7 @@ class PostDetail extends Component {
       <article>
         <PostHeader
           categories={categories}
+          id={id}
           publishDate={publishDate}
           title={title}
         />

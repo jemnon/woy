@@ -15,7 +15,6 @@ const PostPreview = ({
   tiny,
   title,
 }) => {
-  const parsedImages = images;
   return (
     <article className="post">
       <PostHeader
@@ -28,12 +27,12 @@ const PostPreview = ({
         <div className="grow">
           <Link href={`/post/${id}`} prefetch>
             <a className="no-underline black">
-              <Image
+              {/* <Image
                 tiny={tiny}
-                images={parsedImages}
+                images={images}
                 ratio={3 / 4}
                 transition="opacity .3s ease"
-              />
+              /> */}
             </a>
           </Link>
         </div>

@@ -23,7 +23,7 @@ class Posts extends Component {
                 body={post.fields.bodyShort}
                 categories={null}
                 id={post.sys.id}
-                images={null}
+                images={post.fields.images}
                 publishDate={post.fields.publishDate}
                 slug={post.fields.slug}
                 tiny={null}

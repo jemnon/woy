@@ -4,17 +4,20 @@ import loadImage from '../Image/ImageLoader';
 import { imageForLoad } from '../Image/ImageUtils';
 
 const HeroImage = ({ images, onLoaded }) => {
-  const image = imageForLoad(images);
   const [status, setLoaded] = useState(null);
+  const [src, setSrc] = useState(null);
   const handleLoad = resp => {
-    const { status } = resp || {};
+    const { src, status } = resp || {};
     setLoaded(status);
+    setSrc(src);
     onLoaded(status);
   };
   useEffect(() => {
     if (!status) {
-      loadImage(image, handleLoad);
+      const url = imageForLoad(images);
+      loadImage(handleLoad, null, url);
     }
+    return () => loadImage(null);
   }, [status]);
   return (
     <div
@@ -22,7 +25,7 @@ const HeroImage = ({ images, onLoaded }) => {
         status ? 'o-100' : 'o-0'
       }`}
       style={{
-        backgroundImage: `url(${image})`,
+        backgroundImage: `url(${src})`,
         backgroundPosition: 'center',
         backgroundRepeat: 'none',
         backgroundSize: 'cover',
