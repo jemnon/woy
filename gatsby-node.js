@@ -1,7 +1,43 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
-
-// You can delete this file if you're not using it
+exports.createPages = async ({ actions: { createPage }, graphql }) => {
+  const { data } = await graphql(`
+    {
+      allContentfulPosts {
+        edges {
+          node {
+            slug
+            publishDate
+            categories {
+              name
+            }
+            title
+            bodyShort {
+              bodyShort
+            }
+            images {
+              fluid {
+                base64
+                aspectRatio
+                sizes
+                src
+                srcSet
+                srcSetWebp
+                srcWebp
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+  // post pages
+  data.allContentfulPosts.edges.forEach(edge => {
+    const { slug } = edge.node;
+    createPage({
+      path: `post/${slug}`,
+      component: require.resolve('./src/templates/post.tsx'),
+      context: {
+        page: edge.node,
+      },
+    });
+  });
+};
