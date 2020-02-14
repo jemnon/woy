@@ -1,8 +1,8 @@
 /* eslint @typescript-eslint/camelcase: 0 */
 
-require("dotenv").config({
-  path: ".env",
-})
+require('dotenv').config({
+  path: '.env',
+});
 
 module.exports = {
   siteMetadata: {
@@ -25,7 +25,7 @@ module.exports = {
     `gatsby-plugin-typescript`,
     `gatsby-plugin-typescript-checker`,
     {
-      resolve: "gatsby-source-contentful",
+      resolve: 'gatsby-source-contentful',
       options: {
         spaceId: process.env.CONTENTFUL_SPACE_ID,
         accessToken: process.env.CONTENTFUL_TOKEN,
@@ -47,4 +47,4 @@ module.exports = {
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
   ],
-}
+};

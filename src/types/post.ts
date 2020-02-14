@@ -10,19 +10,20 @@ export interface Images {
     srcSet: string;
     srcSetWebp: string;
     srcWebp: string;
-    body?: {
-      body?: string;
-    };
-    bodyShort?: {
-      bodyShort?: string;
-    };
   };
 }
 
 export interface Post {
   slug: string;
   publishDate: string;
+  id: string;
   categories: Categories[];
   title: string;
   images: Images[];
+  body?: {
+    body?: string;
+  };
+  bodyShort?: {
+    bodyShort?: string;
+  };
 }

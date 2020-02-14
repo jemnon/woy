@@ -1,5 +1,5 @@
 import React, { FC, ReactNode } from 'react';
-import { createGlobalStyle, ThemeProvider } from 'styled-components';
+import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
 
 const theme = {
   fonts: {
@@ -33,9 +33,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     min-height: 100vh;
     padding: 0;
-    font-family: latoregular, -apple-system, system-ui,
-                "avenir next", avenir, "Helvetica Neue", helvetica, ubuntu, roboto,
-                noto, 'Segoe UI', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
@@ -79,12 +76,15 @@ interface LayoutProps {
   children: ReactNode;
 }
 
+const Main = styled.main`
+  font-family: ${({ theme }): string => theme.fonts.lato};
+`;
+
 const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
-      <div>
-        <main>{children}</main>
-      </div>
+      <GlobalStyle />
+      <Main>{children}</Main>
     </ThemeProvider>
   );
 };
