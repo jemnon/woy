@@ -1,7 +1,14 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, useState } from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import Header, { HEADER_HEIGHT } from './header';
+import Nav from './nav';
 
 const theme = {
+  breakpoints: {
+    desktop: 'screen and (min-width: 960px)',
+    tablet: 'screen and (min-width: 480px) and (max-width: 959px)',
+    mobile: 'screen and (max-width: 479px)',
+  },
   fonts: {
     latoBold:
       `"latobold", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
@@ -19,6 +26,25 @@ const theme = {
       `"noto_serif_tcregular", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
       `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
   },
+  colors: {
+    cream: '#f4ede6',
+    darkTeal: '#162936',
+    teal: '#244c53',
+    lightBrown: '#d5a188',
+    nearBlack: '#111',
+    orange: '#cf7651',
+  },
+  zIndex: {
+    z0: '0',
+    z1: '1',
+    z2: '2',
+    z3: '3',
+    z4: '4',
+    z5: '5',
+    z6: '6',
+    z999: '999',
+    z9999: '9999',
+  },
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -33,14 +59,14 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     min-height: 100vh;
     padding: 0;
+    font-family: latoregular, -apple-system, system-ui,
+                "avenir next", avenir, "Helvetica Neue", helvetica, ubuntu, roboto,
+                noto, 'Segoe UI', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   body.disable-scroll {
     overflow: hidden;
-  }
-  main {
-    min-height: 75vh;
   }
   h1,
   h2,
@@ -76,15 +102,28 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-const Main = styled.main`
+interface MainProps {
+  isHeaderVisible: boolean;
+}
+
+const Main = styled.main<MainProps>`
+  background-color: ${({ theme }): string => theme.colors.cream};
+  color: ${({ theme }): string => theme.colors.nearBlack};
   font-family: ${({ theme }): string => theme.fonts.lato};
+  min-height: 100vh;
+  padding-top: ${({ isHeaderVisible }) =>
+    isHeaderVisible ? HEADER_HEIGHT : ''};
 `;
 
 const Layout: FC<LayoutProps> = ({ children }) => {
+  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(false);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Main>{children}</Main>
+      <Header isVisible={isHeaderVisible}>
+        <Nav />
+      </Header>
+      <Main isHeaderVisible={isHeaderVisible}>{children}</Main>
     </ThemeProvider>
   );
 };
