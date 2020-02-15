@@ -12,7 +12,7 @@ interface Node {
 interface HomeProps {
   data: {
     allContentfulPosts: {
-      edges: Array<Node>;
+      edges: Node[];
     };
   };
 }
@@ -21,7 +21,16 @@ const IndexPage: FC<HomeProps> = ({ data: { allContentfulPosts } }) => {
   const { edges: posts } = allContentfulPosts || {};
   return (
     <Layout>
-      <SEO description="WOY Home page" title="WOY Home page" meta="Home Meta" />
+      <SEO
+        description="WOY Home page"
+        title="WOY Home page"
+        meta={[
+          {
+            name: 'woy',
+            content: 'foo',
+          },
+        ]}
+      />
       <ul>
         {posts.map(post => {
           const [{ fluid }] = post.node.images;
@@ -50,12 +59,8 @@ export const query = graphql`
           }
           title
           images {
-            fluid {
-              aspectRatio
-              src
-              srcSet
-              srcWebp
-              srcSetWebp
+            fluid(maxWidth: 2000) {
+              ...GatsbyContentfulFluid_withWebp
             }
           }
           body {
