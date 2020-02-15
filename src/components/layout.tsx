@@ -1,9 +1,14 @@
-import React, { FC, ReactNode, useState } from 'react';
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
-import Header, { HEADER_HEIGHT } from './header';
+import React, { FC, ReactNode, useEffect, useState } from 'react';
+import { globalHistory } from '@reach/router';
+import styled, {
+  createGlobalStyle,
+  ThemeProvider,
+  DefaultTheme,
+} from 'styled-components';
+import Header from './header';
 import Nav from './nav';
 
-const theme = {
+const theme: DefaultTheme = {
   breakpoints: {
     desktop: 'screen and (min-width: 960px)',
     tablet: 'screen and (min-width: 480px) and (max-width: 959px)',
@@ -52,13 +57,12 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }      
   html {
-    line-height: 1.15;
+    line-height: 1.5;
   }
   body {
-    color: #000;
     margin: 0;
-    min-height: 100vh;
     padding: 0;
+    min-height: 100vh;
     font-family: latoregular, -apple-system, system-ui,
                 "avenir next", avenir, "Helvetica Neue", helvetica, ubuntu, roboto,
                 noto, 'Segoe UI', Arial, sans-serif;
@@ -111,12 +115,31 @@ const Main = styled.main<MainProps>`
   color: ${({ theme }): string => theme.colors.nearBlack};
   font-family: ${({ theme }): string => theme.fonts.lato};
   min-height: 100vh;
-  padding-top: ${({ isHeaderVisible }) =>
-    isHeaderVisible ? HEADER_HEIGHT : ''};
 `;
 
 const Layout: FC<LayoutProps> = ({ children }) => {
-  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(false);
+  const { pathname } = globalHistory.location || {};
+  const initialVisiblityState = pathname === '/' ? false : true;
+  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(
+    initialVisiblityState,
+  );
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroHeight = document.querySelector('#hero')?.clientHeight || 0;
+      const windowY = window.pageYOffset;
+      const waypoint = heroHeight / 2;
+      if (waypoint >= windowY) {
+        setIsHeaderVisible(false);
+      }
+      if (waypoint <= windowY) {
+        setIsHeaderVisible(true);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return (): void => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isHeaderVisible, setIsHeaderVisible]);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />

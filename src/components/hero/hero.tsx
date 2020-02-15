@@ -30,7 +30,7 @@ const HeroLogo = styled.img`
 const Hero: FC<HeroProps> = ({ images }) => {
   const [{ fluid }] = images || [];
   return (
-    <HeroRoot>
+    <HeroRoot id="hero">
       <HeroLogo src={logo} />
       <Img fluid={fluid} />
     </HeroRoot>

@@ -33,7 +33,6 @@ const IndexPage: FC<HomeProps> = ({
   const { edges: posts } = allContentfulPosts || {};
   const { edges: hero } = allContentfulHeroes || {};
   const [{ node: heroNode }] = hero;
-  console.log(heroNode.images);
   return (
     <Layout>
       <SEO
