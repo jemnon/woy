@@ -6,6 +6,7 @@ import { Post } from '../types/post';
 import ContainerStyled from '../components/container-styled';
 import Hero from '../components/hero';
 import Layout from '../components/layout';
+import Link from '../components/link';
 import SEO from '../components/seo';
 
 interface PostNode {
@@ -52,8 +53,10 @@ const IndexPage: FC<HomeProps> = ({
             const [{ fluid }] = post.node.images;
             return (
               <li key={post.node.id}>
-                {post.node.title}
-                <Img fluid={fluid} />
+                <Link to={`/post/${post.node.slug}`}>
+                  {post.node.title}
+                  <Img fluid={fluid} />
+                </Link>
               </li>
             );
           })}
