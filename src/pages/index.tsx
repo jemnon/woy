@@ -1,13 +1,17 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
-import Img from 'gatsby-image';
+import styled from 'styled-components';
 import { HeroType } from '../types/hero';
 import { Post } from '../types/post';
-import ContainerStyled from '../components/container-styled';
-import Hero from '../components/hero';
-import Layout from '../components/layout';
-import Link from '../components/link';
-import SEO from '../components/seo';
+import ContainerStyled, {
+  ContainerContent,
+  ContainerSideBar,
+} from '../components/container-styled';
+import Hero from '../components/Hero';
+import Layout from '../components/Layout';
+import Link from '../components/Link';
+import PostDetail from '../components/PostDetail';
+import SEO from '../components/SEO';
 
 interface PostNode {
   node: Post;
@@ -18,22 +22,34 @@ interface HeroNode {
 }
 
 interface HomeProps {
-  data: {
-    allContentfulPosts: {
-      edges: PostNode[];
+  data?: {
+    allContentfulPosts?: {
+      edges?: PostNode[];
     };
-    allContentfulHeroes: {
-      edges: HeroNode[];
+    allContentfulHeroes?: {
+      edges?: HeroNode[];
     };
   };
 }
 
-const IndexPage: FC<HomeProps> = ({
-  data: { allContentfulPosts, allContentfulHeroes },
-}) => {
-  const { edges: posts } = allContentfulPosts || {};
-  const { edges: hero } = allContentfulHeroes || {};
-  const [{ node: heroNode }] = hero;
+const HomeListItem = styled.li`
+  a {
+    text-decoration: none;
+    color: ${({ theme }): string => theme.colors.nearBlack};
+  }
+`;
+
+const HR = styled.hr`
+  border: none;
+  border-top: 1px solid ${({ theme }): string => theme.colors.orange};
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+`;
+
+const IndexPage: FC<HomeProps> = ({ data }) => {
+  const { edges: posts } = data?.allContentfulPosts || {};
+  const { edges: hero } = data?.allContentfulHeroes || {};
+  const [{ node: heroNode }] = hero || [];
   return (
     <Layout>
       <SEO
@@ -48,19 +64,29 @@ const IndexPage: FC<HomeProps> = ({
       />
       <Hero images={heroNode.images} />
       <ContainerStyled>
-        <ul>
-          {posts.map(post => {
-            const [{ fluid }] = post.node.images;
-            return (
-              <li key={post.node.id}>
-                <Link to={`/post/${post.node.slug}`}>
-                  {post.node.title}
-                  <Img fluid={fluid} />
-                </Link>
-              </li>
-            );
-          })}
-        </ul>
+        <ContainerContent>
+          {posts && (
+            <ul>
+              {posts.map(post => {
+                return (
+                  <HomeListItem key={post.node.id}>
+                    <Link to={`/post/${post.node.slug}`}>
+                      <PostDetail
+                        categories={post.node.categories}
+                        publishDate={post.node.publishDate}
+                        images={post.node.images}
+                        title={post.node.title}
+                        bodyShort={post.node.bodyShort}
+                      />
+                    </Link>
+                    <HR />
+                  </HomeListItem>
+                );
+              })}
+            </ul>
+          )}
+        </ContainerContent>
+        <ContainerSideBar>Categories</ContainerSideBar>
       </ContainerStyled>
     </Layout>
   );
@@ -71,16 +97,24 @@ export const query = graphql`
     allContentfulPosts(limit: 10) {
       edges {
         node {
-          slug
           id
+          slug
           publishDate
           categories {
             name
+            posts {
+              slug
+            }
           }
           title
           images {
-            fluid(maxWidth: 2000) {
-              ...GatsbyContentfulFluid_withWebp
+            fluid {
+              aspectRatio
+              sizes
+              src
+              srcSet
+              srcSetWebp
+              srcWebp
             }
           }
           body {

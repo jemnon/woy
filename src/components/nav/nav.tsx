@@ -1,5 +1,5 @@
 import React, { FC } from 'react';
-import Link from '../link';
+import Link from '../Link';
 import styled from 'styled-components';
 import logo from '../../images/logo-black-horizontal.svg';
 import iconMobile from '../../images/icons/menu-offset.svg';

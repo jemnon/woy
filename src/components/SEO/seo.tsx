@@ -78,7 +78,10 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
         },
       ].concat(meta)}
     >
-      <link rel="stylesheet" href={`${assetPath}fonts/fonts.css`} />
+      <link
+        href="https://fonts.googleapis.com/css?family=Lato:400,400i,700|Noto+Serif+TC"
+        rel="stylesheet"
+      />
     </Helmet>
   );
 };

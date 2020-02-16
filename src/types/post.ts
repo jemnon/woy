@@ -2,9 +2,9 @@ import { Categories } from './categories';
 import { Images } from './images';
 
 export interface Post {
-  slug: string;
+  slug?: string;
+  id?: string;
   publishDate: string;
-  id: string;
   categories: Categories[];
   title: string;
   images: Images[];

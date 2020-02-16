@@ -5,8 +5,8 @@ import styled, {
   ThemeProvider,
   DefaultTheme,
 } from 'styled-components';
-import Header from './header';
-import Nav from './nav';
+import Header from '../Header';
+import Nav from '../Nav';
 
 const theme: DefaultTheme = {
   breakpoints: {
@@ -16,19 +16,16 @@ const theme: DefaultTheme = {
   },
   fonts: {
     latoBold:
-      `"latobold", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
+      `"Lato Bold", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
       `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
     lato:
-      `"latoregular", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
+      `"Lato", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
       `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
     latoItalic:
-      `"latoitalic", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
-      `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
-    notoBold:
-      `"noto_serif_tcbold", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
+      `"Lato Italic", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
       `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
     noto:
-      `"noto_serif_tcregular", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
+      `"Noto Serif TC", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
       `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
   },
   colors: {
@@ -63,7 +60,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     padding: 0;
     min-height: 100vh;
-    font-family: latoregular, -apple-system, system-ui,
+    font-family:  "Lato", -apple-system, system-ui,
                 "avenir next", avenir, "Helvetica Neue", helvetica, ubuntu, roboto,
                 noto, 'Segoe UI', Arial, sans-serif;
     -webkit-font-smoothing: antialiased;

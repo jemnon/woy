@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import ContainerStyled from '../components/container-styled';
-import { HEADER_HEIGHT } from '../components/header';
-import Layout from '../components/layout';
-import SEO from '../components/seo';
+import { HEADER_HEIGHT } from '../components/Header';
+import Layout from '../components/Layout';
+import SEO from '../components/SEO';
 
 const NotFoundPage: FC<{}> = () => (
   <Layout>
