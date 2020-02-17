@@ -13,6 +13,8 @@ const PostDetailHeader = styled.header`
     color: ${({ theme }): string => theme.colors.orange};
   }
   time {
+    text-transform: lowercase;
+    font-style: italic;
     > span {
       padding: 0 0.25rem;
     }
@@ -44,7 +46,7 @@ const PostDetail: FC<PostDetailProps> = ({
         <time dateTime={publishDate}>
           {date.toLocaleDateString('en-US', {
             day: 'numeric',
-            month: 'short',
+            month: 'long',
             year: 'numeric',
           })}
           <span>&mdash;</span>

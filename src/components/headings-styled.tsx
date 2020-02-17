@@ -2,7 +2,10 @@ import styled from 'styled-components';
 
 const H1 = styled.h1`
   font-family: ${({ theme }): string => theme.fonts.noto};
-  font-size: 3rem;
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    font-size: 3rem;
+  }
+  font-size: 2rem;
   text-transform: lowercase;
   margin: 0;
   margin-bottom: 2rem;
