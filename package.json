@@ -1,9 +1,9 @@
 {
-  "name": "gatsby-starter-default",
+  "name": "woy",
   "private": true,
-  "description": "A simple starter to get up and developing quickly with Gatsby",
+  "description": "Whisper of Yum Gatsby site.",
   "version": "0.1.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "David J Arias <davidjosepharias@gmail.com>",
   "dependencies": {
     "@babel/core": "^7.8.4",
     "@contentful/rich-text-react-renderer": "^13.4.0",
