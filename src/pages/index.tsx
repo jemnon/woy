@@ -6,6 +6,7 @@ import { Post } from '../types/post';
 import ContainerStyled, {
   ContainerContent,
   ContainerSideBar,
+  HR,
 } from '../components/container-styled';
 import Hero from '../components/Hero';
 import Layout from '../components/Layout';
@@ -37,13 +38,6 @@ const HomeListItem = styled.li`
     text-decoration: none;
     color: ${({ theme }): string => theme.colors.nearBlack};
   }
-`;
-
-const HR = styled.hr`
-  border: none;
-  border-top: 1px solid ${({ theme }): string => theme.colors.orange};
-  margin-top: 2rem;
-  margin-bottom: 2rem;
 `;
 
 const IndexPage: FC<HomeProps> = ({ data }) => {
