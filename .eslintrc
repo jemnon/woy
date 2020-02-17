@@ -1,75 +1,80 @@
 {
+  "parser": "@typescript-eslint/parser",
+  "extends": ["airbnb", "prettier", "plugin:@typescript-eslint/recommended"],
+  "plugins": ["@typescript-eslint", "react-hooks", "prettier", "cypress"],
+  "parserOptions": {
+    "ecmaVersion": 2018,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
   "env": {
-    "browser": true,
+    "cypress/globals": true,
     "jest": true
   },
-  "extends": [
-    "airbnb",
-    "eslint:recommended",
-    "prettier",
-    "prettier/react",
-  ],
-  "globals": {
-    "__DEV__": true,
+  "settings": {
+    "import/parsers": {
+      "@typescript-eslint/parser": [".ts", ".tsx"]
+    },
+    "import/resolver": {
+      "typescript": {}
+    },
+    "react": {
+      "version": "detect"
+    }
   },
-  "parser": "babel-eslint",
-  "plugins": [
-    "jest",
-    "react",
-    "prettier"
-  ],
   "rules": {
-    "function-paren-newline": "off",
-    "import/extensions": "error",
-    "import/no-extraneous-dependencies": "off",
-    "import/no-named-as-default": "off",
-    "import/no-named-as-default-member": "off",
-    "import/prefer-default-export": "off",
-    "indent": "error",
-    "jsx-a11y/anchor-is-valid": "off",
-    "jsx-a11y/iframe-has-title": "error",
-    "jsx-a11y/label-has-for": [2, {
-      "required": {
-        "every": ["id"]
-      }
-    }],
-    "jsx-a11y/max-props-per-line": "off",
-    "jsx-a11y/media-has-caption": "warn",
-    "jsx-a11y/no-noninteractive-element-interactions": "off",
-    "jsx-a11y/click-events-have-key-events": "off",
+    "@typescript-eslint/ban-ts-ignore": "off",
     "max-len": [
-      1,
-      80,
-      2,
+      "error",
       {
-        "ignoreComments": true,
+        "code": 140,
+        "ignoreUrls": true,
         "ignoreStrings": true,
-        "ignoreTemplateLiterals": true,
-        "ignoreTrailingComments": true,
-        "ignoreUrls": true
+        "ignoreComments": true
       }
     ],
-    "no-console": "warn",
-    "no-multi-spaces": "error",
-    "no-restricted-globals": "warn",
-    "no-undef": "warn",
-    "object-curly-newline": "off",
-    "padded-blocks": "warn",
-    "prefer-destructuring": "warn",
-    "prettier/prettier": "warn",
-    "react/default-props-match-prop-types": "warn",
-    "react/jsx-closing-tag-location": "warn",
-    "react/jsx-curly-brace-presence": "warn",
-    "react/jsx-filename-extension": "off",
-    "react/jsx-first-prop-new-line": "warn",
-    "react/jsx-indent": "off",
-    "react/jsx-max-props-per-line": "warn",
-    "react/jsx-wrap-multilines": "warn",
-    "react/no-array-index-key": "off",
-    "react/no-did-update-set-state": "off",
-    "react/no-unused-state": "warn",
-    "react/no-will-update-set-state": "warn",
-    "react/prefer-stateless-function": "warn",
-    "switch-colon-spacing": "warn"
-  }
+    "no-nested-ternary": "off",
+    "import/extensions": "off",
+    "react/jsx-filename-extension": [
+      2,
+      {
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
+      }
+    ],
+    "jsx-a11y/label-has-associated-control": [
+      2,
+      {
+        "assert": "either"
+      }
+    ],
+    "import/no-extraneous-dependencies": [
+      "error",
+      {
+        "devDependencies": ["**/*.test.ts", "**/*.test.tsx"]
+      }
+    ],
+    "prettier/prettier": "error",
+    "@typescript-eslint/indent": [2, 2],
+    "@typescript-eslint/camelcase": "off",
+    "no-else-return": "off",
+    "spaced-comment": [
+      "error",
+      "always",
+      {
+        "markers": ["/"]
+      }
+    ],
+    "react-hooks/rules-of-hooks": "error",
+    "react-hooks/exhaustive-deps": "warn"
+  },
+  "overrides": [
+    {
+      "files": ["**/*.tsx"],
+      "rules": {
+        "react/prop-types": "off"
+      }
+    }
+  ]
 }
