@@ -7,6 +7,7 @@ const H1 = styled.h1`
   }
   font-size: 2rem;
   text-transform: lowercase;
+  line-height: 1.5;
   margin: 0;
   margin-bottom: 2rem;
 `;
@@ -15,6 +16,7 @@ const H2 = styled.h2`
   font-family: ${({ theme }): string => theme.fonts.noto};
   font-size: 1.5rem;
   text-transform: lowercase;
+  line-height: 1;
   margin: 0;
   margin-bottom: 1rem;
 `;

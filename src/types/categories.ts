@@ -1,4 +1,5 @@
 interface Posts {
+  id: string;
   slug: string;
 }
 

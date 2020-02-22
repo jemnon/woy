@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
+import { Categories as CategoriesType } from '../types/categories';
 import { HeroType } from '../types/hero';
 import { Post } from '../types/post';
 import ContainerStyled, {
@@ -8,6 +9,7 @@ import ContainerStyled, {
   ContainerSideBar,
   HR,
 } from '../components/container-styled';
+import Categories from '../components/Categories';
 import Hero from '../components/Hero';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
@@ -24,6 +26,9 @@ interface HeroNode {
 
 interface HomeProps {
   data?: {
+    allContentfulCategories?: {
+      nodes: CategoriesType[];
+    };
     allContentfulPosts?: {
       edges?: PostNode[];
     };
@@ -41,6 +46,7 @@ const HomeListItem = styled.li`
 `;
 
 const IndexPage: FC<HomeProps> = ({ data }) => {
+  const { nodes: categories } = data?.allContentfulCategories || {};
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
   const [{ node: heroNode }] = hero || [];
@@ -80,7 +86,9 @@ const IndexPage: FC<HomeProps> = ({ data }) => {
             </ul>
           )}
         </ContainerContent>
-        <ContainerSideBar>Categories</ContainerSideBar>
+        <ContainerSideBar>
+          {categories && <Categories categories={categories} />}
+        </ContainerSideBar>
       </ContainerStyled>
     </Layout>
   );
@@ -88,6 +96,15 @@ const IndexPage: FC<HomeProps> = ({ data }) => {
 
 export const query = graphql`
   {
+    allContentfulCategories {
+      nodes {
+        name
+        posts {
+          slug
+          id
+        }
+      }
+    }
     allContentfulPosts(limit: 10) {
       edges {
         node {

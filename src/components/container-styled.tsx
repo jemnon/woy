@@ -29,11 +29,15 @@ export const ContainerSideBar = styled.aside`
   grid-area: sidebar;
 `;
 
-export const HR = styled.hr`
+interface HRProps {
+  marginBottom?: string;
+}
+
+export const HR = styled.hr<HRProps>`
   border: none;
   border-top: 1px solid ${({ theme }): string => theme.colors.orange};
-  margin-top: 2rem;
-  margin-bottom: 2rem;
+  margin-bottom: ${({ marginBottom }): string =>
+    marginBottom ? marginBottom : '2rem'};
 `;
 
 export default ContainerStyled;

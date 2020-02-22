@@ -22,8 +22,12 @@ const PostDetailHeader = styled.header`
 `;
 
 const PostDetailBody = styled.div`
-  padding-top: 1rem;
+  margin-bottom: 2rem;
   line-height: 2;
+`;
+
+const PostDetailImage = styled.div`
+  margin-bottom: 1rem;
 `;
 
 const PostDetail: FC<PostDetailProps> = ({
@@ -54,7 +58,9 @@ const PostDetail: FC<PostDetailProps> = ({
         <span>{cats.join()}</span>
       </PostDetailHeader>
       <H1>{title}</H1>
-      <Img fluid={fluid} />
+      <PostDetailImage>
+        <Img fluid={fluid} />
+      </PostDetailImage>
       <PostDetailBody>{body?.body || bodyShort?.bodyShort}</PostDetailBody>
     </article>
   );
