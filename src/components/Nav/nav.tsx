@@ -82,7 +82,9 @@ const Nav: FC = () => {
   };
   return (
     <NavRoot>
-      <Logo alt="whisper-of-yum" data-id="logo" src={logo} />
+      <Link to="/">
+        <Logo alt="whisper-of-yum" data-id="logo" src={logo} />
+      </Link>
       <NavList>
         <NavListItem>
           <Link activeClassName="is-active" to="/">
