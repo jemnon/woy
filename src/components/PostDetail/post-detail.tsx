@@ -13,7 +13,7 @@ const PostDetailHeader = styled.header`
     color: ${({ theme }): string => theme.colors.orange};
   }
   time {
-    text-transform: lowercase;
+    text-transform: capitalize;
     font-style: italic;
     > span {
       padding: 0 0.25rem;
@@ -22,12 +22,18 @@ const PostDetailHeader = styled.header`
 `;
 
 const PostDetailBody = styled.div`
-  margin-bottom: 2rem;
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    margin-bottom: 2rem;
+  }
+  margin-bottom: 1rem;
   line-height: 1.5;
   letter-spacing: 0.5px;
 `;
 
 const PostDetailImage = styled.div`
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    margin-bottom: 2rem;
+  }
   margin-bottom: 1rem;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.1);
@@ -57,7 +63,7 @@ const PostDetail: FC<PostDetailProps> = ({
             month: 'long',
             year: 'numeric',
           })}
-          <span>&mdash;</span>
+          <span>&ndash;</span>
         </time>
         <span>{cats.join()}</span>
       </PostDetailHeader>

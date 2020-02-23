@@ -21,7 +21,7 @@ const Categories: FC<CategoriesProps> = ({ categories }) => {
     <CategoriesContainer>
       <CategoriesHeader>
         <H2>Categories</H2>
-        <HR />
+        <HR marginBottom="0rem" />
       </CategoriesHeader>
     </CategoriesContainer>
   );

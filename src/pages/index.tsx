@@ -67,7 +67,8 @@ const IndexPage: FC<HomeProps> = ({ data }) => {
         <ContainerContent>
           {posts && (
             <ul>
-              {posts.map(post => {
+              {posts.map((post, idx) => {
+                const postsLength = posts.length;
                 return (
                   <HomeListItem key={post.node.id}>
                     <Link to={`/post/${post.node.slug}`}>
@@ -79,7 +80,7 @@ const IndexPage: FC<HomeProps> = ({ data }) => {
                         bodyShort={post.node.bodyShort}
                       />
                     </Link>
-                    <HR />
+                    {posts.length - 1 === idx ? null : <HR />}
                   </HomeListItem>
                 );
               })}

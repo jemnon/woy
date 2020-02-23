@@ -7,10 +7,11 @@ const ContainerStyled = styled.div`
   margin-left: auto;
   margin-right: auto;
   padding: 1rem;
-  padding-top: 2rem;
+  padding-top: 1rem;
   max-width: 1440px;
   width: 100%;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
+    padding: 2rem;
     grid-gap: 1rem;
     grid-template-areas: 'content content sidebar';
     grid-template-columns: 1fr 1fr 1fr;
@@ -36,8 +37,13 @@ interface HRProps {
 export const HR = styled.hr<HRProps>`
   border: none;
   border-top: 1px solid ${({ theme }): string => theme.colors.orange};
+  margin-top: 0;
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    margin-bottom: ${({ marginBottom }): string =>
+      marginBottom ? marginBottom : '2rem'};
+  }
   margin-bottom: ${({ marginBottom }): string =>
-    marginBottom ? marginBottom : '2rem'};
+    marginBottom ? marginBottom : '1rem'};
 `;
 
 export default ContainerStyled;
