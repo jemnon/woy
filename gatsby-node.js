@@ -11,7 +11,14 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
             }
             title
             bodyShort {
-              bodyShort
+              childMarkdownRemark {
+                html
+              }
+            }
+            body {
+              childMarkdownRemark {
+                html
+              }
             }
             images {
               fluid {

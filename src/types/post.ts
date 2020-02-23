@@ -9,9 +9,13 @@ export interface Post {
   title: string;
   images: Images[];
   body?: {
-    body?: string;
+    childMarkdownRemark?: {
+      html: string;
+    };
   };
   bodyShort?: {
-    bodyShort?: string;
+    childMarkdownRemark?: {
+      html: string;
+    };
   };
 }

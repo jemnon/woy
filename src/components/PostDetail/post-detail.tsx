@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { Post } from '../../types/post';
@@ -28,6 +28,16 @@ const PostDetailBody = styled.div`
   margin-bottom: 1rem;
   line-height: 1.5;
   letter-spacing: 0.5px;
+  ul {
+    padding-left: 2rem;
+    list-style-type: disc;
+  }
+  ol {
+    padding-left: 2rem;
+  }
+  p {
+    margin-bottom: 1rem;
+  }
 `;
 
 const PostDetailImage = styled.div`
@@ -38,6 +48,13 @@ const PostDetailImage = styled.div`
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 2px;
+`;
+
+const PostDetailLink = styled.div`
+  display: flex;
+  justify-content: flex-end;
+  color: ${({ theme }): string => theme.colors.orange};
+  margin-bottom: 1rem;
 `;
 
 const PostDetail: FC<PostDetailProps> = ({
@@ -51,6 +68,25 @@ const PostDetail: FC<PostDetailProps> = ({
   const date = new Date(publishDate);
   const [{ fluid }] = images;
   const cats: Array<string> = [];
+  const renderPostDetail = (): ReactNode | null => {
+    if (body?.childMarkdownRemark?.html) {
+      return (
+        <div
+          dangerouslySetInnerHTML={{ __html: body?.childMarkdownRemark?.html }}
+        />
+      );
+    }
+    if (bodyShort?.childMarkdownRemark?.html) {
+      return (
+        <div
+          dangerouslySetInnerHTML={{
+            __html: bodyShort?.childMarkdownRemark?.html,
+          }}
+        />
+      );
+    }
+    return null;
+  };
   categories.forEach(category => {
     cats.push(category.name);
   });
@@ -71,7 +107,12 @@ const PostDetail: FC<PostDetailProps> = ({
       <PostDetailImage>
         <Img fluid={fluid} />
       </PostDetailImage>
-      <PostDetailBody>{body?.body || bodyShort?.bodyShort}</PostDetailBody>
+      <PostDetailBody>{renderPostDetail()}</PostDetailBody>
+      {bodyShort && (
+        <PostDetailLink>
+          <span>read more</span>
+        </PostDetailLink>
+      )}
     </article>
   );
 };
