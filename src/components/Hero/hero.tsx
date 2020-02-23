@@ -23,7 +23,7 @@ const HeroLogo = styled.img`
   position: absolute;
   top: 50%;
   left: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, -50%);
   z-index: ${({ theme }): string => theme.zIndex.z1};
 `;
 
