@@ -23,11 +23,15 @@ const PostDetailHeader = styled.header`
 
 const PostDetailBody = styled.div`
   margin-bottom: 2rem;
-  line-height: 2;
+  line-height: 1.5;
+  letter-spacing: 0.5px;
 `;
 
 const PostDetailImage = styled.div`
   margin-bottom: 1rem;
+  overflow: hidden;
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 2px;
 `;
 
 const PostDetail: FC<PostDetailProps> = ({
