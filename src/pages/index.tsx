@@ -129,11 +129,10 @@ export const query = graphql`
               srcWebp
             }
           }
-          body {
-            body
-          }
           bodyShort {
-            bodyShort
+            childMarkdownRemark {
+              html
+            }
           }
         }
       }

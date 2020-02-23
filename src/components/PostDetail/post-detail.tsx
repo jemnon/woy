@@ -22,10 +22,10 @@ const PostDetailHeader = styled.header`
 `;
 
 const PostDetailBody = styled.div`
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
+  /* @media ${({ theme }): string => theme.breakpoints.desktop} {
     margin-bottom: 2rem;
   }
-  margin-bottom: 1rem;
+  margin-bottom: 1rem; */
   line-height: 1.5;
   letter-spacing: 0.5px;
   ul {
@@ -77,6 +77,7 @@ const PostDetail: FC<PostDetailProps> = ({
       );
     }
     if (bodyShort?.childMarkdownRemark?.html) {
+      console.log(bodyShort);
       return (
         <div
           dangerouslySetInnerHTML={{
