@@ -3,7 +3,7 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import { Categories as CategoriesType } from '../types/categories';
 import { HeroType } from '../types/hero';
-import { Post } from '../types/post';
+import { Post as PostType } from '../types/post';
 import ContainerStyled, {
   ContainerContent,
   ContainerSideBar,
@@ -17,7 +17,7 @@ import PostDetail from '../components/PostDetail';
 import SEO from '../components/SEO';
 
 interface PostNode {
-  node: Post;
+  node: PostType;
 }
 
 interface HeroNode {
@@ -106,7 +106,7 @@ export const query = graphql`
         }
       }
     }
-    allContentfulPosts(limit: 10) {
+    allContentfulPosts(limit: 10, sort: { order: DESC, fields: publishDate }) {
       edges {
         node {
           id

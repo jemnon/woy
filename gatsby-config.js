@@ -7,7 +7,7 @@ require('dotenv').config({
 module.exports = {
   siteMetadata: {
     title: `Whisper of Yum`,
-    description: `Whipser of yum gatsby site.`,
+    description: `Whipser of Yum site. Food, cocktails, wine, LA, and travel.`,
     author: `David Arias`,
   },
   plugins: [
@@ -33,6 +33,15 @@ module.exports = {
       },
     },
     /* {
+      resolve: `gatsby-plugin-algolia`,
+      options: {
+        appId: process.env.GATSBY_ALGOLIA_APP_ID,
+        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        queries,
+        chunkSize: 10000, // default: 1000
+      },
+    },
+     {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Whisper of Yum`,

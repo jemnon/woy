@@ -5,7 +5,6 @@ import { Post as PostType } from '../types/post';
 import ContainerStyled, {
   ContainerContent,
   ContainerSideBar,
-  HR,
 } from '../components/container-styled';
 import Categories from '../components/Categories';
 import { HEADER_HEIGHT } from '../components/Header';
@@ -27,7 +26,6 @@ interface PostProps {
 const Post: FC<PostProps> = ({ data, pageContext }) => {
   const { nodes: categories } = data?.allContentfulCategories || {};
   const { page: post } = pageContext || {};
-  console.log(post);
   return (
     <Layout>
       <SEO

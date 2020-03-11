@@ -1,7 +1,4 @@
-interface Posts {
-  id: string;
-  slug: string;
-}
+import { Post as Posts } from './post';
 
 export interface Categories {
   name: string;

@@ -77,7 +77,6 @@ const PostDetail: FC<PostDetailProps> = ({
       );
     }
     if (bodyShort?.childMarkdownRemark?.html) {
-      console.log(bodyShort);
       return (
         <div
           dangerouslySetInnerHTML={{
@@ -88,9 +87,11 @@ const PostDetail: FC<PostDetailProps> = ({
     }
     return null;
   };
-  categories.forEach(category => {
-    cats.push(category.name);
-  });
+  if (categories) {
+    categories.forEach(category => {
+      cats.push(category?.name);
+    });
+  }
   return (
     <article>
       <PostDetailHeader>
