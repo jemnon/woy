@@ -24,7 +24,7 @@ interface HeroNode {
   node: HeroType;
 }
 
-interface HomeProps {
+interface HomePageProps {
   data?: {
     allContentfulCategories?: {
       nodes: CategoriesType[];
@@ -38,14 +38,14 @@ interface HomeProps {
   };
 }
 
-const HomeListItem = styled.li`
+const HomePageListItem = styled.li`
   a {
     text-decoration: none;
     color: ${({ theme }): string => theme.colors.nearBlack};
   }
 `;
 
-const IndexPage: FC<HomeProps> = ({ data }) => {
+const IndexPage: FC<HomePageProps> = ({ data }) => {
   const { nodes: categories } = data?.allContentfulCategories || {};
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
@@ -70,7 +70,7 @@ const IndexPage: FC<HomeProps> = ({ data }) => {
               {posts.map((post, idx) => {
                 const postsLength = posts.length;
                 return (
-                  <HomeListItem key={post.node.id}>
+                  <HomePageListItem key={post.node.id}>
                     <Link to={`/post/${post.node.slug}`}>
                       <PostDetail
                         categories={post.node.categories}
@@ -81,7 +81,7 @@ const IndexPage: FC<HomeProps> = ({ data }) => {
                       />
                     </Link>
                     {posts.length - 1 === idx ? null : <HR />}
-                  </HomeListItem>
+                  </HomePageListItem>
                 );
               })}
             </ul>

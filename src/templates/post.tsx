@@ -12,7 +12,7 @@ import Layout from '../components/Layout';
 import PostDetail from '../components/PostDetail';
 import SEO from '../components/SEO';
 
-interface PostProps {
+interface PostPageProps {
   data?: {
     allContentfulCategories?: {
       nodes: CategoriesType[];
@@ -23,7 +23,7 @@ interface PostProps {
   };
 }
 
-const Post: FC<PostProps> = ({ data, pageContext }) => {
+const PostPage: FC<PostPageProps> = ({ data, pageContext }) => {
   const { nodes: categories } = data?.allContentfulCategories || {};
   const { page: post } = pageContext || {};
   return (
@@ -75,4 +75,4 @@ export const query = graphql`
   }
 `;
 
-export default Post;
+export default PostPage;

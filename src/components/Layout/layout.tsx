@@ -132,11 +132,15 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         setIsHeaderVisible(true);
       }
     };
-    window.addEventListener('scroll', handleScroll);
+    if (pathname === '/') {
+      window.addEventListener('scroll', handleScroll);
+    }
     return (): void => {
-      window.removeEventListener('scroll', handleScroll);
+      if (pathname === '/') {
+        window.removeEventListener('scroll', handleScroll);
+      }
     };
-  }, [isHeaderVisible, setIsHeaderVisible]);
+  }, [isHeaderVisible, pathname, setIsHeaderVisible]);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />

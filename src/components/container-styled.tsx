@@ -8,11 +8,11 @@ const ContainerStyled = styled.div`
   margin-right: auto;
   padding: 1rem;
   padding-top: 1rem;
-  max-width: 1440px;
+  max-width: 1024px;
   width: 100%;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     padding: 2rem;
-    grid-gap: 1rem;
+    grid-gap: 2rem;
     grid-template-areas: 'content content sidebar';
     grid-template-columns: 1fr 1fr 1fr;
   }
@@ -32,11 +32,12 @@ export const ContainerSideBar = styled.aside`
 
 interface HRProps {
   marginBottom?: string;
+  borderStyle?: string;
 }
 
 export const HR = styled.hr<HRProps>`
   border: none;
-  border-top: 1px solid ${({ theme }): string => theme.colors.orange};
+  border-top: 1px dotted ${({ theme }): string => theme.colors.orange};
   margin-top: 0;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     margin-bottom: ${({ marginBottom }): string =>
