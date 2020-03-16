@@ -1,7 +1,7 @@
 import React, { ReactNode, FC } from 'react';
 import styled from 'styled-components';
 
-export const HEADER_HEIGHT: string = '4rem';
+export const HEADER_HEIGHT: string = '64px';
 
 interface HeaderProps {
   children: ReactNode;

@@ -33,6 +33,6 @@ const H2 = styled.h2`
   text-transform: capitalize;
   line-height: 1;
   margin: 0;
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
 `;
 export { H1, H2 };

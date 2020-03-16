@@ -134,12 +134,10 @@ const Layout: FC<LayoutProps> = ({ children }) => {
     };
     if (pathname === '/') {
       window.addEventListener('scroll', handleScroll);
-    }
-    return (): void => {
-      if (pathname === '/') {
+      return (): void => {
         window.removeEventListener('scroll', handleScroll);
-      }
-    };
+      };
+    }
   }, [isHeaderVisible, pathname, setIsHeaderVisible]);
   return (
     <ThemeProvider theme={theme}>

@@ -1,4 +1,5 @@
-import React, { FC, useEffect, useRef } from 'react';
+import React, { FC, useEffect, useRef, useState, MouseEvent } from 'react';
+import { globalHistory } from '@reach/router';
 import styled from 'styled-components';
 import Link from '../Link';
 import { Categories as CategoriesType } from '../../types/categories';
@@ -32,18 +33,74 @@ const CategoriesLink = styled.div`
   }
 `;
 
+interface CategoriesStickyProps {
+  isSticky: boolean;
+  w?: number | null;
+}
+
+interface CategoriesCoordinatesState {
+  left: number;
+  top: number;
+  width: number;
+}
+
+const CategoriesSticky = styled.div<CategoriesStickyProps>`
+  position: ${({ isSticky }): string => (isSticky ? 'fixed' : 'static')};
+`;
+
 const Categories: FC<CategoriesProps> = ({ categories }) => {
   const target = useRef<HTMLDivElement | null>(null);
+  const [isScrolling, setIsScrolling] = useState<boolean>(false);
   const [hasIntersected, isIntersecting] = useIntersectionObserver(target);
+  const [
+    coordinates,
+    setCoordinates,
+  ] = useState<CategoriesCoordinatesState | null>(null);
+  const { pathname } = globalHistory.location || {};
   useEffect(() => {
-    // console.log(hasIntersected);
-    console.log('isIntersecting: ', isIntersecting);
-  }, [hasIntersected, isIntersecting]);
+    const { current } = target || {};
+    const setCoordinatesState = (): void => {
+      if (current) {
+        const { offsetLeft: left, offsetWidth: width } = current;
+        setCoordinates({ left, top: 96, width });
+      }
+    };
+    const handleResize = (): void => {
+      setCoordinatesState();
+    };
+    const handleScroll = (): void => {
+      if (pathname === '/') {
+        if (current) {
+          const { offsetTop } = current;
+          const windowY = window.pageYOffset;
+          const waypoint = offsetTop - 96;
+          if (windowY >= waypoint) {
+            setCoordinatesState();
+            setIsScrolling(true);
+          }
+          if (windowY < waypoint) {
+            setIsScrolling(false);
+          }
+        }
+      } else {
+        setCoordinatesState();
+        setIsScrolling(true);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('resize', handleResize);
+    return (): void => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [coordinates, isIntersecting, target]);
   return (
     <CategoriesContainer ref={target}>
-      <CategoriesHeader>
-        <H2>Categories</H2>
-        <HR marginBottom="1rem" />
+      <CategoriesSticky isSticky={isScrolling} style={{ ...coordinates }}>
+        <CategoriesHeader>
+          <H2>Categories</H2>
+          <HR marginBottom="1rem" />
+        </CategoriesHeader>
         {categories && (
           <ul>
             {categories.map(cat => {
@@ -60,7 +117,7 @@ const Categories: FC<CategoriesProps> = ({ categories }) => {
             })}
           </ul>
         )}
-      </CategoriesHeader>
+      </CategoriesSticky>
     </CategoriesContainer>
   );
 };

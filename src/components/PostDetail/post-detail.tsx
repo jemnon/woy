@@ -22,10 +22,6 @@ const PostDetailHeader = styled.header`
 `;
 
 const PostDetailBody = styled.div`
-  /* @media ${({ theme }): string => theme.breakpoints.desktop} {
-    margin-bottom: 2rem;
-  }
-  margin-bottom: 1rem; */
   line-height: 1.5;
   letter-spacing: 0.5px;
   ul {
@@ -54,6 +50,9 @@ const PostDetailLink = styled.div`
   display: flex;
   justify-content: flex-end;
   color: ${({ theme }): string => theme.colors.orange};
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    margin-bottom: 2rem;
+  }
   margin-bottom: 1rem;
 `;
 

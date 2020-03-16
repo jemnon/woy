@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import { Categories as CategoriesType } from '../types/categories';
 import ContainerStyled, {
@@ -14,6 +15,11 @@ import PostDetail from '../components/PostDetail';
 import SEO from '../components/SEO';
 
 interface CategoriesPageProps {
+  data?: {
+    allContentfulCategories?: {
+      nodes: CategoriesType[];
+    };
+  };
   pageContext: {
     page: CategoriesType;
   };
@@ -26,7 +32,8 @@ const CategoriesPageListItem = styled.li`
   }
 `;
 
-const CategoriesPage: FC<CategoriesPageProps> = ({ pageContext }) => {
+const CategoriesPage: FC<CategoriesPageProps> = ({ data, pageContext }) => {
+  const { nodes: categories } = data?.allContentfulCategories || {};
   const { page: pageData } = pageContext || {};
   const { posts } = pageData || {};
   return (
@@ -58,7 +65,7 @@ const CategoriesPage: FC<CategoriesPageProps> = ({ pageContext }) => {
                           publishDate={post.publishDate}
                           images={post.images}
                           title={post.title}
-                          body={post.body}
+                          bodyShort={post.bodyShort}
                         />
                       </Link>
                       {posts.length - 1 === idx ? null : <HR />}
@@ -69,12 +76,26 @@ const CategoriesPage: FC<CategoriesPageProps> = ({ pageContext }) => {
             )}
           </ContainerContent>
           <ContainerSideBar>
-            {/* categories && <Categories categories={categories} /> */}
+            {categories && <Categories categories={categories} />}
           </ContainerSideBar>
         </ContainerStyled>
       </div>
     </Layout>
   );
 };
+
+export const query = graphql`
+  {
+    allContentfulCategories {
+      nodes {
+        name
+        posts {
+          slug
+          id
+        }
+      }
+    }
+  }
+`;
 
 export default CategoriesPage;
