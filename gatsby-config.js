@@ -32,6 +32,15 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_TOKEN,
       },
     },
+    {
+      resolve: `gatsby-source-instagram`,
+      options: {
+        type: `user-profile`,
+        username: `whisperofyum`,
+        access_token: process.env.INSTAGRAM_TOKEN,
+        instagram_id: '223482132127355',
+      },
+    },
     /* {
       resolve: `gatsby-plugin-algolia`,
       options: {
