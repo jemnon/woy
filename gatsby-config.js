@@ -4,6 +4,37 @@ require('dotenv').config({
   path: '.env',
 });
 
+const postsQuery = `{
+  allContentfulPosts {
+    edges {
+      node {
+        title
+        slug
+        categories {
+          name
+        }
+        images {
+          fluid {
+            aspectRatio
+            src
+            srcSet
+            srcSetWebp
+            srcWebp
+          }
+        }
+      }
+    }
+  }
+}`;
+
+const queries = [
+  {
+    query: postsQuery,
+    transformer: ({ data }) =>
+      data.allContentfulPosts.edges.map(({ node }) => node),
+  },
+];
+
 module.exports = {
   siteMetadata: {
     title: `Whisper of Yum`,
@@ -41,16 +72,17 @@ module.exports = {
         instagram_id: '223482132127355',
       },
     },
-    /* {
+    {
       resolve: `gatsby-plugin-algolia`,
       options: {
         appId: process.env.GATSBY_ALGOLIA_APP_ID,
-        apiKey: process.env.ALGOLIA_ADMIN_KEY,
+        apiKey: process.env.GATSBY_ALGOLIA_API_KEY,
+        indexName: process.env.GATSBY_ALGOLIA_INDEX_NAME,
         queries,
         chunkSize: 10000, // default: 1000
       },
     },
-     {
+    /*{
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Whisper of Yum`,
