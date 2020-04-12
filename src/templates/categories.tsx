@@ -7,6 +7,7 @@ import ContainerStyled, {
   ContainerSideBar,
   HR,
 } from '../components/container-styled';
+import Breadcrumbs from '../components/Breadcrumbs';
 import Categories from '../components/Categories';
 import { HEADER_HEIGHT } from '../components/Header';
 import Layout from '../components/Layout';
@@ -51,6 +52,7 @@ const CategoriesPage: FC<CategoriesPageProps> = ({ data, pageContext }) => {
       <div style={{ paddingTop: HEADER_HEIGHT }}>
         <ContainerStyled>
           <ContainerContent>
+            <Breadcrumbs title="categories" />
             {posts && (
               <ul>
                 {posts.map((post, idx) => {

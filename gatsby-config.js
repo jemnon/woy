@@ -82,18 +82,18 @@ module.exports = {
         chunkSize: 10000, // default: 1000
       },
     },
-    /*{
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `Whisper of Yum`,
-        short_name: `WOF`,
-        start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        short_name: `Whisper of Yum`,
+        start_url: `https://whisperofyum.com`,
+        background_color: `#f4ede6`,
+        theme_color: `#cf7651`,
         display: `minimal-ui`,
-        icon: `src/images/`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.ico`, // This path is relative to the root of the site.
       },
-    }, */
+    },
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,

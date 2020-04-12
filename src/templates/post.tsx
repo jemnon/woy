@@ -6,6 +6,7 @@ import ContainerStyled, {
   ContainerContent,
   ContainerSideBar,
 } from '../components/container-styled';
+import Breadcrumbs from '../components/Breadcrumbs';
 import Categories from '../components/Categories';
 import { HEADER_HEIGHT } from '../components/Header';
 import Layout from '../components/Layout';
@@ -30,7 +31,7 @@ const PostPage: FC<PostPageProps> = ({ data, pageContext }) => {
     <Layout>
       <SEO
         description="Whipser of Yum Post page"
-        title="Whipser of Yum Post page"
+        title={post.title}
         meta={[
           {
             name: 'Whipser of Yum',
@@ -42,6 +43,7 @@ const PostPage: FC<PostPageProps> = ({ data, pageContext }) => {
       <div style={{ paddingTop: HEADER_HEIGHT }}>
         <ContainerStyled>
           <ContainerContent>
+            <Breadcrumbs title={post.title} />
             {post && (
               <PostDetail
                 categories={post.categories}

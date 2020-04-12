@@ -8,7 +8,7 @@ type PostDetailProps = Post;
 
 const PostDetailHeader = styled.header`
   font-family: ${({ theme }): string => theme.fonts.noto};
-  margin-bottom: 1rem;
+  margin-bottom: 2rem;
   > span {
     color: ${({ theme }): string => theme.colors.orange};
   }
@@ -93,6 +93,7 @@ const PostDetail: FC<PostDetailProps> = ({
   }
   return (
     <article>
+      <H1>{title}</H1>
       <PostDetailHeader>
         <time dateTime={publishDate}>
           {date.toLocaleDateString('en-US', {
@@ -104,7 +105,6 @@ const PostDetail: FC<PostDetailProps> = ({
         </time>
         <span>{cats.join()}</span>
       </PostDetailHeader>
-      <H1>{title}</H1>
       <PostDetailImage>
         <Img fluid={fluid} />
       </PostDetailImage>
