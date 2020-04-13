@@ -35,6 +35,7 @@ const theme: DefaultTheme = {
     lightBrown: '#d5a188',
     nearBlack: '#111',
     orange: '#cf7651',
+    white: '#ffffff',
   },
   zIndex: {
     z0: '0',
@@ -54,7 +55,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }      
   html {
-    line-height: 1.5;
+    line-height: 2;
   }
   body {
     margin: 0;
@@ -108,7 +109,7 @@ interface MainProps {
 }
 
 const Main = styled.main<MainProps>`
-  background-color: ${({ theme }): string => theme.colors.cream};
+  background-color: ${({ theme }): string => theme.colors.white};
   color: ${({ theme }): string => theme.colors.nearBlack};
   font-family: ${({ theme }): string => theme.fonts.lato};
   min-height: 100vh;

@@ -12,7 +12,7 @@ const NavRoot = styled.nav`
   padding-right: 1rem;
   height: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
-  background-color: ${({ theme }): string => theme.colors.cream};
+  background-color: ${({ theme }): string => theme.colors.white};
 `;
 
 const NavList = styled.ul`

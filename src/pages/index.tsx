@@ -1,15 +1,9 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
-import { Categories as CategoriesType } from '../types/categories';
 import { HeroType } from '../types/hero';
 import { Post as PostType } from '../types/post';
-import ContainerStyled, {
-  ContainerContent,
-  ContainerSideBar,
-  HR,
-} from '../components/container-styled';
-import Categories from '../components/Categories';
+import Container, { Content } from '../components/container-styled';
 import Hero from '../components/Hero';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
@@ -26,9 +20,6 @@ interface HeroNode {
 
 interface HomePageProps {
   data?: {
-    allContentfulCategories?: {
-      nodes: CategoriesType[];
-    };
     allContentfulPosts?: {
       edges?: PostNode[];
     };
@@ -39,6 +30,12 @@ interface HomePageProps {
 }
 
 const HomePageListItem = styled.li`
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    margin-bottom: 0;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
+  }
+  margin-bottom: 1rem;
   a {
     text-decoration: none;
     color: ${({ theme }): string => theme.colors.nearBlack};
@@ -46,7 +43,6 @@ const HomePageListItem = styled.li`
 `;
 
 const IndexPage: FC<HomePageProps> = ({ data }) => {
-  const { nodes: categories } = data?.allContentfulCategories || {};
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
   const [{ node: heroNode }] = hero || [];
@@ -63,49 +59,33 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
         ]}
       />
       <Hero images={heroNode.images} />
-      <ContainerStyled>
-        <ContainerContent>
-          {posts && (
-            <ul>
-              {posts.map((post, idx) => {
-                const postsLength = posts.length;
-                return (
-                  <HomePageListItem key={post.node.id}>
-                    <Link to={`/post/${post.node.slug}`}>
-                      <PostDetail
-                        categories={post.node.categories}
-                        publishDate={post.node.publishDate}
-                        images={post.node.images}
-                        title={post.node.title}
-                        bodyShort={post.node.bodyShort}
-                      />
-                    </Link>
-                    {posts.length - 1 === idx ? null : <HR />}
-                  </HomePageListItem>
-                );
-              })}
-            </ul>
-          )}
-        </ContainerContent>
-        <ContainerSideBar>
-          {categories && <Categories categories={categories} />}
-        </ContainerSideBar>
-      </ContainerStyled>
+      <Container>
+        {posts && (
+          <Content>
+            {posts.map((post, idx) => {
+              return (
+                <HomePageListItem key={post.node.id}>
+                  <Link to={`/post/${post.node.slug}`}>
+                    <PostDetail
+                      categories={post.node.categories}
+                      publishDate={post.node.publishDate}
+                      images={post.node.images}
+                      title={post.node.title}
+                      bodyShort={post.node.bodyShort}
+                    />
+                  </Link>
+                </HomePageListItem>
+              );
+            })}
+          </Content>
+        )}
+      </Container>
     </Layout>
   );
 };
 
 export const query = graphql`
   {
-    allContentfulCategories {
-      nodes {
-        name
-        posts {
-          slug
-          id
-        }
-      }
-    }
     allContentfulPosts(limit: 10, sort: { order: DESC, fields: publishDate }) {
       edges {
         node {

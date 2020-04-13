@@ -1,31 +1,19 @@
 import React, { FC } from 'react';
-import { graphql } from 'gatsby';
-import { Categories as CategoriesType } from '../types/categories';
 import { Post as PostType } from '../types/post';
-import ContainerStyled, {
-  ContainerContent,
-  ContainerSideBar,
-} from '../components/container-styled';
+import Container from '../components/container-styled';
 import Breadcrumbs from '../components/Breadcrumbs';
-import Categories from '../components/Categories';
 import { HEADER_HEIGHT } from '../components/Header';
 import Layout from '../components/Layout';
 import PostDetail from '../components/PostDetail';
 import SEO from '../components/SEO';
 
 interface PostPageProps {
-  data?: {
-    allContentfulCategories?: {
-      nodes: CategoriesType[];
-    };
-  };
   pageContext: {
     page: PostType;
   };
 }
 
-const PostPage: FC<PostPageProps> = ({ data, pageContext }) => {
-  const { nodes: categories } = data?.allContentfulCategories || {};
+const PostPage: FC<PostPageProps> = ({ pageContext }) => {
   const { page: post } = pageContext || {};
   return (
     <Layout>
@@ -39,42 +27,23 @@ const PostPage: FC<PostPageProps> = ({ data, pageContext }) => {
           },
         ]}
       />
-
       <div style={{ paddingTop: HEADER_HEIGHT }}>
-        <ContainerStyled>
-          <ContainerContent>
-            <Breadcrumbs title={post.title} />
-            {post && (
-              <PostDetail
-                categories={post.categories}
-                publishDate={post.publishDate}
-                images={post.images}
-                title={post.title}
-                body={post.body}
-              />
-            )}
-          </ContainerContent>
-          <ContainerSideBar>
-            {categories && <Categories categories={categories} />}
-          </ContainerSideBar>
-        </ContainerStyled>
+        <Container>
+          <Breadcrumbs title={post.title} />
+          {post && (
+            <PostDetail
+              categories={post.categories}
+              publishDate={post.publishDate}
+              images={post.images}
+              title={post.title}
+              bodyShort={post.bodyShort}
+              body={post.body}
+            />
+          )}
+        </Container>
       </div>
     </Layout>
   );
 };
-
-export const query = graphql`
-  {
-    allContentfulCategories {
-      nodes {
-        name
-        posts {
-          slug
-          id
-        }
-      }
-    }
-  }
-`;
 
 export default PostPage;

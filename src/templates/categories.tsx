@@ -2,13 +2,8 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import { Categories as CategoriesType } from '../types/categories';
-import ContainerStyled, {
-  ContainerContent,
-  ContainerSideBar,
-  HR,
-} from '../components/container-styled';
+import Container, { HR } from '../components/container-styled';
 import Breadcrumbs from '../components/Breadcrumbs';
-import Categories from '../components/Categories';
 import { HEADER_HEIGHT } from '../components/Header';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
@@ -50,37 +45,30 @@ const CategoriesPage: FC<CategoriesPageProps> = ({ data, pageContext }) => {
         ]}
       />
       <div style={{ paddingTop: HEADER_HEIGHT }}>
-        <ContainerStyled>
-          <ContainerContent>
-            <Breadcrumbs title="categories" />
-            {posts && (
-              <ul>
-                {posts.map((post, idx) => {
-                  const postsLength = posts.length;
-                  return (
-                    <CategoriesPageListItem
-                      key={`categories-${idx}-${post.id}`}
-                    >
-                      <Link to={`/post/${post.slug}`}>
-                        <PostDetail
-                          categories={post.categories}
-                          publishDate={post.publishDate}
-                          images={post.images}
-                          title={post.title}
-                          bodyShort={post.bodyShort}
-                        />
-                      </Link>
-                      {posts.length - 1 === idx ? null : <HR />}
-                    </CategoriesPageListItem>
-                  );
-                })}
-              </ul>
-            )}
-          </ContainerContent>
-          <ContainerSideBar>
-            {categories && <Categories categories={categories} />}
-          </ContainerSideBar>
-        </ContainerStyled>
+        <Container>
+          <Breadcrumbs title="categories" />
+          {posts && (
+            <ul>
+              {posts.map((post, idx) => {
+                const postsLength = posts.length;
+                return (
+                  <CategoriesPageListItem key={`categories-${idx}-${post.id}`}>
+                    <Link to={`/post/${post.slug}`}>
+                      <PostDetail
+                        categories={post.categories}
+                        publishDate={post.publishDate}
+                        images={post.images}
+                        title={post.title}
+                        bodyShort={post.bodyShort}
+                      />
+                    </Link>
+                    {posts.length - 1 === idx ? null : <HR />}
+                  </CategoriesPageListItem>
+                );
+              })}
+            </ul>
+          )}
+        </Container>
       </div>
     </Layout>
   );

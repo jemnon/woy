@@ -39,7 +39,7 @@ module.exports = {
   siteMetadata: {
     title: `Whisper of Yum`,
     description: `Whipser of Yum site. Food, cocktails, wine, LA, and travel.`,
-    author: `David Arias`,
+    author: `Jeri Mobley`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,

@@ -1,18 +1,25 @@
 import styled from 'styled-components';
 
-const H1 = styled.h1`
+interface H1Props {
+  bottomSpacing?: string | undefined;
+}
+
+const H1 = styled.h1<H1Props>`
   position: relative;
   font-family: ${({ theme }): string => theme.fonts.noto};
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    font-size: 3rem;
-    margin-bottom: 2rem;
-    padding-left: 2rem;
+    font-size: 2.5rem;
+    padding-left: 1.5rem;
   }
-  font-size: 2rem;
+  font-size: 1.5rem;
   text-transform: capitalize;
+  white-space: ${({ bottomSpacing }): string =>
+    bottomSpacing ? 'normal' : 'nowrap'};
+  overflow: hidden;
+  text-overflow: ellipsis;
   line-height: 1.5;
   margin: 0;
-  margin-bottom: 1rem;
+  margin-bottom: ${({ bottomSpacing }): string => bottomSpacing || ''};
   padding-left: 1rem;
   &:before {
     content: '';
@@ -33,6 +40,6 @@ const H2 = styled.h2`
   text-transform: capitalize;
   line-height: 1;
   margin: 0;
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
 `;
 export { H1, H2 };

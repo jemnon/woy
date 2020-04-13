@@ -1,33 +1,24 @@
 import styled from 'styled-components';
 
-const ContainerStyled = styled.div`
-  display: grid;
-  grid-template-areas: 'content' 'sidebar';
-  grid-template-columns: 1fr;
+const Container = styled.main`
   margin-left: auto;
   margin-right: auto;
   padding: 1rem;
-  padding-top: 1rem;
-  max-width: 1024px;
   width: 100%;
+  max-width: 800px;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    padding: 2rem;
-    grid-gap: 2rem;
-    grid-template-areas: 'content content sidebar';
-    grid-template-columns: 1fr 1fr 1fr;
+    max-width: 1200px;
+    padding: 1.5rem;
   }
 `;
 
-export const ContainerContent = styled.section`
-  grid-area: content;
-`;
-
-export const ContainerSideBar = styled.aside`
+export const Content = styled.ul`
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    display: block;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(50%, auto));
+    margin-left: -1.5rem;
+    margin-right: -1.5rem;
   }
-  display: none;
-  grid-area: sidebar;
 `;
 
 interface HRProps {
@@ -47,4 +38,4 @@ export const HR = styled.hr<HRProps>`
     marginBottom ? marginBottom : '1rem'};
 `;
 
-export default ContainerStyled;
+export default Container;

@@ -99,7 +99,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
     });
   });
   // category pages
-  data.allContentfulCategories.edges.forEach(edge => {
+  /* data.allContentfulCategories.edges.forEach(edge => {
     const { name } = edge.node;
     createPage({
       path: `categories/${name}`,
@@ -108,5 +108,5 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
         page: edge.node,
       },
     });
-  });
+  }); */
 };

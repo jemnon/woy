@@ -7,14 +7,14 @@ import { H1 } from '../headings-styled';
 type PostDetailProps = Post;
 
 const PostDetailHeader = styled.header`
-  font-family: ${({ theme }): string => theme.fonts.noto};
-  margin-bottom: 2rem;
+  margin-bottom: 1.5rem;
   > span {
     color: ${({ theme }): string => theme.colors.orange};
   }
   time {
+    display: block;
+    margin-bottom: 0.5rem;
     text-transform: capitalize;
-    font-style: italic;
     > span {
       padding: 0 0.25rem;
     }
@@ -22,14 +22,16 @@ const PostDetailHeader = styled.header`
 `;
 
 const PostDetailBody = styled.div`
-  line-height: 1.5;
+  line-height: 2;
   letter-spacing: 0.5px;
   ul {
     padding-left: 2rem;
+    margin-bottom: 1rem;
     list-style-type: disc;
   }
   ol {
     padding-left: 2rem;
+    margin-bottom: 1rem;
   }
   p {
     margin-bottom: 1rem;
@@ -37,23 +39,45 @@ const PostDetailBody = styled.div`
 `;
 
 const PostDetailImage = styled.div`
+  position: relative;
+  width: 100%;
+  padding-bottom: 100%;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
   }
   margin-bottom: 1rem;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.1);
   border-radius: 2px;
+  .gatsby-image-wrapper {
+    position: absolute !important;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
 
 const PostDetailLink = styled.div`
   display: flex;
   justify-content: flex-end;
   color: ${({ theme }): string => theme.colors.orange};
+`;
+
+const PostDetailColumns = styled.section`
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    margin-bottom: 2rem;
+    display: grid;
+    grid-gap: 1.5rem;
+    grid-template-areas: 'title image';
+    grid-template-columns: 50% 1fr;
+    header {
+      grid-area: title;
+    }
+    div {
+      grid-area: image;
+    }
   }
-  margin-bottom: 1rem;
 `;
 
 const PostDetail: FC<PostDetailProps> = ({
@@ -93,27 +117,52 @@ const PostDetail: FC<PostDetailProps> = ({
   }
   return (
     <article>
-      <H1>{title}</H1>
-      <PostDetailHeader>
-        <time dateTime={publishDate}>
-          {date.toLocaleDateString('en-US', {
-            day: 'numeric',
-            month: 'long',
-            year: 'numeric',
-          })}
-          <span>&ndash;</span>
-        </time>
-        <span>{cats.join()}</span>
-      </PostDetailHeader>
-      <PostDetailImage>
-        <Img fluid={fluid} />
-      </PostDetailImage>
+      {!body ? (
+        <>
+          <PostDetailHeader>
+            <time dateTime={publishDate}>
+              {date.toLocaleDateString('en-US', {
+                day: 'numeric',
+                month: 'short',
+              })}
+            </time>
+            <H1 title={title}>{title}</H1>
+          </PostDetailHeader>
+          <PostDetailImage>
+            <Img fluid={fluid} />
+          </PostDetailImage>
+        </>
+      ) : (
+        <PostDetailColumns>
+          <PostDetailHeader>
+            <time dateTime={publishDate}>
+              {date.toLocaleDateString('en-US', {
+                day: 'numeric',
+                month: 'short',
+              })}
+            </time>
+            <H1 bottomSpacing="1.5rem" title={title}>
+              {title}
+            </H1>
+            {bodyShort?.childMarkdownRemark?.html && (
+              <div
+                dangerouslySetInnerHTML={{
+                  __html: bodyShort?.childMarkdownRemark?.html,
+                }}
+              />
+            )}
+          </PostDetailHeader>
+          <PostDetailImage>
+            <Img fluid={fluid} />
+          </PostDetailImage>
+        </PostDetailColumns>
+      )}
       <PostDetailBody>{renderPostDetail()}</PostDetailBody>
-      {bodyShort && (
+      {!body ? (
         <PostDetailLink>
           <span>read more</span>
         </PostDetailLink>
-      )}
+      ) : null}
     </article>
   );
 };

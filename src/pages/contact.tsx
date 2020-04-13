@@ -1,10 +1,10 @@
 import React, { FC } from 'react';
-import ContainerStyled from '../components/container-styled';
+import Container from '../components/container-styled';
 import { HEADER_HEIGHT } from '../components/Header';
 import Layout from '../components/Layout';
 import SEO from '../components/SEO';
 
-const Contact: FC<{}> = () => {
+const Contact: FC = () => {
   return (
     <Layout>
       <SEO
@@ -18,7 +18,7 @@ const Contact: FC<{}> = () => {
         ]}
       />
       <div style={{ paddingTop: HEADER_HEIGHT }}>
-        <ContainerStyled>About</ContainerStyled>
+        <Container>About</Container>
       </div>
     </Layout>
   );

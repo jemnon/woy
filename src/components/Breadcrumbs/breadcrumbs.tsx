@@ -4,7 +4,7 @@ import Link from '../Link';
 
 const BreadcrumbsContainer = styled.ul`
   display: inline-grid;
-  grid-gap: 0.25rem;
+  grid-gap: 0.5rem;
   grid-template-columns: auto auto auto;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     margin-bottom: 2rem;
@@ -14,7 +14,7 @@ const BreadcrumbsContainer = styled.ul`
 
 const BreadcrumbsLink = styled.a`
   display: inline-block;
-  color: ${({ theme }): string => theme.colors.black};
+  color: ${({ theme }): string => theme.colors.nearBlack};
   text-decoration: none;
 `;
 
