@@ -22,6 +22,9 @@ const PostDetailHeader = styled.header`
   p {
     margin-bottom: 1rem;
   }
+  strong {
+    display: block;
+  }
 `;
 
 const PostDetailBody = styled.div`
@@ -38,6 +41,9 @@ const PostDetailBody = styled.div`
   }
   p {
     margin-bottom: 1rem;
+  }
+  strong {
+    display: block;
   }
 `;
 

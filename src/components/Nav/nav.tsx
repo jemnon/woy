@@ -95,19 +95,19 @@ const Nav: FC = () => {
           <NavListDivider />
         </NavListItem>
         <NavListItem>
-          <Link
-            to="https://www.instagram.com/whisperofyum/?hl=en"
-            target="_blank"
-          >
-            Instagram
+          <Link activeClassName="is-active" to="/about">
+            About
           </Link>
         </NavListItem>
         <NavListItem>
           <NavListDivider />
         </NavListItem>
         <NavListItem>
-          <Link activeClassName="is-active" to="/about">
-            About
+          <Link
+            to="https://www.instagram.com/whisperofyum/?hl=en"
+            target="_blank"
+          >
+            Instagram
           </Link>
         </NavListItem>
         <NavListItem>
