@@ -22,7 +22,7 @@ const PostDetailHeader = styled.header`
 `;
 
 const PostDetailBody = styled.div`
-  line-height: 2;
+  line-height: 1.5;
   letter-spacing: 0.5px;
   ul {
     padding-left: 2rem;

@@ -95,6 +95,17 @@ const Nav: FC = () => {
           <NavListDivider />
         </NavListItem>
         <NavListItem>
+          <Link
+            to="https://www.instagram.com/whisperofyum/?hl=en"
+            target="_blank"
+          >
+            Instagram
+          </Link>
+        </NavListItem>
+        <NavListItem>
+          <NavListDivider />
+        </NavListItem>
+        <NavListItem>
           <Link activeClassName="is-active" to="/about">
             About
           </Link>
@@ -103,9 +114,9 @@ const Nav: FC = () => {
           <NavListDivider />
         </NavListItem>
         <NavListItem>
-          <Link activeClassName="is-active" to="/contact">
+          <a href="mailto:jerimobley914@gmail.com" target="_top">
             Contact
-          </Link>
+          </a>
         </NavListItem>
       </NavList>
       <NavMobileButton onClick={handleMobileClick} type="button">

@@ -55,12 +55,13 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }      
   html {
-    line-height: 2;
+    line-height: 1.5;
   }
   body {
     margin: 0;
     padding: 0;
     min-height: 100vh;
+    font-size: 1.125rem;
     font-family:  "Lato", -apple-system, system-ui,
                 "avenir next", avenir, "Helvetica Neue", helvetica, ubuntu, roboto,
                 noto, 'Segoe UI', Arial, sans-serif;

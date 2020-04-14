@@ -38,7 +38,7 @@ const queries = [
 module.exports = {
   siteMetadata: {
     title: `Whisper of Yum`,
-    description: `Whipser of Yum site. Food, cocktails, wine, LA, and travel.`,
+    description: `Recipes, Asian Cooking, Food Blog, Easy Recipes, Los Angeles`,
     author: `Jeri Mobley`,
   },
   plugins: [

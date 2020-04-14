@@ -18,12 +18,12 @@ const PostPage: FC<PostPageProps> = ({ pageContext }) => {
   return (
     <Layout>
       <SEO
-        description="Whipser of Yum Post page"
+        description={`${post.bodyShort?.bodyShort}`}
         title={post.title}
         meta={[
           {
-            name: 'Whipser of Yum',
-            content: 'home',
+            name: 'foo',
+            content: 'bar',
           },
         ]}
       />

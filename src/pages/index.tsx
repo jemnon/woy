@@ -50,7 +50,7 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
     <Layout>
       <SEO
         description="Whipser of Yum Home page"
-        title="Whipser of Yum Home page"
+        title="Whipser of Yum"
         meta={[
           {
             name: 'Whipser of Yum',

@@ -14,6 +14,7 @@ export interface Post {
     };
   };
   bodyShort?: {
+    bodyShort?: string;
     childMarkdownRemark?: {
       html: string;
     };
