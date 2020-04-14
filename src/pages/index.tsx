@@ -31,7 +31,7 @@ interface HomePageProps {
 
 const HomePageListItem = styled.li`
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    margin-bottom: 0;
+    margin-bottom: 3rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
@@ -42,6 +42,17 @@ const HomePageListItem = styled.li`
   }
 `;
 
+const metaDesc =
+  `Just like you (or not), I love food. So much so, ` +
+  `my partner and I decided to create this repository of my go-to, ` +
+  `flavor-bomb dishes, with simple-ish prep. I get down making all sorts ` +
+  `of eats, especially Filipino dishes from my childhood. ` +
+  `I keep it simple and straight to the point; brief-ish description, ingredients, and steps.` +
+  `I figure, if it looks good and you feel so inclined to making it, ` +
+  `I'll spare you the endless scrolling through the details of why I ` +
+  `chose a specific ingredient over another and get straight to what ` +
+  `you want. Enjoy the content.`;
+
 const IndexPage: FC<HomePageProps> = ({ data }) => {
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
@@ -49,7 +60,7 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
   return (
     <Layout>
       <SEO
-        description="Whipser of Yum Home page"
+        description={metaDesc}
         title="Home"
         meta={[
           {
