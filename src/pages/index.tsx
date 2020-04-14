@@ -110,6 +110,7 @@ export const query = graphql`
             }
           }
           bodyShort {
+            bodyShort
             childMarkdownRemark {
               html
             }

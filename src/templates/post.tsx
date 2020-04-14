@@ -15,6 +15,7 @@ interface PostPageProps {
 
 const PostPage: FC<PostPageProps> = ({ pageContext }) => {
   const { page: post } = pageContext || {};
+  const [{ fluid }] = post.images;
   return (
     <Layout>
       <SEO
@@ -22,8 +23,8 @@ const PostPage: FC<PostPageProps> = ({ pageContext }) => {
         title={post.title}
         meta={[
           {
-            name: 'foo',
-            content: 'bar',
+            property: 'og:image',
+            content: fluid.src,
           },
         ]}
       />

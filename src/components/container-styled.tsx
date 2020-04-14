@@ -5,7 +5,7 @@ const Container = styled.main`
   margin-right: auto;
   padding: 1rem;
   width: 100%;
-  max-width: 800px;
+  max-width: 550px;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     max-width: 1200px;
     padding: 1.5rem;
