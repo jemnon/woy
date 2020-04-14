@@ -5,6 +5,7 @@ import styled, {
   ThemeProvider,
   DefaultTheme,
 } from 'styled-components';
+import Footer from '../Footer';
 import Header from '../Header';
 import Nav from '../Nav';
 
@@ -148,6 +149,7 @@ const Layout: FC<LayoutProps> = ({ children }) => {
         <Nav />
       </Header>
       <Main isHeaderVisible={isHeaderVisible}>{children}</Main>
+      <Footer />
     </ThemeProvider>
   );
 };

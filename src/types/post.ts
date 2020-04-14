@@ -13,6 +13,12 @@ export interface Post {
       html: string;
     };
   };
+  bodyPreview?: {
+    bodyPreview?: string;
+    childMarkdownRemark?: {
+      html: string;
+    };
+  };
   bodyShort?: {
     bodyShort?: string;
     childMarkdownRemark?: {

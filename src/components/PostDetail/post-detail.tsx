@@ -19,6 +19,9 @@ const PostDetailHeader = styled.header`
       padding: 0 0.25rem;
     }
   }
+  p {
+    margin-bottom: 1rem;
+  }
 `;
 
 const PostDetailBody = styled.div`
@@ -86,6 +89,7 @@ const PostDetail: FC<PostDetailProps> = ({
   images,
   title,
   body,
+  bodyPreview,
   bodyShort,
 }) => {
   const date = new Date(publishDate);
@@ -99,11 +103,11 @@ const PostDetail: FC<PostDetailProps> = ({
         />
       );
     }
-    if (bodyShort?.childMarkdownRemark?.html) {
+    if (bodyPreview?.childMarkdownRemark?.html) {
       return (
         <div
           dangerouslySetInnerHTML={{
-            __html: bodyShort?.childMarkdownRemark?.html,
+            __html: bodyPreview?.childMarkdownRemark?.html,
           }}
         />
       );

@@ -8,7 +8,7 @@ const H1 = styled.h1<H1Props>`
   position: relative;
   font-family: ${({ theme }): string => theme.fonts.noto};
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     padding-left: 1.5rem;
   }
   font-size: 1.5rem;

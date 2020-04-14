@@ -14,12 +14,13 @@ interface SEOProps {
   description: string;
   lang?: string;
   meta: any;
+  slug?: string;
   title: string;
 }
 
 const assetPath = withPrefix('/');
 
-const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
+const SEO: FC<SEOProps> = ({ description, lang, meta, slug, title }) => {
   const { site } = useStaticQuery(
     graphql`
       query {

@@ -50,7 +50,7 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
     <Layout>
       <SEO
         description="Whipser of Yum Home page"
-        title="Whipser of Yum"
+        title="Home"
         meta={[
           {
             name: 'Whipser of Yum',
@@ -71,7 +71,7 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
                       publishDate={post.node.publishDate}
                       images={post.node.images}
                       title={post.node.title}
-                      bodyShort={post.node.bodyShort}
+                      bodyPreview={post.node.bodyPreview}
                     />
                   </Link>
                 </HomePageListItem>
@@ -109,8 +109,8 @@ export const query = graphql`
               srcWebp
             }
           }
-          bodyShort {
-            bodyShort
+          bodyPreview {
+            bodyPreview
             childMarkdownRemark {
               html
             }
