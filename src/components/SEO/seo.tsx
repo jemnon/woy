@@ -34,7 +34,6 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
     `,
   );
   const metaDescription = description || site.siteMetadata.description;
-  const { protocol: proto, host, pathname } = location || {};
   return (
     <Helmet
       htmlAttributes={{
@@ -86,7 +85,12 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
         },
       ].concat(meta)}
     >
-      <link rel="canonical" href={`${proto}//${host}${pathname}`} />
+      {window && window.location && location && (
+        <link
+          rel="canonical"
+          href={`${location.protocol}//${location.host}${location.pathname}`}
+        />
+      )}
       <link
         href="https://fonts.googleapis.com/css?family=Lato:400,400i,700|Noto+Serif+TC"
         rel="stylesheet"
