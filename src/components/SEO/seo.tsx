@@ -48,6 +48,10 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
           content: metaDescription,
         },
         {
+          name: `keywords`,
+          content: `asian recipes, recipes, asian, women of color, woy, whisper of yum, cooking, cocktails, noods, rice, los angeles, chicken, beef, pork, wine, la, blog, food`,
+        },
+        {
           property: `og:title`,
           content: title,
         },
