@@ -19,6 +19,14 @@ interface SEOProps {
 
 const assetPath = withPrefix('/');
 
+const isDomUsable = () => {
+  return !!(
+    typeof window !== 'undefined' &&
+    window.document &&
+    window.document.createElement
+  );
+};
+
 const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
   const { site } = useStaticQuery(
     graphql`
@@ -85,7 +93,7 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
         },
       ].concat(meta)}
     >
-      {window && window.location && location && (
+      {isDomUsable() && (
         <link
           rel="canonical"
           href={`${location.protocol}//${location.host}${location.pathname}`}
