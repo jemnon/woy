@@ -59,6 +59,9 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
               }
             }
             images {
+              fixed {
+                base64
+              }
               fluid {
                 base64
                 aspectRatio

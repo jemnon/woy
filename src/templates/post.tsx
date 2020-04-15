@@ -15,7 +15,6 @@ interface PostPageProps {
 
 const PostPage: FC<PostPageProps> = ({ pageContext }) => {
   const { page: post } = pageContext || {};
-  const [{ fixed }] = post.images;
   return (
     <Layout>
       <SEO
@@ -24,7 +23,8 @@ const PostPage: FC<PostPageProps> = ({ pageContext }) => {
         meta={[
           {
             property: 'og:image',
-            content: fixed.base64,
+            content:
+              'https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/twitter-image.jpg',
           },
         ]}
       />
