@@ -44,6 +44,9 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
               name
             }
             title
+            bodyPreview {
+              bodyPreview
+            }
             bodyShort {
               bodyShort
               childMarkdownRemark {

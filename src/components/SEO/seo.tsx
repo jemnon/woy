@@ -14,13 +14,12 @@ interface SEOProps {
   description: string;
   lang?: string;
   meta: any;
-  slug?: string;
   title: string;
 }
 
 const assetPath = withPrefix('/');
 
-const SEO: FC<SEOProps> = ({ description, lang, meta, slug, title }) => {
+const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -34,9 +33,8 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, slug, title }) => {
       }
     `,
   );
-
   const metaDescription = description || site.siteMetadata.description;
-
+  const { protocol: proto, host, pathname } = location || {};
   return (
     <Helmet
       htmlAttributes={{
@@ -84,6 +82,7 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, slug, title }) => {
         },
       ].concat(meta)}
     >
+      <link rel="canonical" href={`${proto}//${host}${pathname}`} />
       <link
         href="https://fonts.googleapis.com/css?family=Lato:400,400i,700|Noto+Serif+TC"
         rel="stylesheet"

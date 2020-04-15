@@ -64,8 +64,9 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
         title="Home"
         meta={[
           {
-            name: 'Whipser of Yum',
-            content: 'home',
+            property: 'og:image',
+            content:
+              'https://res.cloudinary.com/dd8c1nipl/image/upload/c_scale,w_880/v1586932061/woy/pork-chop.jpg',
           },
         ]}
       />

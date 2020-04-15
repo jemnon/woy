@@ -15,16 +15,16 @@ interface PostPageProps {
 
 const PostPage: FC<PostPageProps> = ({ pageContext }) => {
   const { page: post } = pageContext || {};
-  const [{ fluid }] = post.images;
+  const [{ fixed }] = post.images;
   return (
     <Layout>
       <SEO
-        description={`${post.bodyShort?.bodyShort}`}
+        description={`${post.bodyPreview?.bodyPreview}`}
         title={post.title}
         meta={[
           {
             property: 'og:image',
-            content: fluid.src,
+            content: fixed.base64,
           },
         ]}
       />
