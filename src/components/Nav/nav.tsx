@@ -1,4 +1,4 @@
-import React, { FC, useState } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import Link from '../Link';
 import NavMobile from './nav-mobile';
 import styled from 'styled-components';
@@ -78,11 +78,22 @@ const Logo = styled.img`
   max-width: 11.75rem;
 `;
 
-const Nav: FC = () => {
+interface NavProps {
+  isHeaderVisible?: boolean;
+}
+
+const Nav: FC<NavProps> = ({ isHeaderVisible }) => {
   const [isMobileVisible, setIsMobileVisible] = useState<boolean>(false);
   const handleMobileClick = (): void => {
     setIsMobileVisible(!isMobileVisible);
   };
+  useEffect(() => {
+    if (!isHeaderVisible) {
+      setIsMobileVisible(false);
+    } else if (isHeaderVisible && isMobileVisible) {
+      setIsMobileVisible(true);
+    }
+  }, [isHeaderVisible]);
   return (
     <>
       <NavRoot role="main">

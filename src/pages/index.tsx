@@ -90,7 +90,7 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
         ]}
       />
       <Header isVisible={isHeaderVisible}>
-        <Nav />
+        <Nav isHeaderVisible={isHeaderVisible} />
       </Header>
       <Hero images={heroNode.images} />
       <Container>
