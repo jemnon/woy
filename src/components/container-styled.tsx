@@ -1,14 +1,19 @@
 import styled from 'styled-components';
 
-const Container = styled.main`
+interface ContainerProps {
+  topSpacing?: string;
+}
+
+const Container = styled.main<ContainerProps>`
   margin-left: auto;
   margin-right: auto;
   padding: 1rem;
   width: 100%;
   max-width: 550px;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    max-width: 1200px;
-    padding: 1.5rem;
+    max-width: 64rem;
+    padding: 1.5rem 1rem 1.5rem;
+    padding-top: ${({ topSpacing }): string => topSpacing || '3rem'};
   }
 `;
 

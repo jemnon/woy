@@ -1,13 +1,10 @@
-import React, { FC, ReactNode, useEffect, useState } from 'react';
-import { globalHistory } from '@reach/router';
+import React, { FC, ReactNode } from 'react';
 import styled, {
   createGlobalStyle,
   ThemeProvider,
   DefaultTheme,
 } from 'styled-components';
 import Footer from '../Footer';
-import Header from '../Header';
-import Nav from '../Nav';
 
 const theme: DefaultTheme = {
   breakpoints: {
@@ -118,37 +115,10 @@ const Main = styled.main<MainProps>`
 `;
 
 const Layout: FC<LayoutProps> = ({ children }) => {
-  const { pathname } = globalHistory.location || {};
-  const initialVisiblityState = pathname === '/' ? false : true;
-  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(
-    initialVisiblityState,
-  );
-  useEffect(() => {
-    const handleScroll = () => {
-      const heroHeight = document.querySelector('#hero')?.clientHeight || 0;
-      const windowY = window.pageYOffset;
-      const waypoint = heroHeight / 2;
-      if (waypoint >= windowY) {
-        setIsHeaderVisible(false);
-      }
-      if (waypoint <= windowY) {
-        setIsHeaderVisible(true);
-      }
-    };
-    if (pathname === '/') {
-      window.addEventListener('scroll', handleScroll);
-      return (): void => {
-        window.removeEventListener('scroll', handleScroll);
-      };
-    }
-  }, [isHeaderVisible, pathname, setIsHeaderVisible]);
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Header isVisible={isHeaderVisible}>
-        <Nav />
-      </Header>
-      <Main isHeaderVisible={isHeaderVisible}>{children}</Main>
+      <Main isHeaderVisible={false}>{children}</Main>
       <Footer />
     </ThemeProvider>
   );

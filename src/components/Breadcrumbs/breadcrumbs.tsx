@@ -6,9 +6,6 @@ const BreadcrumbsContainer = styled.ul`
   display: inline-grid;
   grid-gap: 0.5rem;
   grid-template-columns: auto auto auto;
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
-    margin-bottom: 2rem;
-  }
   margin-bottom: 1rem;
 `;
 

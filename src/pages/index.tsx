@@ -1,9 +1,11 @@
-import React, { FC } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import { HeroType } from '../types/hero';
 import { Post as PostType } from '../types/post';
 import Container, { Content } from '../components/container-styled';
+import Header from '../components/Header';
+import Nav from '../components/Nav';
 import Hero from '../components/Hero';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
@@ -31,7 +33,6 @@ interface HomePageProps {
 
 const HomePageListItem = styled.li`
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    margin-bottom: 3rem;
     padding-left: 1.5rem;
     padding-right: 1.5rem;
   }
@@ -54,9 +55,27 @@ const metaDesc =
   `you want. Enjoy the content.`;
 
 const IndexPage: FC<HomePageProps> = ({ data }) => {
+  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(false);
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
   const [{ node: heroNode }] = hero || [];
+  useEffect(() => {
+    const handleScroll = () => {
+      const heroHeight = document.querySelector('#hero')?.clientHeight || 0;
+      const windowY = window.pageYOffset;
+      const waypoint = heroHeight / 2;
+      if (waypoint >= windowY) {
+        setIsHeaderVisible(false);
+      }
+      if (waypoint <= windowY) {
+        setIsHeaderVisible(true);
+      }
+    };
+    window.addEventListener('scroll', handleScroll);
+    return (): void => {
+      window.removeEventListener('scroll', handleScroll);
+    };
+  }, [isHeaderVisible, setIsHeaderVisible]);
   return (
     <Layout>
       <SEO
@@ -70,6 +89,9 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
           },
         ]}
       />
+      <Header isVisible={isHeaderVisible}>
+        <Nav />
+      </Header>
       <Hero images={heroNode.images} />
       <Container>
         {posts && (

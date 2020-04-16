@@ -2,8 +2,10 @@ import React, { FC } from 'react';
 import { Post as PostType } from '../types/post';
 import Container from '../components/container-styled';
 import Breadcrumbs from '../components/Breadcrumbs';
+import Header from '../components/Header';
 import { HEADER_HEIGHT } from '../components/Header';
 import Layout from '../components/Layout';
+import Nav from '../components/Nav';
 import PostDetail from '../components/PostDetail';
 import SEO from '../components/SEO';
 
@@ -20,16 +22,12 @@ const PostPage: FC<PostPageProps> = ({ pageContext }) => {
       <SEO
         description={`${post.bodyPreview?.bodyPreview}`}
         title={post.title}
-        meta={[
-          {
-            property: 'og:image',
-            content:
-              'https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/twitter-image.jpg',
-          },
-        ]}
       />
+      <Header isVisible={true}>
+        <Nav />
+      </Header>
       <div style={{ paddingTop: HEADER_HEIGHT }}>
-        <Container>
+        <Container topSpacing="1rem">
           <Breadcrumbs title={post.title} />
           {post && (
             <PostDetail

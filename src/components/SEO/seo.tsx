@@ -13,7 +13,7 @@ import { useStaticQuery, graphql } from 'gatsby';
 interface SEOProps {
   description: string;
   lang?: string;
-  meta: any;
+  meta?: any;
   title: string;
 }
 
@@ -91,7 +91,7 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
           content:
             'https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/twitter-image.jpg',
         },
-      ].concat(meta)}
+      ].concat(meta || [])}
     >
       {isDomUsable() && (
         <link

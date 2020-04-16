@@ -7,13 +7,13 @@ import { H1 } from '../headings-styled';
 type PostDetailProps = Post;
 
 const PostDetailHeader = styled.header`
-  margin-bottom: 1.5rem;
+  margin-bottom: 1rem;
   > span {
     color: ${({ theme }): string => theme.colors.orange};
   }
   time {
     display: block;
-    margin-bottom: 0.5rem;
+    margin-bottom: 1rem;
     text-transform: capitalize;
     > span {
       padding: 0 0.25rem;
@@ -51,9 +51,6 @@ const PostDetailImage = styled.div`
   position: relative;
   width: 100%;
   padding-bottom: 100%;
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
-    margin-bottom: 1.5rem;
-  }
   margin-bottom: 1rem;
   overflow: hidden;
   background-color: rgba(0, 0, 0, 0.1);
@@ -79,7 +76,7 @@ const PostDetailColumns = styled.section`
     display: grid;
     grid-gap: 1.5rem;
     grid-template-areas: 'title image';
-    grid-template-columns: 50% 1fr;
+    grid-template-columns: 45% 1fr;
     header {
       grid-area: title;
     }
@@ -136,10 +133,12 @@ const PostDetail: FC<PostDetailProps> = ({
                 month: 'short',
               })}
             </time>
-            <H1 title={title}>{title}</H1>
+            <H1 title={title} whiteSpace="nowrap">
+              {title}
+            </H1>
           </PostDetailHeader>
           <PostDetailImage>
-            <Img fluid={fluid} />
+            <Img alt={title} fluid={fluid} />
           </PostDetailImage>
         </>
       ) : (
@@ -151,7 +150,7 @@ const PostDetail: FC<PostDetailProps> = ({
                 month: 'short',
               })}
             </time>
-            <H1 bottomSpacing="1.5rem" title={title}>
+            <H1 bottomSpacing="1rem" title={title}>
               {title}
             </H1>
             {bodyShort?.childMarkdownRemark?.html && (
