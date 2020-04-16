@@ -1,10 +1,12 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import Link from '../Link';
+import NavMobile from './nav-mobile';
 import styled from 'styled-components';
 import logo from '../../images/logo-black-horizontal.svg';
 import iconMobile from '../../images/icons/menu-offset.svg';
 
 const NavRoot = styled.nav`
+  position: relative;
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -13,6 +15,7 @@ const NavRoot = styled.nav`
   height: 100%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   background-color: ${({ theme }): string => theme.colors.white};
+  z-index: ${({ theme }): string => theme.zIndex.z5};
 `;
 
 const NavList = styled.ul`
@@ -76,53 +79,56 @@ const Logo = styled.img`
 `;
 
 const Nav: FC = () => {
-  const handleMobileClick = () => {
-    // #TODO: (mobile-menu)
-    console.log('handleMobileClick');
+  const [isMobileVisible, setIsMobileVisible] = useState<boolean>(false);
+  const handleMobileClick = (): void => {
+    setIsMobileVisible(!isMobileVisible);
   };
   return (
-    <NavRoot>
-      <Link to="/">
-        <Logo alt="whisper-of-yum" data-id="logo" src={logo} />
-      </Link>
-      <NavList>
-        <NavListItem>
-          <Link activeClassName="is-active" to="/">
-            Blog
-          </Link>
-        </NavListItem>
-        <NavListItem>
-          <NavListDivider />
-        </NavListItem>
-        <NavListItem>
-          <Link activeClassName="is-active" to="/about">
-            About
-          </Link>
-        </NavListItem>
-        <NavListItem>
-          <NavListDivider />
-        </NavListItem>
-        <NavListItem>
-          <Link
-            to="https://www.instagram.com/whisperofyum/?hl=en"
-            target="_blank"
-          >
-            Instagram
-          </Link>
-        </NavListItem>
-        <NavListItem>
-          <NavListDivider />
-        </NavListItem>
-        <NavListItem>
-          <a href="mailto:jerimobley914@gmail.com" target="_top">
-            Contact
-          </a>
-        </NavListItem>
-      </NavList>
-      <NavMobileButton onClick={handleMobileClick} type="button">
-        <img alt="whisper-of-yum-mobile-button" src={iconMobile} />
-      </NavMobileButton>
-    </NavRoot>
+    <>
+      <NavRoot role="main">
+        <Link to="/">
+          <Logo alt="whisper-of-yum" data-id="logo" src={logo} />
+        </Link>
+        <NavList>
+          <NavListItem>
+            <Link activeClassName="is-active" to="/">
+              Blog
+            </Link>
+          </NavListItem>
+          <NavListItem>
+            <NavListDivider />
+          </NavListItem>
+          <NavListItem>
+            <Link activeClassName="is-active" to="/about">
+              About
+            </Link>
+          </NavListItem>
+          <NavListItem>
+            <NavListDivider />
+          </NavListItem>
+          <NavListItem>
+            <Link
+              to="https://www.instagram.com/whisperofyum/?hl=en"
+              target="_blank"
+            >
+              Instagram
+            </Link>
+          </NavListItem>
+          <NavListItem>
+            <NavListDivider />
+          </NavListItem>
+          <NavListItem>
+            <a href="mailto:jerimobley914@gmail.com" target="_top">
+              Contact
+            </a>
+          </NavListItem>
+        </NavList>
+        <NavMobileButton onClick={handleMobileClick} type="button">
+          <img alt="whisper-of-yum-mobile-button" src={iconMobile} />
+        </NavMobileButton>
+      </NavRoot>
+      <NavMobile isVisible={isMobileVisible} onClick={handleMobileClick} />
+    </>
   );
 };
 

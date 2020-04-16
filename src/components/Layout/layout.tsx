@@ -118,7 +118,9 @@ const Layout: FC<LayoutProps> = ({ children }) => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Main isHeaderVisible={false}>{children}</Main>
+      <Main isHeaderVisible={false} role="main">
+        {children}
+      </Main>
       <Footer />
     </ThemeProvider>
   );
