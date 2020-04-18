@@ -50,11 +50,16 @@ const PostDetailBody = styled.div`
 const PostDetailImage = styled.div`
   position: relative;
   width: 100%;
-  padding-bottom: 100%;
   margin-bottom: 1rem;
   overflow: hidden;
-  background-color: rgba(0, 0, 0, 0.1);
   border-radius: 2px;
+  .gatsby-image-wrapper {
+    background-color: rgba(0, 0, 0, 0.1);
+  }
+`;
+
+const PostDetailGridImage = styled(PostDetailImage)`
+  padding-bottom: 100%;
   .gatsby-image-wrapper {
     position: absolute !important;
     top: 0;
@@ -137,9 +142,9 @@ const PostDetail: FC<PostDetailProps> = ({
               {title}
             </H1>
           </PostDetailHeader>
-          <PostDetailImage>
+          <PostDetailGridImage>
             <Img alt={title} fluid={fluid} />
-          </PostDetailImage>
+          </PostDetailGridImage>
         </>
       ) : (
         <PostDetailColumns>
