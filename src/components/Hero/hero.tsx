@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { Images } from '../../types/images';
-import logo from '../../images/svg/logo-white-horizontal.svg';
+import Logo from '../../images/svg/logo-white-horizontal.svg';
 
 interface HeroProps {
   images?: Images[];
@@ -19,7 +19,7 @@ const HeroRoot = styled.div`
   }
 `;
 
-const HeroLogo = styled.img`
+const HeroLogo = styled.section`
   position: absolute;
   top: 50%;
   left: 50%;
@@ -31,7 +31,9 @@ const Hero: FC<HeroProps> = ({ images }) => {
   const [{ fluid }] = images || [];
   return (
     <HeroRoot id="hero">
-      <HeroLogo src={logo} />
+      <HeroLogo>
+        <Logo />
+      </HeroLogo>
       <Img fluid={fluid} />
     </HeroRoot>
   );

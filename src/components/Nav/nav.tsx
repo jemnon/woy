@@ -68,7 +68,8 @@ const NavMobileButton = styled.button`
     display: none;
   }
   > svg {
-    min-width: 100%;
+    width: 100%;
+    height: 100%;
   }
 `;
 
