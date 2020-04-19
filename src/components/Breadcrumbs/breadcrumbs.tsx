@@ -6,6 +6,7 @@ const BreadcrumbsContainer = styled.ul`
   display: inline-grid;
   grid-gap: 0.5rem;
   grid-template-columns: auto auto auto;
+  font-size: 1rem;
   margin-bottom: 1rem;
 `;
 

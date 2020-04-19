@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { Images } from '../../types/images';
-import logo from '../../images/logo-white-horizontal.svg';
+import logo from '../../images/svg/logo-white-horizontal.svg';
 
 interface HeroProps {
   images?: Images[];

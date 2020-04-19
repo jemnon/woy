@@ -2,8 +2,8 @@ import React, { FC, useEffect, useState } from 'react';
 import Link from '../Link';
 import NavMobile from './nav-mobile';
 import styled from 'styled-components';
-import logo from '../../images/logo-black-horizontal.svg';
-import iconMobile from '../../images/icons/menu-offset.svg';
+import Logo from '../../images/svg/logo-black-horizontal.svg';
+import IconMobile from '../../images/svg/icons/menu-offset.svg';
 
 const NavRoot = styled.nav`
   position: relative;
@@ -63,15 +63,16 @@ const NavMobileButton = styled.button`
   outline: none;
   border: none;
   cursor: pointer;
+  width: 1.5rem;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     display: none;
   }
-  > img {
-    width: 22px;
+  > svg {
+    min-width: 100%;
   }
 `;
 
-const Logo = styled.img`
+const LogoContainer = styled.div`
   display: flex;
   align-self: stretch;
   align-items: center;
@@ -98,7 +99,9 @@ const Nav: FC<NavProps> = ({ isHeaderVisible }) => {
     <>
       <NavRoot role="main">
         <Link to="/">
-          <Logo alt="whisper-of-yum" data-id="logo" src={logo} />
+          <LogoContainer>
+            <Logo />
+          </LogoContainer>
         </Link>
         <NavList>
           <NavListItem>
@@ -135,7 +138,7 @@ const Nav: FC<NavProps> = ({ isHeaderVisible }) => {
           </NavListItem>
         </NavList>
         <NavMobileButton onClick={handleMobileClick} type="button">
-          <img alt="whisper-of-yum-mobile-button" src={iconMobile} />
+          <IconMobile />
         </NavMobileButton>
       </NavRoot>
       <NavMobile isVisible={isMobileVisible} onClick={handleMobileClick} />

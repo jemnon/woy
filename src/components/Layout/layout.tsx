@@ -58,8 +58,6 @@ const GlobalStyle = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
-    min-height: 100vh;
-    font-size: 1.125rem;
     font-family:  "Lato", -apple-system, system-ui,
                 "avenir next", avenir, "Helvetica Neue", helvetica, ubuntu, roboto,
                 noto, 'Segoe UI', Arial, sans-serif;
@@ -111,6 +109,10 @@ const Main = styled.main<MainProps>`
   background-color: ${({ theme }): string => theme.colors.white};
   color: ${({ theme }): string => theme.colors.nearBlack};
   font-family: ${({ theme }): string => theme.fonts.lato};
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    font-size: 1.125rem;
+  }
+  font-size: 1rem;
   min-height: 100vh;
 `;
 

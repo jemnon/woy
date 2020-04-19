@@ -12,7 +12,7 @@ const Container = styled.main<ContainerProps>`
   max-width: 550px;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     max-width: 64rem;
-    padding: 1.5rem 1rem 1.5rem;
+    padding: 1.5rem 1rem 3rem;
     padding-top: ${({ topSpacing }): string => topSpacing || '3rem'};
   }
 `;

@@ -40,6 +40,7 @@ const NavMobileListItem = styled.li`
     display: block;
     font-family: ${({ theme }): string => theme.fonts.latoBold};
     font-size: 0.875rem;
+    font-weight: bold;
     text-decoration: none;
     text-transform: uppercase;
     padding: 1rem;
