@@ -1,26 +1,44 @@
 import React, { FC } from 'react';
-import ContainerStyled from '../components/container-styled';
+import styled from 'styled-components';
+import Container from '../components/container-styled';
+import { H1 } from '../components/headings-styled';
 import { HEADER_HEIGHT } from '../components/Header';
+import Header from '../components/Header';
+import Nav from '../components/Nav';
 import Layout from '../components/Layout';
+import Link from '../components/Link';
 import SEO from '../components/SEO';
 
-const NotFoundPage: FC<{}> = () => (
+const NotFoundLink = styled.a`
+  color: ${({ theme }): string => theme.colors.orange};
+`;
+
+const NotFoundPage: FC = () => (
   <Layout>
     <SEO
-      description="Whipser of Yum 404 page"
-      title="Whisper 404 page"
+      description="Recipes, Cooking, and Los Angeles"
+      title="Whisper of Yum | Recipes, Cooking, and Los Angeles"
       meta={[
         {
           name: 'whipser of yum',
-          content: '404',
+          content: 'Recipes, Cooking, and Los Angeles',
         },
       ]}
     />
+    <Header isVisible={true}>
+      <Nav />
+    </Header>
     <div style={{ paddingTop: HEADER_HEIGHT }}>
-      <ContainerStyled>
-        <h1>NOT FOUND</h1>
-        <p>You just hit a route that doesn&#39;t exist... the sadness.</p>
-      </ContainerStyled>
+      <Container topSpacing="1.5rem">
+        <H1>Oopsies</H1>
+        <p>
+          You've found yourself on a page that doesn't exist.
+          <NotFoundLink as={Link} to="/">
+            {' '}
+            Click Here
+          </NotFoundLink>
+        </p>
+      </Container>
     </div>
   </Layout>
 );

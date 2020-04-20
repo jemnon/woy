@@ -167,7 +167,7 @@ const PostDetail: FC<PostDetailProps> = ({
             )}
           </PostDetailHeader>
           <PostDetailImage>
-            <Img fluid={fluid} />
+            <Img alt={title} fluid={fluid} />
           </PostDetailImage>
         </PostDetailColumns>
       )}
