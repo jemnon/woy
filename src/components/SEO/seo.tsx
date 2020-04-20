@@ -7,17 +7,17 @@
 
 import React, { FC } from 'react';
 import Helmet from 'react-helmet';
-import { withPrefix } from 'gatsby';
+// import { withPrefix } from 'gatsby';
 import { useStaticQuery, graphql } from 'gatsby';
 
 interface SEOProps {
   description: string;
   lang?: string;
   meta?: any;
-  title: string;
+  title?: string;
 }
 
-const assetPath = withPrefix('/');
+// const assetPath = withPrefix('/');
 
 const isDomUsable = () => {
   return !!(
@@ -48,7 +48,7 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
         lang,
       }}
       title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      titleTemplate={`%s`}
       meta={[
         {
           name: `description`,
@@ -56,7 +56,7 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
         },
         {
           name: `keywords`,
-          content: `asian recipes, recipes, asian, women of color, woy, whisper of yum, cooking, cocktails, noods, rice, los angeles, chicken, beef, pork, wine, la, blog, food`,
+          content: `asian recipes, recipes, asian, women of color, woy, whisper of yum, whisperofyum, whisperofyum.com, cooking, cocktails, noods, rice, los angeles, chicken, beef, pork, wine, la, blog, food, farmer's market`,
         },
         {
           property: `og:title`,

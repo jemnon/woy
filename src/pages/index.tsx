@@ -80,7 +80,7 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
     <Layout>
       <SEO
         description={metaDesc}
-        title="Home"
+        title="Whisper of Yum | Recipes, Cooking, and Los Angeles"
         meta={[
           {
             property: 'og:image',

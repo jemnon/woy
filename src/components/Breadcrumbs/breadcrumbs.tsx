@@ -6,8 +6,11 @@ const BreadcrumbsContainer = styled.ul`
   display: inline-grid;
   grid-gap: 0.5rem;
   grid-template-columns: auto auto auto;
-  font-size: 1rem;
   margin-bottom: 1rem;
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    font-size: 1rem;
+  }
+  font-size: 0.875rem;
 `;
 
 const BreadcrumbsLink = styled.a`

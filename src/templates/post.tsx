@@ -15,13 +15,17 @@ interface PostPageProps {
   };
 }
 
+const capitalize = (word: string): string => {
+  return word.charAt(0).toUpperCase() + word.slice(1);
+};
+
 const PostPage: FC<PostPageProps> = ({ pageContext }) => {
   const { page: post } = pageContext || {};
   return (
     <Layout>
       <SEO
         description={`${post.bodyPreview?.bodyPreview}`}
-        title={post.title}
+        title={`${capitalize(post.title)} | Whisper of Yum`}
       />
       <Header isVisible={true}>
         <Nav />
