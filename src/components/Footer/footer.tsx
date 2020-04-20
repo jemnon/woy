@@ -16,10 +16,10 @@ const FooterContainer = styled.footer`
   overflow: hidden;
   color: ${({ theme }): string => theme.colors.white};
   background-color: ${({ theme }): string => theme.colors.orange};
+  padding: 1rem;
 `;
 
 const FooterContent = styled.section`
-  padding: 1rem;
   margin-left: auto;
   margin-right: auto;
   max-width: 64rem;
