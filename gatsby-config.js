@@ -40,6 +40,7 @@ module.exports = {
     title: `Whisper of Yum`,
     description: `Recipes, Asian Cooking, Food Blog, Easy Recipes, Los Angeles`,
     author: `Jeri Mobley`,
+    siteUrl: `whisperofyum.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -50,7 +51,6 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
-    `gatsby-plugin-sitemap`,
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
