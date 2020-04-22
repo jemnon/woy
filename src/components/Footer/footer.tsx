@@ -35,7 +35,7 @@ const FooterNav = styled.nav`
     justify-content: center;
   }
   font-size: 1rem;
-  max-width: 36rem;
+  max-width: 32rem;
   padding: 2rem 0;
 `;
 
