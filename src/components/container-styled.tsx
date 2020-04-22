@@ -2,6 +2,7 @@ import styled from 'styled-components';
 
 interface ContainerProps {
   topSpacing?: string;
+  bottomSpacing?: string;
 }
 
 const Container = styled.main<ContainerProps>`
@@ -9,10 +10,12 @@ const Container = styled.main<ContainerProps>`
   margin-right: auto;
   padding: 1rem;
   width: 100%;
-  max-width: 550px;
+  max-width: 30rem;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     max-width: 64rem;
-    padding: 1.5rem 1rem 3rem;
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding-bottom: ${({ bottomSpacing }): string => bottomSpacing || '3rem'};
     padding-top: ${({ topSpacing }): string => topSpacing || '3rem'};
   }
 `;
