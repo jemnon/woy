@@ -13,6 +13,10 @@ const FooterContainer = styled.footer`
 const FooterCopyright = styled.p`
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     font-size: 1rem;
+    text-align: right;
+  }
+  @media ${({ theme }): string => theme.breakpoints.tablet} {
+    text-align: right;
   }
   font-size: 0.875rem;
   font-weight: bold;
@@ -31,6 +35,7 @@ const FooterNav = styled.nav`
     justify-content: center;
   }
   font-size: 1rem;
+  max-width: 36rem;
   padding: 2rem 0;
 `;
 
@@ -59,7 +64,6 @@ const FooterTitle = styled.li`
   }
   font-size: 0.875rem;
   text-transform: uppercase;
-  color: ${({ theme }): string => theme.colors.cream};
 `;
 
 const Footer: FC = () => {
