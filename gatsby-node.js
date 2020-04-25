@@ -59,7 +59,8 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
               }
             }
             images {
-              fixed {
+              fixed(width: 400) {
+                src
                 base64
               }
               fluid {

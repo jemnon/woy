@@ -86,11 +86,6 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
           name: `twitter:description`,
           content: metaDescription,
         },
-        {
-          name: `twitter:image`,
-          content:
-            'https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/twitter-image.jpg',
-        },
       ].concat(meta || [])}
     >
       {isDomUsable() && (

@@ -21,11 +21,22 @@ const capitalize = (word: string): string => {
 
 const PostPage: FC<PostPageProps> = ({ pageContext }) => {
   const { page: post } = pageContext || {};
+  const [{ fixed }] = post.images || [];
   return (
     <Layout>
       <SEO
         description={`${post.bodyPreview?.bodyPreview}`}
         title={`${capitalize(post.title)} | Whisper of Yum`}
+        meta={[
+          {
+            name: `twitter:image`,
+            content: `https:${fixed?.src}`,
+          },
+          {
+            name: `og:image`,
+            content: `https:${fixed?.src}`,
+          },
+        ]}
       />
       <Header isVisible={true}>
         <Nav />

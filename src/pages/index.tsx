@@ -134,6 +134,9 @@ export const query = graphql`
           }
           title
           images {
+            fixed(width: 200) {
+              src
+            }
             fluid {
               aspectRatio
               sizes

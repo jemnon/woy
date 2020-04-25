@@ -7,5 +7,5 @@ export interface Images {
     srcSetWebp: string;
     srcWebp: string;
   };
-  fixed: { base64: string };
+  fixed?: { base64?: string; src?: string };
 }
