@@ -13,13 +13,10 @@ const FooterContainer = styled.footer`
 const FooterCopyright = styled.p`
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     font-size: 1rem;
-    text-align: right;
-  }
-  @media ${({ theme }): string => theme.breakpoints.tablet} {
-    text-align: right;
   }
   font-size: 0.875rem;
   font-weight: bold;
+  text-align: center;
 `;
 
 const FooterNav = styled.nav`
@@ -29,11 +26,14 @@ const FooterNav = styled.nav`
     padding: 4rem 0;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(33.33%, auto));
+    margin-left: auto;
+    margin-right: auto;
   }
   @media ${({ theme }): string => theme.breakpoints.tablet} {
     grid-template-columns: repeat(auto-fit, minmax(33.33%, auto));
     justify-content: center;
   }
+  grid-template-columns: repeat(auto-fit, minmax(50%, auto));
   font-size: 1rem;
   max-width: 32rem;
   padding: 2rem 0;

@@ -56,6 +56,10 @@ const PostDetailImage = styled.div`
   .gatsby-image-wrapper {
     background-color: rgba(0, 0, 0, 0.1);
   }
+  .tiny {
+    filter: blur(15px);
+    transform: scale(1.1);
+  }
 `;
 
 const PostDetailGridImage = styled(PostDetailImage)`
@@ -67,6 +71,10 @@ const PostDetailGridImage = styled(PostDetailImage)`
     width: 100%;
     height: 100%;
     object-fit: cover;
+  }
+  .tiny {
+    filter: blur(15px);
+    transform: scale(1.1);
   }
 `;
 
@@ -143,7 +151,7 @@ const PostDetail: FC<PostDetailProps> = ({
             </H1>
           </PostDetailHeader>
           <PostDetailGridImage>
-            <Img alt={title} fluid={fluid} />
+            <Img alt={title} fluid={fluid} placeholderClassName="tiny" />
           </PostDetailGridImage>
         </>
       ) : (
@@ -167,7 +175,7 @@ const PostDetail: FC<PostDetailProps> = ({
             )}
           </PostDetailHeader>
           <PostDetailImage>
-            <Img alt={title} fluid={fluid} />
+            <Img alt={title} fluid={fluid} placeholderClassName="tiny" />
           </PostDetailImage>
         </PostDetailColumns>
       )}
