@@ -15,6 +15,7 @@ interface SEOProps {
   lang?: string;
   meta?: any;
   title?: string;
+  slug?: string;
 }
 
 // const assetPath = withPrefix('/');
@@ -27,7 +28,7 @@ const isDomUsable = () => {
   );
 };
 
-const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
+const SEO: FC<SEOProps> = ({ description, lang, meta, title, slug }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -36,6 +37,7 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
             title
             description
             author
+            siteUrl
           }
         }
       }
@@ -59,6 +61,10 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
           content: `asian recipes, recipes, asian, women of color, woy, whisper of yum, whisperofyum, whisperofyum.com, cooking, cocktails, noods, rice, los angeles, chicken, beef, pork, wine, la, blog, food, farmer's market`,
         },
         {
+          name: 'url',
+          content: `${site.siteMetadata.siteUrl}${slug || ''}`,
+        },
+        {
           property: `og:title`,
           content: title,
         },
@@ -69,6 +75,10 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
         {
           property: `og:type`,
           content: `website`,
+        },
+        {
+          property: `og:url`,
+          content: `${site.siteMetadata.siteUrl}${slug || ''}`,
         },
         {
           name: `twitter:card`,
@@ -85,6 +95,10 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title }) => {
         {
           name: `twitter:description`,
           content: metaDescription,
+        },
+        {
+          name: `fb:app_id`,
+          content: process.env.GATSBY_FB_APP_ID,
         },
       ].concat(meta || [])}
     >

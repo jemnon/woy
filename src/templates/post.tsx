@@ -27,6 +27,7 @@ const PostPage: FC<PostPageProps> = ({ pageContext }) => {
       <SEO
         description={`${post.bodyPreview?.bodyPreview}`}
         title={`${capitalize(post.title)} | Whisper of Yum`}
+        slug={`/${post.slug}`}
         meta={[
           {
             name: `twitter:image`,
