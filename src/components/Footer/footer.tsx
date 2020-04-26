@@ -37,6 +37,8 @@ const FooterNav = styled.nav`
   font-size: 1rem;
   max-width: 32rem;
   padding: 2rem 0;
+  margin-left: -1rem;
+  margin-right: -1rem;
 `;
 
 const FooterList = styled.ul`
@@ -46,6 +48,8 @@ const FooterList = styled.ul`
   @media ${({ theme }): string => theme.breakpoints.tablet} {
     margin-bottom: 0;
   }
+  padding-left: 1rem;
+  padding-right: 1rem;
   margin-bottom: 1.5rem;
   li {
     margin-bottom: 0.25rem;
@@ -64,6 +68,9 @@ const FooterTitle = styled.li`
   }
   font-size: 0.875rem;
   text-transform: uppercase;
+  margin-bottom: 0.25rem;
+  padding-bottom: 0.25rem;
+  border-bottom: 4px solid ${({ theme }): string => theme.colors.white};
 `;
 
 const Footer: FC = () => {

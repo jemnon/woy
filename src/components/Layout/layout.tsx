@@ -34,6 +34,8 @@ const theme: DefaultTheme = {
     nearBlack: '#111',
     orange: '#cf7651',
     white: '#ffffff',
+    red: '#ff4136',
+    green: '#19a974',
   },
   zIndex: {
     z0: '0',
