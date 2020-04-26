@@ -79,7 +79,7 @@ const PostDetailGridImage = styled(PostDetailImage)`
 `;
 
 const PostDetailLink = styled.div`
-  display: flex;
+  display: inline-flex;
   justify-content: flex-end;
   color: ${({ theme }): string => theme.colors.orange};
 `;
@@ -182,7 +182,7 @@ const PostDetail: FC<PostDetailProps> = ({
       <PostDetailBody>{renderPostDetail()}</PostDetailBody>
       {!body ? (
         <PostDetailLink>
-          <span>read more</span>
+          <span>Read More</span>
         </PostDetailLink>
       ) : null}
     </article>

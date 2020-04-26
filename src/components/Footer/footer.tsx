@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import Container from '../container-styled';
+import EmailNewsletter from '../EmailNewsletter';
 import Link from '../Link';
 
 const FooterContainer = styled.footer`
@@ -52,7 +53,10 @@ const FooterList = styled.ul`
   padding-right: 1rem;
   margin-bottom: 1.5rem;
   li {
-    margin-bottom: 0.25rem;
+    margin-bottom: 0.5rem;
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   a {
     color: ${({ theme }): string => theme.colors.white};
@@ -68,9 +72,9 @@ const FooterTitle = styled.li`
   }
   font-size: 0.875rem;
   text-transform: uppercase;
-  margin-bottom: 0.25rem;
-  padding-bottom: 0.25rem;
-  border-bottom: 4px solid ${({ theme }): string => theme.colors.white};
+  padding-bottom: 0.5rem;
+  border-bottom: 2px solid ${({ theme }): string => theme.colors.white};
+  letter-spacing: 0.1em;
 `;
 
 const Footer: FC = () => {
@@ -117,6 +121,7 @@ const Footer: FC = () => {
             </li>
           </FooterList>
         </FooterNav>
+        <EmailNewsletter />
         <FooterCopyright>&copy; Whisper of Yum</FooterCopyright>
       </Container>
     </FooterContainer>
