@@ -84,7 +84,7 @@ const PostDetailLink = styled.div`
   color: ${({ theme }): string => theme.colors.nearBlack};
   span {
     padding-bottom: 0.25rem;
-    border-bottom: 4px solid ${({ theme }): string => theme.colors.orange};
+    border-bottom: 1px solid ${({ theme }): string => theme.colors.nearBlack};
   }
 `;
 
@@ -186,7 +186,7 @@ const PostDetail: FC<PostDetailProps> = ({
       <PostDetailBody>{renderPostDetail()}</PostDetailBody>
       {!body ? (
         <PostDetailLink>
-          <span>Read More</span>
+          <span>View Recipe</span>
         </PostDetailLink>
       ) : null}
     </article>

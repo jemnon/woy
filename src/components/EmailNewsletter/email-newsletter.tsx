@@ -40,6 +40,8 @@ const EmailNewsletterInput = styled.input<EmailNewsletterInputProps>`
   background-color: ${({ theme }): string => theme.colors.white};
   padding: 1rem;
   color: ${({ theme }): string => theme.colors.orange};
+  -webkit-appearance: none;
+  border-radius: 0;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     margin-bottom: 0;
   }
@@ -89,7 +91,7 @@ const EmailNewsletter: FC = () => {
           onSubmit={handleSubmit}
         >
           <EmailNewsletterLabel htmlFor="email">
-            Subscribe to our Newletter
+            Subscribe to our Newsletter
           </EmailNewsletterLabel>
           <EmailNewsletterInput
             disabled={isSubmitting}
