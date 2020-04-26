@@ -8,22 +8,30 @@ interface EmailNewsletterInputProps {
 }
 
 const EmailNewsletterForm = styled.form`
+  border: none;
   display: grid;
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    grid-template-columns: 71% auto;
+    grid-template-areas:
+      'label label'
+      'input button';
+  }
   grid-template-areas:
     'label label'
-    'input button';
-  grid-template-columns: 71% auto;
-  border: none;
+    'input input'
+    'button button';
 `;
 
 const EmailNewsletterLabel = styled.label`
   grid-area: label;
   text-transform: uppercase;
-  font-size: 0.875;
+  font-size: 0.75rem;
   letter-spacing: 0.1em;
-  margin-bottom: 0.5rem;
+  margin-bottom: 1rem;
+  /* padding-bottom: 0.5rem;
+  border-bottom: 2px solid ${({ theme }): string => theme.colors.white}; */
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
   }
 `;
 
@@ -33,12 +41,14 @@ const EmailNewsletterInput = styled.input<EmailNewsletterInputProps>`
   border-bottom: 2px solid
     ${({ theme, validationError }): string =>
       validationError ? theme.colors.red : theme.colors.white};
-  background-color: transparent;
-  padding: 0.5rem;
-  margin-right: 2rem;
-  color: ${({ theme }): string => theme.colors.white};
+  background-color: ${({ theme }): string => theme.colors.white};
+  padding: 1rem;
+  color: ${({ theme }): string => theme.colors.orange};
+  margin-bottom: 1rem;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    font-size: 1.125rem;
+    /* font-size: 1.125rem; 
+    margin-right: 2rem; */
+    margin-bottom: 0;
   }
   font-size: 1rem;
   &:focus {
@@ -47,24 +57,19 @@ const EmailNewsletterInput = styled.input<EmailNewsletterInputProps>`
       validationError ? theme.colors.red : theme.colors.lightBrown}; */
   }
   ::placeholder {
-    color: rgba(255, 255, 255, 0.75);
+    color: rgba(170, 97, 67, 0.75);
   }
 `;
 
 const EmailNewsletterMessage = styled.p`
   color: ${({ theme }): string => theme.colors.orange};
-  margin-bottom: 1rem;
   padding: 0.5rem;
-  background-color: ${({ theme, color }): string => theme.colors.white};
+  background-color: ${({ theme }): string => theme.colors.white};
 `;
 
 const EmailNewsletterContainer = styled.section`
-  max-width: 32rem;
-  margin-right: auto;
-  margin-left: auto;
-  margin-bottom: 4rem;
-  padding-left: 1rem;
-  padding-right: 1rem;
+  /* margin-bottom: 2rem; */
+  grid-area: newsletter;
 `;
 
 const EmailNewsletter: FC = () => {
@@ -87,37 +92,40 @@ const EmailNewsletter: FC = () => {
   return (
     <EmailNewsletterContainer id="newsletter">
       {message && <EmailNewsletterMessage>{message}</EmailNewsletterMessage>}
-      <EmailNewsletterForm
-        name="email-newsletter"
-        method="POST"
-        onSubmit={handleSubmit}
-      >
-        <EmailNewsletterLabel htmlFor="email">
-          Subscribe to our Newletter
-        </EmailNewsletterLabel>
-        <EmailNewsletterInput
-          disabled={isSubmitting}
-          id="email"
-          name="email"
-          onChange={({ target }): void => {
-            setEmail(target.value);
-            setValidationError(!target.validity.valid);
-          }}
-          pattern="[^@]+@.+\..+"
-          placeholder="Email"
-          required
-          type="email"
-          value={email}
-        />
-        <Button
-          color="white"
-          textColor="orange"
-          isDisabled={isSubmitting}
-          type="submit"
+      {!message && (
+        <EmailNewsletterForm
+          name="email-newsletter"
+          method="POST"
+          onSubmit={handleSubmit}
         >
-          {isSubmitting ? '...Sending' : 'Subscribe'}
-        </Button>
-      </EmailNewsletterForm>
+          <EmailNewsletterLabel htmlFor="email">
+            Subscribe to our Newletter
+          </EmailNewsletterLabel>
+          <EmailNewsletterInput
+            disabled={isSubmitting}
+            id="email"
+            name="email"
+            onChange={({ target }): void => {
+              setEmail(target.value);
+              setValidationError(!target.validity.valid);
+            }}
+            pattern="[^@]+@.+\..+"
+            placeholder="Email"
+            required
+            type="email"
+            value={email}
+          />
+          <Button
+            borderColor="white"
+            color="orange"
+            textColor="white"
+            isDisabled={isSubmitting}
+            type="submit"
+          >
+            {isSubmitting ? '...Sending' : 'Subscribe'}
+          </Button>
+        </EmailNewsletterForm>
+      )}
     </EmailNewsletterContainer>
   );
 };

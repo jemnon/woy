@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import Container from '../container-styled';
 import EmailNewsletter from '../EmailNewsletter';
 import Link from '../Link';
 
@@ -11,7 +10,24 @@ const FooterContainer = styled.footer`
   background-color: ${({ theme }): string => theme.colors.orange};
 `;
 
+const FooterContent = styled.section`
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    display: grid;
+    grid-template-areas:
+      'nav newsletter'
+      'copyright copyright';
+    grid-template-columns: 50% auto;
+    grid-gap: 2rem;
+    padding: 4rem 1rem 2rem;
+  }
+  margin-left: auto;
+  margin-right: auto;
+  max-width: 64rem;
+  padding: 2rem 1rem;
+`;
+
 const FooterCopyright = styled.p`
+  grid-area: copyright;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     font-size: 1rem;
   }
@@ -22,24 +38,22 @@ const FooterCopyright = styled.p`
 
 const FooterNav = styled.nav`
   display: grid;
+  grid-area: nav;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     font-size: 1.125rem;
-    padding: 4rem 0;
     justify-content: center;
     grid-template-columns: repeat(auto-fit, minmax(33.33%, auto));
-    margin-left: auto;
-    margin-right: auto;
   }
   @media ${({ theme }): string => theme.breakpoints.tablet} {
     grid-template-columns: repeat(auto-fit, minmax(33.33%, auto));
     justify-content: center;
   }
   grid-template-columns: repeat(auto-fit, minmax(50%, auto));
+  /* margin-left: -1rem;
+  margin-right: -1rem; */
   font-size: 1rem;
-  max-width: 32rem;
-  padding: 2rem 0;
-  margin-left: -1rem;
-  margin-right: -1rem;
+  max-width: 30rem;
+  /* margin-bottom: 2rem; */
 `;
 
 const FooterList = styled.ul`
@@ -49,9 +63,9 @@ const FooterList = styled.ul`
   @media ${({ theme }): string => theme.breakpoints.tablet} {
     margin-bottom: 0;
   }
-  padding-left: 1rem;
+  /* padding-left: 1rem;
   padding-right: 1rem;
-  margin-bottom: 1.5rem;
+  margin-bottom: 1.5rem; */
   li {
     margin-bottom: 0.5rem;
     &:last-child {
@@ -68,19 +82,19 @@ const FooterList = styled.ul`
 const FooterTitle = styled.li`
   position: relative;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    font-size: 0.75rem;
+    font-size: 0.875rem;
   }
-  font-size: 0.875rem;
+  font-size: 0.75rem;
   text-transform: uppercase;
-  padding-bottom: 0.5rem;
-  border-bottom: 2px solid ${({ theme }): string => theme.colors.white};
+  /* padding-bottom: 0.5rem;
+  border-bottom: 2px solid ${({ theme }): string => theme.colors.white}; */
   letter-spacing: 0.1em;
 `;
 
 const Footer: FC = () => {
   return (
     <FooterContainer>
-      <Container bottomSpacing="1.5rem" topSpacing="1.5rem">
+      <FooterContent>
         <FooterNav>
           <FooterList>
             <FooterTitle>Info</FooterTitle>
@@ -123,7 +137,7 @@ const Footer: FC = () => {
         </FooterNav>
         <EmailNewsletter />
         <FooterCopyright>&copy; Whisper of Yum</FooterCopyright>
-      </Container>
+      </FooterContent>
     </FooterContainer>
   );
 };

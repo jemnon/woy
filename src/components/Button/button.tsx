@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 interface ButtonProps {
+  borderColor: string;
   color: string;
   isDisabled: boolean;
   textColor: string;
@@ -8,25 +9,30 @@ interface ButtonProps {
 }
 
 const Button = styled.button<ButtonProps>`
-  padding: 0.75rem 1.25rem;
-  border: none;
+  border: 1px solid
+    ${({ theme, borderColor }): string => theme.colors[borderColor]};
   outline: none;
-  font-size: 0.875rem;
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+  }
+  padding: 0.5rem 1rem;
+  font-size: 0.75rem;
   font-weight: bold;
   letter-spacing: 0.1em;
   color: ${({ theme, textColor }): string => theme.colors[textColor]};
-  border-radius: 2rem;
+  /* border-radius: 2rem; */
   background-color: ${({ theme, color }): string => theme.colors[color]};
   grid-area: button;
-  opacity: ${({ isDisabled }): string => (isDisabled ? '0.5' : '1')};
+  opacity: ${({ isDisabled }): string => (isDisabled ? '0.45' : '1')};
   cursor: ${({ isDisabled }): string =>
     isDisabled ? 'not-allowed' : 'pointer'};
   transition: 0.3s ease opacity;
   &:hover {
-    opacity: 0.85;
+    opacity: 0.75;
   }
   &:focus {
-    opacity: 0.75;
+    opacity: 0.55;
   }
 `;
 
