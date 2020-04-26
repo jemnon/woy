@@ -12,8 +12,9 @@ const FooterContainer = styled.footer`
 
 const FooterContent = styled.section`
   display: grid;
+  padding: 1rem;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    padding: 4rem 1rem 2rem;
+    padding: 4rem 1rem;
     max-width: 64rem;
     grid-template-areas:
       'nav newsletter'
@@ -140,7 +141,7 @@ const Footer: FC = () => {
           </FooterList>
         </FooterNav>
         <EmailNewsletter />
-        <FooterCopyright>&copy; Whisper of Yum</FooterCopyright>
+        <FooterCopyright>&copy; 2020 Whisper of Yum</FooterCopyright>
       </FooterContent>
     </FooterContainer>
   );

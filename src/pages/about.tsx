@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
+import styled from 'styled-components';
 import { Images as Image } from '../types/images';
 import Container from '../components/container-styled';
 import { H1 } from '../components/headings-styled';
@@ -30,7 +31,7 @@ const AboutPage: FC<AboutPageProps> = ({ data: { contentfulAbout } }) => {
         <Nav />
       </Header>
       <div style={{ paddingTop: HEADER_HEIGHT }}>
-        <Container topSpacing="1.5rem">
+        <Container>
           <H1>About</H1>
           {contentfulAbout.description.childMarkdownRemark.html && (
             <div

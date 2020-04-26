@@ -43,7 +43,7 @@ const PostPage: FC<PostPageProps> = ({ pageContext }) => {
         <Nav />
       </Header>
       <div style={{ paddingTop: HEADER_HEIGHT }}>
-        <Container topSpacing="1.5rem">
+        <Container>
           <Breadcrumbs title={post.title} />
           {post && (
             <PostDetail

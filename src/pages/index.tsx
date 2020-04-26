@@ -35,8 +35,15 @@ const HomePageListItem = styled.li`
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
+    margin-bottom: 2rem;
+    &:nth-last-child(-n + 2) {
+      margin-bottom: 0;
+    }
   }
   margin-bottom: 1rem;
+  &:last-child {
+    margin-bottom: 0;
+  }
   a {
     text-decoration: none;
     color: ${({ theme }): string => theme.colors.nearBlack};

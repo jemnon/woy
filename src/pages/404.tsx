@@ -29,7 +29,7 @@ const NotFoundPage: FC = () => (
       <Nav />
     </Header>
     <div style={{ paddingTop: HEADER_HEIGHT }}>
-      <Container topSpacing="1.5rem">
+      <Container>
         <H1>Oopsies</H1>
         <p>
           You've found yourself on a page that doesn't exist.
