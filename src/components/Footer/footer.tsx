@@ -39,6 +39,7 @@ const FooterCopyright = styled.p`
   font-size: 0.875rem;
   font-weight: bold;
   text-align: center;
+  margin-bottom: 0;
 `;
 
 const FooterNav = styled.nav`
