@@ -19,13 +19,14 @@ const FooterContent = styled.section`
     grid-template-areas:
       'nav newsletter'
       'copyright copyright';
+    grid-template-columns: 50% auto;
   }
-  grid-template-columns: 50% auto;
   grid-template-areas:
     'nav nav'
     'newsletter newsletter'
     'copyright copyright';
   grid-gap: 2rem;
+  grid-template-columns: fit-content(100%);
   margin-left: auto;
   margin-right: auto;
   max-width: 30rem;
