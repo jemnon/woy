@@ -79,9 +79,13 @@ const PostDetailGridImage = styled(PostDetailImage)`
 `;
 
 const PostDetailLink = styled.div`
-  display: inline-flex;
+  display: flex;
   justify-content: flex-end;
-  color: ${({ theme }): string => theme.colors.orange};
+  color: ${({ theme }): string => theme.colors.nearBlack};
+  span {
+    padding-bottom: 0.25rem;
+    border-bottom: 4px solid ${({ theme }): string => theme.colors.orange};
+  }
 `;
 
 const PostDetailColumns = styled.section`

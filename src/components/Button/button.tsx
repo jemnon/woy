@@ -14,14 +14,12 @@ const Button = styled.button<ButtonProps>`
   outline: none;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     padding: 0.75rem 1.25rem;
-    font-size: 0.875rem;
   }
-  padding: 0.5rem 1rem;
-  font-size: 0.75rem;
+  padding: 0.5rem;
+  font-size: 0.875rem;
   font-weight: bold;
   letter-spacing: 0.1em;
   color: ${({ theme, textColor }): string => theme.colors[textColor]};
-  /* border-radius: 2rem; */
   background-color: ${({ theme, color }): string => theme.colors[color]};
   grid-area: button;
   opacity: ${({ isDisabled }): string => (isDisabled ? '0.45' : '1')};

@@ -10,16 +10,14 @@ interface EmailNewsletterInputProps {
 const EmailNewsletterForm = styled.form`
   border: none;
   display: grid;
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
-    grid-template-columns: 71% auto;
-    grid-template-areas:
-      'label label'
-      'input button';
-  }
   grid-template-areas:
     'label label'
-    'input input'
-    'button button';
+    'input button';
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    grid-template-columns: 71% auto;
+  }
+
+  grid-template-columns: 66% auto;
 `;
 
 const EmailNewsletterLabel = styled.label`
@@ -27,9 +25,7 @@ const EmailNewsletterLabel = styled.label`
   text-transform: uppercase;
   font-size: 0.75rem;
   letter-spacing: 0.1em;
-  margin-bottom: 1rem;
-  /* padding-bottom: 0.5rem;
-  border-bottom: 2px solid ${({ theme }): string => theme.colors.white}; */
+  margin-bottom: 0.75rem;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     font-size: 0.875rem;
   }
@@ -44,17 +40,12 @@ const EmailNewsletterInput = styled.input<EmailNewsletterInputProps>`
   background-color: ${({ theme }): string => theme.colors.white};
   padding: 1rem;
   color: ${({ theme }): string => theme.colors.orange};
-  margin-bottom: 1rem;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    /* font-size: 1.125rem; 
-    margin-right: 2rem; */
     margin-bottom: 0;
   }
   font-size: 1rem;
   &:focus {
     outline: none;
-    /* border-bottom-color: ${({ theme, validationError }): string =>
-      validationError ? theme.colors.red : theme.colors.lightBrown}; */
   }
   ::placeholder {
     color: rgba(170, 97, 67, 0.75);
@@ -63,12 +54,11 @@ const EmailNewsletterInput = styled.input<EmailNewsletterInputProps>`
 
 const EmailNewsletterMessage = styled.p`
   color: ${({ theme }): string => theme.colors.orange};
-  padding: 0.5rem;
+  padding: 0.5rem 1rem;
   background-color: ${({ theme }): string => theme.colors.white};
 `;
 
 const EmailNewsletterContainer = styled.section`
-  /* margin-bottom: 2rem; */
   grid-area: newsletter;
 `;
 
@@ -122,7 +112,7 @@ const EmailNewsletter: FC = () => {
             isDisabled={isSubmitting}
             type="submit"
           >
-            {isSubmitting ? '...Sending' : 'Subscribe'}
+            {isSubmitting ? '...Sending' : 'Submit'}
           </Button>
         </EmailNewsletterForm>
       )}
