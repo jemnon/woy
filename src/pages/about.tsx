@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
+import Img from 'gatsby-image';
+import ImageWrapper from '../components/image-wrapper-styled';
 import { Images as Image } from '../types/images';
 import Container from '../components/container-styled';
 import { H1 } from '../components/headings-styled';
@@ -23,6 +25,17 @@ interface AboutPageProps {
   };
 }
 
+const AboutPageContent = styled.article`
+  display: grid;
+  grid-template-areas: 'heading' 'image' 'description';
+  h1 {
+    grid-area: 'heading';
+  }
+  section {
+    grid-area: 'descripton';
+  }
+`;
+
 const AboutPage: FC<AboutPageProps> = ({ data: { contentfulAbout } }) => {
   return (
     <Layout>
@@ -32,14 +45,24 @@ const AboutPage: FC<AboutPageProps> = ({ data: { contentfulAbout } }) => {
       </Header>
       <div style={{ paddingTop: HEADER_HEIGHT }}>
         <Container>
-          <H1>About</H1>
-          {contentfulAbout.description.childMarkdownRemark.html && (
-            <div
-              dangerouslySetInnerHTML={{
-                __html: contentfulAbout.description.childMarkdownRemark?.html,
-              }}
-            />
-          )}
+          <AboutPageContent>
+            <H1>About</H1>
+            <ImageWrapper>
+              <Img
+                alt="about jeri mobley"
+                durationFadeIn={0}
+                fluid={contentfulAbout.image.fluid}
+                placeholderClassName="tiny"
+              />
+            </ImageWrapper>
+            {contentfulAbout.description.childMarkdownRemark.html && (
+              <section
+                dangerouslySetInnerHTML={{
+                  __html: contentfulAbout.description.childMarkdownRemark?.html,
+                }}
+              />
+            )}
+          </AboutPageContent>
         </Container>
       </div>
     </Layout>

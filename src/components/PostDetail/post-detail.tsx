@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import Img from 'gatsby-image';
+import ImageWrapper from '../image-wrapper-styled';
 import styled from 'styled-components';
 import { Post } from '../../types/post';
 import { H1 } from '../headings-styled';
@@ -47,22 +48,7 @@ const PostDetailBody = styled.div`
   }
 `;
 
-const PostDetailImage = styled.div`
-  position: relative;
-  width: 100%;
-  margin-bottom: 1rem;
-  overflow: hidden;
-  border-radius: 2px;
-  .gatsby-image-wrapper {
-    background-color: rgba(0, 0, 0, 0.1);
-  }
-  .tiny {
-    filter: blur(15px);
-    transform: scale(1.1);
-  }
-`;
-
-const PostDetailGridImage = styled(PostDetailImage)`
+const PostDetailGridImage = styled(ImageWrapper)`
   padding-bottom: 100%;
   .gatsby-image-wrapper {
     position: absolute !important;
@@ -71,10 +57,6 @@ const PostDetailGridImage = styled(PostDetailImage)`
     width: 100%;
     height: 100%;
     object-fit: cover;
-  }
-  .tiny {
-    filter: blur(15px);
-    transform: scale(1.1);
   }
 `;
 
@@ -155,7 +137,12 @@ const PostDetail: FC<PostDetailProps> = ({
             </H1>
           </PostDetailHeader>
           <PostDetailGridImage>
-            <Img alt={title} fluid={fluid} placeholderClassName="tiny" />
+            <Img
+              alt={title}
+              durationFadeIn={0}
+              fluid={fluid}
+              placeholderClassName="tiny"
+            />
           </PostDetailGridImage>
         </>
       ) : (
@@ -178,9 +165,14 @@ const PostDetail: FC<PostDetailProps> = ({
               />
             )}
           </PostDetailHeader>
-          <PostDetailImage>
-            <Img alt={title} fluid={fluid} placeholderClassName="tiny" />
-          </PostDetailImage>
+          <ImageWrapper>
+            <Img
+              alt={title}
+              durationFadeIn={0}
+              fluid={fluid}
+              placeholderClassName="tiny"
+            />
+          </ImageWrapper>
         </PostDetailColumns>
       )}
       <PostDetailBody>{renderPostDetail()}</PostDetailBody>
