@@ -38,9 +38,9 @@ const PostDetailBody = styled.div`
   ol {
     padding-left: 2rem;
     margin-bottom: 1rem;
-  }
-  p {
-    margin-bottom: 1rem;
+    li {
+      margin-bottom: 1rem;
+    }
   }
   strong {
     display: block;

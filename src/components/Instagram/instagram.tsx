@@ -10,7 +10,7 @@ interface InstaUserNode {
   };
 }
 
-interface AboutProps {
+interface InstagramProps {
   data?: InstaUserNode;
 }
 
@@ -24,7 +24,7 @@ const InstaBioImg = styled.img`
   margin-right: 1rem;
 `;
 
-const About: FC<AboutProps> = () => {
+const Instagram: FC<InstagramProps> = () => {
   const data = useStaticQuery(graphql`
     query InstaBioQuery {
       instaUserNode {
@@ -35,7 +35,7 @@ const About: FC<AboutProps> = () => {
     }
   `);
   return (
-    <section id="about">
+    <section id="instagram">
       <InstaBioLink
         href="https://www.instagram.com/whisperofyum"
         target="blank"
@@ -50,4 +50,4 @@ const About: FC<AboutProps> = () => {
   );
 };
 
-export default About;
+export default Instagram;
