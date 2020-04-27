@@ -1,11 +1,16 @@
 import styled from 'styled-components';
 
-const ImageWrapper = styled.div`
+interface ImageWrapperProps {
+  borderRadius?: string;
+  marginBottom?: string;
+}
+
+const ImageWrapper = styled.div<ImageWrapperProps>`
   position: relative;
   width: 100%;
-  margin-bottom: 1rem;
+  margin-bottom: ${({ marginBottom }): string => marginBottom || '1rem'};
   overflow: hidden;
-  border-radius: 2px;
+  border-radius: ${({ borderRadius }): string => borderRadius || '2px'};
   grid-area: image;
   .gatsby-image-wrapper {
     background-color: rgba(0, 0, 0, 0.1);

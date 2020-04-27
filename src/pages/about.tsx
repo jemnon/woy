@@ -3,6 +3,7 @@ import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import ImageWrapper from '../components/image-wrapper-styled';
+import Breadcrumbs from '../components/Breadcrumbs';
 import { Images as Image } from '../types/images';
 import Container from '../components/container-styled';
 import { H1 } from '../components/headings-styled';
@@ -27,27 +28,67 @@ interface AboutPageProps {
 
 const AboutPageContent = styled.article`
   display: grid;
-  grid-template-areas: 'heading' 'image' 'description';
-  h1 {
-    grid-area: 'heading';
+  grid-template-areas: 'image' 'description';
+  grid-gap: 1.5rem;
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    display: grid;
+    grid-template-areas: 'image description';
+    grid-template-columns: 50% 1fr;
   }
   section {
-    grid-area: 'descripton';
+    grid-area: description;
+    @media ${({ theme }): string => theme.breakpoints.desktop} {
+      padding: 2rem;
+      margin-left: -4rem;
+      margin-top: 4rem;
+      position: relative;
+      z-index: 1;
+      background-color: ${({ theme }): string => theme.colors.white};
+    }
+    p:last-child {
+      margin-bottom: 0;
+    }
+    h2 {
+      margin: 0;
+      margin-bottom: 1rem;
+      font-weight: bold;
+      @media ${({ theme }): string => theme.breakpoints.desktop} {
+        font-size: 1.5rem;
+      }
+      font-size: 1.25rem;
+      span {
+        color: ${({ theme }): string => theme.colors.orange};
+      }
+    }
   }
 `;
 
 const AboutPage: FC<AboutPageProps> = ({ data: { contentfulAbout } }) => {
   return (
     <Layout>
-      <SEO description="About Jeri Mobley, Whisper of Yum" title="About" />
+      <SEO
+        description="About Jeri Mobley, Whisper of Yum"
+        title="About"
+        meta={[
+          {
+            name: `twitter:image`,
+            content: `https:${contentfulAbout?.image?.fixed?.src}`,
+          },
+          {
+            name: `og:image`,
+            content: `https:${contentfulAbout?.image?.fixed?.src}`,
+          },
+        ]}
+      />
       <Header isVisible={true}>
         <Nav />
       </Header>
       <div style={{ paddingTop: HEADER_HEIGHT }}>
-        <Container>
+        <Container maxWidth="75rem">
+          <Breadcrumbs title="About" />
+          {/* <H1>About</H1> */}
           <AboutPageContent>
-            <H1>About</H1>
-            <ImageWrapper>
+            <ImageWrapper id="about-image" borderRadius="0" marginBottom="0">
               <Img
                 alt="about jeri mobley"
                 durationFadeIn={0}

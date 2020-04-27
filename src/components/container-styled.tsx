@@ -1,13 +1,17 @@
 import styled from 'styled-components';
 
-const Container = styled.main`
+interface ContainerProps {
+  maxWidth?: string;
+}
+
+const Container = styled.main<ContainerProps>`
   margin-left: auto;
   margin-right: auto;
   padding: 1rem 1rem 2rem;
   width: 100%;
   max-width: 30rem;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    max-width: 64rem;
+    max-width: ${({ maxWidth }): string => maxWidth || '64rem'};
     padding: 2rem 1rem 4rem;
   }
 `;
