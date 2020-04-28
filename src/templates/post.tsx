@@ -36,12 +36,13 @@ const capitalize = (word: string): string => {
 
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const { page: post } = pageContext || {};
+  const [{ fixed }] = post.images || [];
   return (
     <Layout>
       <SEO
         description={`${post.bodyPreview?.bodyPreview}`}
         title={`${capitalize(post.title)} | Whisper of Yum`}
-        image="https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/social-logo.jpg"
+        image={`https:${fixed?.src}`}
         pathname={location.pathname}
       />
       <Header isVisible={true}>

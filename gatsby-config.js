@@ -117,14 +117,14 @@ module.exports = {
         head: false,
       },
     },
-    {
+    /* {
       resolve: `gatsby-plugin-facebook-analytics`,
       options: {
         appId: process.env.GATSBY_FB_APP_ID,
         xfbml: true,
         includeInDevelopment: true,
       },
-    },
+    }, */
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

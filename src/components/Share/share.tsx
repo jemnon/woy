@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import ShareFB from './share-fb';
 import ShareTwitter from './share-twitter';
 
 interface ShareProps {
@@ -23,7 +22,6 @@ const Share: FC<ShareProps> = ({ description, title, url }) => {
     <ShareContainer>
       {description && title && url && (
         <>
-          <ShareFB description={description} title={title} url={url} />
           <ShareTwitter title={title} url={url} />
         </>
       )}
