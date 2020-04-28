@@ -6,7 +6,6 @@ import ImageWrapper from '../components/image-wrapper-styled';
 import Breadcrumbs from '../components/Breadcrumbs';
 import { Images as Image } from '../types/images';
 import Container from '../components/container-styled';
-import { H1 } from '../components/headings-styled';
 import Header from '../components/Header';
 import { HEADER_HEIGHT } from '../components/Header';
 import Layout from '../components/Layout';
@@ -69,16 +68,7 @@ const AboutPage: FC<AboutPageProps> = ({ data: { contentfulAbout } }) => {
       <SEO
         description="About Jeri Mobley, Whisper of Yum"
         title="About"
-        meta={[
-          {
-            name: `twitter:image`,
-            content: `https:${contentfulAbout?.image?.fixed?.src}`,
-          },
-          {
-            name: `og:image`,
-            content: `https:${contentfulAbout?.image?.fixed?.src}`,
-          },
-        ]}
+        image={`https:${contentfulAbout?.image?.fixed?.src}`}
       />
       <Header isVisible={true}>
         <Nav />

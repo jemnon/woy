@@ -17,11 +17,12 @@ interface SEOProps {
   meta?: any;
   title?: string;
   slug?: string;
+  image?: string;
 }
 
 // const assetPath = withPrefix('/');
 
-const SEO: FC<SEOProps> = ({ description, lang, meta, title, slug }) => {
+const SEO: FC<SEOProps> = ({ description, image, lang, meta, title, slug }) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -66,6 +67,10 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title, slug }) => {
           content: metaDescription,
         },
         {
+          name: `og:image`,
+          content: image,
+        },
+        {
           property: `og:type`,
           content: `website`,
         },
@@ -76,6 +81,10 @@ const SEO: FC<SEOProps> = ({ description, lang, meta, title, slug }) => {
         {
           name: `twitter:card`,
           content: `summary`,
+        },
+        {
+          name: `twitter:image`,
+          content: image,
         },
         {
           name: `twitter:creator`,

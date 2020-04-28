@@ -40,18 +40,9 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     <Layout>
       <SEO
         description={`${post.bodyPreview?.bodyPreview}`}
+        image={`https:${fixed?.src}`}
         title={`${capitalize(post.title)} | Whisper of Yum`}
         slug={`/${post.slug}`}
-        meta={[
-          {
-            name: `twitter:image`,
-            content: `https:${fixed?.src}`,
-          },
-          {
-            name: `og:image`,
-            content: `https:${fixed?.src}`,
-          },
-        ]}
       />
       <Header isVisible={true}>
         <Nav />

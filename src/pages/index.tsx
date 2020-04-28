@@ -87,14 +87,8 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
     <Layout>
       <SEO
         description={metaDesc}
+        image="https://res.cloudinary.com/dd8c1nipl/image/upload/c_scale,w_880/v1586932061/woy/pork-chop.jpg"
         title="Whisper of Yum | Recipes, Cooking and Los Angeles"
-        meta={[
-          {
-            property: 'og:image',
-            content:
-              'https://res.cloudinary.com/dd8c1nipl/image/upload/c_scale,w_880/v1586932061/woy/pork-chop.jpg',
-          },
-        ]}
       />
       <Header isVisible={isHeaderVisible}>
         <Nav isHeaderVisible={isHeaderVisible} />
