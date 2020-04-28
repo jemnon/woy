@@ -66,6 +66,10 @@ const SEO: FC<SEOProps> = ({
           content: `${site.siteMetadata.siteUrl}${pathname || ''}`,
         },
         {
+          name: 'title',
+          content: title,
+        },
+        {
           name: 'image',
           content: image,
         },
