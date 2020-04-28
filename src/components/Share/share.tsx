@@ -4,8 +4,8 @@ import ShareFB from './share-fb';
 import ShareTwitter from './share-twitter';
 
 interface ShareProps {
-  image?: string;
-  url?: string;
+  title: string;
+  url: string;
 }
 
 const ShareContainer = styled.section`
@@ -16,11 +16,11 @@ const ShareContainer = styled.section`
   padding-top: 2px;
 `;
 
-const Share: FC<ShareProps> = ({ image, url }) => {
+const Share: FC<ShareProps> = ({ title, url }) => {
   return (
     <ShareContainer>
       <ShareFB url={url} />
-      <ShareTwitter image={image} url={url} />
+      <ShareTwitter title={title} url={url} />
     </ShareContainer>
   );
 };
