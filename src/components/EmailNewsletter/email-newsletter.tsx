@@ -38,12 +38,13 @@ const EmailNewsletterInput = styled.input<EmailNewsletterInputProps>`
     ${({ theme, validationError }): string =>
       validationError ? theme.colors.red : theme.colors.white};
   background-color: ${({ theme }): string => theme.colors.white};
-  padding: 1rem;
   color: ${({ theme }): string => theme.colors.orange};
+  padding: 0.5rem 1rem;
   -webkit-appearance: none;
   border-radius: 0;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     margin-bottom: 0;
+    padding: 1rem;
   }
   font-size: 1rem;
   &:focus {
