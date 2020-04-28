@@ -21,7 +21,7 @@ interface FBErrorResponse {
 const getFacebookSDK = (): Promise<boolean> => {
   return new Promise((resolve, reject) => {
     if (isDomUsable()) {
-      return window.FB ? resolve(true) : reject(false);
+      return window?.FB ? resolve(true) : reject(false);
     }
   });
 };
@@ -38,7 +38,7 @@ const ShareFB: FC<ShareFBProps> = ({ image, url }) => {
               href: url,
             },
             (resp: FBErrorResponse) => {
-              if (resp.error_message) {
+              if (resp?.error_message) {
                 console.error('There was an error sharing to FB.');
               }
             },
