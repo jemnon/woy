@@ -108,7 +108,7 @@ const Footer: FC = () => {
               <Link to="/">Blog</Link>
             </li>
             <li>
-              <Link to="/About">About</Link>
+              <Link to="/about">About</Link>
             </li>
             <li>
               <a href="mailto:jerimobley914@gmail.com" target="_top">
