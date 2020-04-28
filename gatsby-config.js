@@ -120,7 +120,7 @@ module.exports = {
         background_color: `#f4ede6`,
         theme_color: `#cf7651`,
         display: `minimal-ui`,
-        icon: `src/images/favicon.svg`, // This path is relative to the root of the site.
+        icon: `src/images/favicon.png`, // This path is relative to the root of the site.
       },
     },
     {
