@@ -13,6 +13,7 @@ const ShareContainer = styled.section`
   align-items: center;
   margin-left: -0.25rem;
   margin-right: -0.25rem;
+  padding-top: 2px;
 `;
 
 const Share: FC<ShareProps> = ({ image, url }) => {
