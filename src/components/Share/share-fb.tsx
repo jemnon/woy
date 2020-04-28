@@ -10,6 +10,7 @@ declare global {
 }
 
 interface ShareFBProps {
+  image: string;
   url?: string;
 }
 
@@ -25,7 +26,7 @@ const getFacebookSDK = (): Promise<boolean> => {
   });
 };
 
-const ShareFB: FC<ShareFBProps> = ({ url }) => {
+const ShareFB: FC<ShareFBProps> = ({ image, url }) => {
   const handleClick = (): void => {
     getFacebookSDK().then(
       (isLoaded: boolean) => {
@@ -33,6 +34,7 @@ const ShareFB: FC<ShareFBProps> = ({ url }) => {
           window.FB.ui(
             {
               method: 'share',
+              picture: image,
               href: url,
             },
             (resp: FBErrorResponse) => {

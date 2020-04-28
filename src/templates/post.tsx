@@ -60,7 +60,11 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
         <Container>
           <PostPageHeader>
             <Breadcrumbs title={post.title} />
-            <Share title={post.title} url={location.href} />
+            <Share
+              image={`https:${fixed?.src}`}
+              title={post.title}
+              url={location.href}
+            />
           </PostPageHeader>
           {post && (
             <PostDetail

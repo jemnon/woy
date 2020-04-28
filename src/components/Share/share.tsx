@@ -6,6 +6,7 @@ import ShareTwitter from './share-twitter';
 interface ShareProps {
   title: string;
   url: string;
+  image: string;
 }
 
 const ShareContainer = styled.section`
@@ -16,10 +17,10 @@ const ShareContainer = styled.section`
   padding-top: 2px;
 `;
 
-const Share: FC<ShareProps> = ({ title, url }) => {
+const Share: FC<ShareProps> = ({ image, title, url }) => {
   return (
     <ShareContainer>
-      <ShareFB url={url} />
+      <ShareFB image={image} url={url} />
       <ShareTwitter title={title} url={url} />
     </ShareContainer>
   );
