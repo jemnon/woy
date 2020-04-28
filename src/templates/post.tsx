@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import styled from 'styled-components';
 import { Post as PostType } from '../types/post';
 import Container from '../components/container-styled';
 import Breadcrumbs from '../components/Breadcrumbs';
@@ -8,18 +9,31 @@ import Layout from '../components/Layout';
 import Nav from '../components/Nav';
 import PostDetail from '../components/PostDetail';
 import SEO from '../components/SEO';
+import Share from '../components/Share';
 
 interface PostPageProps {
   pageContext: {
     page: PostType;
   };
+  location: {
+    href: string;
+  };
 }
+
+const PostPageHeader = styled.header`
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 1rem;
+  [class^='breadcrumbs'] {
+    margin-bottom: 0;
+  }
+`;
 
 const capitalize = (word: string): string => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
 
-const PostPage: FC<PostPageProps> = ({ pageContext }) => {
+const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const { page: post } = pageContext || {};
   const [{ fixed }] = post.images || [];
   return (
@@ -44,7 +58,10 @@ const PostPage: FC<PostPageProps> = ({ pageContext }) => {
       </Header>
       <div style={{ paddingTop: HEADER_HEIGHT }}>
         <Container>
-          <Breadcrumbs title={post.title} />
+          <PostPageHeader>
+            <Breadcrumbs title={post.title} />
+            <Share image={`https:${fixed?.src}`} url={location.href} />
+          </PostPageHeader>
           {post && (
             <PostDetail
               categories={post.categories}

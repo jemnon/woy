@@ -1,9 +1,9 @@
 import React, { FC, useEffect, useState } from 'react';
-import Link from '../Link';
-import NavMobile from './nav-mobile';
 import styled from 'styled-components';
-import Logo from '../../images/svg/logo-black-horizontal.svg';
 import IconMobile from '../../images/svg/icons/menu-offset.svg';
+import Link from '../Link';
+import Logo from '../../images/svg/logo-black-horizontal.svg';
+import NavMobile from './nav-mobile';
 
 const NavRoot = styled.nav`
   position: relative;

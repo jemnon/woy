@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
+import styled from 'styled-components';
 import Img from 'gatsby-image';
 import ImageWrapper from '../image-wrapper-styled';
-import styled from 'styled-components';
 import { Post } from '../../types/post';
 import { H1 } from '../headings-styled';
 

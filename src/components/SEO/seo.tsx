@@ -9,6 +9,7 @@ import React, { FC } from 'react';
 import Helmet from 'react-helmet';
 // import { withPrefix } from 'gatsby';
 import { useStaticQuery, graphql } from 'gatsby';
+import isDomUsable from '../../utils';
 
 interface SEOProps {
   description: string;
@@ -19,14 +20,6 @@ interface SEOProps {
 }
 
 // const assetPath = withPrefix('/');
-
-const isDomUsable = () => {
-  return !!(
-    typeof window !== 'undefined' &&
-    window.document &&
-    window.document.createElement
-  );
-};
 
 const SEO: FC<SEOProps> = ({ description, lang, meta, title, slug }) => {
   const { site } = useStaticQuery(
