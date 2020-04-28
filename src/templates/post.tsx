@@ -16,6 +16,7 @@ interface PostPageProps {
     page: PostType;
   };
   location: {
+    pathname: string;
     href: string;
   };
 }
@@ -35,14 +36,13 @@ const capitalize = (word: string): string => {
 
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const { page: post } = pageContext || {};
-  const [{ fixed }] = post.images || [];
   return (
     <Layout>
       <SEO
         description={`${post.bodyPreview?.bodyPreview}`}
         title={`${capitalize(post.title)} | Whisper of Yum`}
         image="https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/social-logo.jpg"
-        slug={`/${post.slug}`}
+        pathname={location.pathname}
       />
       <Header isVisible={true}>
         <Nav />

@@ -23,6 +23,9 @@ interface AboutPageProps {
       image: Image;
     };
   };
+  location: {
+    pathname: string;
+  };
 }
 
 const AboutPageContent = styled.article`
@@ -62,13 +65,17 @@ const AboutPageContent = styled.article`
   }
 `;
 
-const AboutPage: FC<AboutPageProps> = ({ data: { contentfulAbout } }) => {
+const AboutPage: FC<AboutPageProps> = ({
+  data: { contentfulAbout },
+  location,
+}) => {
   return (
     <Layout>
       <SEO
         description="Jeri Mobley creator of Whisper of Yum."
         title="About"
         image="https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/social-logo.jpg"
+        pathname={location.pathname}
       />
       <Header isVisible={true}>
         <Nav />

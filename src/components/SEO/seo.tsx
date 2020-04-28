@@ -16,13 +16,20 @@ interface SEOProps {
   lang?: string;
   meta?: any;
   title?: string;
-  slug?: string;
+  pathname?: string;
   image: string;
 }
 
 const assetPath = withPrefix('/');
 
-const SEO: FC<SEOProps> = ({ description, image, lang, meta, title, slug }) => {
+const SEO: FC<SEOProps> = ({
+  description,
+  image,
+  lang,
+  meta,
+  title,
+  pathname,
+}) => {
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -56,7 +63,7 @@ const SEO: FC<SEOProps> = ({ description, image, lang, meta, title, slug }) => {
         },
         {
           name: 'url',
-          content: `${site.siteMetadata.siteUrl}${slug || ''}`,
+          content: `${site.siteMetadata.siteUrl}${pathname || ''}`,
         },
         {
           name: 'image',
@@ -80,7 +87,7 @@ const SEO: FC<SEOProps> = ({ description, image, lang, meta, title, slug }) => {
         },
         {
           property: `og:url`,
-          content: `${site.siteMetadata.siteUrl}${slug || ''}`,
+          content: `${site.siteMetadata.siteUrl}${pathname || ''}`,
         },
         {
           name: `twitter:card`,
@@ -111,7 +118,7 @@ const SEO: FC<SEOProps> = ({ description, image, lang, meta, title, slug }) => {
       {isDomUsable() && (
         <link
           rel="canonical"
-          href={`${location.protocol}//${location.host}${location.pathname}`}
+          href={`${site.siteMetadata.siteUrl}${pathname || ''}`}
         />
       )}
       <link
