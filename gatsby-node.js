@@ -1,40 +1,6 @@
 exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const { data } = await graphql(`
     {
-      allContentfulCategories {
-        edges {
-          node {
-            id
-            name
-            posts {
-              bodyShort {
-                childMarkdownRemark {
-                  html
-                }
-              }
-              publishDate
-              slug
-              title
-              images {
-                fluid {
-                  aspectRatio
-                  sizes
-                  src
-                  srcSet
-                  srcSetWebp
-                  srcWebp
-                }
-              }
-              categories {
-                name
-                posts {
-                  slug
-                }
-              }
-            }
-          }
-        }
-      }
       allContentfulPosts {
         edges {
           node {

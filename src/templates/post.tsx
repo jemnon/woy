@@ -40,8 +40,8 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     <Layout>
       <SEO
         description={`${post.bodyPreview?.bodyPreview}`}
-        image={`https:${fixed?.src}`}
         title={`${capitalize(post.title)} | Whisper of Yum`}
+        image="https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/social-logo.jpg"
         slug={`/${post.slug}`}
       />
       <Header isVisible={true}>
@@ -52,7 +52,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
           <PostPageHeader>
             <Breadcrumbs title={post.title} />
             <Share
-              image={`https:${fixed?.src}`}
+              description={post.bodyPreview?.bodyPreview}
               title={post.title}
               url={location.href}
             />

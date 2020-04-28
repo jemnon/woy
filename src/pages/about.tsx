@@ -66,9 +66,9 @@ const AboutPage: FC<AboutPageProps> = ({ data: { contentfulAbout } }) => {
   return (
     <Layout>
       <SEO
-        description="About Jeri Mobley, Whisper of Yum"
+        description="Jeri Mobley creator of Whisper of Yum."
         title="About"
-        image={`https:${contentfulAbout?.image?.fixed?.src}`}
+        image="https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/social-logo.jpg"
       />
       <Header isVisible={true}>
         <Nav />

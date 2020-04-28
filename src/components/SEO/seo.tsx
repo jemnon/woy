@@ -7,7 +7,7 @@
 
 import React, { FC } from 'react';
 import Helmet from 'react-helmet';
-// import { withPrefix } from 'gatsby';
+import { withPrefix } from 'gatsby';
 import { useStaticQuery, graphql } from 'gatsby';
 import isDomUsable from '../../utils';
 
@@ -17,10 +17,10 @@ interface SEOProps {
   meta?: any;
   title?: string;
   slug?: string;
-  image?: string;
+  image: string;
 }
 
-// const assetPath = withPrefix('/');
+const assetPath = withPrefix('/');
 
 const SEO: FC<SEOProps> = ({ description, image, lang, meta, title, slug }) => {
   const { site } = useStaticQuery(
@@ -57,6 +57,10 @@ const SEO: FC<SEOProps> = ({ description, image, lang, meta, title, slug }) => {
         {
           name: 'url',
           content: `${site.siteMetadata.siteUrl}${slug || ''}`,
+        },
+        {
+          name: 'image',
+          content: image,
         },
         {
           property: `og:title`,
@@ -99,7 +103,7 @@ const SEO: FC<SEOProps> = ({ description, image, lang, meta, title, slug }) => {
           content: metaDescription,
         },
         {
-          name: `fb:app_id`,
+          property: `fb:app_id`,
           content: process.env.GATSBY_FB_APP_ID,
         },
       ].concat(meta || [])}

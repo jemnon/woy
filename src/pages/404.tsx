@@ -17,13 +17,8 @@ const NotFoundPage: FC = () => (
   <Layout>
     <SEO
       description="Recipes, Cooking, and Los Angeles"
-      title="Whisper of Yum | Recipes, Cooking, and Los Angeles"
-      meta={[
-        {
-          name: 'whipser of yum',
-          content: 'Recipes, Cooking, and Los Angeles',
-        },
-      ]}
+      title="Whisper of Yum | Recipes, Cooking and Los Angeles"
+      image="https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/social-logo.jpg"
     />
     <Header isVisible={true}>
       <Nav />

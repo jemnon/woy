@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect, useState } from 'react';
 import isDomUsable from '../../utils';
 import Button from './button-styled';
 import Facebook from '../../images/svg/icons/facebook.svg';
@@ -10,8 +10,9 @@ declare global {
 }
 
 interface ShareFBProps {
-  image: string;
+  description: string;
   url?: string;
+  title: string;
 }
 
 interface FBErrorResponse {
@@ -26,34 +27,49 @@ const getFacebookSDK = (): Promise<boolean> => {
   });
 };
 
-const ShareFB: FC<ShareFBProps> = ({ image, url }) => {
+const ShareFB: FC<ShareFBProps> = ({ description, title, url }) => {
+  const [isFacebookReady, setIsFacebookReady] = useState<boolean>(false);
   const handleClick = (): void => {
-    getFacebookSDK().then(
-      (isLoaded: boolean) => {
-        if (isLoaded) {
-          window.FB.ui(
-            {
-              method: 'share',
-              picture: image,
-              href: url,
-            },
-            (resp: FBErrorResponse) => {
-              if (resp?.error_message) {
-                console.error('There was an error sharing to FB.');
-              }
-            },
-          );
-        }
+    window.FB.ui(
+      {
+        method: 'share_open_graph',
+        action_type: 'og.shares',
+        action_properties: JSON.stringify({
+          object: {
+            'og:url': url,
+            'og:title': title,
+            'og:description': description,
+          },
+        }),
       },
-      () => {
-        console.error('There was an error loading the FB SDK.');
+      (resp: FBErrorResponse) => {
+        if (resp?.error_message) {
+          console.error('There was an error sharing to FB.');
+        }
       },
     );
   };
+  useEffect(() => {
+    if (!isFacebookReady) {
+      getFacebookSDK().then(
+        () => {
+          setIsFacebookReady(true);
+        },
+        () => {
+          setIsFacebookReady(false);
+          console.error('There was an error loading the FB SDK.');
+        },
+      );
+    }
+  }, [isFacebookReady, setIsFacebookReady]);
   return (
-    <Button onClick={handleClick}>
-      <Facebook />
-    </Button>
+    <>
+      {isFacebookReady && (
+        <Button onClick={handleClick}>
+          <Facebook />
+        </Button>
+      )}
+    </>
   );
 };
 
