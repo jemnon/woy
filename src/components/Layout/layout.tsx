@@ -32,6 +32,7 @@ const theme: DefaultTheme = {
     teal: '#244c53',
     lightBrown: '#d5a188',
     nearBlack: '#111',
+    nearWhite: '#efeee9',
     orange: '#cf7651',
     white: '#ffffff',
     red: '#ff4136',
@@ -100,15 +101,17 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 interface LayoutProps {
+  bgColor?: string;
   children: ReactNode;
 }
 
 interface MainProps {
+  bgColor: string;
   isHeaderVisible: boolean;
 }
 
 const Main = styled.main<MainProps>`
-  background-color: ${({ theme }): string => theme.colors.white};
+  background-color: ${({ bgColor, theme }): string => theme.colors[bgColor]};
   color: ${({ theme }): string => theme.colors.nearBlack};
   font-family: ${({ theme }): string => theme.fonts.lato};
   @media ${({ theme }): string => theme.breakpoints.desktop} {
@@ -118,11 +121,11 @@ const Main = styled.main<MainProps>`
   min-height: 100vh;
 `;
 
-const Layout: FC<LayoutProps> = ({ children }) => {
+const Layout: FC<LayoutProps> = ({ bgColor = 'white', children }) => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Main isHeaderVisible={false} role="main">
+      <Main bgColor={bgColor} isHeaderVisible={false} role="main">
         {children}
       </Main>
       <Footer />
