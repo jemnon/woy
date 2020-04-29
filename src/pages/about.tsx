@@ -74,6 +74,7 @@ const AboutPage: FC<AboutPageProps> = ({
       <SEO
         description="Jeri Mobley creator of Whisper of Yum."
         title="About"
+        type="article"
         image="https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/social-logo.jpg"
         pathname={location.pathname}
       />
