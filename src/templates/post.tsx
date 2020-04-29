@@ -42,6 +42,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
       <SEO
         description={`${post.bodyPreview?.bodyPreview}`}
         title={`${capitalize(post.title)} | Whisper of Yum`}
+        type="article"
         image={`https:${fixed?.src}`}
         pathname={location.pathname}
       />
