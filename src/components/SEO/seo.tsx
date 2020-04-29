@@ -18,6 +18,7 @@ interface SEOProps {
   title?: string;
   pathname?: string;
   image: string;
+  type?: string;
 }
 
 const assetPath = withPrefix('/');
@@ -28,6 +29,7 @@ const SEO: FC<SEOProps> = ({
   lang,
   meta,
   title,
+  type,
   pathname,
 }) => {
   const { site } = useStaticQuery(
@@ -45,6 +47,7 @@ const SEO: FC<SEOProps> = ({
     `,
   );
   const metaDescription = description || site.siteMetadata.description;
+  const metaTime = isDomUsable() ? new Date().getTime() : '';
   return (
     <Helmet
       htmlAttributes={{
@@ -87,11 +90,15 @@ const SEO: FC<SEOProps> = ({
         },
         {
           property: `og:type`,
-          content: `website`,
+          content: type || 'website',
         },
         {
           property: `og:url`,
           content: `${site.siteMetadata.siteUrl}${pathname || ''}`,
+        },
+        {
+          property: `og:time`,
+          content: metaTime,
         },
         {
           name: `twitter:card`,
