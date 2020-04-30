@@ -130,7 +130,7 @@ module.exports = {
       options: {
         name: `Whisper of Yum`,
         short_name: `Whisper of Yum`,
-        start_url: `https://whisperofyum.com`,
+        start_url: `/`,
         background_color: `#f4ede6`,
         theme_color: `#cf7651`,
         display: `minimal-ui`,
