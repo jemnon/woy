@@ -122,7 +122,7 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
 
 export const query = graphql`
   {
-    allContentfulPosts(limit: 10, sort: { order: DESC, fields: publishDate }) {
+    allContentfulPosts(limit: 20, sort: { order: DESC, fields: publishDate }) {
       edges {
         node {
           id
