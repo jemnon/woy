@@ -55,6 +55,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             <Breadcrumbs title={post.title} />
             <Share
               description={post.bodyPreview?.bodyPreview}
+              media={`https:${fixed?.src}`}
               title={post.title}
               url={location.href}
             />
