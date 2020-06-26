@@ -49,6 +49,7 @@ const theme: DefaultTheme = {
     z999: '999',
     z9999: '9999',
   },
+  transition: 'all 0.47s ease',
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -98,6 +99,7 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     border-style: none;
   }
+  
 `;
 
 interface LayoutProps {
