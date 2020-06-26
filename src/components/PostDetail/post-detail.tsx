@@ -46,6 +46,13 @@ const PostDetailBody = styled.div`
   strong {
     display: block;
   }
+  a {
+    color: ${({ theme }): string => theme.colors.orange};
+    transition: ${({ theme }): string => theme.transition};
+    &:hover {
+      color: ${({ theme }): string => theme.colors.nearBlack};
+    }
+  }
 `;
 
 const PostDetailGridImage = styled(ImageWrapper)`

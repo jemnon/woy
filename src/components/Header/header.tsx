@@ -22,7 +22,7 @@ const HeaderRoot = styled.header<HeaderRootProps>`
   height: ${HEADER_HEIGHT};
   z-index: ${({ theme }): string => theme.zIndex.z5};
   transform: ${({ isVisible }): string => getPosition(isVisible)};
-  transition: all 0.47s ease;
+  transition: ${({ theme }): string => theme.transition};
 `;
 
 const Header: FC<HeaderProps> = ({ children, isVisible = false }) => {
