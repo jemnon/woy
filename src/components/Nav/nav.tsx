@@ -133,7 +133,7 @@ const Nav: FC<NavProps> = ({ isHeaderVisible }) => {
             <NavListDivider />
           </NavListItem>
           <NavListItem>
-            <a href="mailto:jerimobley914@gmail.com" target="_top">
+            <a href="mailto:whisperofyum@gmail.com" target="_top">
               Contact
             </a>
           </NavListItem>
