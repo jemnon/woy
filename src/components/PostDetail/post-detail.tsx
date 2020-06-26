@@ -1,7 +1,8 @@
 import React, { FC, ReactNode } from 'react';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import Img from 'gatsby-image';
 import ImageWrapper from '../image-wrapper-styled';
+import LinkStyles from '../link-styled';
 import { Post } from '../../types/post';
 import { H1 } from '../headings-styled';
 
@@ -26,6 +27,9 @@ const PostDetailHeader = styled.header`
   strong {
     display: block;
   }
+  a {
+    ${LinkStyles};
+  }
 `;
 
 const PostDetailBody = styled.div`
@@ -47,11 +51,7 @@ const PostDetailBody = styled.div`
     display: block;
   }
   a {
-    color: ${({ theme }): string => theme.colors.orange};
-    transition: ${({ theme }): string => theme.transition};
-    &:hover {
-      color: ${({ theme }): string => theme.colors.nearBlack};
-    }
+    ${LinkStyles};
   }
 `;
 
