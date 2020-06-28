@@ -32,7 +32,7 @@ const theme: DefaultTheme = {
     teal: '#244c53',
     lightBrown: '#d5a188',
     nearBlack: '#111',
-    nearWhite: '#efeee9',
+    nearWhite: '#F9F9F9',
     orange: '#cf7651',
     white: '#ffffff',
     red: '#ff4136',

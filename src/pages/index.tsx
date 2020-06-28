@@ -9,6 +9,7 @@ import Nav from '../components/Nav';
 import Hero from '../components/Hero';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
+import Pagination from '../components/Pagingation';
 import PostDetail from '../components/PostDetail';
 import SEO from '../components/SEO';
 
@@ -113,6 +114,12 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
                 </HomePageListItem>
               );
             })}
+            <Pagination
+              currentPage={1}
+              pagesPer={8}
+              onClick={page => console.log('page: ', page)}
+              pages={17}
+            />
           </Content>
         )}
       </Container>
