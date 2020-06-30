@@ -115,10 +115,10 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
               );
             })}
             <Pagination
-              currentPage={1}
-              pagesPer={8}
+              currentPage={6}
               onClick={page => console.log('page: ', page)}
-              pages={17}
+              pages={6}
+              pageSize={6}
             />
           </Content>
         )}

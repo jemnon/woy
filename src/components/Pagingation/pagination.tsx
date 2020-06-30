@@ -34,16 +34,48 @@ const PaginationButton = styled.button<PaginationButtonsProps>`
 
 interface PaginationProps {
   currentPage: number;
-  pagesPer: number;
   onClick: (page: number) => void;
   pages: number;
+  pageSize: number;
 }
+
+const getPages = (
+  currentPage: number,
+  pages: number,
+  pageSize: number,
+): number[] => {
+  // remaining pages
+  const remaining = pages - currentPage;
+  // range of pages to be shown
+  const diff = Math.floor(pageSize / 2);
+  // pages array to be returned
+  const pagesList: number[] = [];
+  // generate pages from total
+  Array.from(Array(pages), (_, idx): number => {
+    return idx + 1;
+  }).forEach(page => {
+    console.log('remaining: ', remaining);
+    console.log('diff: ', diff);
+    console.log('page: ', page);
+    if (page >= currentPage - diff && page < currentPage) {
+      // check if page is within the lower range ( -diff ) of the current page
+      pagesList.push(page);
+    } else if (page === currentPage) {
+      // check if page is current page
+      pagesList.push(page);
+    } else if (page <= currentPage + diff && page > currentPage) {
+      // check if page is within the upper range ( +diff ) of the current page
+      pagesList.push(page);
+    }
+  });
+  return pagesList;
+};
 
 const Pagination: FC<PaginationProps> = ({
   currentPage,
   onClick,
   pages,
-  pagesPer,
+  pageSize,
 }) => {
   const [currentPageIdx, setCurrentPageIdx] = useState<number>(currentPage);
   const [currentPages, setCurrentPages] = useState<number[] | null>(null);
@@ -57,9 +89,7 @@ const Pagination: FC<PaginationProps> = ({
   };
   useEffect(() => {
     if (!currentPages) {
-      const list = Array.from(Array(pages), (_, idx): number => {
-        return idx + 1;
-      }).filter(value => value <= pagesPer);
+      const list = getPages(currentPage, pages, pageSize);
       setCurrentPages(list);
     }
   }, [currentPages, pages, setCurrentPages]);
