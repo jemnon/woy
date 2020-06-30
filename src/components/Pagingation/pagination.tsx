@@ -5,7 +5,7 @@ const PaginationContainer = styled.section`
   display: flex;
   align-items: center;
   flex-wrap: wrap;
-  padding: 3rem 0;
+  padding: 4rem 0 0;
   margin: 0 -0.5rem;
 `;
 

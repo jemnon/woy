@@ -98,29 +98,31 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
       <Hero images={heroNode.images} />
       <Container>
         {posts && (
-          <Content>
-            {posts.map((post, idx) => {
-              return (
-                <HomePageListItem key={post.node.id}>
-                  <Link to={`/post/${post.node.slug}`}>
-                    <PostDetail
-                      categories={post.node.categories}
-                      publishDate={post.node.publishDate}
-                      images={post.node.images}
-                      title={post.node.title}
-                      bodyPreview={post.node.bodyPreview}
-                    />
-                  </Link>
-                </HomePageListItem>
-              );
-            })}
+          <>
+            <Content>
+              {posts.map((post, idx) => {
+                return (
+                  <HomePageListItem key={post.node.id}>
+                    <Link to={`/post/${post.node.slug}`}>
+                      <PostDetail
+                        categories={post.node.categories}
+                        publishDate={post.node.publishDate}
+                        images={post.node.images}
+                        title={post.node.title}
+                        bodyPreview={post.node.bodyPreview}
+                      />
+                    </Link>
+                  </HomePageListItem>
+                );
+              })}
+            </Content>
             <Pagination
-              currentPage={6}
+              currentPage={10}
               onClick={page => console.log('page: ', page)}
-              pages={6}
+              pages={20}
               pageSize={6}
             />
-          </Content>
+          </>
         )}
       </Container>
     </Layout>
