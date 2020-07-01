@@ -110,7 +110,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
       if (isScrollTo) {
         window.scrollTo({
           behavior: mainRef?.current ? 'smooth' : 'auto',
-          top: mainRef?.current ? mainRef.current.offsetTop : 0,
+          top: mainRef?.current ? mainRef.current.offsetTop - 52 : 0,
         });
       }
     }
