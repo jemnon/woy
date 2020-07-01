@@ -6,7 +6,10 @@ const PaginationContainer = styled.section`
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 4rem 0 0;
+  padding: 2rem 0 0;
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    padding: 4rem 0 0;
+  }
   margin: 0 -0.5rem;
 `;
 

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 import { HeroType } from '../types/hero';
 import { Post as PostType } from '../types/post';
 import Container, { Content } from '../components/container-styled';
-import Header from '../components/Header';
+import Header, { HEADER_HEIGHT } from '../components/Header';
 import Nav from '../components/Nav';
 import Hero from '../components/Hero';
 import isDomUsable from '../utils';
@@ -105,15 +105,11 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
     };
   }, [isHeaderVisible, setIsHeaderVisible]);
   useEffect(() => {
-    if (isDomUsable()) {
-      const { isScrollTo } = location?.state || {};
-      if (isScrollTo) {
-        window.scrollTo({
-          behavior: mainRef?.current ? 'smooth' : 'auto',
-          top: mainRef?.current ? mainRef.current.offsetTop - 52 : 0,
-        });
-      }
+    const { isScrollTo } = location?.state || {};
+    if (isScrollTo) {
+      setIsHeaderVisible(true);
     }
+    setIsHeaderVisible(false);
   }, [location]);
   return (
     <Layout>
@@ -126,38 +122,42 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
       <Header isVisible={isHeaderVisible}>
         <Nav isHeaderVisible={isHeaderVisible} />
       </Header>
-      <Hero images={heroNode.images} />
-      <Container ref={mainRef}>
-        {posts && (
-          <>
-            <Content>
-              {posts.map((post, idx) => {
-                return (
-                  <PostListItem key={post.node.id}>
-                    <Link to={`/post/${post.node.slug}`}>
-                      <PostDetail
-                        categories={post.node.categories}
-                        publishDate={post.node.publishDate}
-                        images={post.node.images}
-                        title={post.node.title}
-                        bodyPreview={post.node.bodyPreview}
-                      />
-                    </Link>
-                  </PostListItem>
-                );
-              })}
-            </Content>
-            {pageContext?.currentPage && pageContext.totalPages && (
-              <Pagination
-                currentPage={pageContext?.currentPage}
-                limit={pageContext?.limit}
-                onClick={handlePaginationClick}
-                totalPages={pageContext?.totalPages}
-              />
-            )}
-          </>
-        )}
-      </Container>
+      {location.state?.isScrollTo ? null : <Hero images={heroNode.images} />}
+      <div
+        style={{ paddingTop: location.state?.isScrollTo ? HEADER_HEIGHT : 0 }}
+      >
+        <Container ref={mainRef}>
+          {posts && (
+            <>
+              <Content>
+                {posts.map((post, idx) => {
+                  return (
+                    <PostListItem key={post.node.id}>
+                      <Link to={`/post/${post.node.slug}`}>
+                        <PostDetail
+                          categories={post.node.categories}
+                          publishDate={post.node.publishDate}
+                          images={post.node.images}
+                          title={post.node.title}
+                          bodyPreview={post.node.bodyPreview}
+                        />
+                      </Link>
+                    </PostListItem>
+                  );
+                })}
+              </Content>
+              {pageContext?.currentPage && pageContext.totalPages && (
+                <Pagination
+                  currentPage={pageContext?.currentPage}
+                  limit={pageContext?.limit}
+                  onClick={handlePaginationClick}
+                  totalPages={pageContext?.totalPages}
+                />
+              )}
+            </>
+          )}
+        </Container>
+      </div>
     </Layout>
   );
 };
