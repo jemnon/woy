@@ -1,7 +1,7 @@
 import { css } from 'styled-components';
 
 const LinkStyles = css`
-  font-size: italic;
+  font-style: italic;
   color: ${({ theme }): string => theme.colors.orange};
   transition: ${({ theme }): string => theme.transition};
   text-decoration: none;
