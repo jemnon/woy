@@ -1,5 +1,6 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import { graphql } from 'gatsby';
+import { navigate } from '@reach/router';
 import styled from 'styled-components';
 import { HeroType } from '../types/hero';
 import { Post as PostType } from '../types/post';
@@ -7,6 +8,7 @@ import Container, { Content } from '../components/container-styled';
 import Header from '../components/Header';
 import Nav from '../components/Nav';
 import Hero from '../components/Hero';
+import isDomUsable from '../utils';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
 import Pagination from '../components/Pagingation';
@@ -21,7 +23,7 @@ interface HeroNode {
   node: HeroType;
 }
 
-interface HomePageProps {
+interface PostListProps {
   data?: {
     allContentfulPosts?: {
       edges?: PostNode[];
@@ -30,9 +32,19 @@ interface HomePageProps {
       edges?: HeroNode[];
     };
   };
+  location: {
+    state?: {
+      isScrollTo?: boolean;
+    };
+  };
+  pageContext?: {
+    currentPage: number;
+    limit: number;
+    totalPages: number;
+  };
 }
 
-const HomePageListItem = styled.li`
+const PostListItem = styled.li`
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -62,14 +74,22 @@ const metaDesc =
   `chose a specific ingredient over another and get straight to what ` +
   `you want. Enjoy the content.`;
 
-const IndexPage: FC<HomePageProps> = ({ data }) => {
+const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
   const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(false);
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
   const [{ node: heroNode }] = hero || [];
+  const mainRef = useRef<HTMLHtmlElement | null>(null);
+  const handlePaginationClick = (page: number): void => {
+    navigate(`/${page === 1 ? '' : page}`, {
+      state: {
+        isScrollTo: true,
+      },
+    });
+  };
   useEffect(() => {
+    const heroHeight = document.querySelector('#hero')?.clientHeight || 0;
     const handleScroll = () => {
-      const heroHeight = document.querySelector('#hero')?.clientHeight || 0;
       const windowY = window.pageYOffset;
       const waypoint = heroHeight / 2;
       if (waypoint >= windowY) {
@@ -84,6 +104,17 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [isHeaderVisible, setIsHeaderVisible]);
+  useEffect(() => {
+    if (isDomUsable()) {
+      const { isScrollTo } = location?.state || {};
+      if (isScrollTo) {
+        window.scrollTo({
+          behavior: mainRef?.current ? 'smooth' : 'auto',
+          top: mainRef?.current ? mainRef.current.offsetTop : 0,
+        });
+      }
+    }
+  }, [location]);
   return (
     <Layout>
       <SEO
@@ -96,13 +127,13 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
         <Nav isHeaderVisible={isHeaderVisible} />
       </Header>
       <Hero images={heroNode.images} />
-      <Container>
+      <Container ref={mainRef}>
         {posts && (
           <>
             <Content>
               {posts.map((post, idx) => {
                 return (
-                  <HomePageListItem key={post.node.id}>
+                  <PostListItem key={post.node.id}>
                     <Link to={`/post/${post.node.slug}`}>
                       <PostDetail
                         categories={post.node.categories}
@@ -112,16 +143,18 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
                         bodyPreview={post.node.bodyPreview}
                       />
                     </Link>
-                  </HomePageListItem>
+                  </PostListItem>
                 );
               })}
             </Content>
-            <Pagination
-              currentPage={10}
-              onClick={page => console.log('page: ', page)}
-              pages={20}
-              pageSize={6}
-            />
+            {pageContext?.currentPage && pageContext.totalPages && (
+              <Pagination
+                currentPage={pageContext?.currentPage}
+                limit={pageContext?.limit}
+                onClick={handlePaginationClick}
+                totalPages={pageContext?.totalPages}
+              />
+            )}
           </>
         )}
       </Container>
@@ -130,8 +163,12 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
 };
 
 export const query = graphql`
-  {
-    allContentfulPosts(limit: 20, sort: { order: DESC, fields: publishDate }) {
+  query homePageQuery($skip: Int!, $limit: Int!) {
+    allContentfulPosts(
+      limit: $limit
+      skip: $skip
+      sort: { order: DESC, fields: publishDate }
+    ) {
       edges {
         node {
           id
@@ -185,4 +222,4 @@ export const query = graphql`
   }
 `;
 
-export default IndexPage;
+export default PostList;

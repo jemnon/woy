@@ -4,6 +4,7 @@ import styled from 'styled-components';
 const PaginationContainer = styled.section`
   display: flex;
   align-items: center;
+  justify-content: center;
   flex-wrap: wrap;
   padding: 4rem 0 0;
   margin: 0 -0.5rem;
@@ -34,29 +35,24 @@ const PaginationButton = styled.button<PaginationButtonsProps>`
 
 interface PaginationProps {
   currentPage: number;
+  limit: number;
   onClick: (page: number) => void;
-  pages: number;
-  pageSize: number;
+  totalPages: number;
 }
 
 const getPages = (
   currentPage: number,
-  pages: number,
-  pageSize: number,
+  limit: number,
+  totalPages: number,
 ): number[] => {
-  // remaining pages
-  const remaining = pages - currentPage;
   // range of pages to be shown
-  const diff = Math.floor(pageSize / 2);
+  const diff = Math.floor(limit / 2);
   // pages array to be returned
   const pagesList: number[] = [];
   // generate pages from total
-  Array.from(Array(pages), (_, idx): number => {
+  Array.from(Array(totalPages), (_, idx): number => {
     return idx + 1;
   }).forEach(page => {
-    console.log('remaining: ', remaining);
-    console.log('diff: ', diff);
-    console.log('page: ', page);
     if (page >= currentPage - diff && page < currentPage) {
       // check if page is within the lower range ( -diff ) of the current page
       pagesList.push(page);
@@ -73,9 +69,9 @@ const getPages = (
 
 const Pagination: FC<PaginationProps> = ({
   currentPage,
+  limit,
   onClick,
-  pages,
-  pageSize,
+  totalPages,
 }) => {
   const [currentPageIdx, setCurrentPageIdx] = useState<number>(currentPage);
   const [currentPages, setCurrentPages] = useState<number[] | null>(null);
@@ -89,15 +85,14 @@ const Pagination: FC<PaginationProps> = ({
   };
   useEffect(() => {
     if (!currentPages) {
-      const list = getPages(currentPage, pages, pageSize);
+      const list = getPages(currentPage, limit, totalPages);
       setCurrentPages(list);
     }
-  }, [currentPages, pages, setCurrentPages]);
+  }, [currentPages, setCurrentPages, totalPages]);
   useEffect(() => {
     if (currentPage !== currentPageIdx) {
-      console.log('page change');
+      onClick(currentPageIdx);
     }
-    onClick(currentPageIdx);
   }, [currentPages, currentPageIdx, setCurrentPages]);
   return (
     <>
@@ -119,7 +114,7 @@ const Pagination: FC<PaginationProps> = ({
               </PaginationButton>
             );
           })}
-          {currentPageIdx !== pages && (
+          {currentPageIdx !== totalPages && (
             <PaginationButton onClick={handleNextClick}>Next</PaginationButton>
           )}
         </PaginationContainer>
