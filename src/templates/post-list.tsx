@@ -1,4 +1,4 @@
-import React, { FC, useState, useEffect, useRef } from 'react';
+import React, { FC, useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
 import { navigate } from '@reach/router';
 import styled from 'styled-components';
@@ -75,11 +75,13 @@ const metaDesc =
   `you want. Enjoy the content.`;
 
 const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
-  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(false);
+  const { isScrollTo } = location?.state || {};
+  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(
+    isScrollTo || false,
+  );
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
   const [{ node: heroNode }] = hero || [];
-  const mainRef = useRef<HTMLHtmlElement | null>(null);
   const handlePaginationClick = (page: number): void => {
     navigate(`/${page === 1 ? '' : page}`, {
       state: {
@@ -104,13 +106,6 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
       window.removeEventListener('scroll', handleScroll);
     };
   }, [isHeaderVisible, setIsHeaderVisible]);
-  useEffect(() => {
-    const { isScrollTo } = location?.state || {};
-    if (isScrollTo) {
-      setIsHeaderVisible(true);
-    }
-    setIsHeaderVisible(false);
-  }, [location]);
   return (
     <Layout>
       <SEO
@@ -126,7 +121,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
       <div
         style={{ paddingTop: location.state?.isScrollTo ? HEADER_HEIGHT : 0 }}
       >
-        <Container ref={mainRef}>
+        <Container>
           {posts && (
             <>
               <Content>
