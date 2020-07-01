@@ -72,15 +72,20 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       },
     });
   });
-  // category pages
-  /* data.allContentfulCategories.edges.forEach(edge => {
-    const { name } = edge.node;
+  // generate pagination for homepage
+  const postsPerPage = 6;
+  const postsLen = data.allContentfulPosts.edges.length;
+  const totalPages = Math.ceil(postsLen / postsPerPage);
+  Array.from({ length: totalPages }).forEach((_, idx) => {
     createPage({
-      path: `categories/${name}`,
-      component: require.resolve('./src/templates/categories.tsx'),
+      path: idx === 0 ? `/` : `/${idx + 1}`,
+      component: require.resolve('./src/templates/post-list.tsx'),
       context: {
-        page: edge.node,
+        currentPage: idx + 1,
+        limit: postsPerPage,
+        skip: idx * postsPerPage,
+        totalPages,
       },
     });
-  }); */
+  });
 };

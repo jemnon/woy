@@ -1,14 +1,17 @@
 import React, { FC, useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
+import { navigate } from '@reach/router';
 import styled from 'styled-components';
 import { HeroType } from '../types/hero';
 import { Post as PostType } from '../types/post';
 import Container, { Content } from '../components/container-styled';
-import Header from '../components/Header';
+import Header, { HEADER_HEIGHT } from '../components/Header';
 import Nav from '../components/Nav';
 import Hero from '../components/Hero';
+import isDomUsable from '../utils';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
+import Pagination from '../components/Pagingation';
 import PostDetail from '../components/PostDetail';
 import SEO from '../components/SEO';
 
@@ -20,7 +23,7 @@ interface HeroNode {
   node: HeroType;
 }
 
-interface HomePageProps {
+interface PostListProps {
   data?: {
     allContentfulPosts?: {
       edges?: PostNode[];
@@ -29,9 +32,19 @@ interface HomePageProps {
       edges?: HeroNode[];
     };
   };
+  location: {
+    state?: {
+      isScrollTo?: boolean;
+    };
+  };
+  pageContext?: {
+    currentPage: number;
+    limit: number;
+    totalPages: number;
+  };
 }
 
-const HomePageListItem = styled.li`
+const PostListItem = styled.li`
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     padding-left: 1.5rem;
     padding-right: 1.5rem;
@@ -61,14 +74,24 @@ const metaDesc =
   `chose a specific ingredient over another and get straight to what ` +
   `you want. Enjoy the content.`;
 
-const IndexPage: FC<HomePageProps> = ({ data }) => {
-  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(false);
+const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
+  const { isScrollTo } = location?.state || {};
+  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(
+    isScrollTo || false,
+  );
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
   const [{ node: heroNode }] = hero || [];
+  const handlePaginationClick = (page: number): void => {
+    navigate(`/${page === 1 ? '' : page}`, {
+      state: {
+        isScrollTo: true,
+      },
+    });
+  };
   useEffect(() => {
+    const heroHeight = document.querySelector('#hero')?.clientHeight || 0;
     const handleScroll = () => {
-      const heroHeight = document.querySelector('#hero')?.clientHeight || 0;
       const windowY = window.pageYOffset;
       const waypoint = heroHeight / 2;
       if (waypoint >= windowY) {
@@ -94,35 +117,53 @@ const IndexPage: FC<HomePageProps> = ({ data }) => {
       <Header isVisible={isHeaderVisible}>
         <Nav isHeaderVisible={isHeaderVisible} />
       </Header>
-      <Hero images={heroNode.images} />
-      <Container>
-        {posts && (
-          <Content>
-            {posts.map((post, idx) => {
-              return (
-                <HomePageListItem key={post.node.id}>
-                  <Link to={`/post/${post.node.slug}`}>
-                    <PostDetail
-                      categories={post.node.categories}
-                      publishDate={post.node.publishDate}
-                      images={post.node.images}
-                      title={post.node.title}
-                      bodyPreview={post.node.bodyPreview}
-                    />
-                  </Link>
-                </HomePageListItem>
-              );
-            })}
-          </Content>
-        )}
-      </Container>
+      {location.state?.isScrollTo ? null : <Hero images={heroNode.images} />}
+      <div
+        style={{ paddingTop: location.state?.isScrollTo ? HEADER_HEIGHT : 0 }}
+      >
+        <Container>
+          {posts && (
+            <>
+              <Content>
+                {posts.map((post, idx) => {
+                  return (
+                    <PostListItem key={post.node.id}>
+                      <Link to={`/post/${post.node.slug}`}>
+                        <PostDetail
+                          categories={post.node.categories}
+                          publishDate={post.node.publishDate}
+                          images={post.node.images}
+                          title={post.node.title}
+                          bodyPreview={post.node.bodyPreview}
+                        />
+                      </Link>
+                    </PostListItem>
+                  );
+                })}
+              </Content>
+              {pageContext?.currentPage && pageContext.totalPages && (
+                <Pagination
+                  currentPage={pageContext?.currentPage}
+                  limit={pageContext?.limit}
+                  onClick={handlePaginationClick}
+                  totalPages={pageContext?.totalPages}
+                />
+              )}
+            </>
+          )}
+        </Container>
+      </div>
     </Layout>
   );
 };
 
 export const query = graphql`
-  {
-    allContentfulPosts(limit: 20, sort: { order: DESC, fields: publishDate }) {
+  query homePageQuery($skip: Int!, $limit: Int!) {
+    allContentfulPosts(
+      limit: $limit
+      skip: $skip
+      sort: { order: DESC, fields: publishDate }
+    ) {
       edges {
         node {
           id
@@ -176,4 +217,4 @@ export const query = graphql`
   }
 `;
 
-export default IndexPage;
+export default PostList;
