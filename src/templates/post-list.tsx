@@ -4,11 +4,11 @@ import { navigate } from '@reach/router';
 import styled from 'styled-components';
 import { HeroType } from '../types/hero';
 import { Post as PostType } from '../types/post';
-import Container, { Content } from '../components/container-styled';
+import Container from '../components/container-styled';
+import Grid from '../components/grid-styled';
 import Header, { HEADER_HEIGHT } from '../components/Header';
 import Nav from '../components/Nav';
 import Hero from '../components/Hero';
-import isDomUsable from '../utils';
 import Layout from '../components/Layout';
 import Link from '../components/Link';
 import Pagination from '../components/Pagingation';
@@ -44,23 +44,9 @@ interface PostListProps {
   };
 }
 
-const PostListItem = styled.li`
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-    margin-bottom: 2rem;
-    &:nth-last-child(-n + 2) {
-      margin-bottom: 0;
-    }
-  }
-  margin-bottom: 1rem;
-  &:last-child {
-    margin-bottom: 0;
-  }
-  a {
-    text-decoration: none;
-    color: ${({ theme }): string => theme.colors.nearBlack};
-  }
+const PostLink = styled.a`
+  text-decoration: none;
+  color: ${({ theme }): string => theme.colors.nearBlack};
 `;
 
 const metaDesc =
@@ -124,23 +110,25 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
         <Container>
           {posts && (
             <>
-              <Content>
+              <Grid columns={2}>
                 {posts.map((post, idx) => {
                   return (
-                    <PostListItem key={post.node.id}>
-                      <Link to={`/post/${post.node.slug}`}>
-                        <PostDetail
-                          categories={post.node.categories}
-                          publishDate={post.node.publishDate}
-                          images={post.node.images}
-                          title={post.node.title}
-                          bodyPreview={post.node.bodyPreview}
-                        />
-                      </Link>
-                    </PostListItem>
+                    <PostLink
+                      as={Link}
+                      key={post.node.id}
+                      to={`/post/${post.node.slug}`}
+                    >
+                      <PostDetail
+                        categories={post.node.categories}
+                        publishDate={post.node.publishDate}
+                        images={post.node.images}
+                        title={post.node.title}
+                        bodyPreview={post.node.bodyPreview}
+                      />
+                    </PostLink>
                   );
                 })}
-              </Content>
+              </Grid>
               {pageContext?.currentPage && pageContext.totalPages && (
                 <Pagination
                   currentPage={pageContext?.currentPage}
