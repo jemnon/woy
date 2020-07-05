@@ -15,7 +15,7 @@ const FooterContent = styled.section`
   padding: 1rem;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     padding: 4rem 1rem;
-    max-width: 64rem;
+    max-width: 90rem;
     grid-template-areas:
       'nav newsletter'
       'copyright copyright';

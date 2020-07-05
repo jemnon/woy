@@ -1,12 +1,12 @@
-import React, { FC, useState, useEffect } from 'react';
+import React, { FC, useRef, useState, useEffect } from 'react';
 import { graphql } from 'gatsby';
-import { navigate } from '@reach/router';
+import { useNavigate } from '@reach/router';
 import styled from 'styled-components';
 import { HeroType } from '../types/hero';
 import { Post as PostType } from '../types/post';
 import Container from '../components/container-styled';
 import Grid from '../components/grid-styled';
-import Header, { HEADER_HEIGHT } from '../components/Header';
+import Header from '../components/Header';
 import Nav from '../components/Nav';
 import Hero from '../components/Hero';
 import Layout from '../components/Layout';
@@ -33,6 +33,7 @@ interface PostListProps {
     };
   };
   location: {
+    key: string;
     state?: {
       isScrollTo?: boolean;
     };
@@ -61,22 +62,21 @@ const metaDesc =
   `you want. Enjoy the content.`;
 
 const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
-  const { isScrollTo } = location?.state || {};
-  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(
-    isScrollTo || false,
-  );
+  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(false);
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const navigate = useNavigate();
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
   const [{ node: heroNode }] = hero || [];
-  const handlePaginationClick = (page: number): void => {
-    navigate(`/${page === 1 ? '' : page}`, {
+  const handlePaginationClick = async (page: number): Promise<void> => {
+    await navigate(`/${page === 1 ? '' : page}`, {
       state: {
         isScrollTo: true,
       },
     });
   };
   useEffect(() => {
-    const heroHeight = document.querySelector('#hero')?.clientHeight || 0;
+    const heroHeight = heroRef.current?.clientHeight || 0;
     const handleScroll = () => {
       const windowY = window.pageYOffset;
       const waypoint = heroHeight / 2;
@@ -103,44 +103,40 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
       <Header isVisible={isHeaderVisible}>
         <Nav isHeaderVisible={isHeaderVisible} />
       </Header>
-      {location.state?.isScrollTo ? null : <Hero images={heroNode.images} />}
-      <div
-        style={{ paddingTop: location.state?.isScrollTo ? HEADER_HEIGHT : 0 }}
-      >
-        <Container>
-          {posts && (
-            <>
-              <Grid columns={2}>
-                {posts.map((post, idx) => {
-                  return (
-                    <PostLink
-                      as={Link}
-                      key={post.node.id}
-                      to={`/post/${post.node.slug}`}
-                    >
-                      <PostDetail
-                        categories={post.node.categories}
-                        publishDate={post.node.publishDate}
-                        images={post.node.images}
-                        title={post.node.title}
-                        bodyPreview={post.node.bodyPreview}
-                      />
-                    </PostLink>
-                  );
-                })}
-              </Grid>
-              {pageContext?.currentPage && pageContext.totalPages && (
-                <Pagination
-                  currentPage={pageContext?.currentPage}
-                  limit={pageContext?.limit}
-                  onClick={handlePaginationClick}
-                  totalPages={pageContext?.totalPages}
-                />
-              )}
-            </>
-          )}
-        </Container>
-      </div>
+      <Hero ref={heroRef} images={heroNode.images} />
+      <Container id="post-list-container">
+        {posts && (
+          <>
+            <Grid columns={3}>
+              {posts.map((post, idx) => {
+                return (
+                  <PostLink
+                    as={Link}
+                    key={post.node.id}
+                    to={`/post/${post.node.slug}`}
+                  >
+                    <PostDetail
+                      categories={post.node.categories}
+                      publishDate={post.node.publishDate}
+                      images={post.node.images}
+                      title={post.node.title}
+                      bodyPreview={post.node.bodyPreview}
+                    />
+                  </PostLink>
+                );
+              })}
+            </Grid>
+            {pageContext?.currentPage && pageContext.totalPages && (
+              <Pagination
+                currentPage={pageContext?.currentPage}
+                limit={pageContext?.limit}
+                onClick={handlePaginationClick}
+                totalPages={pageContext?.totalPages}
+              />
+            )}
+          </>
+        )}
+      </Container>
     </Layout>
   );
 };
@@ -168,7 +164,7 @@ export const query = graphql`
             fixed(width: 400) {
               src
             }
-            fluid {
+            fluid(maxWidth: 1440) {
               aspectRatio
               sizes
               src

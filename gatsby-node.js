@@ -29,7 +29,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
                 src
                 base64
               }
-              fluid {
+              fluid(maxWidth: 1440) {
                 base64
                 aspectRatio
                 sizes
@@ -73,7 +73,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
     });
   });
   // generate pagination for homepage
-  const postsPerPage = 6;
+  const postsPerPage = 9;
   const postsLen = data.allContentfulPosts.edges.length;
   const totalPages = Math.ceil(postsLen / postsPerPage);
   Array.from({ length: totalPages }).forEach((_, idx) => {

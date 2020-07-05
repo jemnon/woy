@@ -11,7 +11,7 @@ const Container = styled.main<ContainerProps>`
   width: 100%;
   max-width: 30rem;
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    max-width: ${({ maxWidth }): string => maxWidth || '64rem'};
+    max-width: ${({ maxWidth }): string => maxWidth || '90rem'};
     padding: 2rem 1rem 4rem;
   }
 `;
