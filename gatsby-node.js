@@ -42,23 +42,6 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
           }
         }
       }
-      allContentfulHeroes {
-        edges {
-          node {
-            images {
-              fluid {
-                aspectRatio
-                sizes
-                src
-                srcSet
-                srcSetWebp
-                srcWebp
-              }
-            }
-            updatedAt
-          }
-        }
-      }
     }
   `);
   // post pages

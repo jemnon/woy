@@ -190,7 +190,7 @@ export const query = graphql`
       edges {
         node {
           images {
-            fluid {
+            fluid(maxWidth: 1920) {
               aspectRatio
               sizes
               src
