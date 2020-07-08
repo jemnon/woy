@@ -5,7 +5,7 @@ interface H1Props {
   whiteSpace?: string;
 }
 
-const H1 = styled.h1<H1Props>`
+const Headline = styled.h1<H1Props>`
   position: relative;
   font-family: ${({ theme }): string => theme.fonts.noto};
   @media ${({ theme }): string => theme.breakpoints.desktop} {
@@ -34,12 +34,37 @@ const H1 = styled.h1<H1Props>`
   }
 `;
 
+type VerticalRhythm = 'cozy' | 'normal' | 'roomy';
+interface H1Props {
+  verticalRhythm?: VerticalRhythm;
+}
+
+const H1 = styled.h1<H1Props>`
+  font-family: ${({ theme }): string => theme.fonts.noto};
+  font-size: 3rem;
+  line-height: 1.5;
+  margin-bottom: ${({ theme }): string => theme.spacing.m};
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    font-size: 3rem;
+    margin-bottom: ${({ theme, verticalRhythm }): string => {
+      if (verticalRhythm === 'cozy') {
+        return theme.spacing.xs;
+      } else if (verticalRhythm === 'normal') {
+        return theme.spacing.m;
+      } else if (verticalRhythm === 'roomy') {
+        return theme.spacing.xl;
+      }
+      return theme.spacing.m;
+    }};
+  }
+`;
+
 const H2 = styled.h2`
   font-family: ${({ theme }): string => theme.fonts.noto};
   font-size: 1.5rem;
-  text-transform: capitalize;
   line-height: 1;
   margin: 0;
   margin-bottom: 1.5rem;
 `;
-export { H1, H2 };
+
+export { Headline, H1, H2 };

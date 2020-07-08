@@ -84,7 +84,6 @@ const AboutPage: FC<AboutPageProps> = ({
       <div style={{ paddingTop: HEADER_HEIGHT }}>
         <Container maxWidth="75rem">
           <Breadcrumbs title="About" />
-          {/* <H1>About</H1> */}
           <AboutPageContent>
             <ImageWrapper id="about-image" borderRadius="0" marginBottom="0">
               <Img

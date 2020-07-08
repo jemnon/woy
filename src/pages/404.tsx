@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import Container from '../components/container-styled';
-import { H1 } from '../components/headings-styled';
+import { Headline } from '../components/headings-styled';
 import { HEADER_HEIGHT } from '../components/Header';
 import Header from '../components/Header';
 import Nav from '../components/Nav';
@@ -25,7 +25,7 @@ const NotFoundPage: FC = () => (
     </Header>
     <div style={{ paddingTop: HEADER_HEIGHT }}>
       <Container>
-        <H1>Oopsies</H1>
+        <Headline>Oopsies</Headline>
         <p>
           You've found yourself on a page that doesn't exist.
           <NotFoundLink as={Link} to="/">

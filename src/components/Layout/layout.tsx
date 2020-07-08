@@ -38,6 +38,17 @@ const theme: DefaultTheme = {
     red: '#ff4136',
     green: '#19a974',
   },
+  spacing: {
+    xxs: '0.25rem',
+    xs: '0.5rem',
+    sm: '0.75rem',
+    m: '1rem',
+    l: '1.5rem',
+    xl: '2rem',
+    xxl: '2.5rem',
+    xxxl: '3rem',
+  },
+  transition: 'all 0.47s ease',
   zIndex: {
     z0: '0',
     z1: '1',
@@ -49,7 +60,6 @@ const theme: DefaultTheme = {
     z999: '999',
     z9999: '9999',
   },
-  transition: 'all 0.47s ease',
 };
 
 const GlobalStyle = createGlobalStyle`
@@ -71,6 +81,14 @@ const GlobalStyle = createGlobalStyle`
   body.disable-scroll {
     overflow: hidden;
   }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 0;
+  } 
   h1,
   h2,
   h3,

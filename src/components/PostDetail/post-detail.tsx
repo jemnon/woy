@@ -1,10 +1,10 @@
 import React, { FC, ReactNode } from 'react';
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 import Img from 'gatsby-image';
 import ImageWrapper from '../image-wrapper-styled';
 import LinkStyles from '../link-styled';
 import { Post } from '../../types/post';
-import { H1 } from '../headings-styled';
+import { Headline } from '../headings-styled';
 
 type PostDetailProps = Post;
 
@@ -139,9 +139,9 @@ const PostDetail: FC<PostDetailProps> = ({
                 month: 'short',
               })}
             </time>
-            <H1 title={title} whiteSpace="nowrap">
+            <Headline title={title} whiteSpace="nowrap">
               {title}
-            </H1>
+            </Headline>
           </PostDetailHeader>
           <PostDetailGridImage>
             <Img
@@ -161,9 +161,9 @@ const PostDetail: FC<PostDetailProps> = ({
                 month: 'short',
               })}
             </time>
-            <H1 bottomSpacing="1rem" title={title}>
+            <Headline bottomSpacing="1rem" title={title}>
               {title}
-            </H1>
+            </Headline>
             {bodyShort?.childMarkdownRemark?.html && (
               <div
                 dangerouslySetInnerHTML={{
