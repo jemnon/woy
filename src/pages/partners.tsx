@@ -3,12 +3,13 @@ import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
 import Breadcrumbs from '../components/Breadcrumbs';
-import Container from '../components/container-styled';
+import Container from '../components/Styles/container-styled';
 import Header from '../components/Header';
-import { H1 } from '../components/headings-styled';
+import { Grid, H1, P } from '../components/Styles/';
 import { HEADER_HEIGHT } from '../components/Header';
 import Layout from '../components/Layout';
 import Nav from '../components/Nav';
+import PartnerCard from '../components/PartnerCard';
 import SEO from '../components/SEO';
 
 interface PartnersPageProps {
@@ -20,7 +21,7 @@ interface PartnersPageProps {
             html: string;
           };
         };
-        image: FluidObject;
+        image: { fluid: FluidObject };
         linkText?: string;
         linkUrl?: string;
         partnerName: string;
@@ -58,7 +59,34 @@ const PartnersPage: FC<PartnersPageProps> = ({
         <Container>
           <Breadcrumbs title="Partners" />
           {contentfulPartners.title && (
-            <H1 verticalRhythm="roomy">{contentfulPartners.title}</H1>
+            <H1 textAlign="center" verticalRhythm="roomy">
+              {contentfulPartners.title}
+            </H1>
+          )}
+          {contentfulPartners.description && (
+            <P
+              dangerouslySetInnerHTML={{
+                __html:
+                  contentfulPartners.description?.childMarkdownRemark?.html,
+              }}
+              textAlign="center"
+              verticalRhythm="roomy"
+            />
+          )}
+          {contentfulPartners.cardList && (
+            <Grid columns={2}>
+              {contentfulPartners.cardList.map(card => (
+                <PartnerCard
+                  description={card.description}
+                  key={card.partnerName}
+                  image={card.image}
+                  linkText={card.linkText}
+                  linkUrl={card.linkUrl}
+                  partnerName={card.partnerName}
+                  promoCode={card.promoCode}
+                />
+              ))}
+            </Grid>
           )}
         </Container>
       </div>
@@ -77,7 +105,7 @@ export const query = graphql`
       }
       cardList {
         image {
-          fluid {
+          fluid(maxWidth: 764) {
             aspectRatio
             sizes
             src

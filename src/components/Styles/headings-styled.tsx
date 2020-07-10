@@ -1,11 +1,7 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { HeadlineProps, HeadingProps } from '../../types/styles';
 
-interface H1Props {
-  bottomSpacing?: string;
-  whiteSpace?: string;
-}
-
-const Headline = styled.h1<H1Props>`
+const Headline = styled.h1<HeadlineProps>`
   position: relative;
   font-family: ${({ theme }): string => theme.fonts.noto};
   @media ${({ theme }): string => theme.breakpoints.desktop} {
@@ -34,18 +30,24 @@ const Headline = styled.h1<H1Props>`
   }
 `;
 
-type VerticalRhythm = 'cozy' | 'normal' | 'roomy';
-interface H1Props {
-  verticalRhythm?: VerticalRhythm;
-}
-
-const H1 = styled.h1<H1Props>`
+const BaseHeadingStyles = css<HeadingProps>`
   font-family: ${({ theme }): string => theme.fonts.noto};
-  font-size: 3rem;
   line-height: 1.5;
-  margin-bottom: ${({ theme }): string => theme.spacing.m};
+  text-align: ${({ textAlign }): string => textAlign || 'left'};
+
+  margin: 0;
+  margin-bottom: ${({ theme, verticalRhythm }): string => {
+    if (verticalRhythm === 'cozy') {
+      return theme.spacing.xxs;
+    } else if (verticalRhythm === 'normal') {
+      return theme.spacing.m;
+    } else if (verticalRhythm === 'roomy') {
+      return theme.spacing.l;
+    }
+    return theme.spacing.m;
+  }};
+
   @media ${({ theme }): string => theme.breakpoints.desktop} {
-    font-size: 3rem;
     margin-bottom: ${({ theme, verticalRhythm }): string => {
       if (verticalRhythm === 'cozy') {
         return theme.spacing.xs;
@@ -59,12 +61,19 @@ const H1 = styled.h1<H1Props>`
   }
 `;
 
-const H2 = styled.h2`
-  font-family: ${({ theme }): string => theme.fonts.noto};
-  font-size: 1.5rem;
-  line-height: 1;
-  margin: 0;
-  margin-bottom: 1.5rem;
+const H1 = styled.h1<HeadingProps>`
+  ${BaseHeadingStyles}
+  font-size: 2.25rem;
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    font-size: 3rem;
+  }
+`;
+
+const H2 = styled.h2<HeadingProps>`
+  ${BaseHeadingStyles}
+  @media ${({ theme }): string => theme.breakpoints.desktop} {
+    font-size: 1.5rem;
+  }
 `;
 
 export { Headline, H1, H2 };

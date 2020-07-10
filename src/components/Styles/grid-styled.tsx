@@ -6,7 +6,7 @@ interface GridProps {
   columns: Columns;
 }
 
-const Grid = styled.div<GridProps>`
+export const Grid = styled.div<GridProps>`
   display: grid;
   row-gap: 1rem;
   @media ${({ theme }): string => theme.breakpoints.desktop} {

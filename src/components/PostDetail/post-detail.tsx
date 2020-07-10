@@ -1,10 +1,10 @@
 import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
-import ImageWrapper from '../image-wrapper-styled';
-import LinkStyles from '../link-styled';
+import ImageWrapper from '../Styles/image-wrapper-styled';
+import LinkStyles from '../Styles/link-styled';
 import { Post } from '../../types/post';
-import { Headline } from '../headings-styled';
+import { Headline } from '../Styles/headings-styled';
 
 type PostDetailProps = Post;
 

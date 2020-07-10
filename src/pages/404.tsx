@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import Container from '../components/container-styled';
-import { Headline } from '../components/headings-styled';
+import Container from '../components/Styles/container-styled';
+import { Headline } from '../components/Styles/headings-styled';
 import { HEADER_HEIGHT } from '../components/Header';
 import Header from '../components/Header';
 import Nav from '../components/Nav';
