@@ -11,10 +11,9 @@ interface GridProps {
 
 export const Grid = styled.div<GridProps>`
   display: grid;
-  row-gap: 1rem;
+  row-gap: 2rem;
   ${up('md')} {
     column-gap: 2rem;
-    row-gap: 2rem;
     grid-template-columns: ${({ columns }): string => {
       return `repeat(${columns}, minmax(0, 1fr))`;
     }};
