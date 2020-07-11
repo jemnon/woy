@@ -1,8 +1,8 @@
 import React, { FC } from 'react';
 import Img, { FluidObject } from 'gatsby-image';
 import styled from 'styled-components';
-import { Button } from '../Styles';
-import Link from '../Link';
+import { up } from 'styled-breakpoints';
+import { ButtonLink } from '../Styles';
 
 interface PartnerCardProps {
   description: {
@@ -18,6 +18,8 @@ interface PartnerCardProps {
 }
 
 const PartnerCardArticle = styled.article`
+  display: flex;
+  flex-direction: column;
   width: 100%;
 `;
 
@@ -47,6 +49,19 @@ const PartnerCardDescription = styled.p`
     font-size: 1rem;
     margin-bottom: ${({ theme }): string => theme.spacing.m};
   }
+
+  & + button,
+  & + a {
+    margin-top: ${({ theme }): string => theme.spacing.m};
+  }
+
+  ${up('md')} {
+    flex: 1;
+    & + button,
+    & + a {
+      margin-top: 0;
+    }
+  }
 `;
 
 const PartnerCardPromoCode = styled.div`
@@ -62,6 +77,7 @@ const PartnerCardContent = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+  flex: 1;
 `;
 
 const PartnerCard: FC<PartnerCardProps> = ({
@@ -84,8 +100,10 @@ const PartnerCard: FC<PartnerCardProps> = ({
             __html: description?.childMarkdownRemark?.html,
           }}
         />
-        <PartnerCardPromoCode>{promoCode}</PartnerCardPromoCode>
-        <Button>{linkText}</Button>
+        {promoCode && <PartnerCardPromoCode>{promoCode}</PartnerCardPromoCode>}
+        <ButtonLink href={linkUrl} isInverted target="_blank">
+          {linkText}
+        </ButtonLink>
       </PartnerCardContent>
     </PartnerCardArticle>
   );

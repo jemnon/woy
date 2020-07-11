@@ -1,12 +1,13 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import { up } from 'styled-breakpoints';
 import { graphql } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
+import { Grid, H1, P } from '../components/Styles/';
+import { HEADER_HEIGHT } from '../components/Header';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Container from '../components/Styles/container-styled';
 import Header from '../components/Header';
-import { Grid, H1, P } from '../components/Styles/';
-import { HEADER_HEIGHT } from '../components/Header';
 import Layout from '../components/Layout';
 import Nav from '../components/Nav';
 import PartnerCard from '../components/PartnerCard';
@@ -40,6 +41,23 @@ interface PartnersPageProps {
   };
 }
 
+const PartnersPageTitle = styled.section`
+  max-width: 350px;
+  margin-left: auto;
+  margin-right: auto;
+  ${up('md')} {
+    max-width: none;
+  }
+`;
+
+const PartnersPageDescription = styled.section`
+  ${up('md')} {
+    max-width: 560px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+`;
+
 const PartnersPage: FC<PartnersPageProps> = ({
   data: { contentfulPartners },
   location,
@@ -59,19 +77,23 @@ const PartnersPage: FC<PartnersPageProps> = ({
         <Container>
           <Breadcrumbs title="Partners" />
           {contentfulPartners.title && (
-            <H1 textAlign="center" verticalRhythm="roomy">
-              {contentfulPartners.title}
-            </H1>
+            <PartnersPageTitle>
+              <H1 textAlign="center" verticalRhythm="roomy">
+                {contentfulPartners.title}
+              </H1>
+            </PartnersPageTitle>
           )}
           {contentfulPartners.description && (
-            <P
-              dangerouslySetInnerHTML={{
-                __html:
-                  contentfulPartners.description?.childMarkdownRemark?.html,
-              }}
-              textAlign="center"
-              verticalRhythm="roomy"
-            />
+            <PartnersPageDescription>
+              <P
+                dangerouslySetInnerHTML={{
+                  __html:
+                    contentfulPartners.description?.childMarkdownRemark?.html,
+                }}
+                textAlign="center"
+                verticalRhythm="roomy"
+              />
+            </PartnersPageDescription>
           )}
           {contentfulPartners.cardList && (
             <Grid columns={2}>

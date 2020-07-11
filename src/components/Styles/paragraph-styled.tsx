@@ -28,6 +28,10 @@ export const P = styled.p<ParagraphProps>`
       return theme.spacing.m;
     }};
   }
+
+  & > p {
+    margin-bottom: 0;
+  }
 `;
 
 export default P;

@@ -1,12 +1,22 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
-export const Button = styled.button`
+type Color = 'primary' | 'secondary' | 'tertiary';
+
+interface ButtonProps {
+  color?: Color;
+  isInverted?: boolean;
+}
+
+const colorMap: { [key: string]: string } = {
+  primary: 'orange',
+  secondary: 'teal',
+  tertiary: 'nearBlack',
+};
+
+const BaseButton = css<ButtonProps>`
   display: inline-block;
   border-radius: 20px;
-  padding-top: ${({ theme }): string => theme.spacing.xs};
-  padding-bottom: ${({ theme }): string => theme.spacing.xs};
-  padding-left: ${({ theme }): string => theme.spacing.l};
-  padding-right: ${({ theme }): string => theme.spacing.l};
+  padding: 0.5rem 2.25rem;
 
   outline: none;
   cursor: pointer;
@@ -16,9 +26,41 @@ export const Button = styled.button`
   font-size: 1rem;
   text-align: center;
 
-  background-color: ${({ theme }): string => theme.colors.white};
-  border: 1px solid ${({ theme }): string => theme.colors.orange};
-  color: ${({ theme }): string => theme.colors.orange};
+  background-color: ${({ color, isInverted, theme }): string => {
+    if (isInverted) {
+      return theme.colors.white;
+    }
+    return theme.colors[colorMap[color || 'primary']];
+  }};
+  border: 1px solid
+    ${({ color, isInverted, theme }): string => {
+      if (isInverted) {
+        return theme.colors[colorMap[color || 'primary']];
+      }
+      return theme.colors.white;
+    }};
+  color: ${({ color, isInverted, theme }): string => {
+    if (isInverted) {
+      return theme.colors[colorMap[color || 'primary']];
+    }
+    return theme.colors.white;
+  }};
+
+  opacity: 1;
+  transition: ${({ theme }): string => theme.transition};
+
+  &:hover {
+    opacity: 0.5;
+  }
+`;
+
+export const Button = styled.button<ButtonProps>`
+  ${BaseButton}
+`;
+
+export const ButtonLink = styled.a<ButtonProps>`
+  text-decoration: none;
+  ${BaseButton}
 `;
 
 export default Button;

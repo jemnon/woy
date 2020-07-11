@@ -2,9 +2,15 @@ import { DefaultTheme } from 'styled-components';
 
 const theme: DefaultTheme = {
   breakpoints: {
+    /* TODO: remove once conversion to styled-components is done */
     desktop: 'screen and (min-width: 960px)',
     tablet: 'screen and (min-width: 480px) and (max-width: 959px)',
     mobile: 'screen and (max-width: 479px)',
+    /* ^^ */
+    sm: '480px',
+    md: '960px',
+    lg: '1440px',
+    xlg: '1920px',
   },
   fonts: {
     latoBold:
