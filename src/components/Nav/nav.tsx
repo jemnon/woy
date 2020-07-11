@@ -107,7 +107,7 @@ const Nav: FC<NavProps> = ({ isHeaderVisible }) => {
         <NavList>
           <NavListItem>
             <Link activeClassName="is-active" to="/">
-              Blog
+              Recipes
             </Link>
           </NavListItem>
           <NavListItem>
