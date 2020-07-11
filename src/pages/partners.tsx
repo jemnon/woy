@@ -41,8 +41,8 @@ interface PartnersPageProps {
   };
 }
 
-const PartnersPageTitle = styled.section`
-  max-width: 350px;
+const PartnersPageTitle = styled.h1`
+  max-width: 21.75rem; /* 348px */
   margin-left: auto;
   margin-right: auto;
   ${up('md')} {
@@ -52,7 +52,7 @@ const PartnersPageTitle = styled.section`
 
 const PartnersPageDescription = styled.section`
   ${up('md')} {
-    max-width: 560px;
+    max-width: 35rem; /* 560px */
     margin-left: auto;
     margin-right: auto;
   }
@@ -77,23 +77,24 @@ const PartnersPage: FC<PartnersPageProps> = ({
         <Container>
           <Breadcrumbs title="Partners" />
           {contentfulPartners.title && (
-            <PartnersPageTitle>
-              <H1 textAlign="center" verticalRhythm="roomy">
-                {contentfulPartners.title}
-              </H1>
-            </PartnersPageTitle>
+            <H1
+              as={PartnersPageTitle}
+              textAlign="center"
+              spacingDensity="roomy"
+            >
+              {contentfulPartners.title}
+            </H1>
           )}
           {contentfulPartners.description && (
-            <PartnersPageDescription>
-              <P
-                dangerouslySetInnerHTML={{
-                  __html:
-                    contentfulPartners.description?.childMarkdownRemark?.html,
-                }}
-                textAlign="center"
-                verticalRhythm="roomy"
-              />
-            </PartnersPageDescription>
+            <P
+              as={PartnersPageDescription}
+              dangerouslySetInnerHTML={{
+                __html:
+                  contentfulPartners.description?.childMarkdownRemark?.html,
+              }}
+              textAlign="center"
+              spacingDensity="roomy"
+            />
           )}
           {contentfulPartners.cardList && (
             <Grid columns={2}>

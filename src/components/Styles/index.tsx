@@ -5,3 +5,4 @@ export * from './headings-styled';
 export * from './image-wrapper-styled';
 export * from './link-styled';
 export * from './paragraph-styled';
+export * from './spacing-styled';

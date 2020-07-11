@@ -24,7 +24,7 @@ const PartnerCardArticle = styled.article`
 `;
 
 const PartnerCardFigure = styled.figure`
-  margin-bottom: ${({ theme }): string => theme.spacing.m};
+  margin-bottom: ${({ theme }): string => theme.spacing.s4};
 `;
 
 const PartnerCardTitle = styled.h3`
@@ -33,7 +33,7 @@ const PartnerCardTitle = styled.h3`
   font-weight: 700;
   text-align: center;
 
-  margin-bottom: ${({ theme }): string => theme.spacing.m};
+  margin-bottom: ${({ theme }): string => theme.spacing.s4};
 `;
 
 const PartnerCardDescription = styled.p`
@@ -47,12 +47,12 @@ const PartnerCardDescription = styled.p`
 
   & + div {
     font-size: 1rem;
-    margin-bottom: ${({ theme }): string => theme.spacing.m};
+    margin-bottom: ${({ theme }): string => theme.spacing.s4};
   }
 
   & + button,
   & + a {
-    margin-top: ${({ theme }): string => theme.spacing.m};
+    margin-top: ${({ theme }): string => theme.spacing.s4};
   }
 
   ${up('md')} {
@@ -70,7 +70,7 @@ const PartnerCardPromoCode = styled.div`
   text-transform: uppercase;
   text-align: center;
 
-  margin-bottom: ${({ theme }): string => theme.spacing.m};
+  margin-bottom: ${({ theme }): string => theme.spacing.s4};
 `;
 
 const PartnerCardContent = styled.div`
