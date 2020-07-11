@@ -114,16 +114,16 @@ const Nav: FC<NavProps> = ({ isHeaderVisible }) => {
             <NavListDivider />
           </NavListItem>
           <NavListItem>
-            <Link activeClassName="is-active" to="/partners">
-              Partners
+            <Link activeClassName="is-active" to="/about">
+              About
             </Link>
           </NavListItem>
           <NavListItem>
             <NavListDivider />
           </NavListItem>
           <NavListItem>
-            <Link activeClassName="is-active" to="/about">
-              About
+            <Link activeClassName="is-active" to="/partners">
+              Partners
             </Link>
           </NavListItem>
           <NavListItem>
