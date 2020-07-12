@@ -33,10 +33,16 @@ const theme: DefaultTheme = {
     lightBrown: '#d5a188',
     nearBlack: '#111',
     nearWhite: '#F9F9F9',
+    darkOrange: '#BB5B34',
     orange: '#cf7651',
     white: '#ffffff',
     red: '#ff4136',
     green: '#19a974',
+  },
+  maxWidths: {
+    sm: '480px',
+    md: '960px',
+    lg: '1440px',
   },
   spacing: {
     s1: '0.25rem' /* 4px */,

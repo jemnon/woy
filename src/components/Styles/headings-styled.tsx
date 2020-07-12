@@ -44,14 +44,14 @@ const BaseHeading = css<HeadingProps>`
 const H1 = styled.h1<HeadingProps>`
   ${BaseHeading}
   font-size: 2.25rem;
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
+  ${up('md')} {
     font-size: 3rem;
   }
 `;
 
 const H2 = styled.h2<HeadingProps>`
   ${BaseHeading}
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
+  ${up('md')} {
     font-size: 1.5rem;
   }
 `;
