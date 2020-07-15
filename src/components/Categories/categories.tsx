@@ -3,8 +3,8 @@ import { globalHistory } from '@reach/router';
 import styled from 'styled-components';
 import Link from '../Link';
 import { Categories as CategoriesType } from '../../types/categories';
-import { HR } from '../container-styled';
-import { H2 } from '../headings-styled';
+import { HR } from '../Styles/container-styled';
+import { H2 } from '../Styles/headings-styled';
 import useIntersectionObserver from '../../hooks/useIntersectionObserver';
 
 interface CategoriesProps {

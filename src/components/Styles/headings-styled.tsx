@@ -1,14 +1,12 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
+import { up } from 'styled-breakpoints';
+import { BottomSpacing } from './spacing-styled';
+import { HeadlineProps, HeadingProps } from '../../types/styles';
 
-interface H1Props {
-  bottomSpacing?: string;
-  whiteSpace?: string;
-}
-
-const H1 = styled.h1<H1Props>`
+const Headline = styled.h1<HeadlineProps>`
   position: relative;
   font-family: ${({ theme }): string => theme.fonts.noto};
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
+  ${up('md')} {
     font-size: 1.75rem;
     padding-left: 1.5rem;
     white-space: ${({ whiteSpace }): string => whiteSpace || ''};
@@ -34,12 +32,28 @@ const H1 = styled.h1<H1Props>`
   }
 `;
 
-const H2 = styled.h2`
+const BaseHeading = css<HeadingProps>`
   font-family: ${({ theme }): string => theme.fonts.noto};
-  font-size: 1.5rem;
-  text-transform: capitalize;
-  line-height: 1;
+  line-height: 1.5;
+  text-align: ${({ textAlign }): string => textAlign || 'left'};
+
   margin: 0;
-  margin-bottom: 1.5rem;
+  ${BottomSpacing};
 `;
-export { H1, H2 };
+
+const H1 = styled.h1<HeadingProps>`
+  ${BaseHeading}
+  font-size: 2.25rem;
+  ${up('md')} {
+    font-size: 3rem;
+  }
+`;
+
+const H2 = styled.h2<HeadingProps>`
+  ${BaseHeading}
+  ${up('md')} {
+    font-size: 1.5rem;
+  }
+`;
+
+export { Headline, H1, H2 };

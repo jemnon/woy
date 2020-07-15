@@ -61,12 +61,17 @@ const NavMobile: FC<NavMobileProps> = ({ isVisible, onClick }) => {
       <ul>
         <NavMobileListItem>
           <Link activeClassName="is-active" to="/" onClick={onClick}>
-            Blog
+            Recipes
           </Link>
         </NavMobileListItem>
         <NavMobileListItem>
           <Link activeClassName="is-active" to="/about">
             About
+          </Link>
+        </NavMobileListItem>
+        <NavMobileListItem>
+          <Link activeClassName="is-active" to="/partners">
+            Partners
           </Link>
         </NavMobileListItem>
         <NavMobileListItem>
@@ -78,7 +83,7 @@ const NavMobile: FC<NavMobileProps> = ({ isVisible, onClick }) => {
           </Link>
         </NavMobileListItem>
         <NavMobileListItem className="is-last">
-          <a href="mailto:jerimobley914@gmail.com" target="_top">
+          <a href="mailto:whisperofyum@gmail.com" target="_top">
             Contact
           </a>
         </NavMobileListItem>
