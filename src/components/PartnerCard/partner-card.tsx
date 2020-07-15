@@ -95,11 +95,13 @@ const PartnerCard: FC<PartnerCardProps> = ({
       </PartnerCardFigure>
       <PartnerCardContent>
         <PartnerCardTitle>{partnerName}</PartnerCardTitle>
-        <PartnerCardDescription
-          dangerouslySetInnerHTML={{
-            __html: description?.childMarkdownRemark?.html,
-          }}
-        />
+        {description && (
+          <PartnerCardDescription
+            dangerouslySetInnerHTML={{
+              __html: description?.childMarkdownRemark?.html,
+            }}
+          />
+        )}
         {promoCode && <PartnerCardPromoCode>{promoCode}</PartnerCardPromoCode>}
         <ButtonLink href={linkUrl} isInverted target="_blank">
           {linkText}

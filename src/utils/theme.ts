@@ -2,7 +2,7 @@ import { DefaultTheme } from 'styled-components';
 
 const theme: DefaultTheme = {
   breakpoints: {
-    /* TODO: remove once conversion to styled-components is done */
+    /* TODO: remove once conversion to styled-breakpoints is done */
     desktop: 'screen and (min-width: 960px)',
     tablet: 'screen and (min-width: 480px) and (max-width: 959px)',
     mobile: 'screen and (max-width: 479px)',
