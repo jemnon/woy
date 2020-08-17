@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { up } from 'styled-breakpoints';
 
 interface ContainerProps {
   maxWidth?: string;
@@ -7,21 +8,16 @@ interface ContainerProps {
 const Container = styled.main<ContainerProps>`
   margin-left: auto;
   margin-right: auto;
-  padding: 1rem 1rem 2rem;
+  padding: ${({ theme }): string => theme.spacing.s4};
+  padding-bottom: ${({ theme }): string => theme.spacing.s8};
   width: 100%;
-  max-width: 30rem;
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
-    max-width: ${({ maxWidth }): string => maxWidth || '90rem'};
-    padding: 2rem 1rem 4rem;
-  }
-`;
-
-export const Content = styled.ul`
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(50%, auto));
-    margin-left: -1.5rem;
-    margin-right: -1.5rem;
+  max-width: ${({ theme }): string => theme.maxWidths.sm};
+  ${up('md')} {
+    max-width: ${({ maxWidth }): string => maxWidth || '64rem'};
+    padding-top: ${({ theme }): string => theme.spacing.s8};
+    padding-left: ${({ theme }): string => theme.spacing.s4};
+    padding-right: ${({ theme }): string => theme.spacing.s4};
+    padding-bottom: 4rem;
   }
 `;
 

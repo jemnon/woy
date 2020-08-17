@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Post as PostType } from '../types/post';
-import Container from '../components/container-styled';
+import Container from '../components/Styles/container-styled';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Header from '../components/Header';
 import { HEADER_HEIGHT } from '../components/Header';

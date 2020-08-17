@@ -4,8 +4,8 @@ import { useNavigate } from '@reach/router';
 import styled from 'styled-components';
 import { HeroType } from '../types/hero';
 import { Post as PostType } from '../types/post';
-import Container from '../components/container-styled';
-import Grid from '../components/grid-styled';
+import Container from '../components/Styles/container-styled';
+import Grid from '../components/Styles/grid-styled';
 import Header from '../components/Header';
 import Nav from '../components/Nav';
 import Hero from '../components/Hero';
@@ -186,7 +186,7 @@ export const query = graphql`
       edges {
         node {
           images {
-            fluid {
+            fluid(maxWidth: 1920) {
               aspectRatio
               sizes
               src
