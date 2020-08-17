@@ -68,8 +68,8 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
   const [{ node: heroNode }] = hero || [];
-  const handlePaginationClick = async (page: number): Promise<void> => {
-    await navigate(`/${page === 1 ? '' : page}`, {
+  const handlePaginationClick = (page: number): void => {
+    navigate(`/${page === 1 ? '' : page}`, {
       state: {
         isScrollTo: true,
       },

@@ -13,7 +13,8 @@ const Container = styled.main<ContainerProps>`
   width: 100%;
   max-width: ${({ theme }): string => theme.maxWidths.sm};
   ${up('md')} {
-    max-width: ${({ maxWidth }): string => maxWidth || '64rem'};
+    max-width: ${({ maxWidth, theme }): string =>
+      maxWidth || theme.maxWidths.lg};
     padding-top: ${({ theme }): string => theme.spacing.s8};
     padding-left: ${({ theme }): string => theme.spacing.s4};
     padding-right: ${({ theme }): string => theme.spacing.s4};

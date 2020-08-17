@@ -1,5 +1,4 @@
 var detectBrowser = require('detect-browser');
-const { isCallChain } = require('typescript');
 var browser = detectBrowser.detect();
 
 exports.onClientEntry = function() {
@@ -8,12 +7,19 @@ exports.onClientEntry = function() {
   }
 };
 
-exports.onRouteUpdate = ({ location, prevLocation }) => {};
+exports.onRouteUpdate = ({ location, prevLocation }) => {
+  console.log('prev: location: ', prevLocation);
+  if (location.pathname.match(/\/.*[0-9]+/)) {
+    const element = document.querySelector('#post-list-container');
+    element.scrollIntoView();
+  }
+};
 
 exports.shouldUpdateScroll = ({
   prevRouterProps: { location: prevLocation },
   routerProps: { location },
 }) => {
+  console.log('yo');
   if (
     location.pathname.match(/\/.*[0-9]+/) ||
     (prevLocation.pathname.match(/\/.*[0-9]+/) &&
