@@ -13,6 +13,11 @@ const postsQuery = `{
         categories {
           name
         }
+        body {
+          childMarkdownRemark {
+            html
+          }
+        }
         images {
           fluid {
             aspectRatio
