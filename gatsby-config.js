@@ -13,7 +13,7 @@ const postsQuery = `{
         categories {
           name
         }
-        body {
+        bodyPreview {
           childMarkdownRemark {
             html
           }
