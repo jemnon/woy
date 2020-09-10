@@ -19,7 +19,7 @@ const postsQuery = `{
           }
         }
         images {
-          fluid {
+          fluid(maxWidth: 100) {
             aspectRatio
             src
             srcSet

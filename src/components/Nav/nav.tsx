@@ -1,5 +1,6 @@
 import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import Search from '@whisperofyum/search';
 import IconMobile from '../../images/svg/icons/menu-offset.svg';
 import Link from '../Link';
 import Logo from '../../images/svg/logo-black-horizontal.svg';
@@ -146,6 +147,13 @@ const Nav: FC<NavProps> = ({ isHeaderVisible }) => {
             </a>
           </NavListItem>
         </NavList>
+        <Search
+          appId={process.env.GATSBY_ALGOLIA_APP_ID || ''}
+          indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME || ''}
+          isFixed
+          searchKey={process.env.GATSBY_ALGOLIA_API_SEARCH_KEY || ''}
+          onClick={(slug): void => console.log('slug: ', slug)}
+        />
         <NavMobileButton onClick={handleMobileClick} type="button">
           <IconMobile />
         </NavMobileButton>
