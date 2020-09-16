@@ -49,7 +49,7 @@ const getPages = (
   totalPages: number,
 ): number[] => {
   // range of pages to be shown
-  const diff = Math.floor(limit / 2);
+  const diff = 2;
   // pages array to be returned
   const pagesList: number[] = [];
   // generate pages from total
