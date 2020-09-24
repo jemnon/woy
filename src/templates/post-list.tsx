@@ -1,7 +1,7 @@
-import React, { FC, useState, useEffect } from 'react';
-import { graphql } from 'gatsby';
-import { navigate } from '@reach/router';
+import React, { FC, useState, useEffect, useRef } from 'react';
 import styled from 'styled-components';
+import { graphql } from 'gatsby';
+import { useNavigate } from '@reach/router';
 import { HeroType } from '../types/hero';
 import { Post as PostType } from '../types/post';
 import Container from '../components/Styles/container-styled';
@@ -14,6 +14,7 @@ import Link from '../components/Link';
 import Pagination from '../components/Pagingation';
 import PostDetail from '../components/PostDetail';
 import SEO from '../components/SEO';
+import useShowHero from '../hooks/useShowHero';
 
 interface PostNode {
   node: PostType;
@@ -32,11 +33,13 @@ interface PostListProps {
       edges?: HeroNode[];
     };
   };
+
   location: {
-    state?: {
-      isScrollTo?: boolean;
+    state: {
+      page?: number;
     };
   };
+
   pageContext?: {
     currentPage: number;
     limit: number;
@@ -61,23 +64,27 @@ const metaDesc =
   `you want. Enjoy the content.`;
 
 const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
-  const { isScrollTo } = location?.state || {};
-  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(
-    isScrollTo || false,
-  );
+  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(false);
+  const heroRef = useRef<HTMLDivElement | null>(null);
+  const showHero = useShowHero(location);
+  const navigate = useNavigate();
+
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
   const [{ node: heroNode }] = hero || [];
+
   const handlePaginationClick = (page: number): void => {
     navigate(`/${page === 1 ? '' : page}`, {
       state: {
-        isScrollTo: true,
+        page,
       },
     });
   };
+
   useEffect(() => {
-    const heroHeight = document.querySelector('#hero')?.clientHeight || 0;
-    const handleScroll = () => {
+    const heroHeight = heroRef.current?.clientHeight || 0;
+    const handleScroll = (): void => {
+      if (!showHero) return;
       const windowY = window.pageYOffset;
       const waypoint = heroHeight / 2;
       if (waypoint >= windowY) {
@@ -91,7 +98,15 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
     return (): void => {
       window.removeEventListener('scroll', handleScroll);
     };
-  }, [isHeaderVisible, setIsHeaderVisible]);
+  }, [isHeaderVisible, setIsHeaderVisible, showHero]);
+  useEffect(() => {
+    if (!showHero) {
+      setIsHeaderVisible(true);
+    }
+    if (showHero) {
+      setIsHeaderVisible(false);
+    }
+  }, [showHero]);
   return (
     <Layout>
       <SEO
@@ -103,10 +118,8 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
       <Header isVisible={isHeaderVisible}>
         <Nav isHeaderVisible={isHeaderVisible} />
       </Header>
-      {location.state?.isScrollTo ? null : <Hero images={heroNode.images} />}
-      <div
-        style={{ paddingTop: location.state?.isScrollTo ? HEADER_HEIGHT : 0 }}
-      >
+      {showHero && <Hero ref={heroRef} images={heroNode.images} />}
+      <div style={{ paddingTop: HEADER_HEIGHT }}>
         <Container>
           {posts && (
             <>

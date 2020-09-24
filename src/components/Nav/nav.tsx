@@ -109,17 +109,17 @@ const Nav: FC<NavProps> = ({ isHeaderVisible }) => {
     setIsSearchVisible(!isSearchVisible);
   };
   useEffect(() => {
-    if (!isHeaderVisible || isSearchVisible) {
+    if (!isHeaderVisible) {
       setIsMobileVisible(false);
     } else if (isHeaderVisible && isMobileVisible) {
       setIsMobileVisible(true);
     }
-  }, [isHeaderVisible, isSearchVisible]);
+  }, [isHeaderVisible]);
   useEffect(() => {
-    if (!isHeaderVisible || isMobileVisible) {
+    if (!isHeaderVisible) {
       setIsSearchVisible(false);
     }
-  }, [isHeaderVisible, isMobileVisible]);
+  }, [isHeaderVisible]);
   return (
     <>
       <NavContainer role="main">
@@ -187,6 +187,9 @@ const Nav: FC<NavProps> = ({ isHeaderVisible }) => {
             indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME || ''}
             searchKey={process.env.GATSBY_ALGOLIA_API_SEARCH_KEY || ''}
             onClick={handleSearchResultClick}
+            onOutsideClick={(): void => {
+              setIsSearchVisible(false);
+            }}
           />
         )}
       </NavContainer>
