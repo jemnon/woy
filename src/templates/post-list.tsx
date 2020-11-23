@@ -145,7 +145,6 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
               {pageContext?.currentPage && pageContext.totalPages && (
                 <Pagination
                   currentPage={pageContext?.currentPage}
-                  limit={pageContext?.limit}
                   onClick={handlePaginationClick}
                   totalPages={pageContext?.totalPages}
                 />

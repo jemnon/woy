@@ -1,16 +1,18 @@
 import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { up } from 'styled-breakpoints';
 
 const PaginationContainer = styled.section`
   display: flex;
   align-items: center;
   justify-content: center;
   flex-wrap: wrap;
-  padding: 2rem 0 0;
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
+
+  padding: ${({ theme }): string => theme.spacing.s8} 0 0;
+  margin: 0 -0.5rem;
+  ${up('md')} {
     padding: 4rem 0 0;
   }
-  margin: 0 -0.5rem;
 `;
 
 interface PaginationButtonsProps {
@@ -19,9 +21,14 @@ interface PaginationButtonsProps {
 
 const PaginationButton = styled.button<PaginationButtonsProps>`
   display: inline-block;
+
   padding: 0.5rem 1rem;
-  margin-left: 0.25rem;
-  margin-right: 0.25rem;
+  margin-left: 0.125rem;
+  margin-right: 0.125rem;
+  ${up('md')} {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+  }
 
   font-weight: bold;
 
@@ -38,16 +45,11 @@ const PaginationButton = styled.button<PaginationButtonsProps>`
 
 interface PaginationProps {
   currentPage: number;
-  limit: number;
   onClick: (page: number) => void;
   totalPages: number;
 }
 
-const getPages = (
-  currentPage: number,
-  limit: number,
-  totalPages: number,
-): number[] => {
+const getPages = (currentPage: number, totalPages: number): number[] => {
   // range of pages to be shown
   const diff = 2;
   // pages array to be returned
@@ -72,7 +74,6 @@ const getPages = (
 
 const Pagination: FC<PaginationProps> = ({
   currentPage,
-  limit,
   onClick,
   totalPages,
 }) => {
@@ -88,7 +89,7 @@ const Pagination: FC<PaginationProps> = ({
   };
   useEffect(() => {
     if (!currentPages) {
-      const list = getPages(currentPage, limit, totalPages);
+      const list = getPages(currentPage, totalPages);
       setCurrentPages(list);
     }
   }, [currentPages, setCurrentPages, totalPages]);
