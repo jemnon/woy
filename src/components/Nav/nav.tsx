@@ -1,6 +1,7 @@
 import React, { FC, useEffect, useState } from 'react';
 import { navigate } from 'gatsby';
 import styled from 'styled-components';
+import { up } from 'styled-breakpoints';
 import Search from '@whisperofyum/search';
 import IconMobile from '../../images/svg/icons/menu-offset.svg';
 import Link from '../Link';
@@ -24,10 +25,12 @@ const NavContent = styled.div`
   display: flex;
   align-items: center;
   height: 100%;
+
+  padding-right: ${({ theme }): string => theme.spacing.s2};
 `;
 
 const NavList = styled.ul`
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
+  ${up('md')} {
     display: flex;
   }
   display: none;
@@ -58,22 +61,24 @@ const NavListItem = styled.li`
 `;
 
 const NavListDivider = styled.div`
-  background-color: ${({ theme }): string => theme.colors.nearBlack};
   width: 0.125rem;
   height: 0.5625rem;
+
   margin-left: 1rem;
   margin-right: 1rem;
+
+  background-color: ${({ theme }): string => theme.colors.nearBlack};
 `;
 
 const NavMobileButton = styled.button`
   background-color: transparent;
   padding: 0;
-  padding-left: ${({ theme }): string => theme.spacing.s4};
-  padding-right: ${({ theme }): string => theme.spacing.s4};
+  padding-left: ${({ theme }): string => theme.spacing.s2};
+  padding-right: ${({ theme }): string => theme.spacing.s2};
   outline: none;
   border: none;
   cursor: pointer;
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
+  ${up('md')} {
     display: none;
   }
   div {

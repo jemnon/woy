@@ -9,13 +9,14 @@ const NavSearchButtonContainer = styled.button`
   align-items: center;
 
   padding: 0;
-  padding-left: ${({ theme }): string => theme.spacing.s4};
-  padding-right: ${({ theme }): string => theme.spacing.s4};
+  padding-left: ${({ theme }): string => theme.spacing.s2};
+  padding-right: ${({ theme }): string => theme.spacing.s2};
 
   ${up('md')} {
     margin-left: ${({ theme }): string => theme.spacing.s4};
     padding-left: ${({ theme }): string => theme.spacing.s5};
     padding-right: ${({ theme }): string => theme.spacing.s5};
+
     border-left: 1px solid rgba(0, 0, 0, 0.1);
   }
   border: none;
