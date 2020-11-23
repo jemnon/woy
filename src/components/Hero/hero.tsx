@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, forwardRef } from 'react';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
 import { Images } from '../../types/images';
@@ -27,16 +27,16 @@ const HeroLogo = styled.section`
   z-index: ${({ theme }): string => theme.zIndex.z1};
 `;
 
-const Hero: FC<HeroProps> = ({ images }) => {
-  const [{ fluid }] = images || [];
+const Hero = forwardRef<HTMLDivElement, HeroProps>((props, ref) => {
+  const [{ fluid }] = props.images || [];
   return (
-    <HeroRoot id="hero">
+    <HeroRoot ref={ref} id="hero">
       <HeroLogo>
         <Logo />
       </HeroLogo>
       <Img fluid={fluid} />
     </HeroRoot>
   );
-};
+});
 
 export default Hero;

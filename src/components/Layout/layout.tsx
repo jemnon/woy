@@ -1,7 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import theme from '@whisperofyum/theme';
 import Footer from '../Footer';
-import theme from '../../utils/theme';
 
 const GlobalStyle = createGlobalStyle`
   * {
