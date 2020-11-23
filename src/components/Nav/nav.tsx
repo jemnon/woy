@@ -6,7 +6,7 @@ import IconMobile from '../../images/svg/icons/menu-offset.svg';
 import Link from '../Link';
 import Logo from '../../images/svg/logo-black-horizontal.svg';
 import NavMobile from './nav-mobile';
-import { NavSearchButton } from './nav-search';
+import { NavSearchButton } from './nav-search-button';
 
 const NavContainer = styled.nav`
   position: relative;
@@ -101,23 +101,27 @@ const Nav: FC<NavProps> = ({ isHeaderVisible }) => {
   const [isSearchVisible, setIsSearchVisible] = useState<boolean>(false);
   const handleMobileClick = (): void => {
     setIsMobileVisible(!isMobileVisible);
+    setIsSearchVisible(false);
+  };
+  const handleSearchOutSideClick = (event: MouseEvent): void => {
+    const target = event.target as HTMLElement;
+    if (target.id !== 'nav-search-button' || !target.matches('svg')) return;
+    setIsSearchVisible(false);
   };
   const handleSearchResultClick = (slug: string): void => {
     navigate(`/post/${slug}`);
   };
   const handleSearchButtonClick = (): void => {
     setIsSearchVisible(!isSearchVisible);
+    setIsMobileVisible(false);
   };
   useEffect(() => {
     if (!isHeaderVisible) {
       setIsMobileVisible(false);
-    } else if (isHeaderVisible && isMobileVisible) {
-      setIsMobileVisible(true);
-    }
-  }, [isHeaderVisible]);
-  useEffect(() => {
-    if (!isHeaderVisible) {
       setIsSearchVisible(false);
+    }
+    if (isHeaderVisible && isMobileVisible) {
+      setIsMobileVisible(true);
     }
   }, [isHeaderVisible]);
   return (
@@ -187,9 +191,7 @@ const Nav: FC<NavProps> = ({ isHeaderVisible }) => {
             indexName={process.env.GATSBY_ALGOLIA_INDEX_NAME || ''}
             searchKey={process.env.GATSBY_ALGOLIA_API_SEARCH_KEY || ''}
             onClick={handleSearchResultClick}
-            onOutsideClick={(): void => {
-              setIsSearchVisible(false);
-            }}
+            onOutsideClick={handleSearchOutSideClick}
           />
         )}
       </NavContainer>

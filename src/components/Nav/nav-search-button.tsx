@@ -1,5 +1,4 @@
 import React, { FC } from 'react';
-import { withPrefix } from 'gatsby';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
 import IconSearch from '../../images/svg/icons/search.svg';
@@ -45,14 +44,18 @@ const NavSearchButtonContainer = styled.button`
 
 interface NavSearchButtonProps {
   isSearchVisible: boolean;
-  onClick: () => void;
+  onClick?: () => void;
 }
 
 const NavSearchButton: FC<NavSearchButtonProps> = ({
   isSearchVisible,
   onClick,
 }) => (
-  <NavSearchButtonContainer type="button" onClick={onClick}>
+  <NavSearchButtonContainer
+    id="nav-search-button"
+    type="button"
+    onClick={onClick}
+  >
     <div>{isSearchVisible ? <IconX /> : <IconSearch />}</div>
   </NavSearchButtonContainer>
 );
