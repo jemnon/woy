@@ -9,7 +9,7 @@
     "@contentful/rich-text-react-renderer": "^13.4.0",
     "@types/react-helmet": "^5.0.15",
     "@types/styled-components": "^4.4.3",
-    "@whisperofyum/search": "^1.8.0",
+    "@whisperofyum/search": "^1.9.0",
     "@whisperofyum/theme": "^0.2.0",
     "algoliasearch": "^4.1.0",
     "axios": "^0.19.2",
