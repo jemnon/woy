@@ -35,6 +35,7 @@ interface PostListProps {
   };
 
   location: {
+    pathname: string;
     state: {
       page?: number;
     };
@@ -72,6 +73,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
   const [{ node: heroNode }] = hero || [];
+  const paddingTop = location.pathname === '/' ? '0' : HEADER_HEIGHT;
 
   const handlePaginationClick = (page: number): void => {
     navigate(`/${page === 1 ? '' : page}`, {
@@ -119,7 +121,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
         <Nav isHeaderVisible={isHeaderVisible} />
       </Header>
       {showHero && <Hero ref={heroRef} images={heroNode.images} />}
-      <div style={{ paddingTop: HEADER_HEIGHT }}>
+      <div style={{ paddingTop }}>
         <Container>
           {posts && (
             <>
