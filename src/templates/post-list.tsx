@@ -73,7 +73,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
   const [{ node: heroNode }] = hero || [];
-  const paddingTop = location.pathname === '/' ? '0' : HEADER_HEIGHT;
+  const paddingTop = showHero ? '0' : HEADER_HEIGHT;
 
   const handlePaginationClick = (page: number): void => {
     navigate(`/${page === 1 ? '' : page}`, {

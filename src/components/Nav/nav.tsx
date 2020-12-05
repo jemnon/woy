@@ -27,6 +27,10 @@ const NavContent = styled.div`
   height: 100%;
 
   padding-right: ${({ theme }): string => theme.spacing.s2};
+
+  ${up('md')} {
+    padding-right: 0;
+  }
 `;
 
 const NavList = styled.ul`
