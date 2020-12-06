@@ -62,7 +62,6 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
           </PostPageHeader>
           {post && (
             <PostDetail
-              categories={post.categories}
               publishDate={post.publishDate}
               images={post.images}
               title={post.title}

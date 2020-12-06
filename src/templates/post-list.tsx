@@ -13,6 +13,7 @@ import Layout from '../components/Layout';
 import Link from '../components/Link';
 import Pagination from '../components/Pagingation';
 import PostDetail from '../components/PostDetail';
+import RecipeCard from '../components/RecipeCard';
 import SEO from '../components/SEO';
 import useShowHero from '../hooks/useShowHero';
 
@@ -125,7 +126,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
         <Container>
           {posts && (
             <>
-              <Grid columns={2}>
+              <Grid columns={3}>
                 {posts.map((post, idx) => {
                   return (
                     <PostLink
@@ -133,8 +134,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
                       key={post.node.id}
                       to={`/post/${post.node.slug}`}
                     >
-                      <PostDetail
-                        categories={post.node.categories}
+                      <RecipeCard
                         publishDate={post.node.publishDate}
                         images={post.node.images}
                         title={post.node.title}
