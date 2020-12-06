@@ -3,10 +3,8 @@ import styled from 'styled-components';
 import Img from 'gatsby-image';
 import ImageWrapper from '../Styles/image-wrapper-styled';
 import LinkStyles from '../Styles/link-styled';
-import { Post } from '../../types/post';
+import { Post as PostDetailProps } from '../../types/post';
 import { Headline } from '../Styles/headings-styled';
-
-type PostDetailProps = Post;
 
 const PostDetailHeader = styled.header`
   margin-bottom: 1rem;
@@ -33,6 +31,8 @@ const PostDetailHeader = styled.header`
 `;
 
 const PostDetailBody = styled.div`
+  flex: 1;
+
   line-height: 1.5;
   letter-spacing: 0.5px;
   ul {
@@ -55,28 +55,6 @@ const PostDetailBody = styled.div`
   }
 `;
 
-const PostDetailGridImage = styled(ImageWrapper)`
-  padding-bottom: 100%;
-  .gatsby-image-wrapper {
-    position: absolute !important;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
-`;
-
-const PostDetailLink = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  color: ${({ theme }): string => theme.colors.nearBlack};
-  span {
-    padding-bottom: 0.25rem;
-    border-bottom: 2px solid ${({ theme }): string => theme.colors.orange};
-  }
-`;
-
 const PostDetailColumns = styled.section`
   @media ${({ theme }): string => theme.breakpoints.desktop} {
     display: grid;
@@ -93,101 +71,46 @@ const PostDetailColumns = styled.section`
 `;
 
 const PostDetail: FC<PostDetailProps> = ({
-  categories,
   publishDate,
   images,
   title,
   body,
-  bodyPreview,
   bodyShort,
 }) => {
   const date = new Date(publishDate);
   const [{ fluid }] = images;
-  const cats: Array<string> = [];
-  const renderPostDetail = (): ReactNode | null => {
-    if (body?.childMarkdownRemark?.html) {
-      return (
-        <div
-          dangerouslySetInnerHTML={{ __html: body?.childMarkdownRemark?.html }}
-        />
-      );
-    }
-    if (bodyPreview?.childMarkdownRemark?.html) {
-      return (
-        <div
-          dangerouslySetInnerHTML={{
-            __html: bodyPreview?.childMarkdownRemark?.html,
-          }}
-        />
-      );
-    }
-    return null;
-  };
-  if (categories) {
-    categories.forEach(category => {
-      cats.push(category?.name);
-    });
-  }
   return (
     <article>
-      {!body ? (
-        <>
-          <PostDetailHeader>
-            <time dateTime={publishDate}>
-              {date.toLocaleDateString('en-US', {
-                day: 'numeric',
-                month: 'short',
-              })}
-            </time>
-            <Headline title={title} whiteSpace="nowrap">
-              {title}
-            </Headline>
-          </PostDetailHeader>
-          <PostDetailGridImage>
-            <Img
-              alt={title}
-              durationFadeIn={0}
-              fluid={fluid}
-              placeholderClassName="tiny"
+      <PostDetailColumns>
+        <PostDetailHeader>
+          <time dateTime={publishDate}>
+            {date.toLocaleDateString('en-US', {
+              day: 'numeric',
+              month: 'short',
+            })}
+          </time>
+          <Headline bottomSpacing="1rem" title={title}>
+            {title}
+          </Headline>
+          {bodyShort?.childMarkdownRemark?.html && (
+            <div
+              dangerouslySetInnerHTML={{
+                __html: bodyShort?.childMarkdownRemark?.html,
+              }}
             />
-          </PostDetailGridImage>
-        </>
-      ) : (
-        <PostDetailColumns>
-          <PostDetailHeader>
-            <time dateTime={publishDate}>
-              {date.toLocaleDateString('en-US', {
-                day: 'numeric',
-                month: 'short',
-              })}
-            </time>
-            <Headline bottomSpacing="1rem" title={title}>
-              {title}
-            </Headline>
-            {bodyShort?.childMarkdownRemark?.html && (
-              <div
-                dangerouslySetInnerHTML={{
-                  __html: bodyShort?.childMarkdownRemark?.html,
-                }}
-              />
-            )}
-          </PostDetailHeader>
-          <ImageWrapper>
-            <Img
-              alt={title}
-              durationFadeIn={0}
-              fluid={fluid}
-              placeholderClassName="tiny"
-            />
-          </ImageWrapper>
-        </PostDetailColumns>
+          )}
+        </PostDetailHeader>
+        <ImageWrapper>
+          <Img alt={title} fluid={fluid} />
+        </ImageWrapper>
+      </PostDetailColumns>
+      {body?.childMarkdownRemark?.html && (
+        <PostDetailBody
+          dangerouslySetInnerHTML={{
+            __html: body?.childMarkdownRemark?.html,
+          }}
+        />
       )}
-      <PostDetailBody>{renderPostDetail()}</PostDetailBody>
-      {!body ? (
-        <PostDetailLink>
-          <span>View Recipe</span>
-        </PostDetailLink>
-      ) : null}
     </article>
   );
 };

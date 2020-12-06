@@ -56,7 +56,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
     });
   });
   // generate pagination for homepage
-  const postsPerPage = 6;
+  const postsPerPage = 9;
   const postsLen = data.allContentfulPosts.edges.length;
   const totalPages = Math.ceil(postsLen / postsPerPage);
   Array.from({ length: totalPages }).forEach((_, idx) => {
