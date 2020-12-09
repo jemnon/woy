@@ -1,5 +1,6 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
+import { up } from 'styled-breakpoints';
 import Img from 'gatsby-image';
 import ImageWrapper from '../Styles/image-wrapper-styled';
 import LinkStyles from '../Styles/link-styled';
@@ -35,11 +36,17 @@ const PostDetailBody = styled.div`
 
   line-height: 1.5;
   letter-spacing: 0.5px;
+
+  ${up('md')} {
+    max-width: 64rem;
+  }
+
   ul {
     padding-left: 2rem;
     margin-bottom: 1rem;
     list-style-type: disc;
   }
+
   ol {
     padding-left: 2rem;
     margin-bottom: 1rem;
@@ -47,9 +54,11 @@ const PostDetailBody = styled.div`
       margin-bottom: 1rem;
     }
   }
+
   strong {
     display: block;
   }
+
   a {
     ${LinkStyles};
   }
