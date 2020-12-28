@@ -1,9 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="21px" height="21px" viewBox="0 0 21 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>search</title>
-    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="search" fill="#000000" fill-rule="nonzero">
-            <path d="M8.0115,2.37125 C5.25,5.13275 5.12575,9.50425 7.5705,12.44775 L0.17675,19.845 L1.155,20.82325 L8.5505,13.42775 C11.49575,15.8725 15.8655,15.75 18.627,12.9885 C21.55475,10.06075 21.5565,5.299 18.627,2.373 C15.701,-0.55475 10.9375,-0.55475 8.0115,2.37125 Z M17.6505,12.01025 C15.26,14.4025 11.382,14.4025 8.988,12.01025 C6.59575,9.61975 6.5975,5.74 8.988,3.3495 C11.382,0.95725 15.25825,0.95725 17.64875,3.3495 C20.041,5.74175 20.04275,9.618 17.6505,12.01025 Z" id="Shape"></path>
+<svg width="17px" height="17px" viewBox="0 0 17 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 3</title>
+    <defs>
+        <polygon id="path-1" points="0 0.00035 16.896 0.00035 16.896 16.8961 0 16.8961"></polygon>
+    </defs>
+    <g id="Design-System" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-88.000000, -786.000000)" id="Group-3">
+            <g transform="translate(88.000000, 786.000000)">
+                <mask id="mask-2" fill="white">
+                    <use xlink:href="#path-1"></use>
+                </mask>
+                <g id="Clip-2"></g>
+                <path d="M3.4613,10.5321 C1.5083,8.5791 1.5083,5.4141 3.4613,3.4611 C5.4143,1.5091 8.5793,1.5091 10.5323,3.4611 C12.4843,5.4141 12.4843,8.5791 10.5323,10.5321 L10.5323,10.5321 C8.5793,12.4851 5.4143,12.4851 3.4613,10.5321 L3.4613,10.5321 Z M16.8963,15.4821 L12.5973,11.1821 C14.6473,8.4431 14.4353,4.5351 11.9463,2.0471 C9.2173,-0.6819 4.7763,-0.6819 2.0463,2.0471 C-0.6827,4.7761 -0.6827,9.2171 2.0463,11.9461 C4.5353,14.4351 8.4433,14.6461 11.1833,12.5971 L15.4823,16.8961 L16.8963,15.4821 Z" id="Fill-1" fill="#000000" mask="url(#mask-2)"></path>
+            </g>
         </g>
     </g>
 </svg>

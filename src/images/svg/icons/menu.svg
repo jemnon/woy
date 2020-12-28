@@ -1,10 +1,13 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
-<svg version="1.1" id="Layer_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
-	 width="16px" height="16px" viewBox="0 0 16 16" enable-background="new 0 0 16 16" xml:space="preserve">
-<title>menu</title>
-<polygon points="0,2.4 16,2.4 16,3.18 0,3.18 0,2.39 "/>
-<rect y="7.1" width="16" height="0.8"/>
-<rect y="11.82" width="16" height="0.789"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="16px" viewBox="0 0 24 16" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>Group 4</title>
+    <g id="Design-System" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g transform="translate(-83.000000, -787.000000)" fill="#000000" id="Group-4">
+            <g transform="translate(83.000000, 787.000000)">
+                <polygon id="Fill-1" points="0 9.0002 24 9.0002 24 7.0252 0 7.0252"></polygon>
+                <polygon id="Fill-2" points="0 16 24 16 24 14 0 14"></polygon>
+                <polygon id="Fill-3" points="0 2 24 2 24 0 0 0"></polygon>
+            </g>
+        </g>
+    </g>
 </svg>

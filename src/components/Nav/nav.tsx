@@ -3,7 +3,7 @@ import { navigate } from 'gatsby';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
 import Search from '@whisperofyum/search';
-import IconMobile from '../../images/svg/icons/menu-offset.svg';
+import IconMobile from '../../images/svg/icons/menu.svg';
 import Link from '../Link';
 import Logo from '../../images/svg/logo-black-horizontal.svg';
 import NavMobile from './nav-mobile';
@@ -85,13 +85,13 @@ const NavMobileButton = styled.button`
   ${up('md')} {
     display: none;
   }
-  div {
+  /* div {
     width: 1.5rem;
     > svg {
       width: 100%;
       height: 100%;
     }
-  }
+  } */
 `;
 
 const LogoContainer = styled.div`
