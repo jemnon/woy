@@ -113,14 +113,12 @@ module.exports = {
         head: false,
       },
     },
-    /* {
-      resolve: `gatsby-plugin-facebook-analytics`,
+    {
+      resolve: `gatsby-source-instagram-all`,
       options: {
-        appId: process.env.GATSBY_FB_APP_ID,
-        xfbml: true,
-        includeInDevelopment: true,
+        access_token: process.env.INSTAGRAM_TOKEN,
       },
-    }, */
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
