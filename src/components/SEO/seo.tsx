@@ -75,6 +75,10 @@ const SEO: FC<SEOProps> = ({
           content: image,
         },
         {
+          property: `og:locale`,
+          content: 'en_US',
+        },
+        {
           property: `og:title`,
           content: title,
         },
@@ -93,6 +97,10 @@ const SEO: FC<SEOProps> = ({
         {
           property: `og:url`,
           content: `${site.siteMetadata.siteUrl}${pathname || ''}`,
+        },
+        {
+          property: `og:site_name`,
+          content: 'Whisper of Yum',
         },
         {
           property: `og:time`,

@@ -34,6 +34,10 @@ const capitalize = (word: string): string => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
 
+/* const parseInstructions = (children: Children[]): any => {
+  console.log('el: ', children);
+}; */
+
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const { page: post } = pageContext || {};
   const [{ fixed }] = post.images || [];
@@ -41,13 +45,14 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     '@context': 'http://schema.org',
     '@type': 'Recipe',
     author: 'Jeri Mobley',
+    description: post.bodyPreview?.bodyPreview,
     datePublished: post.publishDate,
     image: `https:${fixed?.src}`,
     name: capitalize(post.title),
     recipeIngredient: [],
     recipeInstructions: '',
   };
-  console.log(post.body?.childMarkdownRemark?.htmlAst?.children);
+  // parseInstructions(post.body?.childMarkdownRemark?.htmlAst?.children);
   return (
     <Layout>
       <SEO
