@@ -1,3 +1,4 @@
+import { Element } from 'hast';
 import { Categories } from './categories';
 import { Images } from './images';
 
@@ -11,12 +12,14 @@ export interface Post {
   body?: {
     childMarkdownRemark?: {
       html: string;
+      htmlAst?: Element;
     };
   };
   bodyPreview?: {
     bodyPreview?: string;
     childMarkdownRemark?: {
       html: string;
+      htmlAst?: Element;
     };
   };
   bodyShort?: {

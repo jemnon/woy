@@ -37,6 +37,17 @@ const capitalize = (word: string): string => {
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const { page: post } = pageContext || {};
   const [{ fixed }] = post.images || [];
+  const schemaJson = {
+    '@context': 'http://schema.org',
+    '@type': 'Recipe',
+    author: 'Jeri Mobley',
+    datePublished: post.publishDate,
+    image: `https:${fixed?.src}`,
+    name: capitalize(post.title),
+    recipeIngredient: [],
+    recipeInstructions: '',
+  };
+  console.log(post.body?.childMarkdownRemark?.htmlAst?.children);
   return (
     <Layout>
       <SEO
@@ -45,6 +56,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
         type="article"
         image={`https:${fixed?.src}`}
         pathname={location.pathname}
+        script={JSON.stringify(schemaJson)}
       />
       <Header isVisible={true}>
         <Nav />

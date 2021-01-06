@@ -18,6 +18,7 @@ interface SEOProps {
   title?: string;
   pathname?: string;
   image: string;
+  script?: any;
   type?: string;
 }
 
@@ -30,6 +31,7 @@ const SEO: FC<SEOProps> = ({
   meta,
   title,
   type,
+  script,
   pathname,
 }) => {
   const { site } = useStaticQuery(
@@ -59,10 +61,6 @@ const SEO: FC<SEOProps> = ({
         {
           name: `description`,
           content: metaDescription,
-        },
-        {
-          name: `keywords`,
-          content: `asian recipes, recipes, asian, women of color, woy, whisper of yum, whisperofyum, whisperofyum.com, cooking, cocktails, noods, rice, los angeles, chicken, beef, pork, wine, la, blog, food, farmer's market`,
         },
         {
           name: 'url',
@@ -126,6 +124,7 @@ const SEO: FC<SEOProps> = ({
         },
       ].concat(meta || [])}
     >
+      {script && <script type="application/ld+json">{script}</script>}
       {isDomUsable() && (
         <link
           rel="canonical"

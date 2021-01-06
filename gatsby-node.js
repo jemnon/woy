@@ -12,6 +12,9 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
             title
             bodyPreview {
               bodyPreview
+              childMarkdownRemark {
+                htmlAst
+              }
             }
             bodyShort {
               bodyShort
@@ -22,6 +25,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
             body {
               childMarkdownRemark {
                 html
+                htmlAst
               }
             }
             images {
