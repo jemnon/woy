@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Post as PostType } from '../types/post';
+import { getIngredientsFromAst, getInstructionsFromAst } from '../utils/utils';
 import Container from '../components/Styles/container-styled';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Header from '../components/Header';
@@ -34,10 +35,6 @@ const capitalize = (word: string): string => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
 
-/* const parseInstructions = (children: Children[]): any => {
-  console.log('el: ', children);
-}; */
-
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const { page: post } = pageContext || {};
   const [{ fixed }] = post.images || [];
@@ -49,10 +46,13 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     datePublished: post.publishDate,
     image: `https:${fixed?.src}`,
     name: capitalize(post.title),
-    recipeIngredient: [],
-    recipeInstructions: '',
+    recipeIngredient: getIngredientsFromAst(
+      post.body?.childMarkdownRemark?.htmlAst,
+    ),
+    recipeInstructions: getInstructionsFromAst(
+      post.body?.childMarkdownRemark?.htmlAst,
+    ),
   };
-  // parseInstructions(post.body?.childMarkdownRemark?.htmlAst?.children);
   return (
     <Layout>
       <SEO
