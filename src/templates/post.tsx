@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Post as PostType } from '../types/post';
+import { generateFromAst } from '../utils/utils';
 import Container from '../components/Styles/container-styled';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Header from '../components/Header';
@@ -37,6 +38,21 @@ const capitalize = (word: string): string => {
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const { page: post } = pageContext || {};
   const [{ fixed }] = post.images || [];
+  const schemaJson = {
+    '@context': 'http://schema.org',
+    '@type': 'Recipe',
+    author: 'Jeri Mobley',
+    description: post.bodyPreview?.bodyPreview,
+    datePublished: post.publishDate,
+    image: `https:${fixed?.src}`,
+    name: capitalize(post.title),
+    recipeIngredient: generateFromAst(post.body?.childMarkdownRemark?.htmlAst),
+    recipeInstructions: generateFromAst(
+      post.body?.childMarkdownRemark?.htmlAst,
+      'instructions',
+      'ol',
+    ),
+  };
   return (
     <Layout>
       <SEO
@@ -45,6 +61,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
         type="article"
         image={`https:${fixed?.src}`}
         pathname={location.pathname}
+        script={JSON.stringify(schemaJson)}
       />
       <Header isVisible={true}>
         <Nav />
