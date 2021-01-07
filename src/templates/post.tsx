@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Post as PostType } from '../types/post';
-import { getIngredientsFromAst, getInstructionsFromAst } from '../utils/utils';
+import { generateFromAst } from '../utils/utils';
 import Container from '../components/Styles/container-styled';
 import Breadcrumbs from '../components/Breadcrumbs';
 import Header from '../components/Header';
@@ -46,11 +46,10 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     datePublished: post.publishDate,
     image: `https:${fixed?.src}`,
     name: capitalize(post.title),
-    recipeIngredient: getIngredientsFromAst(
+    recipeIngredient: generateFromAst(post.body?.childMarkdownRemark?.htmlAst),
+    recipeInstructions: generateFromAst(
       post.body?.childMarkdownRemark?.htmlAst,
-    ),
-    recipeInstructions: getInstructionsFromAst(
-      post.body?.childMarkdownRemark?.htmlAst,
+      'instructions',
     ),
   };
   return (

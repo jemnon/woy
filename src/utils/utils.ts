@@ -8,26 +8,11 @@ const isDomUsable = (): boolean => {
   );
 };
 
-export const getIngredientsFromAst = (element?: Element): string[] => {
-  const ingredients: string[] = [];
-  const parseIngredients = element?.children.filter(
-    child => child.tagName === 'ul',
-  );
-  if (parseIngredients) {
-    const mapped: any = parseIngredients.map((item: any) => {
-      return item.children;
-    });
-    const filtered = mapped.flat().filter((item: any) => item.tagName === 'li');
-    filtered.forEach((item: any) => {
-      const [{ value }] = item.children;
-      ingredients.push(value);
-    });
-  }
-  return ingredients;
-};
-
-export const getInstructionsFromAst = (element?: Element): string => {
-  let instructions: string[] = [];
+export const generateFromAst = (
+  element?: Element,
+  name = 'ingredients',
+): string | string[] => {
+  let parsedAst: string[] = [];
   const parseInstructions = element?.children.filter(
     child => child.tagName === 'ol',
   );
@@ -38,10 +23,10 @@ export const getInstructionsFromAst = (element?: Element): string => {
     const filtered = mapped.flat().filter((item: any) => item.tagName === 'li');
     filtered.forEach((item: any) => {
       const [{ value }] = item.children;
-      instructions.push(value);
+      parsedAst.push(value);
     });
   }
-  return instructions.join('');
+  return name === 'ingredients' ? parsedAst : parsedAst.join('');
 };
 
 export default isDomUsable;
