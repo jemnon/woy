@@ -50,6 +50,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     recipeInstructions: generateFromAst(
       post.body?.childMarkdownRemark?.htmlAst,
       'instructions',
+      'ol',
     ),
   };
   return (

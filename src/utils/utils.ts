@@ -11,13 +11,14 @@ const isDomUsable = (): boolean => {
 export const generateFromAst = (
   element?: Element,
   name = 'ingredients',
+  parentTagName = 'ul',
 ): string | string[] => {
   let parsedAst: string[] = [];
-  const parseInstructions = element?.children.filter(
-    child => child.tagName === 'ol',
+  const ast = element?.children.filter(
+    child => child.tagName === parentTagName,
   );
-  if (parseInstructions) {
-    const mapped: any = parseInstructions.map((item: any) => {
+  if (ast) {
+    const mapped: any = ast.map((item: any) => {
       return item.children;
     });
     const filtered = mapped.flat().filter((item: any) => item.tagName === 'li');
