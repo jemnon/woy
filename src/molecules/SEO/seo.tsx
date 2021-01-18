@@ -136,17 +136,14 @@ const SEO: FC<SEOProps> = ({
         },
       ].concat(meta || [])}
     >
-      {script && <script type="application/ld+json">{script}</script>}
       {isDomUsable() && (
         <link
           rel="canonical"
           href={`${site.siteMetadata.siteUrl}${pathname || ''}`}
         />
       )}
-      <link
-        href="https://fonts.googleapis.com/css?family=Lato:400,400i,700|Noto+Serif+TC"
-        rel="stylesheet"
-      />
+      <link rel="stylesheet" href={`${assetPath}fonts/fonts.css`} />
+      {script && <script type="application/ld+json">{script}</script>}
     </Helmet>
   );
 };

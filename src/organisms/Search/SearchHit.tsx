@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
 import styled, { css } from 'styled-components';
 import { up } from 'styled-breakpoints';
-import { SearchHitProps } from './types';
+import { SearchHitProps } from '../../types/search';
 
 const ellipsis = css`
   white-space: nowrap;
@@ -43,7 +43,7 @@ const SearchHitImageWrapper = styled.div`
 
   width: 5rem; /* 80px */
   height: 5rem; /* 80px */
-  margin-right: ${({ theme: th }): string => th.spacing.s4};
+  margin-right: ${({ theme: th }): string => th.spacing.sm4};
 
   background-color: ${({ theme: th }): string => th.colors.nearWhite};
 `;
@@ -63,7 +63,7 @@ const SearchHitImage = styled.img`
 
 const SearchHitTitle = styled.h3`
   margin: 0;
-  margin-bottom: ${({ theme: th }): string => th.spacing.s2};
+  margin-bottom: ${({ theme: th }): string => th.spacing.sm2};
   max-width: 220px;
 
   font-family: ${({ theme: th }): string => th.fonts.latoBold};

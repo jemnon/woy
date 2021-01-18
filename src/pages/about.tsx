@@ -27,14 +27,14 @@ const AboutPageContent = styled.article`
   display: grid;
   grid-template-areas: 'image' 'description';
   grid-gap: 1.5rem;
-  @media ${({ theme }): string => theme.breakpoints.desktop} {
+  @media ${({ theme }): string => theme.breakpoints.lg} {
     display: grid;
     grid-template-areas: 'image description';
     grid-template-columns: 50% 1fr;
   }
   section {
     grid-area: description;
-    @media ${({ theme }): string => theme.breakpoints.desktop} {
+    @media ${({ theme }): string => theme.breakpoints.lg} {
       padding: 2rem;
       margin-left: -4rem;
       margin-top: 4rem;
@@ -49,12 +49,12 @@ const AboutPageContent = styled.article`
       margin: 0;
       margin-bottom: 1rem;
       font-weight: bold;
-      @media ${({ theme }): string => theme.breakpoints.desktop} {
+      @media ${({ theme }): string => theme.breakpoints.lg} {
         font-size: 1.5rem;
       }
       font-size: 1.25rem;
       span {
-        color: ${({ theme }): string => theme.colors.orange};
+        color: ${({ theme }): string => theme.colors.darkOrange};
       }
     }
   }

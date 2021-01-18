@@ -31,7 +31,7 @@ const SearchContainer = styled.section<SearchContainerProps>`
   width: 100%;
   max-width: 26rem;
   max-height: 26rem;
-  padding: ${({ theme: th }): string => th.spacing.s4};
+  padding: ${({ theme: th }): string => th.spacing.sm4};
 
   background-color: ${({ theme: th }): string => th.colors.white};
   border: 1px solid rgba(0, 0, 0, 0.1);
@@ -47,8 +47,8 @@ const SearchContainer = styled.section<SearchContainerProps>`
 `;
 
 const SearchEmptyHits = styled.div`
-  padding-top: ${({ theme: th }): string => th.spacing.s8};
-  padding-bottom: ${({ theme: th }): string => th.spacing.s4};
+  padding-top: ${({ theme: th }): string => th.spacing.md1};
+  padding-bottom: ${({ theme: th }): string => th.spacing.sm4};
 
   font-size: 1rem;
   font-family: ${({ theme: th }): string => th.fonts.lato};

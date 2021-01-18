@@ -1,7 +1,7 @@
 import React, { FC, FormEvent, useEffect, useState, useRef } from 'react';
 import styled from 'styled-components';
 import SearchButton from './SearchButton';
-import useDebounce from './useDebounce';
+import useDebounce from '../../hooks/useDebounce';
 
 const SearchFieldForm = styled.form`
   display: grid;
@@ -14,7 +14,7 @@ const SearchInput = styled.input`
   font-size: 1rem;
   grid-area: input;
 
-  padding: ${({ theme: th }): string => th.spacing.s4};
+  padding: ${({ theme: th }): string => th.spacing.sm4};
 
   background-color: ${({ theme: th }): string => th.colors.white};
   border: 1px solid ${({ theme: th }): string => th.colors.nearBlack};

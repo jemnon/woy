@@ -40,6 +40,7 @@ const GlobalStyle = createGlobalStyle`
     font-weight: normal;
   }
   p {
+    font-family: 'Lato-It';
     margin-top: 0;
     margin-bottom: 1rem;
   }

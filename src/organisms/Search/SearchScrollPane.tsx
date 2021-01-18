@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
 export const SearchScrollPane = styled.div`
-  margin-top: ${({ theme: th }): string => th.spacing.s4};
+  margin-top: ${({ theme: th }): string => th.spacing.sm4};
   height: 100%;
   overflow: auto;
   overflow-x: hidden;
