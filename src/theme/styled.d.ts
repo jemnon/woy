@@ -2,6 +2,7 @@ import 'styled-components';
 import {
   Breakpoints,
   Fonts,
+  FontSizes,
   Colors,
   ColorMode,
   MaxWidths,
@@ -15,6 +16,7 @@ declare module 'styled-components' {
     colors: Colors;
     colorMode?: ColorMode;
     fonts: Fonts;
+    fontSizes: FontSizes;
     maxWidths: MaxWidths;
     spacing: Spacing;
     transition: string;

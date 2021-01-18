@@ -66,7 +66,7 @@ const SearchHitTitle = styled.h3`
   margin-bottom: ${({ theme: th }): string => th.spacing.sm2};
   max-width: 220px;
 
-  font-family: ${({ theme: th }): string => th.fonts.latoBold};
+  font-family: ${({ theme: th }): string => th.fonts.lato};
   font-size: 1rem;
   font-weight: 700;
 

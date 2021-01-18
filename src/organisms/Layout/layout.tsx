@@ -1,66 +1,9 @@
 import React, { FC, ReactNode } from 'react';
-import styled, { createGlobalStyle, ThemeProvider } from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
 import theme from '../../theme';
+import { H1 } from '../../atoms/Headings';
+import GlobalStyle from '../../atoms/GlobalStyle';
 import Footer from '../Footer';
-
-const GlobalStyle = createGlobalStyle`
-  * {
-    box-sizing: border-box;
-  }      
-  html {
-    line-height: 1.5;
-  }
-  body {
-    margin: 0;
-    padding: 0;
-    font-family:  "Lato", -apple-system, system-ui,
-                "avenir next", avenir, "Helvetica Neue", helvetica, ubuntu, roboto,
-                noto, 'Segoe UI', Arial, sans-serif;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
-  }
-  body.disable-scroll {
-    overflow: hidden;
-  }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    margin: 0;
-  } 
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
-  p {
-    font-weight: normal;
-  }
-  p {
-    font-family: 'Lato-It';
-    margin-top: 0;
-    margin-bottom: 1rem;
-  }
-  figure {
-    margin: 0;
-  }
-  ul {
-    padding-left: 0;
-    margin: 0;
-    list-style: none;
-  }
-  sup {
-    top: 0;
-  }
-  img {
-    max-width: 100%;
-    border-style: none;
-  }
-  
-`;
 
 interface LayoutProps {
   bgColor?: string;
@@ -88,6 +31,7 @@ const Layout: FC<LayoutProps> = ({ bgColor = 'white', children }) => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Main bgColor={bgColor} isHeaderVisible={false} role="main">
+        <H1>Heading 1</H1>
         {children}
       </Main>
       <Footer />

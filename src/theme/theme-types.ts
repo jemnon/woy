@@ -13,6 +13,22 @@ export interface Fonts {
   notoBold: string;
 }
 
+export interface FontSizes {
+  f1: string;
+  f2: string;
+  f3: string;
+  f4: string;
+  f5: string;
+  f6: string;
+  f7: string;
+  f8: string;
+  f9: string;
+  f10: string;
+  f11: string;
+  f12: string;
+  f13: string;
+}
+
 export interface Colors {
   cream: string;
   darkTeal: string;
@@ -48,6 +64,10 @@ export interface Spacing {
   lg2: string;
   lg3: string;
   lg4: string;
+  xlg1: string;
+  xlg2: string;
+  xlg3: string;
+  xlg4: string;
 }
 
 export interface ZIndex {

@@ -29,7 +29,7 @@ const PartnerCardFigure = styled.figure`
 
 const PartnerCardTitle = styled.h3`
   font-size: 1.3125rem;
-  font-family: ${({ theme }): string => theme.fonts.latoBold};
+  font-family: ${({ theme }): string => theme.fonts.lato};
   font-weight: 700;
   text-align: center;
 
@@ -65,7 +65,7 @@ const PartnerCardDescription = styled.p`
 `;
 
 const PartnerCardPromoCode = styled.div`
-  font-family: ${({ theme }): string => theme.fonts.latoBold};
+  font-family: ${({ theme }): string => theme.fonts.lato};
   font-weight: 700;
   text-transform: uppercase;
   text-align: center;
