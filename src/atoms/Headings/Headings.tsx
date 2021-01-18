@@ -2,8 +2,8 @@ import styled, { css } from 'styled-components';
 import { up } from 'styled-breakpoints';
 
 const sharedCSS = css`
-  // font-weight: 900;
-  font-family: ${({ theme }): string => theme.fonts.notoBold};
+  font-weight: 900;
+  font-family: ${({ theme }): string => theme.fonts.noto};
 
   color: ${({ theme }): string =>
     theme.colorMode === 'dark' ? theme.colors.white : theme.colors.nearBlack};
@@ -42,10 +42,24 @@ export const H2 = styled.h2`
 export const H3 = styled.h3`
   ${sharedCSS};
 
-  font-size: ${({ theme }): string => theme.fontSizes.f7};
+  font-size: ${({ theme }): string => theme.fontSizes.f8};
 
   ${up('sm')} {
     font-size: ${({ theme }): string => theme.fontSizes.f9};
+  }
+
+  ${up('lg')} {
+    font-size: ${({ theme }): string => theme.fontSizes.f11};
+  }
+`;
+
+export const H4 = styled.h4`
+  ${sharedCSS};
+
+  font-size: ${({ theme }): string => theme.fontSizes.f7};
+
+  ${up('sm')} {
+    font-size: ${({ theme }): string => theme.fontSizes.f8};
   }
 
   ${up('lg')} {
@@ -53,7 +67,21 @@ export const H3 = styled.h3`
   }
 `;
 
-export const H4 = styled.h4`
+export const H5 = styled.h5`
+  ${sharedCSS};
+
+  font-size: ${({ theme }): string => theme.fontSizes.f6};
+
+  ${up('sm')} {
+    font-size: ${({ theme }): string => theme.fontSizes.f7};
+  }
+
+  ${up('lg')} {
+    font-size: ${({ theme }): string => theme.fontSizes.f9};
+  }
+`;
+
+export const H6 = styled.h6`
   ${sharedCSS};
 
   font-size: ${({ theme }): string => theme.fontSizes.f5};
@@ -64,33 +92,5 @@ export const H4 = styled.h4`
 
   ${up('lg')} {
     font-size: ${({ theme }): string => theme.fontSizes.f8};
-  }
-`;
-
-export const H5 = styled.h5`
-  ${sharedCSS};
-
-  font-size: ${({ theme }): string => theme.fontSizes.f4};
-
-  ${up('sm')} {
-    font-size: ${({ theme }): string => theme.fontSizes.f5};
-  }
-
-  ${up('lg')} {
-    font-size: ${({ theme }): string => theme.fontSizes.f8};
-  }
-`;
-
-export const H6 = styled.h6`
-  ${sharedCSS};
-
-  font-size: ${({ theme }): string => theme.fontSizes.f1};
-
-  ${up('sm')} {
-    font-size: ${({ theme }): string => theme.fontSizes.f2};
-  }
-
-  ${up('lg')} {
-    font-size: ${({ theme }): string => theme.fontSizes.f3};
   }
 `;

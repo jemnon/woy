@@ -21,20 +21,11 @@ const theme: DefaultTheme = {
     green: '#19a974',
   },
   fonts: {
-    latoBold:
-      `"latobold", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
-      `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
     lato:
-      `"latoregular", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
-      `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
-    latoItalic:
-      `"latoitalic", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
+      `"Lato", BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
       `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
     noto:
-      `"noto_serif_tcregular", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
-      `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
-    notoBold:
-      `"notoseriftc-bold-webfont", -apple-system, BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
+      `"Noto Serif TC", BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
       `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
   },
   fontSizes: {

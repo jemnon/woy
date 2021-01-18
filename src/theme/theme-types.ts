@@ -7,10 +7,7 @@ export interface Breakpoints {
 
 export interface Fonts {
   lato: string;
-  latoBold: string;
-  latoItalic: string;
   noto: string;
-  notoBold: string;
 }
 
 export interface FontSizes {

@@ -1,3 +1,4 @@
+import React from 'react';
 import { action } from '@storybook/addon-actions';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../src/atoms/GlobalStyle';
