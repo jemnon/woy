@@ -2,15 +2,10 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
-import ImageWrapper from '../components/Styles/image-wrapper-styled';
-import Breadcrumbs from '../components/Breadcrumbs';
+import Breadcrumbs from '../molecules/Breadcrumbs';
 import { Images as Image } from '../types/images';
-import Container from '../components/Styles/container-styled';
-import Header from '../components/Header';
-import { HEADER_HEIGHT } from '../components/Header';
-import Layout from '../components/Layout';
-import Nav from '../components/Nav';
-import SEO from '../components/SEO';
+import Layout from '../organisms/Layout';
+import SEO from '../molecules/SEO';
 
 interface AboutPageProps {
   data: {
@@ -78,31 +73,22 @@ const AboutPage: FC<AboutPageProps> = ({
         image="https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/social-logo.jpg"
         pathname={location.pathname}
       />
-      <Header isVisible={true}>
-        <Nav />
-      </Header>
-      <div style={{ paddingTop: HEADER_HEIGHT }}>
-        <Container maxWidth="75rem">
-          <Breadcrumbs title="About" />
-          <AboutPageContent>
-            <ImageWrapper id="about-image" borderRadius="0" marginBottom="0">
-              <Img
-                alt="about jeri mobley"
-                durationFadeIn={0}
-                fluid={contentfulAbout.image.fluid}
-                placeholderClassName="tiny"
-              />
-            </ImageWrapper>
-            {contentfulAbout.description.childMarkdownRemark.html && (
-              <section
-                dangerouslySetInnerHTML={{
-                  __html: contentfulAbout.description.childMarkdownRemark?.html,
-                }}
-              />
-            )}
-          </AboutPageContent>
-        </Container>
-      </div>
+      <Breadcrumbs title="About" />
+      <AboutPageContent>
+        <Img
+          alt="about jeri mobley"
+          durationFadeIn={0}
+          fluid={contentfulAbout.image.fluid}
+          placeholderClassName="tiny"
+        />
+        {contentfulAbout.description.childMarkdownRemark.html && (
+          <section
+            dangerouslySetInnerHTML={{
+              __html: contentfulAbout.description.childMarkdownRemark?.html,
+            }}
+          />
+        )}
+      </AboutPageContent>
     </Layout>
   );
 };

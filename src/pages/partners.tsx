@@ -3,15 +3,10 @@ import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
 import { graphql } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
-import { Grid, H1, P } from '../components/Styles/';
-import { HEADER_HEIGHT } from '../components/Header';
-import Breadcrumbs from '../components/Breadcrumbs';
-import Container from '../components/Styles/container-styled';
-import Header from '../components/Header';
-import Layout from '../components/Layout';
-import Nav from '../components/Nav';
-import PartnerCard from '../components/PartnerCard';
-import SEO from '../components/SEO';
+import Breadcrumbs from '../molecules/Breadcrumbs';
+import Layout from '../organisms/Layout';
+// import PartnerCard from '../molecules/PartnerCard';
+import SEO from '../molecules/SEO';
 
 interface PartnersPageProps {
   data: {
@@ -70,49 +65,22 @@ const PartnersPage: FC<PartnersPageProps> = ({
         image="https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/social-logo.jpg"
         pathname={location.pathname}
       />
-      <Header isVisible={true}>
-        <Nav />
-      </Header>
-      <div style={{ paddingTop: HEADER_HEIGHT }}>
-        <Container>
-          <Breadcrumbs title="Partners" />
-          {contentfulPartners.title && (
-            <H1
-              as={PartnersPageTitle}
-              textAlign="center"
-              spacingDensity="roomy"
-            >
-              {contentfulPartners.title}
-            </H1>
-          )}
-          {contentfulPartners.description && (
-            <P
-              as={PartnersPageDescription}
-              dangerouslySetInnerHTML={{
-                __html:
-                  contentfulPartners.description?.childMarkdownRemark?.html,
-              }}
-              textAlign="center"
-              spacingDensity="roomy"
-            />
-          )}
-          {contentfulPartners.cardList && (
-            <Grid columns={2}>
-              {contentfulPartners.cardList.map(card => (
-                <PartnerCard
-                  description={card.description}
-                  key={card.partnerName}
-                  image={card.image}
-                  linkText={card.linkText}
-                  linkUrl={card.linkUrl}
-                  partnerName={card.partnerName}
-                  promoCode={card.promoCode}
-                />
-              ))}
-            </Grid>
-          )}
-        </Container>
-      </div>
+      <Breadcrumbs title="Partners" />
+      {contentfulPartners.title && <h1>{contentfulPartners.title}</h1>}
+      {contentfulPartners.description && (
+        <p
+          dangerouslySetInnerHTML={{
+            __html: contentfulPartners.description?.childMarkdownRemark?.html,
+          }}
+        />
+      )}
+      {contentfulPartners.cardList && (
+        <>
+          {contentfulPartners.cardList.map(card => (
+            <>{JSON.stringify(card)}</>
+          ))}
+        </>
+      )}
     </Layout>
   );
 };

@@ -2,15 +2,10 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Post as PostType } from '../types/post';
 import { generateFromAst } from '../utils/utils';
-import Container from '../components/Styles/container-styled';
-import Breadcrumbs from '../components/Breadcrumbs';
-import Header from '../components/Header';
-import { HEADER_HEIGHT } from '../components/Header';
-import Layout from '../components/Layout';
-import Nav from '../components/Nav';
-import PostDetail from '../components/PostDetail';
-import SEO from '../components/SEO';
-import Share from '../components/Share';
+import Breadcrumbs from '../molecules/Breadcrumbs';
+import Layout from '../organisms/Layout';
+import SEO from '../molecules/SEO';
+import Share from '../molecules/Share';
 
 interface PostPageProps {
   pageContext: {
@@ -63,31 +58,16 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
         pathname={location.pathname}
         script={JSON.stringify(schemaJson)}
       />
-      <Header isVisible={true}>
-        <Nav />
-      </Header>
-      <div style={{ paddingTop: HEADER_HEIGHT }}>
-        <Container>
-          <PostPageHeader>
-            <Breadcrumbs title={post.title} />
-            <Share
-              description={post.bodyPreview?.bodyPreview}
-              media={`https:${fixed?.src}`}
-              title={post.title}
-              url={location.href}
-            />
-          </PostPageHeader>
-          {post && (
-            <PostDetail
-              publishDate={post.publishDate}
-              images={post.images}
-              title={post.title}
-              bodyShort={post.bodyShort}
-              body={post.body}
-            />
-          )}
-        </Container>
-      </div>
+      <PostPageHeader>
+        <Breadcrumbs title={post.title} />
+        <Share
+          description={post.bodyPreview?.bodyPreview}
+          media={`https:${fixed?.src}`}
+          title={post.title}
+          url={location.href}
+        />
+      </PostPageHeader>
+      {post && <>{JSON.stringify(post)}</>}
     </Layout>
   );
 };

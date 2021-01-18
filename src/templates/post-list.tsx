@@ -1,20 +1,12 @@
 import React, { FC, useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
 import { graphql } from 'gatsby';
 import { useNavigate } from '@reach/router';
 import { HeroType } from '../types/hero';
 import { Post as PostType } from '../types/post';
-import Container from '../components/Styles/container-styled';
-import Grid from '../components/Styles/grid-styled';
-import Header, { HEADER_HEIGHT } from '../components/Header';
-import Nav from '../components/Nav';
-import Hero from '../components/Hero';
-import Layout from '../components/Layout';
-import Link from '../components/Link';
-import Pagination from '../components/Pagingation';
-import PostDetail from '../components/PostDetail';
-import RecipeCard from '../components/RecipeCard';
-import SEO from '../components/SEO';
+import Grid from '../organisms/grid-styled';
+import Layout from '../organisms/Layout';
+import Pagination from '../molecules/Pagingation';
+import SEO from '../molecules/SEO';
 import useShowHero from '../hooks/useShowHero';
 
 interface PostNode {
@@ -49,11 +41,6 @@ interface PostListProps {
   };
 }
 
-const PostLink = styled.a`
-  text-decoration: none;
-  color: ${({ theme }): string => theme.colors.nearBlack};
-`;
-
 const metaDesc =
   `Just like you (or not), I love food. So much so, ` +
   `my partner and I decided to create this repository of my go-to, ` +
@@ -74,7 +61,6 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
   const { edges: posts } = data?.allContentfulPosts || {};
   const { edges: hero } = data?.allContentfulHeroes || {};
   const [{ node: heroNode }] = hero || [];
-  const paddingTop = showHero ? '0' : HEADER_HEIGHT;
 
   const handlePaginationClick = (page: number): void => {
     navigate(`/${page === 1 ? '' : page}`, {
@@ -118,42 +104,23 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
         title="Whisper of Yum | Recipes, Cooking and Los Angeles"
         type="article"
       />
-      <Header isVisible={isHeaderVisible}>
-        <Nav isHeaderVisible={isHeaderVisible} />
-      </Header>
-      {showHero && <Hero ref={heroRef} images={heroNode.images} />}
-      <div style={{ paddingTop }}>
-        <Container>
-          {posts && (
-            <>
-              <Grid columns={3}>
-                {posts.map((post, idx) => {
-                  return (
-                    <PostLink
-                      as={Link}
-                      key={post.node.id}
-                      to={`/post/${post.node.slug}`}
-                    >
-                      <RecipeCard
-                        publishDate={post.node.publishDate}
-                        images={post.node.images}
-                        title={post.node.title}
-                        bodyPreview={post.node.bodyPreview}
-                      />
-                    </PostLink>
-                  );
-                })}
-              </Grid>
-              {pageContext?.currentPage && pageContext.totalPages && (
-                <Pagination
-                  currentPage={pageContext?.currentPage}
-                  onClick={handlePaginationClick}
-                  totalPages={pageContext?.totalPages}
-                />
-              )}
-            </>
-          )}
-        </Container>
+      <div>
+        {posts && (
+          <>
+            <Grid columns={3}>
+              {posts.map((post, idx) => {
+                return <>{JSON.stringify(post)}</>;
+              })}
+            </Grid>
+            {pageContext?.currentPage && pageContext.totalPages && (
+              <Pagination
+                currentPage={pageContext?.currentPage}
+                onClick={handlePaginationClick}
+                totalPages={pageContext?.totalPages}
+              />
+            )}
+          </>
+        )}
       </div>
     </Layout>
   );
