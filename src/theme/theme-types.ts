@@ -36,6 +36,7 @@ export interface Colors {
   darkOrange: string;
   orange: string;
   white: string;
+  gray: string;
   red: string;
   green: string;
 }

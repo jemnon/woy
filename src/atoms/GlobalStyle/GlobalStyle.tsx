@@ -11,11 +11,13 @@ const GlobalStyle = createGlobalStyle`
                 noto, 'Segoe UI', Arial, sans-serif;
     font-weight: normal;
     font-size: 1rem;
+
+    color: '#111';
   }
   body {
     margin: 0;
     padding: 0;
-        -webkit-font-smoothing: antialiased;
+    -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
   }
   body.disable-scroll {
@@ -27,8 +29,7 @@ const GlobalStyle = createGlobalStyle`
   h4,
   h5,
   h6 {
-    font-family: "Noto Serif TC", BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue'
-      helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif;
+    font-family: "Noto Serif TC", 'serif';
   }
   h1,
   h2,
