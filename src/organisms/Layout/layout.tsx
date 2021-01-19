@@ -12,7 +12,6 @@ interface LayoutProps {
 
 interface MainProps {
   bgColor: string;
-  isHeaderVisible: boolean;
 }
 
 const Main = styled.main<MainProps>`
@@ -30,7 +29,7 @@ const Layout: FC<LayoutProps> = ({ bgColor = 'white', children }) => {
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
-      <Main bgColor={bgColor} isHeaderVisible={false} role="main">
+      <Main bgColor={bgColor} role="main">
         <H1>Heading 1</H1>
         {children}
       </Main>
