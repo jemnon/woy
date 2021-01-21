@@ -76,7 +76,15 @@ module.exports = {
     `gatsby-plugin-styled-components`,
     `gatsby-plugin-typescript`,
     `gatsby-plugin-typescript-checker`,
-    `gatsby-plugin-robots-txt`,
+    {
+      resolve: `gatsby-plugin-robots-txt`,
+      options: {
+        host: 'https://whisperofyum.com',
+        sitemap: 'https://whisperofyum.com/sitemap.xml',
+        policy: [{ userAgent: '*', allow: '/' }],
+        'pinterest-site-verification': 'e2f1349ea701f347a95c15bab1f0fc7a',
+      },
+    },
     {
       resolve: 'gatsby-source-contentful',
       options: {
