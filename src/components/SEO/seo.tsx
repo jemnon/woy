@@ -107,6 +107,10 @@ const SEO: FC<SEOProps> = ({
           content: metaTime,
         },
         {
+          name: 'p:domain_verify',
+          content: 'e2f1349ea701f347a95c15bab1f0fc7a',
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },
