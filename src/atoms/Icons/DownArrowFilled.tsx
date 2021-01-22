@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const SvgDownArrowFilled = ({
   fill = '#000',
-  width = 'auto',
+  width = '100%',
   height = '100%',
   viewBox = '0 0 32 32',
   style = {
@@ -12,10 +12,14 @@ const SvgDownArrowFilled = ({
   ...props
 }) => (
   <svg
-    width={18}
-    height={18}
+    width={width}
+    height={height}
+    viewBox={viewBox}
     xmlns="http://www.w3.org/2000/svg"
     xmlnsXlink="http://www.w3.org/1999/xlink"
+    fill={fill}
+    preserveAspectRatio="xMidYMid meet"
+    style={style}
     {...props}
   >
     <defs>
@@ -27,7 +31,7 @@ const SvgDownArrowFilled = ({
       </mask>
       <path
         d="M9.707 12.475L9 13.182l-.707-.707-4.95-4.95.707-.707L9 11.768l4.95-4.95.707.708-4.95 4.949zM9-.002a9 9 0 100 18A9 9 0 009 0z"
-        fill={props.fill}
+        fill="#000"
         mask="url(#down-arrow-filled_svg__b)"
       />
     </g>

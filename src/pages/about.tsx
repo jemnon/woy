@@ -54,7 +54,7 @@ const AboutPageContent = styled.article`
       }
       font-size: 1.25rem;
       span {
-        color: ${({ theme }): string => theme.colors.darkOrange};
+        color: ${({ theme }): string => theme.colors.orange};
       }
     }
   }

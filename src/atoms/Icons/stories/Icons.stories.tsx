@@ -1,4 +1,7 @@
 import React from 'react';
+import Grid from '../../../organisms/Grid';
+
+// Icons
 import DownArrow from '../DownArrow';
 import DownArrowFilled from '../DownArrowFilled';
 import DownArrowThick from '../DownArrowThick';
@@ -20,12 +23,13 @@ export default {
 };
 
 export const Icons = () => (
-  <>
+  <Grid>
     <DownArrow />
     <DownArrowFilled />
-    <DownArrowThick />
+    <DownArrowThick viewBox="0 0 36 20" />
     <Facebook />
     <Hamburger />
+    <Instagram />
     <LeftArrow />
     <Pinterest />
     <RightArrow />
@@ -35,5 +39,5 @@ export const Icons = () => (
     <Twitter />
     <UpArrow />
     <X />
-  </>
+  </Grid>
 );

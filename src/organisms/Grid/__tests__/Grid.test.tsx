@@ -1,17 +1,17 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { ThemeProvider } from 'styled-components';
-import Paragraph from '../Paragraph';
+import Grid from '../Grid';
 import theme from '../../../theme';
 
-describe('<Paragraph />', (): void => {
+describe('<Grid />', (): void => {
   const component = renderer.create(
     <ThemeProvider theme={theme}>
-      <Paragraph>Paragraph</Paragraph>
+      <Grid columns={1}>Grid Child</Grid>
     </ThemeProvider>,
   );
   it('exists', (): void => {
-    expect(Paragraph).toBeDefined();
+    expect(Grid).toBeDefined();
   });
   it('renders defaults correctly', (): void => {
     const tree = component.toJSON();

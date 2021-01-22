@@ -28,17 +28,20 @@ export interface FontSizes {
 
 export interface Colors {
   cream: string;
-  darkTeal: string;
-  teal: string;
-  lightBrown: string;
+  gray: string;
+  green: string;
   nearBlack: string;
   nearWhite: string;
-  darkOrange: string;
   orange: string;
-  white: string;
-  gray: string;
   red: string;
-  green: string;
+  teal: string;
+  white: string;
+}
+
+export interface HoverColors {
+  orange: string;
+  teal: string;
+  nearBlack: string;
 }
 
 export type ColorMode = 'dark' | 'light';

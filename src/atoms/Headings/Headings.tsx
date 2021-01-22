@@ -5,8 +5,7 @@ const sharedCSS = css`
   font-weight: 900;
   font-family: ${({ theme }): string => theme.fonts.noto};
 
-  color: ${({ theme }): string =>
-    theme.colorMode === 'dark' ? theme.colors.white : theme.colors.nearBlack};
+  color: ${({ theme }): string => theme.colors.nearBlack};
 
   margin-bottom: 0.35em;
 `;

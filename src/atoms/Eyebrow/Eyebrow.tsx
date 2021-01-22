@@ -1,9 +1,8 @@
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
-import { Colors } from '../../theme/theme-types';
+import { Colors } from '../../types/theme';
 
 type Color = keyof Pick<Colors, 'white' | 'nearBlack'>;
-
 interface EyebrowProps {
   color?: Color;
 }

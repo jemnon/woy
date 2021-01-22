@@ -5,7 +5,7 @@ import Link from '../atoms/Link';
 import SEO from '../molecules/SEO';
 
 const NotFoundLink = styled.a`
-  color: ${({ theme }): string => theme.colors.darkOrange};
+  color: ${({ theme }): string => theme.colors.orange};
 `;
 
 const NotFoundPage: FC = () => (

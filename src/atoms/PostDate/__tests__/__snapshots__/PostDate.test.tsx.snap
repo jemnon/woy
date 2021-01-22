@@ -1,0 +1,10 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PostDate /> renders defaults correctly 1`] = `
+<time
+  className="sc-bdfBwQ cDiocT"
+  dateTime="2021-01-15T00:00-08:00"
+>
+  Jan 15
+</time>
+`;

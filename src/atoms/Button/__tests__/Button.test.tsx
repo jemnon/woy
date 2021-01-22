@@ -1,17 +1,17 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { ThemeProvider } from 'styled-components';
-import Paragraph from '../Paragraph';
+import Button from '../Button';
 import theme from '../../../theme';
 
-describe('<Paragraph />', (): void => {
+describe('<Button />', (): void => {
   const component = renderer.create(
     <ThemeProvider theme={theme}>
-      <Paragraph>Paragraph</Paragraph>
-    </ThemeProvider>,
+      <Button />
+    </ThemeProvider>
   );
   it('exists', (): void => {
-    expect(Paragraph).toBeDefined();
+    expect(Button).toBeDefined();
   });
   it('renders defaults correctly', (): void => {
     const tree = component.toJSON();

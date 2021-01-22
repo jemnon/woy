@@ -7,7 +7,7 @@ const FooterContainer = styled.footer`
   position: relative;
   overflow: hidden;
   color: ${({ theme }): string => theme.colors.white};
-  background-color: ${({ theme }): string => theme.colors.darkOrange};
+  background-color: ${({ theme }): string => theme.colors.orange};
 `;
 
 const FooterContent = styled.section`

@@ -1,22 +1,23 @@
 import 'styled-components';
 import {
   Breakpoints,
-  Fonts,
-  FontSizes,
   Colors,
   ColorMode,
+  Fonts,
+  FontSizes,
+  HoverColors,
   MaxWidths,
   Spacing,
   ZIndex,
-} from './theme-types';
+} from '../types/theme';
 
 declare module 'styled-components' {
   export interface DefaultTheme {
     breakpoints: Breakpoints;
     colors: Colors;
-    colorMode?: ColorMode;
     fonts: Fonts;
     fontSizes: FontSizes;
+    hoverColors: HoverColors;
     maxWidths: MaxWidths;
     spacing: Spacing;
     transition: string;

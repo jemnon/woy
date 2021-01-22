@@ -56,14 +56,4 @@ module.exports = plop => {
     prompts: [{ ...prompt }],
     actions: getActions('organisms'),
   });
-  plop.setGenerator('Template Component', {
-    description: 'This will generate a component in /src/templates',
-    prompts: [{ ...prompt }],
-    actions: getActions('templates'),
-  });
-  plop.setGenerator('Page Component', {
-    description: 'This will generate a component in /src/pages',
-    prompts: [{ ...prompt }],
-    actions: getActions('pages'),
-  });
 };

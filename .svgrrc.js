@@ -1,7 +1,16 @@
 module.exports = {
   template: require('./svgr-templates/template'),
-  replaceAttrValues: {
-    '#000': '{props.fill}',
-    '32px': '{props.height}',
+  svgProps: {
+    width: '{width}',
+    height: '{height}',
+    fill: '{fill}',
+    viewBox: '{viewBox}',
+    preserveAspectRatio: 'xMidYMid meet',
+    style: '{style}',
+  },
+  svgoConfig: {
+    plugins: {
+      removeViewBox: false,
+    },
   },
 };

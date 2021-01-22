@@ -2,7 +2,7 @@ import * as React from 'react';
 
 const SvgFacebook = ({
   fill = '#000',
-  width = 'auto',
+  width = '100%',
   height = '100%',
   viewBox = '0 0 32 32',
   style = {
@@ -11,7 +11,16 @@ const SvgFacebook = ({
   },
   ...props
 }) => (
-  <svg width={9} height={17} xmlns="http://www.w3.org/2000/svg" {...props}>
+  <svg
+    width={width}
+    height={height}
+    viewBox={viewBox}
+    xmlns="http://www.w3.org/2000/svg"
+    fill={fill}
+    preserveAspectRatio="xMidYMid meet"
+    style={style}
+    {...props}
+  >
     <path
       d="M6.188 3.188H9V0H6.187C4.018 0 2.25 1.668 2.25 3.719v1.594H0V8.5h2.25V17h3.375V8.5h2.813L9 5.312H5.625V3.72c0-.288.258-.531.563-.531z"
       fill="#111"

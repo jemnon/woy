@@ -9,17 +9,14 @@ const theme: DefaultTheme = {
   },
   colors: {
     cream: '#f4ede6',
-    darkTeal: '#162936',
-    teal: '#244c53',
-    lightBrown: '#d5a188',
+    gray: '#aaa',
+    green: '#19a974',
     nearBlack: '#111',
     nearWhite: '#F9F9F9',
-    darkOrange: '#BB5B34',
-    orange: '#cf7651',
-    white: '#fff',
-    gray: '#aaa',
+    orange: '#BB5B34',
     red: '#ff4136',
-    green: '#19a974',
+    teal: '#244c53',
+    white: '#fff',
   },
   fonts: {
     lato:
@@ -43,6 +40,11 @@ const theme: DefaultTheme = {
     f11: '2.5rem' /* 40px */,
     f12: '2.625rem' /* 42px */,
     f13: '3rem' /* 48px */,
+  },
+  hoverColors: {
+    orange: '#A2421B',
+    teal: '#162936',
+    nearBlack: '#2B2B2B',
   },
   maxWidths: {
     sm: '480px',
