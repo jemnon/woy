@@ -1,6 +1,5 @@
 import React from 'react';
 import Button from '../Button';
-import Grid from '../../../organisms/Grid';
 
 const disableProp = {
   table: {
@@ -32,19 +31,26 @@ Default.args = {
 };
 
 export const Sizes = () => (
-  <Grid columnWidth="140px">
+  <>
     <Button size="small">Small</Button>
     <Button size="medium">Medium</Button>
-  </Grid>
+  </>
+);
+
+export const Shapes = () => (
+  <>
+    <Button shape="pill">Small</Button>
+    <Button shape="rectangle">Medium</Button>
+  </>
 );
 
 export const Variant = () => (
-  <Grid columnWidth="140px">
+  <>
     <Button size="small" variant="outline">
       Small
     </Button>
     <Button size="medium" variant="outline">
       Medium
     </Button>
-  </Grid>
+  </>
 );

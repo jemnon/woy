@@ -60,7 +60,9 @@ const Button = styled.button<ButtonProps>`
   color: ${({ colorScheme = 'orange', theme, variant = 'solid' }): string =>
     variant === 'outline' ? theme.colors[colorScheme] : theme.colors.white};
 
-  cursor: pointer;
+  overflow: hidden;
+  cursor: ${({ isDisabled, isLoading }): string =>
+    isDisabled || isLoading ? 'not-allowed' : 'pointer'};
   transition: ${({ theme }): string => theme?.transition ?? ''};
 
   -webkit-font-smoothing: antialiased;
@@ -68,19 +70,23 @@ const Button = styled.button<ButtonProps>`
 
   ${({ isDisabled = false, isLoading = false }): string =>
     isDisabled || isLoading ? 'opacity: 50%;' : ''};
+
   &:disabled {
     transform: none;
     cursor: not-allowed;
   }
-
   &:hover {
-    background-color: ${({ colorScheme = 'orange', theme }): string =>
-      theme.hoverColors[colorScheme]};
+    ${({ colorScheme = 'orange', theme, variant = 'solid' }): string =>
+      variant === 'outline'
+        ? `border-color: ${theme.hoverColors[colorScheme]}; color: ${theme.hoverColors[colorScheme]}`
+        : `background-color: ${theme.hoverColors[colorScheme]}`};
   }
-
   &:active {
     box-shadow: ${({ isDisabled }): string =>
       !isDisabled ? 'rgba(0, 119, 187, 0.5) 0px 0px 0px 3px' : ''};
+  }
+  & + & {
+    margin-left: ${({ theme }): string => theme.spacing.sm4};
   }
 `;
 
