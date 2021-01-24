@@ -27,6 +27,8 @@ const theme: DefaultTheme = {
       `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
   },
   fontSizes: {
+    'f-xsm': '0.75rem' /* 12px */,
+    'f-sm': '0.875rem' /* 14px */,
     f1: '1rem' /* 16px */,
     f2: '1.125rem' /* 18px */,
     f3: '1.25rem' /* 20px */,

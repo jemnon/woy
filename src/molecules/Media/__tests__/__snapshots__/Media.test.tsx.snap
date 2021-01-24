@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Media /> renders defaults correctly 1`] = `
+<button
+  className="sc-eCssSg mHeq"
+>
+  <div
+    className="sc-jSgupP JtpDG"
+  >
+    <time
+      className="sc-dlfnbm cantZy"
+      dateTime="2021-01-20T00:00-08:00"
+    >
+      Jan 20
+    </time>
+    <h2
+      className="sc-hKgILt eAYqPE"
+    >
+      Filipino Pork Adobo
+    </h2>
+    <p
+      className="sc-gsTCUz dibtjK"
+    >
+      media desc
+    </p>
+  </div>
+</button>
+`;

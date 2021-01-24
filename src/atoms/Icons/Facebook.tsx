@@ -1,32 +1,25 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
-const SvgFacebook = ({
-  fill = '#000',
-  width = '100%',
-  height = '100%',
-  viewBox = '0 0 32 32',
-  style = {
-    width: '32px',
-    height: '32px',
-  },
-  ...props
-}) => (
+const SVG = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
-    width={width}
-    height={height}
-    viewBox={viewBox}
     xmlns="http://www.w3.org/2000/svg"
-    fill={fill}
+    width="1em"
+    height="1em"
+    viewBox="0 0 9 17"
     preserveAspectRatio="xMidYMid meet"
-    style={style}
     {...props}
   >
-    <path
-      d="M6.188 3.188H9V0H6.187C4.018 0 2.25 1.668 2.25 3.719v1.594H0V8.5h2.25V17h3.375V8.5h2.813L9 5.312H5.625V3.72c0-.288.258-.531.563-.531z"
-      fill="#111"
-      fillRule="nonzero"
-    />
+    <path d="M6.19 3.19H9V0H6.19a3.84 3.84 0 00-3.94 3.72v1.59H0V8.5h2.25V17h3.37V8.5h2.82L9 5.31H5.62V3.72a.56.56 0 01.57-.53z" />
   </svg>
 );
 
+const SvgFacebook = styled(SVG)`
+  display: ${({ display = 'inline-block' }) => display};
+  font-size: ${({ fontSize = '32px' }) => fontSize};
+  color: ${({ color = '#111' }) => color};
+  vertical-align: middle;
+  shape-rendering: inherit;
+  transform: translate3d(0, 0, 0);
+`;
 export default SvgFacebook;

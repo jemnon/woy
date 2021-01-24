@@ -11,6 +11,8 @@ export interface Fonts {
 }
 
 export interface FontSizes {
+  'f-xsm': string;
+  'f-sm': string;
   f1: string;
   f2: string;
   f3: string;

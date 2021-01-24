@@ -1,0 +1,28 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CalloutLink /> renders defaults correctly 1`] = `
+<button
+  className="sc-kstrdz gzukWp"
+>
+  <span
+    className="sc-hBEYos fJoeDL"
+  >
+    Callout Link
+  </span>
+  <svg
+    className="sc-pFZIQ igugsR"
+    fill="#A2421B"
+    fontSize="10px"
+    height="1em"
+    preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 9.9 16.97"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M1.41 0L0 1.41l7.07 7.07L0 15.56l1.41 1.41L8.48 9.9 9.9 8.48 1.41 0z"
+      fillRule="evenodd"
+    />
+  </svg>
+</button>
+`;

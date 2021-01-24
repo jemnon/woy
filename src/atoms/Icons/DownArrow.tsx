@@ -1,32 +1,28 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
-const SvgDownArrow = ({
-  fill = '#000',
-  width = '100%',
-  height = '100%',
-  viewBox = '0 0 32 32',
-  style = {
-    width: '32px',
-    height: '32px',
-  },
-  ...props
-}) => (
+const SVG = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
-    width={width}
-    height={height}
-    viewBox={viewBox}
     xmlns="http://www.w3.org/2000/svg"
-    fill={fill}
+    width="1em"
+    height="1em"
+    viewBox="0 0 16.97 9.9"
     preserveAspectRatio="xMidYMid meet"
-    style={style}
     {...props}
   >
     <path
-      d="M1.414.536L0 1.95l7.072 7.07 1.414 1.416L16.97 1.95 15.556.536l-7.07 7.07z"
-      fill="#000"
       fillRule="evenodd"
+      d="M1.42 0L0 1.41l7.07 7.07L8.49 9.9l8.48-8.49L15.56 0 8.49 7.07 1.42 0z"
     />
   </svg>
 );
 
+const SvgDownArrow = styled(SVG)`
+  display: ${({ display = 'inline-block' }) => display};
+  font-size: ${({ fontSize = '32px' }) => fontSize};
+  color: ${({ color = '#111' }) => color};
+  vertical-align: middle;
+  shape-rendering: inherit;
+  transform: translate3d(0, 0, 0);
+`;
 export default SvgDownArrow;

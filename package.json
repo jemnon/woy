@@ -113,11 +113,11 @@
   "license": "MIT",
   "scripts": {
     "build": "gatsby build",
-    "build:svg": "npx @svgr/cli --typescript -d src/atoms/Icons/ src/atoms/Icons/svgs/",
     "clean": "gatsby clean",
     "develop": "gatsby develop",
     "generate": "plop",
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
+    "icons": "npx @svgr/cli --typescript --icon -d src/atoms/Icons/ src/atoms/Icons/svgs/",
     "start": "npm run develop",
     "serve": "gatsby serve",
     "storybook": "start-storybook -p 6006",

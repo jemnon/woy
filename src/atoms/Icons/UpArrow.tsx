@@ -1,32 +1,28 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
-const SvgUpArrow = ({
-  fill = '#000',
-  width = '100%',
-  height = '100%',
-  viewBox = '0 0 32 32',
-  style = {
-    width: '32px',
-    height: '32px',
-  },
-  ...props
-}) => (
+const SVG = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
-    width={width}
-    height={height}
-    viewBox={viewBox}
     xmlns="http://www.w3.org/2000/svg"
-    fill={fill}
+    width="1em"
+    height="1em"
+    viewBox="0 0 16.97 9.9"
     preserveAspectRatio="xMidYMid meet"
-    style={style}
     {...props}
   >
     <path
-      d="M0 9.02l1.415 1.416 7.07-7.072 7.072 7.072L16.97 9.02 9.9 1.95 8.485.536z"
-      fill="#000"
       fillRule="evenodd"
+      d="M0 8.48L1.42 9.9l7.06-7.07 7.08 7.07 1.41-1.42L9.9 1.41 8.48 0 0 8.48z"
     />
   </svg>
 );
 
+const SvgUpArrow = styled(SVG)`
+  display: ${({ display = 'inline-block' }) => display};
+  font-size: ${({ fontSize = '32px' }) => fontSize};
+  color: ${({ color = '#111' }) => color};
+  vertical-align: middle;
+  shape-rendering: inherit;
+  transform: translate3d(0, 0, 0);
+`;
 export default SvgUpArrow;

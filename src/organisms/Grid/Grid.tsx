@@ -16,6 +16,7 @@ interface GridProps {
 
 const Grid = styled.section<GridProps>`
   display: grid;
+  justify-items: center;
   row-gap: ${({ theme, columnGap = 'md1' }): string =>
     theme.spacing[columnGap]};
   column-gap: ${({ theme, rowGap = 'md1' }): string => theme.spacing[rowGap]};
@@ -31,6 +32,13 @@ const Grid = styled.section<GridProps>`
   > * {
     align-self: center;
   }
+`;
+
+export const GridCell = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
 `;
 
 export default Grid;

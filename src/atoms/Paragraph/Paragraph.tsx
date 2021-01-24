@@ -10,6 +10,7 @@ interface ParagraphProps {
 }
 
 const Paragraph = styled.p<ParagraphProps>`
+  font-family: ${({ theme }): string => theme.fonts.lato};
   font-weight: ${({ fontWeight = 'normal' }): string => fontWeight};
   font-size: ${({ theme }): string => theme.fontSizes.f1};
   font-style: ${({ fontStyle = 'normal' }): string => fontStyle};

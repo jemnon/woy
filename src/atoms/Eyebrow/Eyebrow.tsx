@@ -13,6 +13,7 @@ const Eyebrow = styled.h6<EyebrowProps>`
   text-transform: uppercase;
   font-size: ${({ theme }): string => theme.fontSizes.f1};
   font-family: ${({ theme }): string => theme.fonts.lato};
+  font-weight: bold;
   ${up('md')} {
     font-size: ${({ theme }): string => theme.fontSizes.f2};
   }

@@ -1,3 +1,4 @@
-import Grid from './Grid';
+import Grid, { GridCell } from './Grid';
 
+export { GridCell };
 export default Grid;

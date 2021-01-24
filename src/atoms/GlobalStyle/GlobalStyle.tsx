@@ -4,17 +4,14 @@ const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
   }      
-  html {
+  body {
     line-height: 1.5;
-    font-family:  "Lato", -apple-system, system-ui,
-                "avenir next", avenir, "Helvetica Neue", helvetica, ubuntu, roboto,
-                noto, 'Segoe UI', Arial, sans-serif;
+    font-family: ${({ theme }): string => theme.fonts.lato};
     font-weight: normal;
     font-size: 1rem;
 
-    color: '#111';
-  }
-  body {
+    color: ${({ theme }): string => theme.colors.nearBlack};
+
     margin: 0;
     padding: 0;
     -webkit-font-smoothing: antialiased;
@@ -39,9 +36,11 @@ const GlobalStyle = createGlobalStyle`
   h6,
   p {
     font-weight: normal;
+    line-height: 1.5;
     margin: 0;
   } 
   p {
+    font-size: ${({ theme }): string => theme.fontSizes.f1};
     margin-top: 0;
     margin-bottom: 1.5rem;
   }

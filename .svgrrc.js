@@ -1,16 +1,15 @@
 module.exports = {
-  template: require('./svgr-templates/template'),
+  template: require('./svgr-templates/icon-template'),
+  indexTemplate: require('./svgr-templates/index-template'),
   svgProps: {
-    width: '{width}',
-    height: '{height}',
-    fill: '{fill}',
-    viewBox: '{viewBox}',
     preserveAspectRatio: 'xMidYMid meet',
-    style: '{style}',
   },
   svgoConfig: {
     plugins: {
       removeViewBox: false,
     },
+  },
+  replaceAttrValues: {
+    '#111': '{props.color}',
   },
 };

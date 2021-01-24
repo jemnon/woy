@@ -1,15 +1,52 @@
-export { default as DownArrowFilled } from './DownArrowFilled'
-export { default as DownArrowThick } from './DownArrowThick'
-export { default as DownArrow } from './DownArrow'
-export { default as Facebook } from './Facebook'
-export { default as Hamburger } from './Hamburger'
-export { default as Instagram } from './Instagram'
-export { default as LeftArrow } from './LeftArrow'
-export { default as Pinterest } from './Pinterest'
-export { default as RightArrow } from './RightArrow'
-export { default as Search } from './Search'
-export { default as TriangleDown } from './TriangleDown'
-export { default as TriangleUp } from './TriangleUp'
-export { default as Twitter } from './Twitter'
-export { default as UpArrow } from './UpArrow'
-export { default as X } from './X'
+
+import DownArrowFilled from './DownArrowFilled';
+import DownArrowThick from './DownArrowThick';
+import DownArrow from './DownArrow';
+import Facebook from './Facebook';
+import Hamburger from './Hamburger';
+import Instagram from './Instagram';
+import LeftArrow from './LeftArrow';
+import Pinterest from './Pinterest';
+import RightArrow from './RightArrow';
+import Search from './Search';
+import TriangleDown from './TriangleDown';
+import TriangleUp from './TriangleUp';
+import Twitter from './Twitter';
+import UpArrow from './UpArrow';
+import X from './X';
+
+export {
+  DownArrowFilled,
+  DownArrowThick,
+  DownArrow,
+  Facebook,
+  Hamburger,
+  Instagram,
+  LeftArrow,
+  Pinterest,
+  RightArrow,
+  Search,
+  TriangleDown,
+  TriangleUp,
+  Twitter,
+  UpArrow,
+  X
+};
+
+export const Icons = {
+  DownArrowFilled,
+  DownArrowThick,
+  DownArrow,
+  Facebook,
+  Hamburger,
+  Instagram,
+  LeftArrow,
+  Pinterest,
+  RightArrow,
+  Search,
+  TriangleDown,
+  TriangleUp,
+  Twitter,
+  UpArrow,
+  X
+};

@@ -3,7 +3,6 @@ import { graphql } from 'gatsby';
 import { useNavigate } from '@reach/router';
 import { HeroType } from '../types/hero';
 import { Post as PostType } from '../types/post';
-import Grid from '../organisms/grid-styled';
 import Layout from '../organisms/Layout';
 import Pagination from '../molecules/Pagingation';
 import SEO from '../molecules/SEO';
@@ -107,11 +106,10 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
       <div>
         {posts && (
           <>
-            <Grid columns={3}>
-              {posts.map((post, idx) => {
-                return <>{JSON.stringify(post)}</>;
-              })}
-            </Grid>
+            {posts.map((post, idx) => {
+              console.log(post);
+              return <>{JSON.stringify(post)}</>;
+            })}
             {pageContext?.currentPage && pageContext.totalPages && (
               <Pagination
                 currentPage={pageContext?.currentPage}

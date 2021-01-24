@@ -1,41 +1,47 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
-const SvgSearch = ({
-  fill = '#000',
-  width = '100%',
-  height = '100%',
-  viewBox = '0 0 32 32',
-  style = {
-    width: '32px',
-    height: '32px',
-  },
-  ...props
-}) => (
+const SVG = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
-    width={width}
-    height={height}
-    viewBox={viewBox}
     xmlns="http://www.w3.org/2000/svg"
-    xmlnsXlink="http://www.w3.org/1999/xlink"
-    fill={fill}
+    width="1em"
+    height="1em"
+    viewBox="0 0 16.9 16.9"
     preserveAspectRatio="xMidYMid meet"
-    style={style}
     {...props}
   >
     <defs>
-      <path id="search_svg__a" d="M0 0h16.896v16.896H0z" />
-    </defs>
-    <g fill="none" fillRule="evenodd">
-      <mask id="search_svg__b" fill="#fff">
-        <use xlinkHref="#search_svg__a" />
+      <mask
+        id="search_svg__a"
+        x={0}
+        y={0}
+        width={16.9}
+        height={16.9}
+        maskUnits="userSpaceOnUse"
+      >
+        <path
+          fill="#fff"
+          fillRule="evenodd"
+          d="M.05.05h16.9v16.9H.05V.05z"
+          transform="translate(-.05 -.05)"
+        />
       </mask>
+    </defs>
+    <g mask="url(#search_svg__a)">
       <path
-        d="M3.461 10.532a5 5 0 117.071-7.07 5 5 0 11-7.071 7.071zm13.435 4.95l-4.299-4.3c2.05-2.739 1.838-6.647-.65-9.135-2.73-2.729-7.17-2.729-9.9 0a7.008 7.008 0 000 9.9c2.488 2.488 6.396 2.7 9.136.65l4.3 4.3 1.413-1.415z"
-        fill="#000"
-        mask="url(#search_svg__b)"
+        d="M3.46 10.53a5 5 0 117.07 0 5 5 0 01-7.07 0zm13.49 4.95l-4.3-4.3a7 7 0 10-1.41 1.42l4.24 4.35z"
+        fillRule="evenodd"
       />
     </g>
   </svg>
 );
 
+const SvgSearch = styled(SVG)`
+  display: ${({ display = 'inline-block' }) => display};
+  font-size: ${({ fontSize = '32px' }) => fontSize};
+  color: ${({ color = '#111' }) => color};
+  vertical-align: middle;
+  shape-rendering: inherit;
+  transform: translate3d(0, 0, 0);
+`;
 export default SvgSearch;

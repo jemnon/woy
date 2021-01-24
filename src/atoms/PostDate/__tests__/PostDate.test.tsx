@@ -7,7 +7,7 @@ import theme from '../../../theme';
 describe('<PostDate />', (): void => {
   const component = renderer.create(
     <ThemeProvider theme={theme}>
-      <PostDate publishDate="2021-01-15T00:00-08:00" />
+      <PostDate publishDate="2021-01-20T00:00-08:00" />
     </ThemeProvider>,
   );
   it('exists', (): void => {

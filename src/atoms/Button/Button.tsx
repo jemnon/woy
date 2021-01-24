@@ -21,6 +21,7 @@ export const ButtonReset = css`
   border-width: 0;
   outline: 0;
   background-color: transparent;
+  text-align: left;
 `;
 
 const Button = styled.button<ButtonProps>`
@@ -32,11 +33,13 @@ const Button = styled.button<ButtonProps>`
 
   padding: ${({ size = 'medium', theme }): string => {
     if (size === 'small') {
-      return `${theme.spacing.sm2} ${theme.spacing.md4}`;
+      return `${theme.spacing.sm2} ${theme.spacing.md2}`;
     }
-    return `${theme.spacing.sm3} ${theme.spacing.lg4}`;
+    return `${theme.spacing.sm3} ${theme.spacing.md4}`;
   }};
+  min-width: 10rem;
 
+  font-family: ${({ theme }): string => theme.fonts.lato};
   font-size: ${({ size = 'medium', theme }): string =>
     size === 'small' ? '0.75rem' : theme.fontSizes.f1};
   font-weight: bold;
@@ -78,7 +81,7 @@ const Button = styled.button<ButtonProps>`
   &:hover {
     ${({ colorScheme = 'orange', theme, variant = 'solid' }): string =>
       variant === 'outline'
-        ? `border-color: ${theme.hoverColors[colorScheme]}; color: ${theme.hoverColors[colorScheme]}`
+        ? `opacity: 0.75`
         : `background-color: ${theme.hoverColors[colorScheme]}`};
   }
   &:active {

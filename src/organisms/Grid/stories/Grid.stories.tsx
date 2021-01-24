@@ -23,9 +23,10 @@ const GridObj = {
 
 export default GridObj;
 
-const Template = args => <Grid {...args}>1 Column</Grid>;
+const Template = (args: any) => <Grid {...args}>1 Column</Grid>;
 
 export const OneColumn = Template.bind({});
+// @ts-ignore
 OneColumn.args = {
   columns: 1,
 };

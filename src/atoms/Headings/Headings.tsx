@@ -1,16 +1,23 @@
 import styled, { css } from 'styled-components';
 import { up } from 'styled-breakpoints';
+import { Colors } from '../../types/theme';
 
-const sharedCSS = css`
+type Color = keyof Pick<Colors, 'white' | 'nearBlack'>;
+
+interface HeadingProps {
+  color?: Color;
+}
+
+const sharedCSS = css<HeadingProps>`
   font-weight: 900;
   font-family: ${({ theme }): string => theme.fonts.noto};
 
-  color: ${({ theme }): string => theme.colors.nearBlack};
+  color: ${({ color = 'nearBlack', theme }): string => theme.colors[color]};
 
   margin-bottom: 0.35em;
 `;
 
-export const H1 = styled.h1`
+export const H1 = styled.h1<HeadingProps>`
   ${sharedCSS};
 
   font-size: ${({ theme }): string => theme.fontSizes.f10};
@@ -24,7 +31,7 @@ export const H1 = styled.h1`
   }
 `;
 
-export const H2 = styled.h2`
+export const H2 = styled.h2<HeadingProps>`
   ${sharedCSS};
 
   font-size: ${({ theme }): string => theme.fontSizes.f9};
@@ -38,7 +45,7 @@ export const H2 = styled.h2`
   }
 `;
 
-export const H3 = styled.h3`
+export const H3 = styled.h3<HeadingProps>`
   ${sharedCSS};
 
   font-size: ${({ theme }): string => theme.fontSizes.f8};
@@ -52,7 +59,7 @@ export const H3 = styled.h3`
   }
 `;
 
-export const H4 = styled.h4`
+export const H4 = styled.h4<HeadingProps>`
   ${sharedCSS};
 
   font-size: ${({ theme }): string => theme.fontSizes.f7};
@@ -66,7 +73,7 @@ export const H4 = styled.h4`
   }
 `;
 
-export const H5 = styled.h5`
+export const H5 = styled.h5<HeadingProps>`
   ${sharedCSS};
 
   font-size: ${({ theme }): string => theme.fontSizes.f6};
@@ -80,7 +87,7 @@ export const H5 = styled.h5`
   }
 `;
 
-export const H6 = styled.h6`
+export const H6 = styled.h6<HeadingProps>`
   ${sharedCSS};
 
   font-size: ${({ theme }): string => theme.fontSizes.f5};

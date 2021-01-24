@@ -1,32 +1,25 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
-const SvgInstagram = ({
-  fill = '#000',
-  width = '100%',
-  height = '100%',
-  viewBox = '0 0 32 32',
-  style = {
-    width: '32px',
-    height: '32px',
-  },
-  ...props
-}) => (
+const SVG = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
-    width={width}
-    height={height}
-    viewBox={viewBox}
     xmlns="http://www.w3.org/2000/svg"
-    fill={fill}
+    width="1em"
+    height="1em"
+    viewBox="0 0 16 16"
     preserveAspectRatio="xMidYMid meet"
-    style={style}
     {...props}
   >
-    <path
-      d="M14.15 6.77h-1.39a4.92 4.92 0 11-9.52 0h-1.4v6.77c0 .34.28.62.63.62h11.07c.34 0 .62-.28.62-.62V6.77h-.01zm0-4.3a.62.62 0 00-.62-.63h-1.84a.62.62 0 00-.62.62v1.85c0 .34.28.62.62.62h1.85c.34 0 .62-.28.62-.62V2.46l-.01.01zM8 4.91a3.08 3.08 0 100 6.16 3.08 3.08 0 000-6.16zM14.15 16H1.85A1.85 1.85 0 010 14.15V1.85C0 .83.83 0 1.85 0h12.3C15.17 0 16 .83 16 1.85v12.3c0 1.02-.83 1.85-1.85 1.85z"
-      fill="#000"
-      fillRule="nonzero"
-    />
+    <path d="M14.15 6.77h-1.39a4.92 4.92 0 11-9.52 0h-1.4v6.77a.63.63 0 00.63.62h11.07a.62.62 0 00.62-.62V6.77zm0-4.3A.59.59 0 0014 2a.6.6 0 00-.44-.19h-1.87a.62.62 0 00-.62.62v1.88a.62.62 0 00.62.62h1.85a.62.62 0 00.62-.62V2.46zM8 4.91A3.08 3.08 0 1011.08 8 3.08 3.08 0 008 4.91zM14.15 16H1.85A1.85 1.85 0 010 14.15V1.85A1.85 1.85 0 011.85 0h12.3A1.85 1.85 0 0116 1.85v12.3A1.85 1.85 0 0114.15 16z" />
   </svg>
 );
 
+const SvgInstagram = styled(SVG)`
+  display: ${({ display = 'inline-block' }) => display};
+  font-size: ${({ fontSize = '32px' }) => fontSize};
+  color: ${({ color = '#111' }) => color};
+  vertical-align: middle;
+  shape-rendering: inherit;
+  transform: translate3d(0, 0, 0);
+`;
 export default SvgInstagram;

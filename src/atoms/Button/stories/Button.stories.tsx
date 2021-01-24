@@ -20,9 +20,10 @@ export default {
   },
 };
 
-const Template = args => <Button {...args}>Button</Button>;
+const Template = (args: any) => <Button {...args}>Button</Button>;
 
 export const Default = Template.bind({});
+// @ts-ignore
 Default.args = {
   colorScheme: 'orange',
   size: 'medium',
@@ -39,18 +40,18 @@ export const Sizes = () => (
 
 export const Shapes = () => (
   <>
-    <Button shape="pill">Small</Button>
-    <Button shape="rectangle">Medium</Button>
+    <Button shape="pill">Pill</Button>
+    <Button shape="rectangle">Rectangle</Button>
   </>
 );
 
 export const Variant = () => (
   <>
     <Button size="small" variant="outline">
-      Small
+      Outline
     </Button>
     <Button size="medium" variant="outline">
-      Medium
+      Outline
     </Button>
   </>
 );

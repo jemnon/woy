@@ -1,3 +1,4 @@
-import Button from './Button';
+import Button, { ButtonReset } from './Button';
 
+export { ButtonReset };
 export default Button;

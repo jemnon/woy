@@ -1,32 +1,28 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
-const SvgX = ({
-  fill = '#000',
-  width = '100%',
-  height = '100%',
-  viewBox = '0 0 32 32',
-  style = {
-    width: '32px',
-    height: '32px',
-  },
-  ...props
-}) => (
+const SVG = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
-    width={width}
-    height={height}
-    viewBox={viewBox}
     xmlns="http://www.w3.org/2000/svg"
-    fill={fill}
+    width="1em"
+    height="1em"
+    viewBox="0 0 15.56 15.56"
     preserveAspectRatio="xMidYMid meet"
-    style={style}
     {...props}
   >
     <path
-      d="M14.142 0L7.778 6.364 1.415 0 0 1.415l6.364 6.364L0 14.143l1.415 1.414 6.363-6.364 6.364 6.364 1.415-1.414-6.364-6.364 6.364-6.364z"
-      fill="#000"
       fillRule="evenodd"
+      d="M14.14 0L7.78 6.36 1.42 0 0 1.42l6.36 6.36L0 14.14l1.42 1.42 6.36-6.37 6.36 6.37 1.42-1.42-6.37-6.36 6.37-6.36L14.14 0z"
     />
   </svg>
 );
 
+const SvgX = styled(SVG)`
+  display: ${({ display = 'inline-block' }) => display};
+  font-size: ${({ fontSize = '32px' }) => fontSize};
+  color: ${({ color = '#111' }) => color};
+  vertical-align: middle;
+  shape-rendering: inherit;
+  transform: translate3d(0, 0, 0);
+`;
 export default SvgX;

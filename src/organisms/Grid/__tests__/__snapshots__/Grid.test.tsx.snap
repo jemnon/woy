@@ -2,7 +2,7 @@
 
 exports[`<Grid /> renders defaults correctly 1`] = `
 <section
-  className="sc-bdfBwQ hzATwZ"
+  className="sc-bdfBwQ hKHRPA"
 >
   Grid Child
 </section>

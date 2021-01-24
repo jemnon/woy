@@ -1,11 +1,1 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="9px" height="17px" viewBox="0 0 9 17" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <title>facebook</title>
-    <g id="Icons" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="Artboard" transform="translate(-252.000000, -99.000000)" fill="#111111" fill-rule="nonzero">
-            <g id="facebook" transform="translate(252.000000, 99.000000)">
-                <path d="M6.1875,3.1875 L9,3.1875 L9,0 L6.1875,0 C4.01625,0 2.25,1.668125 2.25,3.71875 L2.25,5.3125 L0,5.3125 L0,8.5 L2.25,8.5 L2.25,17 L5.625,17 L5.625,8.5 L8.4375,8.5 L9,5.3125 L5.625,5.3125 L5.625,3.71875 C5.625,3.4308125 5.882625,3.1875 6.1875,3.1875 Z" id="Path"></path>
-            </g>
-        </g>
-    </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" width="9" height="17" viewBox="0 0 9 17"><path d="M6.19,3.19H9V0H6.19A3.84,3.84,0,0,0,2.25,3.72V5.31H0V8.5H2.25V17H5.62V8.5H8.44L9,5.31H5.62V3.72A.56.56,0,0,1,6.19,3.19Z" /></svg>

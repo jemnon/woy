@@ -2,6 +2,6 @@
 
 exports[`<Eyebrow /> renders defaults correctly 1`] = `
 <h6
-  className="sc-bdfBwQ bjXJmd"
+  className="sc-bdfBwQ kqWbpx"
 />
 `;

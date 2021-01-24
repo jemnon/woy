@@ -1,28 +1,25 @@
 import * as React from 'react';
+import styled from 'styled-components';
 
-const SvgTriangleUp = ({
-  fill = '#000',
-  width = '100%',
-  height = '100%',
-  viewBox = '0 0 32 32',
-  style = {
-    width: '32px',
-    height: '32px',
-  },
-  ...props
-}) => (
+const SVG = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
-    width={width}
-    height={height}
-    viewBox={viewBox}
     xmlns="http://www.w3.org/2000/svg"
-    fill={fill}
+    width="1em"
+    height="1em"
+    viewBox="0 0 16 8"
     preserveAspectRatio="xMidYMid meet"
-    style={style}
     {...props}
   >
-    <path d="M8.912 8H16L8 0 0 8h8.912z" fill="#000" fillRule="evenodd" />
+    <path d="M8.91 8H16L8 0 0 8z" fillRule="evenodd" />
   </svg>
 );
 
+const SvgTriangleUp = styled(SVG)`
+  display: ${({ display = 'inline-block' }) => display};
+  font-size: ${({ fontSize = '32px' }) => fontSize};
+  color: ${({ color = '#111' }) => color};
+  vertical-align: middle;
+  shape-rendering: inherit;
+  transform: translate3d(0, 0, 0);
+`;
 export default SvgTriangleUp;
