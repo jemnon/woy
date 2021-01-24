@@ -12,7 +12,7 @@ const PostDateTime = styled.time`
   font-family: ${({ theme }): string => theme.fonts.lato};
   font-weight: bold;
   font-size: 0.75rem;
-  ${up('md')} {
+  ${up('sm')} {
     font-size: 0.875rem;
   }
   line-height: 1.5;

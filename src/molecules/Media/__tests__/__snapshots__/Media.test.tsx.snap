@@ -2,24 +2,31 @@
 
 exports[`<Media /> renders defaults correctly 1`] = `
 <button
-  className="sc-eCssSg mHeq"
+  className="sc-gKsewC jZcxnl"
 >
+  <figure
+    className="sc-iBPRYJ bTrjSa"
+  >
+    <div
+      className="sc-gsTCUz RteLD"
+    />
+  </figure>
   <div
-    className="sc-jSgupP JtpDG"
+    className="sc-fubCfw eepoqI"
   >
     <time
-      className="sc-dlfnbm cantZy"
+      className="sc-hKgILt hTKZVa"
       dateTime="2021-01-20T00:00-08:00"
     >
       Jan 20
     </time>
     <h2
-      className="sc-hKgILt eAYqPE"
+      className="sc-eCssSg gsZFKx"
     >
       Filipino Pork Adobo
     </h2>
     <p
-      className="sc-gsTCUz dibtjK"
+      className="sc-dlfnbm emAYb sc-pFZIQ igFleh"
     >
       media desc
     </p>

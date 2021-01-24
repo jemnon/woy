@@ -14,7 +14,7 @@ const Eyebrow = styled.h6<EyebrowProps>`
   font-size: ${({ theme }): string => theme.fontSizes.f1};
   font-family: ${({ theme }): string => theme.fonts.lato};
   font-weight: bold;
-  ${up('md')} {
+  ${up('sm')} {
     font-size: ${({ theme }): string => theme.fontSizes.f2};
   }
   ${up('lg')} {

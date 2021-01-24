@@ -5,7 +5,7 @@ const PostTitle = styled.h2`
   font-family: ${({ theme }): string => theme.fonts.lato};
   font-weight: bold;
   font-size: ${({ theme }): string => theme.fontSizes.f1};
-  ${up('md')} {
+  ${up('sm')} {
     font-size: ${({ theme }): string => theme.fontSizes.f2};
   }
   ${up('lg')} {

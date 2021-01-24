@@ -5,7 +5,7 @@ exports[`<HeroContent /> renders defaults correctly 1`] = `
   className="sc-fubCfw flkmPR"
 >
   <h6
-    className="sc-gsTCUz AnqUJ"
+    className="sc-gsTCUz bEeIzf"
   >
     Newest Post
   </h6>

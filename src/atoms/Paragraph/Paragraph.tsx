@@ -14,7 +14,7 @@ const Paragraph = styled.p<ParagraphProps>`
   font-weight: ${({ fontWeight = 'normal' }): string => fontWeight};
   font-size: ${({ theme }): string => theme.fontSizes.f1};
   font-style: ${({ fontStyle = 'normal' }): string => fontStyle};
-  ${up('md')} {
+  ${up('sm')} {
     font-size: ${({ theme }): string => theme.fontSizes.f2};
   }
 
