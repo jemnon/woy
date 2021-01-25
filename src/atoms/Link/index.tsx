@@ -1,3 +1,3 @@
-import Link from './Link-ass';
+import Link from './Link';
 
 export default Link;
