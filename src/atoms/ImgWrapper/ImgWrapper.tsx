@@ -16,10 +16,10 @@ interface ImgWrapperProps {
 }
 
 const RatioCSS = css<ImgWrapperProps>`
-  padding-bottom: ${({ ratio }): string =>
+  padding-bottom: ${({ ratio }): SimpleInterpolation =>
     ratio ? `${parseRatio(ratio)}%` : `${parseRatio(1 / 1)}%`};
   ${up('lg')} {
-    padding-bottom: ${({ ratio }): string =>
+    padding-bottom: ${({ ratio }): SimpleInterpolation =>
       ratio ? `${parseRatio(ratio)}%` : `${parseRatio(9 / 16)}%`};
   }
 `;

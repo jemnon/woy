@@ -2,17 +2,21 @@
 
 exports[`<Media /> renders defaults correctly 1`] = `
 <button
-  className="sc-gKsewC jZcxnl"
+  className="sc-jSgupP jIlIHh"
 >
   <figure
-    className="sc-iBPRYJ bTrjSa"
+    className="sc-gKsewC iARURu"
   >
     <div
       className="sc-gsTCUz RteLD"
-    />
+    >
+      <img
+        src="some-image.jpg"
+      />
+    </div>
   </figure>
   <div
-    className="sc-fubCfw eepoqI"
+    className="sc-iBPRYJ haBwyB"
   >
     <time
       className="sc-hKgILt hTKZVa"
@@ -26,7 +30,7 @@ exports[`<Media /> renders defaults correctly 1`] = `
       Filipino Pork Adobo
     </h2>
     <p
-      className="sc-dlfnbm emAYb sc-pFZIQ igFleh"
+      className="sc-dlfnbm fkIxpI sc-fubCfw ifZVol"
     >
       media desc
     </p>

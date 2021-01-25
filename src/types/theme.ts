@@ -46,6 +46,10 @@ export interface HoverColors {
   nearBlack: string;
 }
 
+export interface FocusColors {
+  blue: string;
+}
+
 export type ColorMode = 'dark' | 'light';
 
 export interface MaxWidths {

@@ -6,7 +6,7 @@ import ImgWrapper from '../../atoms/ImgWrapper';
 import Paragraph from '../../atoms/Paragraph';
 import PostDate from '../../atoms/PostDate';
 import PostTitle from '../../atoms/PostTitle';
-import { EllipsisCSS } from '../../atoms/Text';
+// import { EllipsisCSS } from '../../atoms/Text';
 
 interface MediaProps {
   description: string;
@@ -23,6 +23,14 @@ const MediaContainer = styled.button`
   align-items: center;
 
   width: 100%;
+
+  cursor: pointer;
+
+  &:hover {
+    > figure > div {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 const MediaFigure = styled.figure`
@@ -35,6 +43,12 @@ const MediaFigure = styled.figure`
     width: 40%;
     max-width: 20rem;
   }
+
+  overflow: hidden;
+
+  > div {
+    transition: ${({ theme }): string => theme.transition};
+  }
 `;
 
 const MediaContent = styled.div`
@@ -45,7 +59,9 @@ const MediaContent = styled.div`
   }
 `;
 
-const MediaDescription = styled.p``;
+const MediaDescription = styled.p`
+  max-width: 28rem;
+`;
 
 const Media: FC<MediaProps> = ({
   description,

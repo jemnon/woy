@@ -1,14 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { ThemeProvider } from 'styled-components';
-import Media from '../Media';
+import Card from '../Card';
 import theme from '../../../theme';
 
-describe('<Media />', (): void => {
+describe('<Card />', (): void => {
   const component = renderer.create(
     <ThemeProvider theme={theme}>
-      <Media
-        description="media desc"
+      <Card
         image={<img src="some-image.jpg" />}
         publishDate="2021-01-20T00:00-08:00"
         title="Filipino Pork Adobo"
@@ -16,7 +15,7 @@ describe('<Media />', (): void => {
     </ThemeProvider>,
   );
   it('exists', (): void => {
-    expect(Media).toBeDefined();
+    expect(Card).toBeDefined();
   });
   it('renders defaults correctly', (): void => {
     const tree = component.toJSON();

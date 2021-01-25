@@ -17,7 +17,7 @@ const Avatar = styled.img<AvatarProps>`
 
   margin-left: auto;
   margin-right: auto;
-  margin-bottom: ${({ bottomSpacing = 'md1', theme }): string =>
+  margin-bottom: ${({ bottomSpacing = 'sm4', theme }): string =>
     theme.spacing[bottomSpacing]};
 
   border-radius: 100%;

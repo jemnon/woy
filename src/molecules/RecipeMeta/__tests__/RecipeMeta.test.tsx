@@ -1,22 +1,17 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { ThemeProvider } from 'styled-components';
-import Media from '../Media';
+import RecipeMeta from '../RecipeMeta';
 import theme from '../../../theme';
 
-describe('<Media />', (): void => {
+describe('<RecipeMeta />', (): void => {
   const component = renderer.create(
     <ThemeProvider theme={theme}>
-      <Media
-        description="media desc"
-        image={<img src="some-image.jpg" />}
-        publishDate="2021-01-20T00:00-08:00"
-        title="Filipino Pork Adobo"
-      />
+      <RecipeMeta cookTime="10 minutes" servings="10 ounces" />
     </ThemeProvider>,
   );
   it('exists', (): void => {
-    expect(Media).toBeDefined();
+    expect(RecipeMeta).toBeDefined();
   });
   it('renders defaults correctly', (): void => {
     const tree = component.toJSON();

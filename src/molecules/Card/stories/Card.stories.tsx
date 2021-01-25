@@ -1,7 +1,7 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
 import Grid from '../../../organisms/Grid';
-import Media from '../Media';
+import Card from '../Card';
 
 const disableProp = {
   table: {
@@ -10,8 +10,8 @@ const disableProp = {
 };
 
 export default {
-  title: 'Molecules/Media',
-  component: Media,
+  title: 'Molecules/Card',
+  component: Card,
   argTypes: {
     as: { ...disableProp },
     ref: { ...disableProp },
@@ -23,19 +23,19 @@ export default {
 } as Meta;
 
 const Template = (args: any) => (
-  <Media
-    {...args}
-    image={
-      <img src="https://images.ctfassets.net/lz7g6u6kccw7/5mrrnE7DQKY3EYm9tps0Ab/b69bb54f0105e2e1e1bc36a45084f4a6/76F1D634-F8AC-4E9B-AEB7-906BCD6A3518.jpg?w=800&q=50" />
-    }
-  />
+  <Grid columnWidth="320px">
+    <Card
+      {...args}
+      image={
+        <img src="https://images.ctfassets.net/lz7g6u6kccw7/5mrrnE7DQKY3EYm9tps0Ab/b69bb54f0105e2e1e1bc36a45084f4a6/76F1D634-F8AC-4E9B-AEB7-906BCD6A3518.jpg?w=800&q=50" />
+      }
+    />
+  </Grid>
 );
 
 export const Default = Template.bind({});
 // @ts-ignore
 Default.args = {
-  description:
-    'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas varius tortor nibh, sit amet tempor nibh.',
   publishDate: '2021-01-20T00:00-08:00',
   title: 'Filipino Pork Adobo',
 };

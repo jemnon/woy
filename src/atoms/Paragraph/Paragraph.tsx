@@ -18,6 +18,8 @@ const Paragraph = styled.p<ParagraphProps>`
     font-size: ${({ theme }): string => theme.fontSizes.f2};
   }
 
+  line-height: 1.5;
+
   margin-bottom: ${({ theme }): string => theme.spacing.sm4};
   &:last-child {
     margin-bottom: 0;

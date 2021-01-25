@@ -3,6 +3,7 @@ import {
   Breakpoints,
   Colors,
   ColorMode,
+  FocusColors,
   Fonts,
   FontSizes,
   HoverColors,
@@ -15,6 +16,7 @@ declare module 'styled-components' {
   export interface DefaultTheme {
     breakpoints: Breakpoints;
     colors: Colors;
+    focusColors: FocusColors;
     fonts: Fonts;
     fontSizes: FontSizes;
     hoverColors: HoverColors;

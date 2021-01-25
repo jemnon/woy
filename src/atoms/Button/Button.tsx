@@ -85,8 +85,8 @@ const Button = styled.button<ButtonProps>`
         : `background-color: ${theme.hoverColors[colorScheme]}`};
   }
   &:active {
-    box-shadow: ${({ isDisabled }): string =>
-      !isDisabled ? 'rgba(0, 119, 187, 0.5) 0px 0px 0px 3px' : ''};
+    box-shadow: ${({ isDisabled, theme }): string =>
+      !isDisabled ? `${theme.focusColors.blue} 0px 0px 0px 3px` : ''};
   }
   & + & {
     margin-left: ${({ theme }): string => theme.spacing.sm4};
