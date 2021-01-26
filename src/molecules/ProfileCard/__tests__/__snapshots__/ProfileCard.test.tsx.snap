@@ -10,7 +10,7 @@ exports[`<ProfileCard /> renders defaults correctly 1`] = `
     src="https://images.ctfassets.net/lz7g6u6kccw7/2PXqIKP4gcdBKWQ4sUuqaa/c4ea960704b036c285cd6061400c447e/IMG_6D21ECE4038E-1.jpeg?h=250"
   />
   <div
-    className="sc-dlfnbm kDxOGp sc-dIUggk dAUJnK"
+    className="sc-dlfnbm iwFslH sc-dIUggk dAUJnK"
     fontSize="f4"
     fontWeight="bold"
   >

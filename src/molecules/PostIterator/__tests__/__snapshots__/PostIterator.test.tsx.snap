@@ -1,0 +1,77 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PostIterator /> renders defaults correctly 1`] = `
+<section
+  className="sc-hKgILt fZjRmQ"
+>
+  <button
+    className="sc-eCssSg fZyOIy"
+    onClick={[Function]}
+  >
+    <figure
+      className="sc-jSgupP ckvijj"
+    >
+      <div
+        className="sc-gsTCUz iaHCbG"
+      >
+        <img
+          src="some-image.jpg"
+        />
+      </div>
+    </figure>
+    <div
+      className="sc-gKsewC iyJKSp"
+    >
+      <div
+        className="sc-dlfnbm bEHluF"
+        fontSize="f-sm"
+        fontWeight="bold"
+      >
+        Previous
+      </div>
+      <div
+        className="sc-dlfnbm fJIgXQ sc-iBPRYJ cDkjBo"
+        fontSize="f-sm"
+        fontWeight="bold"
+      >
+        Shrimp Scampi
+      </div>
+    </div>
+  </button>
+  <button
+    className="sc-eCssSg fZyOIy"
+    onClick={[Function]}
+  >
+    <div
+      className="sc-gKsewC ircwHW"
+      direction="right"
+    >
+      <div
+        className="sc-dlfnbm eCobIS"
+        fontSize="f-sm"
+        fontWeight="bold"
+      >
+        Next
+      </div>
+      <div
+        className="sc-dlfnbm fJIgXQ sc-iBPRYJ cDkjBo"
+        fontSize="f-sm"
+        fontWeight="bold"
+      >
+        Tomato Bisque
+      </div>
+    </div>
+    <figure
+      className="sc-jSgupP ckvijj"
+    >
+      <div
+        className="sc-gsTCUz iaHCbG"
+      >
+        <img
+          src="some-image.jpg"
+        />
+      </div>
+    </figure>
+  </button>
+</section>
+`;

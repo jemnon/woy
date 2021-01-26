@@ -2,8 +2,13 @@
 
 exports[`<Grid /> renders defaults correctly 1`] = `
 <section
-  className="sc-bdfBwQ hKHRPA"
+  className="sc-bdfBwQ jhIIfw"
 >
-  Grid Child
+  <div
+    className="sc-gsTCUz fSGNbk"
+    width={1}
+  >
+    1/1
+  </div>
 </section>
 `;

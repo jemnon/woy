@@ -23,12 +23,12 @@ export default {
 } as Meta;
 
 const Template = (args: any) => (
-  <Grid columnWidth="414px">
+  <div style={{ width: '414px' }}>
     <ProfileCard
       {...args}
       image="https://images.ctfassets.net/lz7g6u6kccw7/2PXqIKP4gcdBKWQ4sUuqaa/c4ea960704b036c285cd6061400c447e/IMG_6D21ECE4038E-1.jpeg?h=250"
     />
-  </Grid>
+  </div>
 );
 
 export const Default = Template.bind({});

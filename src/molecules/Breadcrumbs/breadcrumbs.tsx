@@ -1,7 +1,7 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
-import Link from '../../atoms/Link';
+import { ButtonReset } from '../../atoms/Button';
 import { EllipsisCSS } from '../../atoms/Text';
 
 const BreadcrumbsContainer = styled.ul`
@@ -20,7 +20,9 @@ const BreadcrumbsContainer = styled.ul`
   }
 `;
 
-const BreadcrumbsLink = styled.a`
+const BreadcrumbsLink = styled.button`
+  ${ButtonReset};
+
   display: inline-block;
 
   color: ${({ theme }): string => theme.colors.nearBlack};
@@ -37,16 +39,15 @@ const BreadcrumbsTitle = styled.span`
 `;
 
 interface BreadcrumbsProps {
+  onClick?: () => void;
   title?: string;
 }
 
-const Breadcrumbs: FC<BreadcrumbsProps> = ({ title }) => {
+const Breadcrumbs: FC<BreadcrumbsProps> = ({ title, onClick }) => {
   return (
     <BreadcrumbsContainer>
       <li>
-        <BreadcrumbsLink as={Link} to="/">
-          Home
-        </BreadcrumbsLink>
+        <BreadcrumbsLink onClick={onClick}>Home</BreadcrumbsLink>
       </li>
       <li>/</li>
       {title && (

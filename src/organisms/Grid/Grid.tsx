@@ -1,44 +1,56 @@
-import { ReactNode } from 'react';
 import styled from 'styled-components';
 import { Spacing } from '../../types/theme';
 
-type Columns = 1 | 2 | 3 | 4 | 5 | 6 | 8 | 10 | 12 | 16;
-type ColumnGap = keyof Spacing;
-type RowGap = ColumnGap;
+type Alignment =
+  | 'start'
+  | 'end'
+  | 'center'
+  | 'stretch'
+  | 'space-around'
+  | 'space-between'
+  | 'space-evenly'
+  | 'normal';
+type GapSpacing = keyof Spacing;
+type Flow = 'row' | 'column' | 'dense' | 'row dense' | 'column dense';
+
+const getFR = (value: number | string): number | string =>
+  typeof value === 'number' ? `repeat(${value}, 1fr)` : value;
 
 interface GridProps {
-  children?: ReactNode;
-  columns?: Columns | 'auto-fill';
-  columnGap?: ColumnGap;
-  columnWidth?: string;
-  rowGap?: RowGap;
+  alignContent?: Alignment;
+  areas?: string[];
+  columns?: string | number;
+  columnGap?: GapSpacing;
+  flow?: Flow;
+  gap?: GapSpacing;
+  justifyContent?: Alignment;
+  height?: string;
+  minRowHeight?: string;
+  rows?: string | number;
+  rowGap?: GapSpacing;
 }
 
 const Grid = styled.section<GridProps>`
   display: grid;
-  justify-items: center;
-  row-gap: ${({ theme, columnGap = 'md1' }): string =>
-    theme.spacing[columnGap]};
+
+  grid-auto-flow: ${({ flow = 'row' }): string => flow};
+  grid-auto-rows: ${({ minRowHeight = '1rem' }): string =>
+    `minmax(${minRowHeight}, auto)`};
+
+  grid-template-rows: ${({ rows }): string =>
+    rows ? `${getFR(rows)}` : 'none'};
+  grid-template-columns: ${({ columns = 12 }): string => `${getFR(columns)}`};
+  grid-template-areas: ${({ areas }): string =>
+    areas ? areas.map(area => `"${area}"`).join(' ') : 'none'};
+
+  gap: ${({ theme, gap = 'md1' }): string => theme.spacing[gap]};
+  row-gap: ${({ theme, gap = 'md1' }): string => theme.spacing[gap]};
   column-gap: ${({ theme, rowGap = 'md1' }): string => theme.spacing[rowGap]};
-  grid-template-columns: ${({
-    columns = 'auto-fill',
-    columnWidth = '100px',
-  }): string => `repeat(${columns}, minmax(${columnWidth}, 1fr))`};
 
-  & + & {
-    margin-top: 1rem;
-  }
+  align-content: ${({ alignContent = 'normal' }): string => alignContent};
+  justify-content: ${({ justifyContent = 'normal' }): string => justifyContent};
 
-  > * {
-    align-self: center;
-  }
-`;
-
-export const GridCell = styled.div`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
+  height: ${({ height = 'auto' }): string => height};
 `;
 
 export default Grid;

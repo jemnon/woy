@@ -9,12 +9,12 @@ export default {
 };
 
 export const AllIcons = () => (
-  <Grid columnWidth="130px">
+  <Grid columns="repeat(auto-fit,minmax(120px,1fr))">
     {Object.keys(Icons).map(name => {
       // @ts-ignore
       const Component = Icons[name];
       return (
-        <GridCell>
+        <GridCell padding=".5rem" textAlign="center">
           <Component />
           <Text fontSize="f-xsm">{name}</Text>
         </GridCell>

@@ -1,6 +1,5 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import Grid from '../../../organisms/Grid';
 import Media from '../Media';
 
 const disableProp = {
