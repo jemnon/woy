@@ -1,20 +1,31 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
+import styled, { css, SimpleInterpolation } from 'styled-components';
 import { DownArrowThick } from '../Icons';
 import { ButtonReset } from '../Button';
 
 interface DownButtonProps {
+  isCentered?: boolean;
   onClick?: () => void;
 }
 
-const DownButtonContainer = styled.button`
+const CenteredCSS = css`
+  position: absolute;
+  left: 50%;
+  bottom: 2rem;
+  transform: translateX(-50%);
+  z-index: 1;
+`;
+
+const DownButtonContainer = styled.button<{ isCentered?: boolean }>`
   ${ButtonReset};
+  ${({ isCentered = false }): SimpleInterpolation =>
+    isCentered && `${CenteredCSS}`};
 
   cursor: pointer;
 `;
 
-const DownButton: FC<DownButtonProps> = ({ onClick }) => (
-  <DownButtonContainer onClick={onClick}>
+const DownButton: FC<DownButtonProps> = ({ isCentered, onClick }) => (
+  <DownButtonContainer onClick={onClick} isCentered={isCentered}>
     <DownArrowThick fontSize="2.25rem" fill="#fff" />
   </DownButtonContainer>
 );

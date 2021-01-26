@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import Button from './button-styled';
-import Facebook from '../../images/svg/icons/facebook.svg';
+import { Facebook } from '../../atoms/Icons';
 
 interface ShareFBProps {
   url: string;

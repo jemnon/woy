@@ -25,8 +25,16 @@ const BreadcrumbsLink = styled.button`
 
   display: inline-block;
 
-  color: ${({ theme }): string => theme.colors.nearBlack};
+  cursor: pointer;
 
+  color: ${({ theme }): string => theme.colors.nearBlack};
+  font-size: ${({ theme }): string => theme.fontSizes['f-sm']};
+  ${up('md')} {
+    font-size: ${({ theme }): string => theme.fontSizes.f1};
+  }
+  ${up('lg')} {
+    font-size: ${({ theme }): string => theme.fontSizes.f2};
+  }
   text-decoration: none;
 `;
 

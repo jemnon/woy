@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import Button from './button-styled';
-import Pinterest from '../../images/svg/icons/pinterest.svg';
+import { Pinterest } from '../../atoms/Icons';
 
 interface SharePinterestProps {
   description: string;

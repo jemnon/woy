@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import Button from './button-styled';
-import Twitter from '../../images/svg/icons/twitter.svg';
+import { Twitter } from '../../atoms/Icons';
 
 interface ShareTwitterProps {
   url: string;

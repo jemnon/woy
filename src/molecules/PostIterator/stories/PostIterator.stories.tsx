@@ -2,12 +2,6 @@ import React from 'react';
 import { Meta } from '@storybook/react';
 import PostIterator from '../PostIterator';
 
-const disableProp = {
-  table: {
-    disable: true,
-  },
-};
-
 export default {
   title: 'Molecules/PostIterator',
   component: PostIterator,
