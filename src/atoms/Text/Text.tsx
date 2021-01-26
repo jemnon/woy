@@ -6,7 +6,7 @@ type FontFamily = keyof Fonts;
 type FontSize = keyof FontSizes;
 type FontStyle = 'normal' | 'italic';
 type FontWeight = 'normal' | 'bold';
-type TextAlign = 'left' | 'right';
+type TextAlign = 'left' | 'right' | 'center';
 type TextColor = keyof Colors;
 type TextTransform = 'uppercase' | 'capitalize' | 'none';
 

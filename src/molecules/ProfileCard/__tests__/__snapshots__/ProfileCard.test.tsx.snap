@@ -2,7 +2,7 @@
 
 exports[`<ProfileCard /> renders defaults correctly 1`] = `
 <section
-  className="sc-idOhPF rWOxa"
+  className="sc-dIUggk coItBx"
 >
   <img
     alt="jerildine"
@@ -10,14 +10,14 @@ exports[`<ProfileCard /> renders defaults correctly 1`] = `
     src="https://images.ctfassets.net/lz7g6u6kccw7/2PXqIKP4gcdBKWQ4sUuqaa/c4ea960704b036c285cd6061400c447e/IMG_6D21ECE4038E-1.jpeg?h=250"
   />
   <div
-    className="sc-dlfnbm iwFslH sc-dIUggk dAUJnK"
+    className="sc-dlfnbm iwFslH sc-hHftDr rpaOV"
     fontSize="f4"
     fontWeight="bold"
   >
     Jerildine
   </div>
   <div
-    className="sc-hHftDr eLjxck"
+    className="sc-dmlrTW pyRcA"
   />
   <p
     className="sc-gsTCUz btoGML"
@@ -25,18 +25,18 @@ exports[`<ProfileCard /> renders defaults correctly 1`] = `
     I get down on making all sorts of eats
   </p>
   <footer
-    className="sc-dmlrTW iYzuoj"
+    className="sc-kfzAmx bCBmbI"
   >
     <button
-      className="sc-fFubgz jGMhLW"
+      className="sc-bkzZxe euTcqA"
     >
       <span
-        className="sc-bkzZxe kVAFKx"
+        className="sc-idOhPF jycPrB"
       >
         More
       </span>
       <svg
-        className="sc-iqHYGH gwtkrT"
+        className="sc-crrsfI dRiUeO"
         fill="#2B2B2B"
         fontSize="10px"
         height="1em"

@@ -6,6 +6,7 @@ import Facebook from './Facebook';
 import Hamburger from './Hamburger';
 import Instagram from './Instagram';
 import LeftArrow from './LeftArrow';
+import Logo from './Logo';
 import Pinterest from './Pinterest';
 import RightArrow from './RightArrow';
 import Search from './Search';
@@ -23,6 +24,7 @@ export {
   Hamburger,
   Instagram,
   LeftArrow,
+  Logo,
   Pinterest,
   RightArrow,
   Search,
@@ -41,6 +43,7 @@ export const Icons = {
   Hamburger,
   Instagram,
   LeftArrow,
+  Logo,
   Pinterest,
   RightArrow,
   Search,

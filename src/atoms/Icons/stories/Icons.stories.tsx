@@ -16,7 +16,9 @@ export const AllIcons = () => (
       return (
         <GridCell padding=".5rem" textAlign="center">
           <Component />
-          <Text fontSize="f-xsm">{name}</Text>
+          <Text fontSize="f-xsm" textAlign="center">
+            {name}
+          </Text>
         </GridCell>
       );
     })}
