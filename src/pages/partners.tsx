@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
 import { graphql } from 'gatsby';
 import { FluidObject } from 'gatsby-image';
-import Breadcrumbs from '../molecules/Breadcrumbs';
+// import Breadcrumbs from '../molecules/Breadcrumbs';
 import Layout from '../organisms/Layout';
 // import PartnerCard from '../molecules/PartnerCard';
 import SEO from '../molecules/SEO';
@@ -65,7 +65,6 @@ const PartnersPage: FC<PartnersPageProps> = ({
         image="https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/social-logo.jpg"
         pathname={location.pathname}
       />
-      <Breadcrumbs title="Partners" />
       {contentfulPartners.title && <h1>{contentfulPartners.title}</h1>}
       {contentfulPartners.description && (
         <p

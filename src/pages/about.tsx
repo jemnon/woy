@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import { graphql } from 'gatsby';
 import styled from 'styled-components';
 import Img from 'gatsby-image';
-import Breadcrumbs from '../molecules/Breadcrumbs';
 import { Images as Image } from '../types/images';
 import Layout from '../organisms/Layout';
 import SEO from '../molecules/SEO';
@@ -73,7 +72,6 @@ const AboutPage: FC<AboutPageProps> = ({
         image="https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/social-logo.jpg"
         pathname={location.pathname}
       />
-      <Breadcrumbs title="About" />
       <AboutPageContent>
         <Img
           alt="about jeri mobley"

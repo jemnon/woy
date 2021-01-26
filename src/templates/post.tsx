@@ -2,7 +2,7 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { Post as PostType } from '../types/post';
 import { generateFromAst } from '../utils/utils';
-import Breadcrumbs from '../molecules/Breadcrumbs';
+// import Breadcrumbs from '../molecules/Breadcrumbs';
 import Layout from '../organisms/Layout';
 import SEO from '../molecules/SEO';
 import Share from '../molecules/Share';
@@ -59,7 +59,6 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
         script={JSON.stringify(schemaJson)}
       />
       <PostPageHeader>
-        <Breadcrumbs title={post.title} />
         <Share
           description={post.bodyPreview?.bodyPreview}
           media={`https:${fixed?.src}`}
