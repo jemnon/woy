@@ -6,7 +6,7 @@ exports[`<Logo /> renders defaults correctly 1`] = `
 >
   <svg
     className="sc-fubCfw bYBCxp"
-    fill="#fff"
+    fill="#111"
     fontSize="187px"
     height="1.5rem"
     preserveAspectRatio="xMidYMid meet"

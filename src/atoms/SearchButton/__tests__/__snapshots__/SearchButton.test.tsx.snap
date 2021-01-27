@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<SearchButton /> renders defaults correctly 1`] = `
+<button
+  className="sc-hBEYos jWSosx"
+>
+  <svg
+    className="sc-jrAGrp hUsKwH"
+    fill="#111"
+    fontSize="1rem"
+    height="1em"
+    preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 16.9 16.9"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <defs>
+      <mask
+        height={16.9}
+        id="search_svg__a"
+        maskUnits="userSpaceOnUse"
+        width={16.9}
+        x={0}
+        y={0}
+      >
+        <path
+          d="M.05.05h16.9v16.9H.05V.05z"
+          fill="#fff"
+          fillRule="evenodd"
+          transform="translate(-.05 -.05)"
+        />
+      </mask>
+    </defs>
+    <g
+      mask="url(#search_svg__a)"
+    >
+      <path
+        d="M3.46 10.53a5 5 0 117.07 0 5 5 0 01-7.07 0zm13.49 4.95l-4.3-4.3a7 7 0 10-1.41 1.42l4.24 4.35z"
+        fillRule="evenodd"
+      />
+    </g>
+  </svg>
+</button>
+`;

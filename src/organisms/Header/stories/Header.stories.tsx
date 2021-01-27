@@ -1,38 +1,26 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import Logo from '../Logo';
-
-const disableProp = {
-  table: {
-    disable: true,
-  },
-};
+import Header from '../Header';
 
 export default {
-  title: 'Atoms/Logo',
-  component: Logo,
-  argTypes: {
-    as: { ...disableProp },
-    ref: { ...disableProp },
-    theme: { ...disableProp },
-    forwardedAs: {
-      ...disableProp,
-    },
-  },
+  title: 'Organisms/Header',
+  component: Header,
 } as Meta;
 
-const Template = (args: any) => <Logo {...args} />;
+const Template = (args: any) => <Header {...args} />;
 
 export const Light = Template.bind({});
 // @ts-ignore
 Light.args = {
   colorTheme: 'light',
+  pathname: '/',
 };
 
 export const Dark = Template.bind({});
 // @ts-ignore
 Dark.args = {
   colorTheme: 'dark',
+  pathname: '/',
 };
 // @ts-ignore
 Dark.parameters = {
