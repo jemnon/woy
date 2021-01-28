@@ -19,10 +19,28 @@ const PartnerCardContainer = styled.article`
   display: flex;
   align-items: center;
   flex-direction: column;
+
+  width: 100%;
+
+  cursor: pointer;
+
+  &:hover {
+    > figure > div {
+      transform: scale(1.1);
+    }
+  }
 `;
 
 const PartnerCardFigure = styled.figure`
+  width: 100%;
+
+  overflow: hidden;
+
   margin-bottom: ${({ theme: { spacing } }): string => spacing.sm2};
+
+  > div {
+    transition: ${({ theme }): string => theme.transition};
+  }
 `;
 
 const PartnerCard: FC<PartnerCardProps> = ({
@@ -34,9 +52,9 @@ const PartnerCard: FC<PartnerCardProps> = ({
   url,
 }) => (
   <PartnerCardContainer aria-label={title}>
-    <ImgWrapper as={PartnerCardFigure} ratio={9 / 16}>
-      {image}
-    </ImgWrapper>
+    <PartnerCardFigure>
+      <ImgWrapper ratio={9 / 16}>{image}</ImgWrapper>
+    </PartnerCardFigure>
     <H5>{title}</H5>
     {description && <Text textAlign="center">{description}:</Text>}
     <Text
