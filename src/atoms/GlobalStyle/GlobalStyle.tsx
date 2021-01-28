@@ -42,7 +42,7 @@ const GlobalStyle = createGlobalStyle`
   p {
     font-size: ${({ theme }): string => theme.fontSizes.f1};
     margin-top: 0;
-    margin-bottom: 1.5rem;
+    margin-bottom: ${({ theme }): string => theme.spacing.sm4};
   }
   figure {
     margin: 0;

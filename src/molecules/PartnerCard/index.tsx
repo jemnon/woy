@@ -1,3 +1,3 @@
-import PartnerCard from './partner-card';
+import PartnerCard from './PartnerCard';
 
 export default PartnerCard;

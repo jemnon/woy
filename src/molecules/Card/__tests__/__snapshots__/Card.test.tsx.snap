@@ -1,15 +1,15 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Card /> renders defaults correctly 1`] = `
-<button
+<article
   aria-label="Filipino Pork Adobo"
-  className="sc-eCssSg ftIfqk"
+  className="sc-hKgILt gHTTxV"
 >
   <figure
-    className="sc-jSgupP cOGRqD"
+    className="sc-eCssSg EUPsC"
   >
     <div
-      className="sc-gsTCUz RteLD"
+      className="sc-bdfBwQ jYcsaj"
     >
       <img
         src="some-image.jpg"
@@ -17,15 +17,15 @@ exports[`<Card /> renders defaults correctly 1`] = `
     </div>
   </figure>
   <time
-    className="sc-dlfnbm bFIWGM"
+    className="sc-gsTCUz kVJUOL"
     dateTime="2021-01-20T00:00-08:00"
   >
     Jan 20
   </time>
   <h2
-    className="sc-hKgILt ldKqvS"
+    className="sc-dlfnbm fdKZoI"
   >
     Filipino Pork Adobo
   </h2>
-</button>
+</article>
 `;

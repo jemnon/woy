@@ -14,6 +14,7 @@ export const Light = Template.bind({});
 Light.args = {
   colorTheme: 'light',
   pathname: '/',
+  isFixed: false,
 };
 
 export const Dark = Template.bind({});
@@ -21,6 +22,7 @@ export const Dark = Template.bind({});
 Dark.args = {
   colorTheme: 'dark',
   pathname: '/',
+  isFixed: false,
 };
 // @ts-ignore
 Dark.parameters = {

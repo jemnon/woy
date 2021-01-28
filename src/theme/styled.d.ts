@@ -6,6 +6,7 @@ import {
   FocusColors,
   Fonts,
   FontSizes,
+  Header,
   HoverColors,
   MaxWidths,
   Spacing,
@@ -19,6 +20,7 @@ declare module 'styled-components' {
     focusColors: FocusColors;
     fonts: Fonts;
     fontSizes: FontSizes;
+    header: Header;
     hoverColors: HoverColors;
     maxWidths: MaxWidths;
     spacing: Spacing;

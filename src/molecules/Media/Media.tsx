@@ -11,14 +11,11 @@ import PostTitle from '../../atoms/PostTitle';
 interface MediaProps {
   description: string;
   image?: ReactNode;
-  onClick?: () => void;
   publishDate: string;
   title: string;
 }
 
-const MediaContainer = styled.button`
-  ${ButtonReset};
-
+const MediaContainer = styled.article`
   display: flex;
   align-items: center;
 
@@ -63,14 +60,8 @@ const MediaDescription = styled.p`
   max-width: 28rem;
 `;
 
-const Media: FC<MediaProps> = ({
-  description,
-  image,
-  onClick,
-  publishDate,
-  title,
-}) => (
-  <MediaContainer onClick={onClick}>
+const Media: FC<MediaProps> = ({ description, image, publishDate, title }) => (
+  <MediaContainer>
     <MediaFigure>
       <ImgWrapper>{image}</ImgWrapper>
     </MediaFigure>

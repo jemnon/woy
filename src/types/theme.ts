@@ -40,6 +40,12 @@ export interface Colors {
   white: string;
 }
 
+export type ColorMode = 'dark' | 'light';
+
+export interface Header {
+  height: string;
+}
+
 export interface HoverColors {
   orange: string;
   teal: string;
@@ -49,8 +55,6 @@ export interface HoverColors {
 export interface FocusColors {
   blue: string;
 }
-
-export type ColorMode = 'dark' | 'light';
 
 export interface MaxWidths {
   sm: string;

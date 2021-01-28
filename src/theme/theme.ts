@@ -46,6 +46,9 @@ const theme: DefaultTheme = {
   focusColors: {
     blue: 'rgba(0, 119, 187, 0.5)',
   },
+  header: {
+    height: '4rem',
+  },
   hoverColors: {
     orange: '#A2421B',
     teal: '#162936',

@@ -1,14 +1,14 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<Media /> renders defaults correctly 1`] = `
-<button
-  className="sc-jSgupP jIlIHh"
+<article
+  className="sc-eCssSg bMMBMS"
 >
   <figure
-    className="sc-gKsewC iARURu"
+    className="sc-jSgupP bPvPOL"
   >
     <div
-      className="sc-gsTCUz RteLD"
+      className="sc-bdfBwQ jYcsaj"
     >
       <img
         src="some-image.jpg"
@@ -16,24 +16,24 @@ exports[`<Media /> renders defaults correctly 1`] = `
     </div>
   </figure>
   <div
-    className="sc-iBPRYJ haBwyB"
+    className="sc-gKsewC gOOLjR"
   >
     <time
-      className="sc-hKgILt hTKZVa"
+      className="sc-dlfnbm bFIWGM"
       dateTime="2021-01-20T00:00-08:00"
     >
       Jan 20
     </time>
     <h2
-      className="sc-eCssSg gsZFKx"
+      className="sc-hKgILt ldKqvS"
     >
       Filipino Pork Adobo
     </h2>
     <p
-      className="sc-dlfnbm fkIxpI sc-fubCfw ifZVol"
+      className="sc-gsTCUz YrFQz sc-iBPRYJ EuWcI"
     >
       media desc
     </p>
   </div>
-</button>
+</article>
 `;

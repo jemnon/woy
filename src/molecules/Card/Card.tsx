@@ -1,20 +1,16 @@
 import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
-import { ButtonReset } from '../../atoms/Button';
 import ImgWrapper from '../../atoms/ImgWrapper';
 import PostDate from '../../atoms/PostDate';
 import PostTitle from '../../atoms/PostTitle';
 
 interface CardProps {
   image?: ReactNode;
-  onClick?: () => void;
   publishDate: string;
   title: string;
 }
 
-const CardContainer = styled.button`
-  ${ButtonReset};
-
+const CardContainer = styled.article`
   display: block;
 
   width: 100%;
@@ -38,8 +34,8 @@ const CardFigure = styled.figure`
   }
 `;
 
-const Card: FC<CardProps> = ({ image, onClick, publishDate, title }) => (
-  <CardContainer aria-label={title} onClick={onClick}>
+const Card: FC<CardProps> = ({ image, publishDate, title }) => (
+  <CardContainer aria-label={title}>
     <CardFigure>
       <ImgWrapper>{image}</ImgWrapper>
     </CardFigure>

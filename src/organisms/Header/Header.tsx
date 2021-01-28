@@ -22,7 +22,7 @@ const HeaderContainer = styled.header<HeaderProps>`
   align-items: center;
 
   width: 100%;
-  height: 4rem;
+  height: ${({ theme: { header } }): string => header.height};
 
   padding-left: ${({ theme }): string => theme.spacing.sm4};
   padding-right: ${({ theme }): string => theme.spacing.sm2};
@@ -39,11 +39,13 @@ const HeaderContainer = styled.header<HeaderProps>`
   background-color: ${({ colorTheme = 'light', theme }): string =>
     colorTheme === 'dark' ? 'transparent' : theme.colors.white};
 
-  ${({ isFixed }): SimpleInterpolation => isFixed && `${FixedCSS}`};
+  transition: ${({ theme }): string => theme.transition};
+
+  ${({ isFixed = true }): SimpleInterpolation => isFixed && `${FixedCSS}`};
 `;
 
-const Header: FC<HeaderProps> = ({ colorTheme, pathname }) => (
-  <HeaderContainer colorTheme={colorTheme}>
+const Header: FC<HeaderProps> = ({ colorTheme, isFixed, pathname }) => (
+  <HeaderContainer colorTheme={colorTheme} isFixed={isFixed}>
     <Nav colorTheme={colorTheme} pathname={pathname} />
   </HeaderContainer>
 );
