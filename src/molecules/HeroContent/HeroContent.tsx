@@ -25,6 +25,10 @@ const HeroContentContainer = styled.div<{ isCentered?: boolean }>`
   justify-content: center;
   align-items: center;
 
+  text-align: center;
+
+  padding: ${({ theme }): string => theme.spacing.sm4};
+
   ${({ isCentered = false }): SimpleInterpolation =>
     isCentered && `${CenteredCSS}`};
 `;

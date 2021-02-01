@@ -1,35 +1,18 @@
-import React, { FC, useState, useEffect, useRef } from 'react';
-import { graphql } from 'gatsby';
-import { useNavigate } from '@reach/router';
-import { HeroType } from '../types/hero';
+import React, { FC } from 'react';
+import { graphql, navigate } from 'gatsby';
 import { Post as PostType } from '../types/post';
 import Layout from '../organisms/Layout';
 import Pagination from '../molecules/Pagingation';
 import SEO from '../molecules/SEO';
-import useShowHero from '../hooks/useShowHero';
 
 interface PostNode {
   node: PostType;
-}
-
-interface HeroNode {
-  node: HeroType;
 }
 
 interface PostListProps {
   data?: {
     allContentfulPosts?: {
       edges?: PostNode[];
-    };
-    allContentfulHeroes?: {
-      edges?: HeroNode[];
-    };
-  };
-
-  location: {
-    pathname: string;
-    state: {
-      page?: number;
     };
   };
 
@@ -51,50 +34,13 @@ const metaDesc =
   `chose a specific ingredient over another and get straight to what ` +
   `you want. Enjoy the content.`;
 
-const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
-  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(false);
-  const heroRef = useRef<HTMLDivElement | null>(null);
-  const showHero = useShowHero(location);
-  const navigate = useNavigate();
-
+const PostList: FC<PostListProps> = ({ data, pageContext }) => {
   const { edges: posts } = data?.allContentfulPosts || {};
-  const { edges: hero } = data?.allContentfulHeroes || {};
-  const [{ node: heroNode }] = hero || [];
 
   const handlePaginationClick = (page: number): void => {
-    navigate(`/${page === 1 ? '' : page}`, {
-      state: {
-        page,
-      },
-    });
+    navigate(`/posts/${page}`);
   };
 
-  useEffect(() => {
-    const heroHeight = heroRef.current?.clientHeight || 0;
-    const handleScroll = (): void => {
-      if (!showHero) return;
-      const windowY = window.pageYOffset;
-      const waypoint = heroHeight / 2;
-      if (waypoint >= windowY) {
-        setIsHeaderVisible(false);
-      }
-      if (waypoint <= windowY) {
-        setIsHeaderVisible(true);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return (): void => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isHeaderVisible, setIsHeaderVisible, showHero]);
-  useEffect(() => {
-    if (!showHero) {
-      setIsHeaderVisible(true);
-    }
-    if (showHero) {
-      setIsHeaderVisible(false);
-    }
-  }, [showHero]);
   return (
     <Layout>
       <SEO
@@ -106,10 +52,12 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
       <div>
         {posts && (
           <>
-            {posts.map((post, idx) => {
-              console.log(post);
-              return <>{JSON.stringify(post)}</>;
-            })}
+            <ul>
+              {posts.map((post, idx) => {
+                console.log(post);
+                return <li key={post.node.id}>{post.node.title}</li>;
+              })}
+            </ul>
             {pageContext?.currentPage && pageContext.totalPages && (
               <Pagination
                 currentPage={pageContext?.currentPage}
@@ -125,7 +73,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
 };
 
 export const query = graphql`
-  query homePageQuery($skip: Int!, $limit: Int!) {
+  query postsPageQuery($skip: Int!, $limit: Int!) {
     allContentfulPosts(
       limit: $limit
       skip: $skip
@@ -136,12 +84,6 @@ export const query = graphql`
           id
           slug
           publishDate
-          categories {
-            name
-            posts {
-              slug
-            }
-          }
           title
           images {
             fixed(width: 400) {
@@ -160,22 +102,6 @@ export const query = graphql`
             bodyPreview
             childMarkdownRemark {
               html
-            }
-          }
-        }
-      }
-    }
-    allContentfulHeroes {
-      edges {
-        node {
-          images {
-            fluid(maxWidth: 1920) {
-              aspectRatio
-              sizes
-              src
-              srcSet
-              srcSetWebp
-              srcWebp
             }
           }
         }

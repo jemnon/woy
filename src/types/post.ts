@@ -5,7 +5,7 @@ import { Images } from './images';
 export interface Post {
   slug?: string;
   id?: string;
-  publishDate: string;
+  publishDate?: string;
   categories?: Categories[];
   title: string;
   images: Images[];

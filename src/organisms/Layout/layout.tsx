@@ -30,7 +30,6 @@ const Layout: FC<LayoutProps> = ({ bgColor = 'white', children }) => {
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Main bgColor={bgColor} role="main">
-        <H1>Heading 1</H1>
         {children}
       </Main>
       <Footer />
