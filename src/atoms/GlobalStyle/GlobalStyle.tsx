@@ -43,6 +43,10 @@ const GlobalStyle = createGlobalStyle`
     font-size: ${({ theme }): string => theme.fontSizes.f1};
     margin-top: 0;
     margin-bottom: ${({ theme }): string => theme.spacing.sm4};
+
+    &:last-child {
+      margin-bottom: 0;
+    }
   }
   figure {
     margin: 0;

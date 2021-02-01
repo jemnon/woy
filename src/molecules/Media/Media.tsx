@@ -1,15 +1,14 @@
 import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
-import { ButtonReset } from '../../atoms/Button';
 import ImgWrapper from '../../atoms/ImgWrapper';
 import Paragraph from '../../atoms/Paragraph';
 import PostDate from '../../atoms/PostDate';
 import PostTitle from '../../atoms/PostTitle';
-// import { EllipsisCSS } from '../../atoms/Text';
+import { EllipsisCSS } from '../../atoms/Text';
 
 interface MediaProps {
-  description: string;
+  description?: string | ReactNode;
   image?: ReactNode;
   publishDate: string;
   title: string;
@@ -56,7 +55,7 @@ const MediaContent = styled.div`
   }
 `;
 
-const MediaDescription = styled.p`
+const MediaDescription = styled.div`
   max-width: 28rem;
 `;
 

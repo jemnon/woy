@@ -2,12 +2,12 @@
 
 exports[`<HeroContent /> renders defaults correctly 1`] = `
 <div
-  className="sc-fubCfw dhYUEl"
+  className="sc-fubCfw jiVMnK"
 >
   <h6
     className="sc-gsTCUz bEeIzf"
   >
-    Newest Post
+    Latest Post
   </h6>
   <h1
     className="sc-dlfnbm lgANMb"

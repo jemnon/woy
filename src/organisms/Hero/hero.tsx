@@ -6,7 +6,7 @@ import HeroContent from '../../molecules/HeroContent';
 interface HeroProps {
   title?: string;
   onDownScroll?: () => void;
-  onView?: () => void;
+  onViewPost?: () => void;
   image?: ReactNode;
 }
 
@@ -30,10 +30,10 @@ const HeroImgWrapper = styled.div`
 `;
 
 const Hero = forwardRef<HTMLDivElement, HeroProps>(
-  ({ image, title, onDownScroll, onView }, ref) => {
+  ({ image, title, onDownScroll, onViewPost }, ref) => {
     return (
       <HeroContainer ref={ref}>
-        {title && <HeroContent isCentered title={title} onClick={onView} />}
+        {title && <HeroContent isCentered title={title} onClick={onViewPost} />}
         {image && <HeroImgWrapper>{image}</HeroImgWrapper>}
         <DownButton isCentered onClick={onDownScroll} />
       </HeroContainer>

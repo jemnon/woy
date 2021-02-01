@@ -1,0 +1,132 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Carousel /> renders defaults correctly 1`] = `
+<section
+  className="sc-hBEYos bKcelg"
+>
+  <div
+    className="sc-fFubgz dQzbEM"
+  >
+    <div
+      className="sc-fodVxV bRDKeR"
+    >
+      <div
+        style={
+          Object {
+            "height": "200px",
+            "width": "100px",
+          }
+        }
+      />
+      <div
+        style={
+          Object {
+            "height": "200px",
+            "width": "100px",
+          }
+        }
+      />
+      <div
+        style={
+          Object {
+            "height": "200px",
+            "width": "100px",
+          }
+        }
+      />
+      <div
+        style={
+          Object {
+            "height": "200px",
+            "width": "100px",
+          }
+        }
+      />
+    </div>
+    <button
+      className="sc-dmlrTW AJkwl"
+      direction="left"
+      onClick={[Function]}
+    >
+      <svg
+        className="sc-gKsewC dFuSAH"
+        fill="#fff"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 9.9 16.97"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M8.48 0L1.41 7.07 0 8.48l8.48 8.49 1.42-1.41-7.07-7.08L9.9 1.41 8.48 0z"
+          fillRule="evenodd"
+        />
+      </svg>
+    </button>
+    <button
+      className="sc-dmlrTW hTPSMY"
+      direction="right"
+      onClick={[Function]}
+    >
+      <svg
+        className="sc-pFZIQ jmZmjF"
+        fill="#fff"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 9.9 16.97"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1.41 0L0 1.41l7.07 7.07L0 15.56l1.41 1.41L8.48 9.9 9.9 8.48 1.41 0z"
+          fillRule="evenodd"
+        />
+      </svg>
+    </button>
+  </div>
+  <section
+    className="sc-kfzAmx igOnNY"
+  >
+    <nav
+      className="sc-bkzZxe kZxJxQ"
+    >
+      <ul
+        className="sc-idOhPF gGegNC"
+      >
+        <li
+          className="sc-dIUggk dFzpNa"
+        >
+          <button
+            className="sc-hHftDr ewGPbL"
+            onClick={[Function]}
+          />
+        </li>
+        <li
+          className="sc-dIUggk dFzpNa"
+        >
+          <button
+            className="sc-hHftDr hmeXAB"
+            onClick={[Function]}
+          />
+        </li>
+        <li
+          className="sc-dIUggk dFzpNa"
+        >
+          <button
+            className="sc-hHftDr hmeXAB"
+            onClick={[Function]}
+          />
+        </li>
+        <li
+          className="sc-dIUggk dFzpNa"
+        >
+          <button
+            className="sc-hHftDr hmeXAB"
+            onClick={[Function]}
+          />
+        </li>
+      </ul>
+    </nav>
+  </section>
+</section>
+`;
