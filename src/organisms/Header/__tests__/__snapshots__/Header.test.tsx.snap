@@ -2,7 +2,7 @@
 
 exports[`<Header /> renders defaults correctly 1`] = `
 <header
-  className="sc-bBXqnf ctCdEw"
+  className="sc-bBXqnf hoHLeK"
 >
   <nav
     className="sc-bkzZxe jcBMvf"

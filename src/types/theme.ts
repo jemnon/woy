@@ -1,4 +1,5 @@
 export interface Breakpoints {
+  xsm: string;
   sm: string;
   md: string;
   lg: string;

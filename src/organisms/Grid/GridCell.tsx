@@ -15,7 +15,7 @@ interface GridCellProps {
   padding?: string;
   textAlign?: TextAlign;
   top?: string | number;
-  width?: number;
+  width?: number | number[];
 }
 
 const MiddleCSS = css`

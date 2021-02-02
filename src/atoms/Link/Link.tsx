@@ -1,5 +1,11 @@
 import React, { ReactNode, FC } from 'react';
 import { Link as GatsbyLink } from 'gatsby';
+import styled from 'styled-components';
+
+const LinkTag = styled.a`
+  text-decoration: none;
+  color: ${({ theme: { colors } }): string => colors.nearBlack};
+`;
 
 interface LinkProps {
   activeClassName?: string;
@@ -32,8 +38,9 @@ const Link: FC<LinkProps> = ({
   // Use Gatsby Link for internal links, and <a> for others
   if (internal) {
     return (
-      <GatsbyLink
+      <LinkTag
         activeClassName={activeClassName}
+        as={GatsbyLink}
         className={className}
         data-id={dataId}
         onClick={onClick}
@@ -41,7 +48,7 @@ const Link: FC<LinkProps> = ({
         to={to}
       >
         {children}
-      </GatsbyLink>
+      </LinkTag>
     );
   }
   return (

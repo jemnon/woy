@@ -2,10 +2,10 @@
 
 exports[`<Media /> renders defaults correctly 1`] = `
 <article
-  className="sc-eCssSg bMMBMS"
+  className="sc-jSgupP bWSldH"
 >
   <figure
-    className="sc-jSgupP bPvPOL"
+    className="sc-gKsewC iARURu"
   >
     <div
       className="sc-bdfBwQ jYcsaj"
@@ -16,7 +16,7 @@ exports[`<Media /> renders defaults correctly 1`] = `
     </div>
   </figure>
   <div
-    className="sc-gKsewC gOOLjR"
+    className="sc-iBPRYJ haBwyB"
   >
     <time
       className="sc-dlfnbm bFIWGM"
@@ -30,7 +30,7 @@ exports[`<Media /> renders defaults correctly 1`] = `
       Filipino Pork Adobo
     </h2>
     <p
-      className="sc-gsTCUz YrFQz sc-iBPRYJ EuWcI"
+      className="sc-gsTCUz YrFQz sc-fubCfw hTsTKQ"
     >
       media desc
     </p>

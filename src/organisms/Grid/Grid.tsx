@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { Spacing } from '../../types/theme';
+import { Breakpoints, Spacing } from '../../types/theme';
 
 type Alignment =
   | 'start'
@@ -10,6 +10,7 @@ type Alignment =
   | 'space-between'
   | 'space-evenly'
   | 'normal';
+type BreakpointColumns = keyof Breakpoints;
 type GapSpacing = keyof Spacing;
 type Flow = 'row' | 'column' | 'dense' | 'row dense' | 'column dense';
 
@@ -39,13 +40,15 @@ const Grid = styled.section<GridProps>`
 
   grid-template-rows: ${({ rows }): string =>
     rows ? `${getFR(rows)}` : 'none'};
-  grid-template-columns: ${({ columns = 12 }): string => `${getFR(columns)}`};
+  grid-template-columns: ${({ columns = 12 }): string => {
+    return `${getFR(columns)}`;
+  }};
   grid-template-areas: ${({ areas }): string =>
     areas ? areas.map(area => `"${area}"`).join(' ') : 'none'};
 
-  gap: ${({ theme, gap = 'md1' }): string => theme.spacing[gap]};
-  row-gap: ${({ theme, gap = 'md1' }): string => theme.spacing[gap]};
-  column-gap: ${({ theme, rowGap = 'md1' }): string => theme.spacing[rowGap]};
+  gap: ${({ theme, gap = 'md4' }): string => theme.spacing[gap]};
+  row-gap: ${({ theme, gap = 'md4' }): string => theme.spacing[gap]};
+  column-gap: ${({ theme, rowGap = 'md4' }): string => theme.spacing[rowGap]};
 
   align-content: ${({ alignContent = 'normal' }): string => alignContent};
   justify-content: ${({ justifyContent = 'normal' }): string => justifyContent};

@@ -27,8 +27,7 @@ const HeaderContainer = styled.header<HeaderProps>`
   padding-left: ${({ theme }): string => theme.spacing.sm4};
   padding-right: ${({ theme }): string => theme.spacing.sm2};
   ${up('md')} {
-    padding-right: ${({ theme }): string => theme.spacing.sm4};
-    padding-left: ${({ theme }): string => theme.spacing.md4};
+    padding-right: 0;
   }
 
   border-bottom-width: ${({ colorTheme = 'light' }): string =>

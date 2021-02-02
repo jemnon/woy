@@ -21,6 +21,7 @@ const CalloutLinkContainer = styled.button<CalloutLinkContainerProps>`
 
   display: inline-flex;
   align-items: center;
+  align-self: flex-end;
 
   cursor: pointer;
 

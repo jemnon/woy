@@ -56,7 +56,9 @@ const MediaContent = styled.div`
 `;
 
 const MediaDescription = styled.div`
-  max-width: 28rem;
+  // ${EllipsisCSS};
+  overflow: hidden;
+  max-height: 46px;
 `;
 
 const Media: FC<MediaProps> = ({ description, image, publishDate, title }) => (
