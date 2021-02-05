@@ -6,13 +6,13 @@ const Container = styled.div`
   margin-right: auto;
 
   width: 100%;
-  max-width: ${({ theme: { breakpoints } }): string => breakpoints.sm};
+  max-width: ${({ theme: { maxWidths } }): string => maxWidths.sm};
 
   padding: ${({ theme: { spacing } }): string => {
     return `${spacing.md4} ${spacing.sm4} ${spacing.xlg4}`;
   }};
   ${up('md')} {
-    max-width: ${({ theme: { breakpoints } }): string => breakpoints.lg};
+    max-width: ${({ theme: { maxWidths } }): string => maxWidths.lg};
   }
   ${up('lg')} {
     padding-left: ${({ theme: { spacing } }): string => spacing.md4};

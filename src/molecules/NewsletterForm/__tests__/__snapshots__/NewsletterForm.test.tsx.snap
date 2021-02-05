@@ -1,0 +1,29 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<NewsletterForm /> renders defaults correctly 1`] = `
+<form
+  className="sc-dlfnbm laaXGn"
+  method="POST"
+  name="newsletter"
+  onSubmit={[Function]}
+>
+  <input
+    className="sc-gsTCUz cSacEz sc-hKgILt hAWovO"
+    disabled={false}
+    id="email"
+    name="email"
+    onChange={[Function]}
+    pattern="[^@]+@.+\\\\..+"
+    placeholder="Email"
+    required={true}
+    type="email"
+    value=""
+  />
+  <button
+    className="sc-bdfBwQ hOvkQI sc-eCssSg dczSld"
+    shape="rectangle"
+  >
+    Submit
+  </button>
+</form>
+`;

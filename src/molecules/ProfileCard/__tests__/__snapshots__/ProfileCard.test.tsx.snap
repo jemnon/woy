@@ -20,7 +20,8 @@ exports[`<ProfileCard /> renders defaults correctly 1`] = `
     className="sc-dmlrTW pyRcA"
   />
   <p
-    className="sc-gsTCUz YrFQz"
+    className="sc-gsTCUz gwujpB"
+    fontSize="f1"
   >
     I get down on making all sorts of eats
   </p>
@@ -28,7 +29,7 @@ exports[`<ProfileCard /> renders defaults correctly 1`] = `
     className="sc-kfzAmx bCBmbI"
   >
     <button
-      className="sc-bkzZxe iuSgpS"
+      className="sc-bkzZxe dJyJkj"
     >
       <span
         className="sc-idOhPF jycPrB"
@@ -41,6 +42,11 @@ exports[`<ProfileCard /> renders defaults correctly 1`] = `
         fontSize="10px"
         height="1em"
         preserveAspectRatio="xMidYMid meet"
+        style={
+          Object {
+            "marginTop": "1px",
+          }
+        }
         viewBox="0 0 9.9 16.97"
         width="1em"
         xmlns="http://www.w3.org/2000/svg"

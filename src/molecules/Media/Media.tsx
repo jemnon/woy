@@ -2,7 +2,6 @@ import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
 import ImgWrapper from '../../atoms/ImgWrapper';
-import Paragraph from '../../atoms/Paragraph';
 import PostDate from '../../atoms/PostDate';
 import PostTitle from '../../atoms/PostTitle';
 import { EllipsisCSS } from '../../atoms/Text';
@@ -59,17 +58,25 @@ const MediaDescription = styled.div`
   // ${EllipsisCSS};
   overflow: hidden;
   max-height: 46px;
+
+  ${up('sm')} {
+    max-height: 52px;
+  }
+
+  ${up('lg')} {
+    max-height: 100%;
+  }
 `;
 
 const Media: FC<MediaProps> = ({ description, image, publishDate, title }) => (
   <MediaContainer>
     <MediaFigure>
-      <ImgWrapper>{image}</ImgWrapper>
+      <ImgWrapper ratio={1 / 1}>{image}</ImgWrapper>
     </MediaFigure>
     <MediaContent>
       <PostDate publishDate={publishDate} />
       <PostTitle>{title}</PostTitle>
-      <MediaDescription as={Paragraph}>{description}</MediaDescription>
+      <MediaDescription>{description}</MediaDescription>
     </MediaContent>
   </MediaContainer>
 );

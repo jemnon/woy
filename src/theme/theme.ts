@@ -56,9 +56,9 @@ const theme: DefaultTheme = {
     nearBlack: '#2B2B2B',
   },
   maxWidths: {
-    sm: '480px',
+    sm: '640px',
     md: '960px',
-    lg: '1280px',
+    lg: '1440px',
   },
   spacing: {
     sm1: '0.25rem' /* 4px */,

@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { up } from 'styled-breakpoints';
 import { FontSizes } from '../../types/theme';
 
@@ -12,7 +12,7 @@ interface ParagraphProps {
   fontWeight?: FontWeight;
 }
 
-const Paragraph = styled.p<ParagraphProps>`
+export const ParagraphCSS = css<ParagraphProps>`
   font-family: ${({ theme }): string => theme.fonts.lato};
   font-weight: ${({ fontWeight = 'normal' }): string => fontWeight};
   font-size: ${({ theme, fontSize = 'f1' }): string =>
@@ -25,13 +25,15 @@ const Paragraph = styled.p<ParagraphProps>`
 
   line-height: 1.5;
 
-  & + &,
-  & + * {
-    margin-bottom: ${({ theme }): string => theme.spacing.sm4};
-  }
+  margin-bottom: ${({ theme }): string => theme.spacing.sm4};
+
   &:last-child {
     margin-bottom: 0;
   }
+`;
+
+const Paragraph = styled.p<ParagraphProps>`
+  ${ParagraphCSS};
 `;
 
 export default Paragraph;

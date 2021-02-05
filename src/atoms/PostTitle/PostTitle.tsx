@@ -1,7 +1,10 @@
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
+import { EllipsisCSS } from '../Text';
 
 const PostTitle = styled.h2`
+  ${EllipsisCSS};
+
   font-family: ${({ theme }): string => theme.fonts.lato};
   font-weight: bold;
   font-size: ${({ theme }): string => theme.fontSizes.f1};

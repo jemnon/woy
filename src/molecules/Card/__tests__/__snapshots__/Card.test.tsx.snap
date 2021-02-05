@@ -3,10 +3,10 @@
 exports[`<Card /> renders defaults correctly 1`] = `
 <article
   aria-label="Filipino Pork Adobo"
-  className="sc-hKgILt gHTTxV"
+  className="sc-eCssSg kMfKjy"
 >
   <figure
-    className="sc-eCssSg EUPsC"
+    className="sc-jSgupP cOGRqD"
   >
     <div
       className="sc-bdfBwQ jYcsaj"
@@ -23,7 +23,7 @@ exports[`<Card /> renders defaults correctly 1`] = `
     Jan 20
   </time>
   <h2
-    className="sc-dlfnbm fdKZoI"
+    className="sc-hKgILt jeZfwr"
   >
     Filipino Pork Adobo
   </h2>

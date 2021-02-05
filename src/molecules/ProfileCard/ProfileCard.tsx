@@ -51,7 +51,7 @@ const ProfileCard: FC<ProfileCardProps> = ({ description, image, onClick }) => (
       Jerildine
     </ProfileCardName>
     <ProfileCardDivider />
-    <Paragraph>{description}</Paragraph>
+    <Paragraph fontSize="f1">{description}</Paragraph>
     <ProfileFooter>
       <CalloutLink colorScheme="nearBlack" onClick={onClick}>
         More

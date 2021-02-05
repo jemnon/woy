@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import { ParagraphCSS } from '../Paragraph';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -40,13 +41,7 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
   } 
   p {
-    font-size: ${({ theme }): string => theme.fontSizes.f1};
-    margin-top: 0;
-    margin-bottom: ${({ theme }): string => theme.spacing.sm4};
-
-    &:last-child {
-      margin-bottom: 0;
-    }
+    ${ParagraphCSS};
   }
   figure {
     margin: 0;

@@ -10,7 +10,7 @@ const Stack = styled.ul`
 
 export const StackItem = styled.li`
   margin-bottom: ${({ theme: { spacing } }): string => spacing.sm4};
-  ${up('md')} {
+  ${up('lg')} {
     margin-bottom: ${({ theme: { spacing } }): string => spacing.md4};
   }
 `;

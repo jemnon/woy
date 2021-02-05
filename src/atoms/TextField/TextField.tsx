@@ -23,6 +23,10 @@ const TextField = styled.input`
     box-shadow: ${({ theme }): string =>
       `${theme.focusColors.blue} 0px 0px 0px 3px`};
   }
+
+  ::placeholder {
+    color: ${({ theme: { colors } }): string => colors.nearBlack};
+  }
 `;
 
 export default TextField;

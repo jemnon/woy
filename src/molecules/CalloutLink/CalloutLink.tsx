@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
+import { up } from 'styled-breakpoints';
 import { Colors } from '../../types/theme';
 import { ButtonReset } from '../../atoms/Button';
 import { RightArrow } from '../../atoms/Icons';
@@ -26,7 +27,10 @@ const CalloutLinkContainer = styled.button<CalloutLinkContainerProps>`
   cursor: pointer;
 
   font-family: ${({ theme }): string => theme.fonts.lato};
-  font-size: ${({ theme }): string => theme.fontSizes['f-sm']};
+  font-size: ${({ theme }): string => theme.fontSizes['f-xsm']};
+  ${up('sm')} {
+    font-size: ${({ theme }): string => theme.fontSizes['f-sm']};
+  }
   font-weight: bold;
   text-decoration: none;
   text-transform: uppercase;
@@ -49,6 +53,7 @@ const CalloutLink: FC<CalloutLinkProps> = ({
     <RightArrow
       fontSize="10px"
       fill={colorScheme === 'nearBlack' ? '#2B2B2B' : '#A2421B'}
+      style={{ marginTop: '1px' }}
     />
   </CalloutLinkContainer>
 );
