@@ -6,6 +6,7 @@ import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
 import Hero from '../organisms/Hero';
 import Layout from '../organisms/Layout';
+import Newsletter from '../organisms/Newsletter';
 import Stack, { StackItem } from '../organisms/Stack';
 import CalloutLink from '../molecules/CalloutLink';
 import Media from '../molecules/Media';
@@ -64,7 +65,9 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
   const { recentPosts } = pageContext?.page || {};
   const handleDownScroll = (): void => {
     if (containerRef.current)
-      containerRef?.current.scrollIntoView({ behavior: 'smooth' });
+      containerRef?.current.scrollIntoView({
+        behavior: 'smooth',
+      });
   };
   const handleViewPost = (slug?: string): void => {
     navigate(`/post/${slug}`);
@@ -186,13 +189,19 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
             )}
           </GridCell>
           <GridCell width={1}>
-            <ProfileCard
-              description="I get down on making all sorts of eats, especially Filipino dishes from my childhood, oh–and soup (regardless of the season). A lot of what I know about cooking I learned from my momma, and as this blog grows, you'll see a lot of that goodness shared here."
-              image="https://images.ctfassets.net/lz7g6u6kccw7/1lzmUE7c0YYKaUx6bTDVJx/4167bcab3f7b32f40a8473a2775aa9bf/avatar.jpg?h=250"
-              onClick={(): void => {
-                navigate('/about');
-              }}
-            />
+            <Stack>
+              <ProfileCard
+                description="I get down on making all sorts of eats, especially Filipino dishes from my childhood, oh–and soup (regardless of the season). A lot of what I know about cooking I learned from my momma, and as this blog grows, you'll see a lot of that goodness shared here."
+                image="https://images.ctfassets.net/lz7g6u6kccw7/1lzmUE7c0YYKaUx6bTDVJx/4167bcab3f7b32f40a8473a2775aa9bf/avatar.jpg?h=250"
+                onClick={(): void => {
+                  navigate('/about');
+                }}
+              />
+            </Stack>
+            <Stack>
+              <H4>Newsletter</H4>
+              <Newsletter />
+            </Stack>
           </GridCell>
         </Grid>
       </Container>

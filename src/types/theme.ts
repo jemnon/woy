@@ -64,6 +64,7 @@ export interface MaxWidths {
 }
 
 export interface Spacing {
+  'sp-0': string;
   sm1: string;
   sm2: string;
   sm3: string;

@@ -9,7 +9,9 @@ const TextField = styled.input`
   padding: ${({ theme }): string => theme.spacing.sm4};
 
   background-color: ${({ theme }): string => theme.colors.white};
-  border: 1px solid ${({ theme }): string => theme.colors.nearBlack};
+  border-width: 1px;
+  border-style: solid;
+  border-color: ${({ theme }): string => theme.colors.nearBlack};
   border-radius: 0;
 
   transition: ${({ theme }): string => theme.transition};

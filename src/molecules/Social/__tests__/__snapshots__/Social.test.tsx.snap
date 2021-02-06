@@ -1,0 +1,89 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Social /> renders defaults correctly 1`] = `
+<section
+  className="sc-fFubgz kGGhyB"
+>
+  <section
+    className="sc-bdfBwQ dBfNOc"
+  >
+    <div
+      className="sc-gsTCUz leoGxQ"
+      width={1}
+    >
+      <a
+        data-id="link"
+        href="https://www.instagram.com/whisperofyum/?hl=en"
+        target="_blank"
+      >
+        <svg
+          className="sc-fubCfw klUqJt"
+          fontSize="1.25rem"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 16 16"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M14.15 6.77h-1.39a4.92 4.92 0 11-9.52 0h-1.4v6.77a.63.63 0 00.63.62h11.07a.62.62 0 00.62-.62V6.77zm0-4.3A.59.59 0 0014 2a.6.6 0 00-.44-.19h-1.87a.62.62 0 00-.62.62v1.88a.62.62 0 00.62.62h1.85a.62.62 0 00.62-.62V2.46zM8 4.91A3.08 3.08 0 1011.08 8 3.08 3.08 0 008 4.91zM14.15 16H1.85A1.85 1.85 0 010 14.15V1.85A1.85 1.85 0 011.85 0h12.3A1.85 1.85 0 0116 1.85v12.3A1.85 1.85 0 0114.15 16z"
+          />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="sc-gsTCUz fSGNbk"
+      width={1}
+    >
+      <a
+        data-id="link"
+        href="https://www.pinterest.com/whisperofyum/"
+        target="_blank"
+      >
+        <svg
+          className="sc-kEjbxe dDeeAp"
+          fontSize="1.25rem"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          viewBox="0 0 17 17"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M0 8.5a8.5 8.5 0 005.4 7.91 8.34 8.34 0 010-2.44c.16-.66 1-4.22 1-4.22a3.11 3.11 0 01-.25-1.26c0-1.18.68-2.06 1.53-2.06a1.06 1.06 0 011.11 1.19 17 17 0 01-.7 2.83A1.23 1.23 0 009.34 12c1.51 0 2.67-1.6 2.67-3.9a3.35 3.35 0 00-3.54-3.46 3.68 3.68 0 00-3.84 3.69 3.27 3.27 0 00.63 1.93.27.27 0 01.06.25c-.07.27-.21.85-.24 1s-.12.19-.28.12A3.82 3.82 0 013.07 8.3c0-2.68 1.93-5.14 5.62-5.14a5 5 0 015.24 4.9c0 2.93-1.85 5.29-4.41 5.29a2.29 2.29 0 01-1.95-1S7.14 14 7 14.39a9.2 9.2 0 01-1 2.23 8.4 8.4 0 002.5.38A8.5 8.5 0 100 8.5z"
+          />
+        </svg>
+      </a>
+    </div>
+    <div
+      className="sc-gsTCUz fSGNbk"
+      width={1}
+    >
+      <a
+        data-id="link"
+        href="https://www.facebook.com/whisperofyum"
+        target="_blank"
+      >
+        <svg
+          className="sc-gKsewC iAjfck"
+          fontSize="1.25rem"
+          height="1em"
+          preserveAspectRatio="xMidYMid meet"
+          style={
+            Object {
+              "maxWidth": "11px",
+            }
+          }
+          viewBox="0 0 9 17"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M6.19 3.19H9V0H6.19a3.84 3.84 0 00-3.94 3.72v1.59H0V8.5h2.25V17h3.37V8.5h2.82L9 5.31H5.62V3.72a.56.56 0 01.57-.53z"
+          />
+        </svg>
+      </a>
+    </div>
+  </section>
+</section>
+`;

@@ -21,6 +21,7 @@ export const ButtonReset = css`
   border-width: 0;
   outline: 0;
   background-color: transparent;
+  cursor: pointer;
   text-align: left;
 `;
 
@@ -85,8 +86,10 @@ const Button = styled.button<ButtonProps>`
         : `background-color: ${theme.hoverColors[colorScheme]}`};
   }
   &:active {
-    box-shadow: ${({ isDisabled, theme }): string =>
-      !isDisabled ? `${theme.focusColors.blue} 0px 0px 0px 3px` : ''};
+    box-shadow: ${({ isDisabled, isLoading, theme }): string =>
+      !isDisabled || !isLoading
+        ? `${theme.focusColors.blue} 0px 0px 0px 3px`
+        : ''};
   }
   & + & {
     margin-left: ${({ theme }): string => theme.spacing.sm4};

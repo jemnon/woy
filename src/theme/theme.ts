@@ -61,6 +61,7 @@ const theme: DefaultTheme = {
     lg: '1440px',
   },
   spacing: {
+    'sp-0': '0',
     sm1: '0.25rem' /* 4px */,
     sm2: '0.5rem' /*  8px */,
     sm3: '0.75rem' /* 12px */,
