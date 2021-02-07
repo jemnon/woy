@@ -6,7 +6,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
   role="main"
 >
   <button
-    className="sc-hBEYos cppYwa"
+    className="sc-hBEYos hPWJPE"
     onClick={[Function]}
   >
     <svg
@@ -39,7 +39,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-dmlrTW ewXdAG"
     >
       <button
-        className="sc-kfzAmx fsjGzw"
+        className="sc-kfzAmx gukaeG"
         onClick={[Function]}
       >
         Home
@@ -56,7 +56,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-dmlrTW ewXdAG"
     >
       <button
-        className="sc-kfzAmx fsjGzw"
+        className="sc-kfzAmx gukaeG"
         onClick={[Function]}
       >
         Recipes
@@ -73,7 +73,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-dmlrTW ewXdAG"
     >
       <button
-        className="sc-kfzAmx fsjGzw"
+        className="sc-kfzAmx gukaeG"
         onClick={[Function]}
       >
         Partners
@@ -90,7 +90,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-dmlrTW ewXdAG"
     >
       <button
-        className="sc-kfzAmx fsjGzw"
+        className="sc-kfzAmx gukaeG"
         onClick={[Function]}
       >
         About
@@ -136,7 +136,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-dmlrTW ewXdAG"
     >
       <button
-        className="sc-fFubgz eUBkbl"
+        className="sc-fFubgz rlQbr"
       >
         <svg
           className="sc-kEjbxe duriSo"
@@ -184,7 +184,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-dmlrTW ewXdAG"
     >
       <button
-        className="sc-fFubgz eUBkbl"
+        className="sc-fFubgz rlQbr"
       >
         <svg
           className="sc-kEjbxe duriSo"
@@ -228,7 +228,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-dmlrTW ewXdAG"
     >
       <button
-        className="sc-fodVxV klpdvx"
+        className="sc-fodVxV ivEaAj"
       >
         <svg
           className="sc-jSgupP laEzvH"

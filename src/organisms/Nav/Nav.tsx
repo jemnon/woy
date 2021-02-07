@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import { navigate } from 'gatsby';
 import styled, { css } from 'styled-components';
 import { up } from 'styled-breakpoints';
 import { ButtonReset } from '../../atoms/Button';
@@ -10,7 +11,6 @@ import { ColorMode } from '../../types/theme';
 interface NavProps {
   colorTheme?: ColorMode;
   pathname?: string;
-  onClick?: (pathname: string) => {};
   onMobileClick?: () => {};
   onSearchClick?: () => {};
 }
@@ -103,12 +103,11 @@ const NavLink = styled.a<NavCTAProps>`
 const Nav: FC<NavProps> = ({
   colorTheme = 'light',
   pathname,
-  onClick,
   onMobileClick,
   onSearchClick,
 }) => {
   const handleClick = (pathname: string): void => {
-    if (onClick) onClick(pathname);
+    navigate(`${pathname}`);
   };
   return (
     <NavContainer role="main">
@@ -129,8 +128,8 @@ const Nav: FC<NavProps> = ({
         <NavListItem>
           <NavButton
             colorTheme={colorTheme}
-            isActive={pathname === '/recipes'}
-            onClick={(): void => handleClick('/recipes')}
+            isActive={pathname === '/posts'}
+            onClick={(): void => handleClick('/posts/1')}
           >
             Recipes
           </NavButton>

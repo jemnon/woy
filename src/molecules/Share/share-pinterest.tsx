@@ -30,7 +30,7 @@ const SharePinterest: FC<SharePinterestProps> = ({
   };
   return (
     <Button onClick={handleClick}>
-      <Pinterest />
+      <Pinterest fontSize="1.25rem" />
     </Button>
   );
 };

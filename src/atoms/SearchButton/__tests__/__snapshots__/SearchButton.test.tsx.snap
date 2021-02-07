@@ -2,7 +2,7 @@
 
 exports[`<SearchButton /> renders defaults correctly 1`] = `
 <button
-  className="sc-hBEYos jWSosx"
+  className="sc-hBEYos cRDIgn"
 >
   <svg
     className="sc-jrAGrp hUsKwH"

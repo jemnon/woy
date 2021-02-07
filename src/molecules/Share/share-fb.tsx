@@ -24,7 +24,7 @@ const ShareFB: FC<ShareFBProps> = ({ url }) => {
 
   return (
     <Button onClick={handleClick}>
-      <Facebook />
+      <Facebook fontSize="1.25rem" />
     </Button>
   );
 };

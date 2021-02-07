@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<CloseButton /> renders defaults correctly 1`] = `
+<button
+  className="sc-hBEYos ihaNve"
+  type="button"
+>
+  <svg
+    className="sc-kstrdz gYBBXH"
+    fill="#111"
+    fontSize="1rem"
+    height="1em"
+    preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 15.56 15.56"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M14.14 0L7.78 6.36 1.42 0 0 1.42l6.36 6.36L0 14.14l1.42 1.42 6.36-6.37 6.36 6.37 1.42-1.42-6.37-6.36 6.37-6.36L14.14 0z"
+      fillRule="evenodd"
+    />
+  </svg>
+</button>
+`;

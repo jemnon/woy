@@ -10,6 +10,7 @@ interface GridCellProps {
   borderWidth?: string;
   borderColor?: Color;
   height?: number;
+  justifyContent?: string;
   left?: string | number;
   middle?: boolean;
   padding?: string;

@@ -1,30 +1,39 @@
 const getInstagramData = async graphql => {
-  const data = await graphql(`
-    query {
-      allInstagramContent(limit: 4) {
-        edges {
-          node {
-            media_type
-            permalink
-            id
-            localImage {
-              childImageSharp {
-                fluid(maxHeight: 500, maxWidth: 500, quality: 90) {
-                  aspectRatio
-                  sizes
-                  src
-                  srcSet
-                  srcSetWebp
-                  srcWebp
+  try {
+    const data = await graphql(`
+      query {
+        allInstagramContent(limit: 4) {
+          edges {
+            node {
+              media_type
+              permalink
+              id
+              localImage {
+                childImageSharp {
+                  fluid(
+                    cropFocus: CENTER
+                    maxHeight: 500
+                    maxWidth: 500
+                    quality: 90
+                  ) {
+                    aspectRatio
+                    sizes
+                    src
+                    srcSet
+                    srcSetWebp
+                    srcWebp
+                  }
                 }
               }
             }
           }
         }
       }
-    }
-  `);
-  return data;
+    `);
+    return data;
+  } catch (error) {
+    console.error(error);
+  }
 };
 
 const getFavorites = async graphql => {
@@ -155,7 +164,7 @@ const getRecentPosts = async graphql => {
             publishDate
             slug
             images {
-              fluid {
+              fluid(cropFocus: CENTER) {
                 aspectRatio
                 sizes
                 src

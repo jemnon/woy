@@ -1,7 +1,13 @@
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
 
-const Container = styled.div`
+interface ContainerProps {
+  isHome?: boolean;
+}
+
+const Container = styled.div<ContainerProps>`
+  margin-top: ${({ theme: { header }, isHome }): string =>
+    isHome ? '0' : header.height};
   margin-left: auto;
   margin-right: auto;
 

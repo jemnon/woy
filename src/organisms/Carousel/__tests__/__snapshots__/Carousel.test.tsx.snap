@@ -44,7 +44,7 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
       />
     </div>
     <button
-      className="sc-dmlrTW AJkwl"
+      className="sc-dmlrTW eQehT"
       direction="left"
       onClick={[Function]}
     >
@@ -64,7 +64,7 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
       </svg>
     </button>
     <button
-      className="sc-dmlrTW hTPSMY"
+      className="sc-dmlrTW gomtBK"
       direction="right"
       onClick={[Function]}
     >
@@ -97,7 +97,7 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
           className="sc-dIUggk dFzpNa"
         >
           <button
-            className="sc-hHftDr ewGPbL"
+            className="sc-hHftDr jRnPtN"
             onClick={[Function]}
           />
         </li>
@@ -105,7 +105,7 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
           className="sc-dIUggk dFzpNa"
         >
           <button
-            className="sc-hHftDr hmeXAB"
+            className="sc-hHftDr favpwH"
             onClick={[Function]}
           />
         </li>
@@ -113,7 +113,7 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
           className="sc-dIUggk dFzpNa"
         >
           <button
-            className="sc-hHftDr hmeXAB"
+            className="sc-hHftDr favpwH"
             onClick={[Function]}
           />
         </li>
@@ -121,7 +121,7 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
           className="sc-dIUggk dFzpNa"
         >
           <button
-            className="sc-hHftDr hmeXAB"
+            className="sc-hHftDr favpwH"
             onClick={[Function]}
           />
         </li>

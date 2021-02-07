@@ -2,23 +2,13 @@
 
 exports[`<NewsletterForm /> renders defaults correctly 1`] = `
 <form
-  className="sc-hKgILt fScdSN"
+  className="sc-bkzZxe nOtk"
   method="POST"
   name="newsletter"
   onSubmit={[Function]}
 >
-  <div
-    className="sc-eCssSg gMIsyO"
-  >
-    <div
-      className="sc-gsTCUz AHsV"
-      fontWeight="bold"
-    >
-      Thank you for subscribing.
-    </div>
-  </div>
   <input
-    className="sc-dlfnbm hyThlN sc-jSgupP loLlcA"
+    className="sc-fFubgz btijMU sc-dIUggk dkGFDi"
     disabled={false}
     id="email"
     name="email"
@@ -30,7 +20,7 @@ exports[`<NewsletterForm /> renders defaults correctly 1`] = `
     value=""
   />
   <button
-    className="sc-bdfBwQ hOvkQI sc-gKsewC jueYgl"
+    className="sc-bdfBwQ fXEqxe sc-hHftDr blLaKh"
     disabled={false}
     shape="rectangle"
     type="submit"

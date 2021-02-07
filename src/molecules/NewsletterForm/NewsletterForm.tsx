@@ -35,15 +35,24 @@ const NewsletterFormField = styled.input<{ hasError?: boolean }>`
   z-index: ${({ theme: { zIndex } }): string => zIndex.z0};
 
   height: 3.25rem;
+  @supports (-webkit-touch-callout: none) {
+    height: 56px;
+  }
 
   padding-right: 122px;
 `;
 
 const NewsletterFormButton = styled.button`
   position: absolute;
-  top: 6px;
+  top: 50%;
   right: 6px;
   z-index: ${({ theme: { zIndex } }): string => zIndex.z1};
+
+  @supports (-webkit-touch-callout: none) {
+    margin-top: -0.5px;
+  }
+
+  transform: translateY(-50%);
 
   max-width: 110px;
   min-width: auto;

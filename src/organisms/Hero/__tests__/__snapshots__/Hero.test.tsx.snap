@@ -5,7 +5,7 @@ exports[`<Hero /> renders defaults correctly 1`] = `
   className="sc-fKFyDc dBBRkT"
 >
   <button
-    className="sc-hBEYos jWJNzn"
+    className="sc-hBEYos RLscJ"
   >
     <svg
       className="sc-gsTCUz chkPNN"

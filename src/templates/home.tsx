@@ -7,6 +7,7 @@ import Header from '../organisms/Header';
 import Hero from '../organisms/Hero';
 import Layout from '../organisms/Layout';
 import Newsletter from '../organisms/Newsletter';
+import Scroller from '../organisms/Scroller';
 import Stack, { StackItem } from '../organisms/Stack';
 import CalloutLink from '../molecules/CalloutLink';
 import Media from '../molecules/Media';
@@ -14,8 +15,10 @@ import ProfileCard from '../molecules/ProfileCard';
 import SEO from '../molecules/SEO';
 import { H4 } from '../atoms/Headings';
 import Link from '../atoms/Link';
+import { InstaDesktop, InstaMobile } from '../atoms/InstagramContainer';
 import useBreakpoint from '../hooks/useBreakpoint';
 import { ColorMode as ColorModeType } from '../types/theme';
+import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
 
 interface LatestPost {
@@ -32,10 +35,15 @@ interface Favorites {
   };
 }
 
+interface Instagram {
+  node: InstagramType;
+}
+
 interface HomeProps {
   pageContext?: {
     page?: {
       favorites?: Favorites[];
+      instagram?: Instagram[];
       latestPost?: LatestPost[];
       recentPosts?: RecentPosts[];
     };
@@ -62,6 +70,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
   );
   const [{ node: latestPostNode }] = pageContext?.page?.latestPost || [];
   const [{ node: favoritesNode }] = pageContext?.page?.favorites || [];
+  const { instagram } = pageContext?.page || {};
   const { recentPosts } = pageContext?.page || {};
   const handleDownScroll = (): void => {
     if (containerRef.current)
@@ -117,7 +126,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
           />
         </>
       )}
-      <Container ref={containerRef}>
+      <Container ref={containerRef} isHome>
         <Grid columns={breakpoint === 'desktop' ? 3 : 1}>
           <GridCell width={breakpoint === 'desktop' ? 2 : 1}>
             {recentPosts && (
@@ -202,6 +211,37 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
               <H4>Newsletter</H4>
               <Newsletter />
             </Stack>
+            {instagram && (
+              <Stack bottomSpacing="sp-0">
+                <H4>Instagram</H4>
+                <InstaDesktop>
+                  <Grid columns={2} gap="sm4" rowGap="sm4">
+                    {instagram.map(item => (
+                      <GridCell width={1}>
+                        <Link to={item.node.permalink} target="_blank">
+                          <Img
+                            alt="whisperofyum instagram"
+                            fluid={item.node.localImage.childImageSharp.fluid}
+                          />
+                        </Link>
+                      </GridCell>
+                    ))}
+                  </Grid>
+                </InstaDesktop>
+                <InstaMobile>
+                  <Scroller>
+                    {instagram.map(item => (
+                      <Link to={item.node.permalink} target="_blank">
+                        <Img
+                          alt="whisperofyum instagram"
+                          fluid={item.node.localImage.childImageSharp.fluid}
+                        />
+                      </Link>
+                    ))}
+                  </Scroller>
+                </InstaMobile>
+              </Stack>
+            )}
           </GridCell>
         </Grid>
       </Container>

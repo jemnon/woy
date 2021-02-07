@@ -25,7 +25,7 @@ const ShareTwitter: FC<ShareTwitterProps> = ({ title, url }) => {
   };
   return (
     <Button onClick={handleClick}>
-      <Twitter />
+      <Twitter fontSize="1.5rem" />
     </Button>
   );
 };

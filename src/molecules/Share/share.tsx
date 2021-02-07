@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
+import Grid, { GridCell } from '../../organisms/Grid';
 import ShareFB from './share-fb';
 import SharePinterest from './share-pinterest';
 import ShareTwitter from './share-twitter';
@@ -13,22 +14,27 @@ interface ShareProps {
 }
 
 const ShareContainer = styled.section`
-  display: flex;
-  align-items: center;
-  margin-left: -0.5rem;
-  margin-right: -0.5rem;
-  padding-top: 2px;
+  display: inline-flex;
+  align-self: flex-end;
+
+  max-width: 5.375rem;
 `;
 
 const Share: FC<ShareProps> = ({ description, media, title, url }) => {
   return (
     <ShareContainer>
       {description && title && url && (
-        <>
-          <SharePinterest description={description} media={media} url={url} />
-          <ShareFB url={url} />
-          <ShareTwitter title={title} url={url} />
-        </>
+        <Grid columns={3} gap="sm1">
+          <GridCell width={1} middle>
+            <SharePinterest description={description} media={media} url={url} />
+          </GridCell>
+          <GridCell width={1} middle>
+            <ShareFB url={url} />
+          </GridCell>
+          <GridCell width={1} middle>
+            <ShareTwitter title={title} url={url} />
+          </GridCell>
+        </Grid>
       )}
     </ShareContainer>
   );

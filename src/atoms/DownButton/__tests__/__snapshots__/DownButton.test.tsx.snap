@@ -2,7 +2,7 @@
 
 exports[`<DownButton /> renders defaults correctly 1`] = `
 <button
-  className="sc-hBEYos jopHxO"
+  className="sc-hBEYos kmYBPA"
 >
   <svg
     className="sc-gsTCUz chkPNN"

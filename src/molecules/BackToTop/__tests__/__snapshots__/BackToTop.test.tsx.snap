@@ -2,7 +2,7 @@
 
 exports[`<BackToTop /> renders defaults correctly 1`] = `
 <button
-  className="sc-bdfBwQ dFgiAP"
+  className="sc-bdfBwQ cUBhvx"
 >
   <span
     className="sc-hBEYos hqSOPN"
