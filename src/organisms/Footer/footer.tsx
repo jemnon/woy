@@ -23,7 +23,7 @@ const FooterCopyright = styled.p`
 const Footer: FC = () => {
   return (
     <FooterContainer>
-      <Container>
+      <Container hasTopMargin={false}>
         <FooterCopyright>&copy; 2020 Whisper of Yum</FooterCopyright>
       </Container>
     </FooterContainer>

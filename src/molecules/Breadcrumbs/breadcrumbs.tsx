@@ -1,15 +1,12 @@
-import React, { FC, ReactNode } from 'react';
-import styled from 'styled-components';
+import React, { FC } from 'react';
+import styled, { SimpleInterpolation } from 'styled-components';
 import { up } from 'styled-breakpoints';
 import { ButtonReset } from '../../atoms/Button';
 import { EllipsisCSS } from '../../atoms/Text';
 
-const BreadcrumbsContainer = styled.ul`
-  display: inline-grid;
-  grid-gap: 0.5rem;
-  grid-template-columns: auto auto auto;
-
-  padding-right: ${({ theme }): string => theme.spacing.sm4};
+const BreadCrumbsContainer = styled.ul`
+  display: flex;
+  align-items: center;
 
   font-size: ${({ theme }): string => theme.fontSizes['f-sm']};
   ${up('md')} {
@@ -20,7 +17,7 @@ const BreadcrumbsContainer = styled.ul`
   }
 `;
 
-const BreadcrumbsLink = styled.button`
+const BreadCrumbsLink = styled.button`
   ${ButtonReset};
 
   display: inline-block;
@@ -38,33 +35,44 @@ const BreadcrumbsLink = styled.button`
   text-decoration: none;
 `;
 
-const BreadcrumbsTitle = styled.span`
-  ${EllipsisCSS}
-
+const BreadCrumbsTitle = styled.span`
+  ${EllipsisCSS};
   text-transform: capitalize;
 
   color: ${({ theme }): string => theme.colors.orange};
 `;
 
-interface BreadcrumbsProps {
+const BreadCrumbsListItem = styled.li<{
+  hasEllipsis?: boolean;
+  hasSpacing?: boolean;
+}>`
+  padding-left: ${({ hasSpacing, theme: { spacing } }): string =>
+    hasSpacing ? spacing.sm1 : '0'};
+  padding-right: ${({ hasSpacing, theme: { spacing } }): string =>
+    hasSpacing ? spacing.sm1 : '0'};
+
+  ${({ hasEllipsis }): SimpleInterpolation => hasEllipsis && `${EllipsisCSS}`};
+`;
+
+interface BreadCrumbsProps {
   onClick?: () => void;
   title?: string;
 }
 
-const Breadcrumbs: FC<BreadcrumbsProps> = ({ title, onClick }) => {
+const BreadCrumbs: FC<BreadCrumbsProps> = ({ title, onClick }) => {
   return (
-    <BreadcrumbsContainer>
+    <BreadCrumbsContainer>
       <li>
-        <BreadcrumbsLink onClick={onClick}>Home</BreadcrumbsLink>
+        <BreadCrumbsLink onClick={onClick}>Home</BreadCrumbsLink>
       </li>
-      <li>/</li>
+      <BreadCrumbsListItem hasSpacing>/</BreadCrumbsListItem>
       {title && (
-        <li>
-          <BreadcrumbsTitle>{title}</BreadcrumbsTitle>
-        </li>
+        <BreadCrumbsListItem hasEllipsis>
+          <BreadCrumbsTitle>{title}</BreadCrumbsTitle>
+        </BreadCrumbsListItem>
       )}
-    </BreadcrumbsContainer>
+    </BreadCrumbsContainer>
   );
 };
 
-export default Breadcrumbs;
+export default BreadCrumbs;

@@ -9,6 +9,7 @@ interface GridCellProps {
   bgColor?: Color;
   borderWidth?: string;
   borderColor?: Color;
+  display?: string;
   height?: number;
   justifyContent?: string;
   left?: string | number;
@@ -27,6 +28,10 @@ const MiddleCSS = css`
 `;
 
 const GridCell = styled.div<GridCellProps>`
+  display: ${({ display = 'block' }): string => display};
+  justify-content: ${({ justifyContent = 'flex-start' }): string =>
+    justifyContent};
+
   grid-column-end: ${({ width = 1 }): string => `span ${width}`};
   grid-row-end: ${({ height = 1 }): string => `span ${height}`};
 

@@ -79,7 +79,7 @@ export const CarouselButton = styled.button<CarouselButtonProps>`
   transform: translateY(-50%);
   z-index: 2;
   ${({ direction = 'left' }): string =>
-    direction === 'left' ? `left: 1rem` : `right: 1rem`};
+    direction === 'left' ? `left: 0.75rem` : `right: 0.75rem`};
 
   opacity: ${({ isDisabled }): string => (isDisabled ? '0.30' : '100%')};
   cursor: ${({ isDisabled }): string =>

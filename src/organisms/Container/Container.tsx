@@ -2,12 +2,12 @@ import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
 
 interface ContainerProps {
-  isHome?: boolean;
+  hasTopMargin?: boolean;
 }
 
 const Container = styled.div<ContainerProps>`
-  margin-top: ${({ theme: { header }, isHome }): string =>
-    isHome ? '0' : header.height};
+  margin-top: ${({ theme: { header }, hasTopMargin = true }): string =>
+    hasTopMargin ? header.height : '0'};
   margin-left: auto;
   margin-right: auto;
 
@@ -17,6 +17,10 @@ const Container = styled.div<ContainerProps>`
   padding: ${({ theme: { spacing } }): string => {
     return `${spacing.md4} ${spacing.sm4} ${spacing.xlg4}`;
   }};
+  padding-top: ${({ theme: { spacing } }): string => spacing.sm4};
+  ${up('sm')} {
+    padding-top: ${({ theme: { spacing } }): string => spacing.md4};
+  }
   ${up('md')} {
     max-width: ${({ theme: { maxWidths } }): string => maxWidths.lg};
   }

@@ -126,7 +126,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
           />
         </>
       )}
-      <Container ref={containerRef} isHome>
+      <Container ref={containerRef} hasTopMargin={false}>
         <Grid columns={breakpoint === 'desktop' ? 3 : 1}>
           <GridCell width={breakpoint === 'desktop' ? 2 : 1}>
             {recentPosts && (
@@ -217,7 +217,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
                 <InstaDesktop>
                   <Grid columns={2} gap="sm4" rowGap="sm4">
                     {instagram.map(item => (
-                      <GridCell width={1}>
+                      <GridCell key={item.node.id} width={1}>
                         <Link to={item.node.permalink} target="_blank">
                           <Img
                             alt="whisperofyum instagram"
@@ -231,7 +231,11 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
                 <InstaMobile>
                   <Scroller>
                     {instagram.map(item => (
-                      <Link to={item.node.permalink} target="_blank">
+                      <Link
+                        to={item.node.permalink}
+                        key={item.node.id}
+                        target="_blank"
+                      >
                         <Img
                           alt="whisperofyum instagram"
                           fluid={item.node.localImage.childImageSharp.fluid}
