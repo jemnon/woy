@@ -23,6 +23,9 @@ export const StackItem = styled.li<StackProps>`
     margin-bottom: ${({ theme: { spacing }, bottomSpacing }): string =>
       bottomSpacing ? spacing[bottomSpacing] : spacing.md4};
   }
+  &:last-child {
+    margin-bottom: 0;
+  }
 `;
 
 export default Stack;

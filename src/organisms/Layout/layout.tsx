@@ -1,7 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import theme from '../../theme';
-import { H1 } from '../../atoms/Headings';
 import GlobalStyle from '../../atoms/GlobalStyle';
 import Footer from '../Footer';
 
