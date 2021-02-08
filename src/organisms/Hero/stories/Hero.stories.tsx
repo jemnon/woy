@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import Hero from '../Hero-ass';
+import Hero from '../Hero';
 
 export default {
   title: 'Organisms/Hero',

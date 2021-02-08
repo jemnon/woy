@@ -1,3 +1,3 @@
-import Hero from './Hero-ass';
+import Hero from './Hero';
 
 export default Hero;
