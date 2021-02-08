@@ -4,7 +4,8 @@ import useWindowWidth from './useWindowWidth';
 type Breakpoint = 'mobile' | 'tablet' | 'desktop';
 
 const useBreakpoint = (): Breakpoint | null => {
-  const [width, setWidth] = useState<number>(window.innerWidth);
+  const initialWidth = typeof window !== `undefined` ? window.innerWidth : 0;
+  const [width, setWidth] = useState<number>(initialWidth);
   const [breakpoint, setBreakpoint] = useState<Breakpoint | null>(null);
   const handleResize = (width: number | string): void => {
     if (typeof width === 'number') setWidth(width);
