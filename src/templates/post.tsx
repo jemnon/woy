@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
@@ -8,13 +8,14 @@ import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
 import Layout from '../organisms/Layout';
+import Stack from '../organisms/Stack';
 import SEO from '../molecules/SEO';
 import Share from '../molecules/Share';
+import BackToTop from '../molecules/BackToTop';
 import BreadCrumbs from '../molecules/BreadCrumbs';
 import { H1 } from '../atoms/Headings';
-import ImgWrapper from '../atoms/ImgWrapper';
 import PostDate from '../atoms/PostDate';
-import useBreakpoint from '../hooks/useBreakpoint';
+import { useBreakpointContext } from '../context/BreakpointContextProvider';
 import { Post as PostType } from '../types/post';
 import { generateFromAst } from '../utils/utils';
 
@@ -40,10 +41,17 @@ const PageHeader = styled.header`
 `;
 
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
-  const breakpoint = useBreakpoint();
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  const { name: breakpoint } = useBreakpointContext();
   const { page: post } = pageContext || {};
   const totalImages = post.images.length;
   const [{ fixed }] = post.images || [];
+  const handleScroll = (): void => {
+    if (containerRef.current)
+      containerRef?.current.scrollIntoView({
+        behavior: 'smooth',
+      });
+  };
   const schemaJson = {
     '@context': 'http://schema.org',
     '@type': 'Recipe',
@@ -71,7 +79,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
         script={JSON.stringify(schemaJson)}
       />
       <Header />
-      <Container>
+      <Container ref={containerRef}>
         <PageHeader>
           <Grid columns={12} gap="sm4">
             <GridCell width={9}>
@@ -94,48 +102,53 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
         </PageHeader>
         <Grid columns={breakpoint === 'desktop' ? 12 : 1}>
           <GridCell width={breakpoint === 'desktop' ? 5 : 1}>
-            {post.publishDate && <PostDate publishDate={post.publishDate} />}
-            <H1>{post.title}</H1>
-            {breakpoint !== 'desktop' && (
-              <>
-                {totalImages > 1 ? (
-                  <Carousel>
-                    {post.images.map(img => (
-                      <Img
-                        alt={post.title}
-                        key={post.id}
-                        style={{ width: '100%' }}
-                        fluid={img.fluid}
-                      />
-                    ))}
-                  </Carousel>
-                ) : (
-                  <Img alt={post.title} fluid={post.images[0].fluid} />
-                )}
-              </>
-            )}
+            <Stack>
+              {post.publishDate && <PostDate publishDate={post.publishDate} />}
+              <H1>{post.title}</H1>
+              {breakpoint !== 'desktop' && (
+                <>
+                  {totalImages > 1 ? (
+                    <Carousel>
+                      {post.images.map(img => (
+                        <Img
+                          alt={post.title}
+                          key={post.id}
+                          style={{ width: '100%' }}
+                          fluid={img.fluid}
+                        />
+                      ))}
+                    </Carousel>
+                  ) : (
+                    <Img alt={post.title} fluid={post.images[0].fluid} />
+                  )}
+                </>
+              )}
+            </Stack>
           </GridCell>
           <GridCell width={breakpoint === 'desktop' ? 7 : 1}>
-            {breakpoint === 'desktop' && (
-              <>
-                {totalImages > 1 ? (
-                  <Carousel>
-                    {post.images.map(img => (
-                      <Img
-                        alt={post.title}
-                        key={post.id}
-                        style={{ width: '100%' }}
-                        fluid={img.fluid}
-                      />
-                    ))}
-                  </Carousel>
-                ) : (
-                  <Img alt={post.title} fluid={post.images[0].fluid} />
-                )}
-              </>
-            )}
+            <Stack>
+              {breakpoint === 'desktop' && (
+                <>
+                  {totalImages > 1 ? (
+                    <Carousel>
+                      {post.images.map(img => (
+                        <Img
+                          alt={post.title}
+                          key={post.id}
+                          style={{ width: '100%' }}
+                          fluid={img.fluid}
+                        />
+                      ))}
+                    </Carousel>
+                  ) : (
+                    <Img alt={post.title} fluid={post.images[0].fluid} />
+                  )}
+                </>
+              )}
+            </Stack>
           </GridCell>
         </Grid>
+        <BackToTop onClick={handleScroll} />
       </Container>
     </Layout>
   );

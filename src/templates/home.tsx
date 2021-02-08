@@ -9,6 +9,7 @@ import Layout from '../organisms/Layout';
 import Newsletter from '../organisms/Newsletter';
 import Scroller from '../organisms/Scroller';
 import Stack, { StackItem } from '../organisms/Stack';
+import BackToTop from '../molecules/BackToTop';
 import CalloutLink from '../molecules/CalloutLink';
 import Media from '../molecules/Media';
 import ProfileCard from '../molecules/ProfileCard';
@@ -16,7 +17,7 @@ import SEO from '../molecules/SEO';
 import { H4 } from '../atoms/Headings';
 import Link from '../atoms/Link';
 import { InstaDesktop, InstaMobile } from '../atoms/InstagramContainer';
-import useBreakpoint from '../hooks/useBreakpoint';
+import { useBreakpointContext } from '../context/BreakpointContextProvider';
 import { ColorMode as ColorModeType } from '../types/theme';
 import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
@@ -64,7 +65,7 @@ const metaDesc =
 const Home: FC<HomeProps> = ({ pageContext }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const heroRef = useRef<HTMLDivElement | null>(null);
-  const breakpoint = useBreakpoint();
+  const { name: breakpoint } = useBreakpointContext();
   const [headerColorTheme, setHeaderColorTheme] = useState<ColorModeType>(
     'dark',
   );
@@ -72,7 +73,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
   const [{ node: favoritesNode }] = pageContext?.page?.favorites || [];
   const { instagram } = pageContext?.page || {};
   const { recentPosts } = pageContext?.page || {};
-  const handleDownScroll = (): void => {
+  const handleScroll = (): void => {
     if (containerRef.current)
       containerRef?.current.scrollIntoView({
         behavior: 'smooth',
@@ -114,7 +115,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
           <Header colorTheme={headerColorTheme} pathname="/" />
           <Hero
             title={latestPostNode?.title}
-            onDownScroll={(): void => handleDownScroll()}
+            onDownScroll={(): void => handleScroll()}
             onViewPost={(): void => handleViewPost(latestPostNode?.slug)}
             image={
               <Img
@@ -248,6 +249,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
             )}
           </GridCell>
         </Grid>
+        <BackToTop onClick={handleScroll} />
       </Container>
     </Layout>
   );

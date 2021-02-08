@@ -1,8 +1,15 @@
-var detectBrowser = require('detect-browser');
-var browser = detectBrowser.detect();
+import React from 'react';
+import BreakpointContextProvider from './src/context/BreakpointContextProvider';
+import { detect } from 'detect-browser';
 
-exports.onClientEntry = function() {
+const browser = detect();
+
+export const onClientEntry = () => {
   if (browser.name === 'ie') {
     window.location = 'https://browsehappy.com/';
   }
 };
+
+export const wrapRootElement = ({ element }) => (
+  <BreakpointContextProvider>{element}</BreakpointContextProvider>
+);

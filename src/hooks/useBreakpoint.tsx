@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import useWindowWidth from './useWindowWidth';
-
-type Breakpoint = 'mobile' | 'tablet' | 'desktop';
+import Breakpoint from '../types/breakpoint';
 
 const useBreakpoint = (): Breakpoint | null => {
   const initialWidth = typeof window !== `undefined` ? window.innerWidth : 0;
