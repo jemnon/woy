@@ -76,12 +76,39 @@ const getAllPosts = async graphql => {
     {
       allContentfulPosts {
         edges {
+          previous {
+            title
+            slug
+            images {
+              fluid {
+                aspectRatio
+                sizes
+                src
+                srcSet
+                srcSetWebp
+                srcWebp
+                tracedSVG
+              }
+            }
+          }
+          node {
+            title
+            slug
+            images {
+              fluid {
+                aspectRatio
+                sizes
+                src
+                srcSet
+                srcSetWebp
+                srcWebp
+                tracedSVG
+              }
+            }
+          }
           node {
             slug
             publishDate
-            categories {
-              name
-            }
             title
             bodyPreview {
               bodyPreview
@@ -115,6 +142,40 @@ const getAllPosts = async graphql => {
                 srcSetWebp
                 srcWebp
               }
+            }
+            totalTime
+            servings
+            ingredients {
+              childMarkdownRemark {
+                html
+              }
+            }
+            optionalIngredients {
+              childMarkdownRemark {
+                html
+              }
+            }
+            instructions {
+              childMarkdownRemark {
+                html
+              }
+            }
+
+            relatedRecipes {
+              id
+              title
+              images {
+                fluid {
+                  aspectRatio
+                  sizes
+                  src
+                  srcSet
+                  srcSetWebp
+                  srcWebp
+                }
+              }
+              publishDate
+              slug
             }
           }
         }
@@ -212,7 +273,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       path: `post/${slug}`,
       component: require.resolve('./src/templates/post.tsx'),
       context: {
-        page: edge.node,
+        page: { ...edge.node, next: edge.next, previous: edge.previous },
       },
     });
   });

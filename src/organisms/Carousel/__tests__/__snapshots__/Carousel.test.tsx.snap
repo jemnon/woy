@@ -44,7 +44,7 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
       />
     </div>
     <button
-      className="sc-dmlrTW eQehT"
+      className="sc-dmlrTW brFNUm"
       direction="left"
       onClick={[Function]}
     >
@@ -64,7 +64,7 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
       </svg>
     </button>
     <button
-      className="sc-dmlrTW gomtBK"
+      className="sc-dmlrTW hobHov"
       direction="right"
       onClick={[Function]}
     >

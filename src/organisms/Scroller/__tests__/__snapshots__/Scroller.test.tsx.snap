@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Scroller /> renders defaults correctly 1`] = `
+<section
+  className="sc-bdfBwQ dhaypH"
+>
+  <div
+    className="sc-gsTCUz hIszYU"
+  >
+    <img
+      alt="image"
+      src="some-img.jpg"
+    />
+  </div>
+</section>
+`;

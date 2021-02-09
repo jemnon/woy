@@ -2,13 +2,13 @@ import { Element } from 'hast';
 import { Categories } from './categories';
 import { Images } from './images';
 
-export interface Post {
-  slug?: string;
-  id?: string;
-  publishDate?: string;
-  categories?: Categories[];
-  title: string;
+interface RelatedRecipes {
   images: Images[];
+  slug: string;
+  title: string;
+}
+
+export interface Post {
   body?: {
     childMarkdownRemark?: {
       html: string;
@@ -28,4 +28,35 @@ export interface Post {
       html: string;
     };
   };
+  categories?: Categories[];
+  id?: string;
+  images: Images[];
+  ingredients?: {
+    childMarkdownRemark?: {
+      html: string;
+      htmlAst?: Element;
+    };
+  };
+  instructions?: {
+    childMarkdownRemark?: {
+      html: string;
+      htmlAst?: Element;
+    };
+  };
+  next?: {
+    images: Images[];
+    title: string;
+    slug: string;
+  };
+  previous?: {
+    images: Images[];
+    title: string;
+    slug: string;
+  };
+  publishDate?: string;
+  totalTime?: string;
+  relatedRecipes?: RelatedRecipes[];
+  servings?: string;
+  slug?: string;
+  title: string;
 }

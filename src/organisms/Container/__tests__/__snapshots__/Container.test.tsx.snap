@@ -2,7 +2,7 @@
 
 exports[`<Container /> renders defaults correctly 1`] = `
 <div
-  className="sc-bdfBwQ Cbtgp"
+  className="sc-bdfBwQ ebrNDK"
 >
   <div
     style={

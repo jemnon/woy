@@ -8,7 +8,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
     className="sc-bdfBwQ gryA-dE"
   >
     <li
-      className="sc-gsTCUz ZjeXt"
+      className="sc-gsTCUz lUVQF"
     >
       <form
         className="sc-dIUggk gvEMCX"
@@ -39,7 +39,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
       </form>
     </li>
     <li
-      className="sc-gsTCUz ZjeXt"
+      className="sc-gsTCUz lUVQF"
     >
       <div
         className="sc-bkzZxe iWrxnx"
@@ -48,7 +48,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
       </div>
     </li>
     <li
-      className="sc-gsTCUz zUux"
+      className="sc-gsTCUz vqMUF"
     >
       <section
         className="sc-cxFLnm bNDYkl"
@@ -57,7 +57,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
           className="sc-fKFyDc fOitBx"
         >
           <div
-            className="sc-bBXqnf bxwhsd"
+            className="sc-bBXqnf izLWAo"
             width={1}
           >
             <a
@@ -81,7 +81,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
             </a>
           </div>
           <div
-            className="sc-bBXqnf glLnIl"
+            className="sc-bBXqnf ejkoNI"
             width={1}
           >
             <a
@@ -105,7 +105,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
             </a>
           </div>
           <div
-            className="sc-bBXqnf glLnIl"
+            className="sc-bBXqnf ejkoNI"
             width={1}
           >
             <a
