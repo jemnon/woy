@@ -40,7 +40,10 @@ const PostIteratorButton = styled.button`
 `;
 
 const PostIteratorFigure = styled.figure`
-  width: 5rem;
+  width: 4rem;
+  ${up('sm')} {
+    width: 5rem;
+  }
 `;
 
 const PostIteratorContent = styled.div<{ direction?: string }>`
@@ -67,7 +70,7 @@ const PostIterator: FC<PostIteratorProps> = ({ next, prev, onClick }) => {
   };
   return (
     <PostIteratorContainer>
-      {prev && (
+      {prev?.slug && (
         <PostIteratorButton onClick={(): void => handleClick(prev.slug)}>
           <PostIteratorFigure>
             <ImgWrapper ratio={1 / 1}>{prev.image}</ImgWrapper>
@@ -88,7 +91,7 @@ const PostIterator: FC<PostIteratorProps> = ({ next, prev, onClick }) => {
           </PostIteratorContent>
         </PostIteratorButton>
       )}
-      {next && (
+      {next?.slug && (
         <PostIteratorButton onClick={(): void => handleClick(next.slug)}>
           <PostIteratorContent direction="right">
             <Text

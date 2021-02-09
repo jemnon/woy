@@ -91,7 +91,7 @@ const getAllPosts = async graphql => {
               }
             }
           }
-          node {
+          next {
             title
             slug
             images {

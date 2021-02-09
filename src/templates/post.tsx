@@ -8,7 +8,7 @@ import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
 import Layout from '../organisms/Layout';
-import Stack from '../organisms/Stack';
+import Stack, { StackItem } from '../organisms/Stack';
 import PosterIterator from '../molecules/PostIterator';
 import RecipeMeta from '../molecules/RecipeMeta';
 import SEO from '../molecules/SEO';
@@ -47,7 +47,7 @@ const PageHeader = styled.header`
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const { name: breakpoint } = useBreakpointContext();
-  const { page: post, next: nextPost, prev: prevPost } = pageContext || {};
+  const { page: post } = pageContext || {};
   const totalImages = post.images.length;
   const [{ fixed }] = post.images || [];
   const handleIteratorClick = (slug: string): void => {
@@ -168,24 +168,36 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             )}
           </Grid>
         </Stack>
-        {/* <PosterIterator
-          next={{
-            image: nextPost && (
-              <Img alt={nextPost?.title} fluid={nextPost?.images[0].fluid} />
-            ),
-            name: nextPost?.title || '',
-            slug: nextPost?.slug || '',
-          }}
-          prev={{
-            image: prevPost && (
-              <Img alt={prevPost?.title} fluid={prevPost?.images[0].fluid} />
-            ),
-            name: prevPost?.title || '',
-            slug: prevPost?.slug || '',
-          }}
-          onClick={handleIteratorClick}
-        /> */}
-        <BackToTop onClick={handleScroll} />
+        <Stack bottomSpacing="sp-0">
+          <StackItem bottomSpacing="xlg4">
+            <PosterIterator
+              next={{
+                image: post.next && (
+                  <Img
+                    alt={post.next?.title}
+                    fluid={post.next?.images[0].fluid}
+                  />
+                ),
+                name: post.next?.title || '',
+                slug: post.next?.slug || '',
+              }}
+              prev={{
+                image: post.previous && (
+                  <Img
+                    alt={post.previous?.title}
+                    fluid={post.previous?.images[0].fluid}
+                  />
+                ),
+                name: post.previous?.title || '',
+                slug: post.previous?.slug || '',
+              }}
+              onClick={handleIteratorClick}
+            />
+          </StackItem>
+          <StackItem bottomSpacing="sp-0">
+            <BackToTop onClick={handleScroll} />
+          </StackItem>
+        </Stack>
       </Container>
     </Layout>
   );

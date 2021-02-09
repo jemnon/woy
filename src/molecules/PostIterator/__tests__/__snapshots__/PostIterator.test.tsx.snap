@@ -9,7 +9,7 @@ exports[`<PostIterator /> renders defaults correctly 1`] = `
     onClick={[Function]}
   >
     <figure
-      className="sc-jSgupP ckvijj"
+      className="sc-jSgupP frXCPv"
     >
       <div
         className="sc-gsTCUz iaHCbG"
@@ -62,7 +62,7 @@ exports[`<PostIterator /> renders defaults correctly 1`] = `
       </div>
     </div>
     <figure
-      className="sc-jSgupP ckvijj"
+      className="sc-jSgupP frXCPv"
     >
       <div
         className="sc-gsTCUz iaHCbG"
