@@ -142,7 +142,7 @@ const Footer: FC = () => {
           </FooterList>
         </FooterNav>
         <EmailNewsletter />
-        <FooterCopyright>&copy; 2020 Whisper of Yum</FooterCopyright>
+        <FooterCopyright>&copy; 2021 Whisper of Yum</FooterCopyright>
       </FooterContent>
     </FooterContainer>
   );
