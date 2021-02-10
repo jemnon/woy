@@ -6,6 +6,7 @@ interface RelatedRecipes {
   images: Images[];
   slug: string;
   title: string;
+  publishDate: string;
 }
 
 export interface Post {
@@ -38,6 +39,12 @@ export interface Post {
     };
   };
   instructions?: {
+    childMarkdownRemark?: {
+      html: string;
+      htmlAst?: Element;
+    };
+  };
+  optionalIngredients?: {
     childMarkdownRemark?: {
       html: string;
       htmlAst?: Element;

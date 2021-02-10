@@ -42,7 +42,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
       className="sc-gsTCUz lUVQF"
     >
       <div
-        className="sc-bkzZxe iWrxnx"
+        className="sc-bkzZxe hAQQPl"
       >
         Stay up to date with our newsletter.
       </div>

@@ -37,7 +37,7 @@ const CardFigure = styled.figure`
 const Card: FC<CardProps> = ({ image, publishDate, title }) => (
   <CardContainer aria-label={title}>
     <CardFigure>
-      <ImgWrapper>{image}</ImgWrapper>
+      <ImgWrapper ratio={1 / 1}>{image}</ImgWrapper>
     </CardFigure>
     <PostDate publishDate={publishDate} />
     <PostTitle>{title}</PostTitle>

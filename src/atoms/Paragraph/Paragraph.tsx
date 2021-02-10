@@ -15,9 +15,9 @@ interface ParagraphProps {
 export const ParagraphCSS = css<ParagraphProps>`
   font-family: ${({ theme }): string => theme.fonts.lato};
   font-weight: ${({ fontWeight = 'normal' }): string => fontWeight};
+  font-style: ${({ fontStyle = 'normal' }): string => fontStyle};
   font-size: ${({ theme, fontSize = 'f1' }): string =>
     theme.fontSizes[fontSize]};
-  font-style: ${({ fontStyle = 'normal' }): string => fontStyle};
   ${up('sm')} {
     font-size: ${({ theme, fontSize = 'f2' }): string =>
       theme.fontSizes[fontSize]};

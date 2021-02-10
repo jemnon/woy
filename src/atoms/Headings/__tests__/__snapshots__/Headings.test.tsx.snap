@@ -3,22 +3,22 @@
 exports[`<Headings /> renders defaults correctly 1`] = `
 Array [
   <h1
-    className="sc-bdfBwQ hzKTgn"
+    className="sc-bdfBwQ kgBeFo"
   />,
   <h2
-    className="sc-gsTCUz kAkvii"
+    className="sc-gsTCUz jHSrHZ"
   />,
   <h3
-    className="sc-dlfnbm enFIAz"
+    className="sc-dlfnbm hYvFYw"
   />,
   <h4
-    className="sc-hKgILt eVVYFA"
+    className="sc-hKgILt jYwWFD"
   />,
   <h5
-    className="sc-eCssSg bwsZLV"
+    className="sc-eCssSg bpmnQu"
   />,
   <h6
-    className="sc-jSgupP loCipU"
+    className="sc-jSgupP gOyKjb"
   />,
 ]
 `;

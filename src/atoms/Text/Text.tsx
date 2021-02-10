@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, SimpleInterpolation } from 'styled-components';
 import { Colors, Fonts, FontSizes } from '../../types/theme';
 
 type Display = 'block' | 'inline' | 'inline-block';
@@ -16,6 +16,7 @@ interface TextProps {
   fontSize?: FontSize;
   fontStyle?: FontStyle;
   fontWeight?: FontWeight;
+  hasEllipsis?: boolean;
   textAlign?: TextAlign;
   textColor?: TextColor;
   textTransform?: TextTransform;
@@ -43,6 +44,9 @@ const Text = styled.div<TextProps>`
 
   color: ${({ textColor = 'nearBlack', theme }): string =>
     theme.colors[textColor]};
+
+  ${({ hasEllipsis = false }): SimpleInterpolation =>
+    hasEllipsis && `${EllipsisCSS}`};
 `;
 
 export default Text;

@@ -156,7 +156,6 @@ const getAllPosts = async graphql => {
                 html
               }
             }
-
             relatedRecipes {
               id
               title

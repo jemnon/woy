@@ -17,18 +17,18 @@ exports[`<PartnerCard /> renders defaults correctly 1`] = `
     </div>
   </figure>
   <h5
-    className="sc-jSgupP iKZzQI"
+    className="sc-jSgupP kmFZoT"
   >
     Title
   </h5>
   <div
-    className="sc-pFZIQ ckIKpF"
+    className="sc-pFZIQ fOSuzR"
   >
     Some Desc
     :
   </div>
   <p
-    className="sc-fubCfw edRsyU sc-pFZIQ goFcuX"
+    className="sc-fubCfw edRsyU sc-pFZIQ fhOkRz"
     fontSize="f1"
     fontWeight="bold"
   >

@@ -43,6 +43,16 @@ const GlobalStyle = createGlobalStyle`
   p {
     ${ParagraphCSS};
   }
+  a {
+    font-style: italic;
+    color: ${({ theme: { colors } }): string => colors.orange};
+    text-decoration: none;
+    transition: ${({ theme }): string => theme.transition};
+
+    &:hover {
+      color: ${({ theme: { colors } }): string => colors.nearBlack};
+    }
+  }
   figure {
     margin: 0;
   }

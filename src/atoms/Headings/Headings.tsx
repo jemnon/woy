@@ -1,11 +1,13 @@
 import styled, { css } from 'styled-components';
 import { up } from 'styled-breakpoints';
-import { Colors } from '../../types/theme';
+import { Colors, Spacing } from '../../types/theme';
 
 type Color = keyof Pick<Colors, 'white' | 'nearBlack'>;
+type BottomSpacing = keyof Spacing;
 
 interface HeadingProps {
   color?: Color;
+  bottomSpacing?: BottomSpacing | string;
 }
 
 const sharedCSS = css<HeadingProps>`
@@ -14,7 +16,7 @@ const sharedCSS = css<HeadingProps>`
 
   color: ${({ color = 'nearBlack', theme }): string => theme.colors[color]};
 
-  margin-bottom: 0.35em;
+  margin-bottom: ${({ bottomSpacing = '0.35em' }): string => bottomSpacing};
 `;
 
 export const H1 = styled.h1<HeadingProps>`

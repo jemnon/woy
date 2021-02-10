@@ -39,7 +39,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-dmlrTW ewXdAG"
     >
       <button
-        className="sc-kfzAmx gukaeG"
+        className="sc-kfzAmx htjhuH"
         onClick={[Function]}
       >
         Home
@@ -56,7 +56,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-dmlrTW ewXdAG"
     >
       <button
-        className="sc-kfzAmx gukaeG"
+        className="sc-kfzAmx htjhuH"
         onClick={[Function]}
       >
         Recipes
@@ -73,7 +73,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-dmlrTW ewXdAG"
     >
       <button
-        className="sc-kfzAmx gukaeG"
+        className="sc-kfzAmx htjhuH"
         onClick={[Function]}
       >
         Partners
@@ -90,7 +90,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-dmlrTW ewXdAG"
     >
       <button
-        className="sc-kfzAmx gukaeG"
+        className="sc-kfzAmx htjhuH"
         onClick={[Function]}
       >
         About
@@ -107,7 +107,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-dmlrTW ewXdAG"
     >
       <a
-        className="sc-fKFyDc hgyhkC"
+        className="sc-fKFyDc kcLxzH"
         href="https://www.instagram.com/whisperofyum/?hl=en"
         target="_blank"
       >
@@ -125,7 +125,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-dmlrTW ewXdAG"
     >
       <a
-        className="sc-fKFyDc hgyhkC"
+        className="sc-fKFyDc kcLxzH"
         href="mailto:whisperofyum@gmail.com"
         target="_top"
       >

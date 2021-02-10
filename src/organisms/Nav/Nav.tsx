@@ -77,6 +77,7 @@ const NavCTACSS = css<NavCTAProps>`
   font-family: ${({ theme }): string => theme.fonts.lato};
   font-size: ${({ theme }): string => theme.fontSizes['f-xsm']};
   font-weight: bold;
+  font-style: normal;
   text-transform: uppercase;
   letter-spacing: 1px;
   text-decoration: none;

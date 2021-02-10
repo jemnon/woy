@@ -23,10 +23,6 @@ const RecipeMetaContainer = styled.div`
   border-left: 4px solid ${({ theme }): string => theme.colors.orange};
 
   padding: ${({ theme }): string => theme.spacing.sm4};
-  margin-bottom: ${({ theme }): string => theme.spacing.sm4};
-  ${up('sm')} {
-    margin-bottom: ${({ theme }): string => theme.spacing.md4};
-  }
 `;
 
 const RecipeMeta: FC<RecipeMetaProps> = ({ cookTime, servings }) => (

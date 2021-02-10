@@ -64,10 +64,17 @@ const PostIteratorContent = styled.div<{ direction?: string }>`
   }};
 `;
 
-const PostIteratorName = styled.div`
-  display: none;
+const PostIteratorName = styled.div<PostIteratorContainerProps>`
+  display: ${({ next, prev }): string => {
+    if (next?.name && prev?.name) return 'none';
+    return 'block';
+  }};
+  max-width: 175px;
   ${up('sm')} {
     display: block;
+  }
+  ${up('md')} {
+    max-width: none;
   }
 `;
 
@@ -92,6 +99,10 @@ const PostIterator: FC<PostIteratorProps> = ({ next, prev, onClick }) => {
               textColor="orange"
               fontSize="f-sm"
               fontWeight="bold"
+              hasEllipsis
+              next={next}
+              prev={prev}
+              title={prev.name}
             >
               {prev.name}
             </PostIteratorName>
@@ -115,6 +126,10 @@ const PostIterator: FC<PostIteratorProps> = ({ next, prev, onClick }) => {
               textColor="orange"
               fontSize="f-sm"
               fontWeight="bold"
+              hasEllipsis
+              next={next}
+              prev={prev}
+              title={next.name}
             >
               {next.name}
             </PostIteratorName>

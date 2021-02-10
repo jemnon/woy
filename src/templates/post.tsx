@@ -8,14 +8,18 @@ import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
 import Layout from '../organisms/Layout';
+import Scroller from '../organisms/Scroller';
 import Stack, { StackItem } from '../organisms/Stack';
+import Card from '../molecules/Card';
+import MarkdownList from '../molecules/MarkdownList';
 import PosterIterator from '../molecules/PostIterator';
 import RecipeMeta from '../molecules/RecipeMeta';
 import SEO from '../molecules/SEO';
 import Share from '../molecules/Share';
 import BackToTop from '../molecules/BackToTop';
 import BreadCrumbs from '../molecules/BreadCrumbs';
-import { H1 } from '../atoms/Headings';
+import { H1, H4 } from '../atoms/Headings';
+import Link from '../atoms/Link';
 import PostDate from '../atoms/PostDate';
 import { useBreakpointContext } from '../context/BreakpointContextProvider';
 import { Post as PostType } from '../types/post';
@@ -107,16 +111,51 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             </GridCell>
           </Grid>
         </PageHeader>
-        <Stack>
-          <Grid
-            columns={breakpoint === 'desktop' ? 12 : 1}
-            rowGap={breakpoint === 'desktop' ? 'md4' : 'sm4'}
-          >
-            <GridCell width={breakpoint === 'desktop' ? 5 : 1}>
-              {post.publishDate && <PostDate publishDate={post.publishDate} />}
-              <H1>{post.title}</H1>
-              {breakpoint !== 'desktop' && (
-                <>
+        <Stack bottomSpacing="sp-0">
+          <StackItem>
+            <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="md4">
+              <GridCell width={breakpoint === 'desktop' ? 5 : 1}>
+                {post.publishDate && (
+                  <PostDate publishDate={post.publishDate} />
+                )}
+                <H1>{post.title}</H1>
+                <Stack bottomSpacing="sp-0">
+                  {breakpoint !== 'desktop' && (
+                    <StackItem bottomSpacing="sm4">
+                      {totalImages > 1 ? (
+                        <Carousel>
+                          {post.images.map(img => (
+                            <Img
+                              alt={post.title}
+                              key={post.id}
+                              style={{ width: '100%' }}
+                              fluid={img.fluid}
+                            />
+                          ))}
+                        </Carousel>
+                      ) : (
+                        <Img alt={post.title} fluid={post.images[0].fluid} />
+                      )}
+                    </StackItem>
+                  )}
+                  {post?.bodyShort?.childMarkdownRemark && (
+                    <StackItem
+                      bottomSpacing="sm4"
+                      dangerouslySetInnerHTML={{
+                        __html: post.bodyShort?.childMarkdownRemark?.html,
+                      }}
+                    />
+                  )}
+                  {post.totalTime && post.servings && (
+                    <RecipeMeta
+                      cookTime={post.totalTime}
+                      servings={post.servings}
+                    />
+                  )}
+                </Stack>
+              </GridCell>
+              {breakpoint === 'desktop' && (
+                <GridCell width={breakpoint === 'desktop' ? 7 : 1}>
                   {totalImages > 1 ? (
                     <Carousel>
                       {post.images.map(img => (
@@ -131,44 +170,63 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                   ) : (
                     <Img alt={post.title} fluid={post.images[0].fluid} />
                   )}
-                </>
+                </GridCell>
               )}
-              {post?.bodyShort?.childMarkdownRemark && (
-                <div
-                  dangerouslySetInnerHTML={{
-                    __html: post.bodyShort?.childMarkdownRemark?.html,
-                  }}
-                />
-              )}
-              {post.totalTime && post.servings && (
-                <RecipeMeta
-                  cookTime={post.totalTime}
-                  servings={post.servings}
-                />
-              )}
-            </GridCell>
-
-            {breakpoint === 'desktop' && (
+            </Grid>
+          </StackItem>
+          <StackItem>
+            <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
+              <GridCell width={breakpoint === 'desktop' ? 5 : 1}>
+                {post.ingredients && <H4 bottomSpacing="sp-0">You Need</H4>}
+              </GridCell>
               <GridCell width={breakpoint === 'desktop' ? 7 : 1}>
-                {totalImages > 1 ? (
-                  <Carousel>
-                    {post.images.map(img => (
-                      <Img
-                        alt={post.title}
-                        key={post.id}
-                        style={{ width: '100%' }}
-                        fluid={img.fluid}
-                      />
-                    ))}
-                  </Carousel>
-                ) : (
-                  <Img alt={post.title} fluid={post.images[0].fluid} />
+                {post.ingredients?.childMarkdownRemark && (
+                  <MarkdownList
+                    dangerouslySetInnerHTML={{
+                      __html: post.ingredients?.childMarkdownRemark?.html,
+                    }}
+                  />
                 )}
               </GridCell>
-            )}
-          </Grid>
-        </Stack>
-        <Stack bottomSpacing="sp-0">
+            </Grid>
+          </StackItem>
+          {post.optionalIngredients && (
+            <StackItem>
+              <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
+                <GridCell width={breakpoint === 'desktop' ? 5 : 1}>
+                  {post.optionalIngredients && (
+                    <H4 bottomSpacing="sp-0">Additional</H4>
+                  )}
+                </GridCell>
+                <GridCell width={breakpoint === 'desktop' ? 7 : 1}>
+                  {post.optionalIngredients?.childMarkdownRemark && (
+                    <MarkdownList
+                      dangerouslySetInnerHTML={{
+                        __html:
+                          post.optionalIngredients?.childMarkdownRemark?.html,
+                      }}
+                    />
+                  )}
+                </GridCell>
+              </Grid>
+            </StackItem>
+          )}
+          <StackItem bottomSpacing="xlg4">
+            <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
+              <GridCell width={breakpoint === 'desktop' ? 5 : 1}>
+                {post.instructions && <H4 bottomSpacing="sp-0">Do It</H4>}
+              </GridCell>
+              <GridCell width={breakpoint === 'desktop' ? 7 : 1}>
+                {post.instructions?.childMarkdownRemark && (
+                  <MarkdownList
+                    dangerouslySetInnerHTML={{
+                      __html: post.instructions?.childMarkdownRemark?.html,
+                    }}
+                  />
+                )}
+              </GridCell>
+            </Grid>
+          </StackItem>
           <StackItem bottomSpacing="xlg4">
             <PosterIterator
               next={{
@@ -194,7 +252,49 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
               onClick={handleIteratorClick}
             />
           </StackItem>
-          <StackItem bottomSpacing="sp-0">
+          {post.relatedRecipes && (
+            <StackItem bottomSpacing="xlg4">
+              <H4>Related Recipes</H4>
+              {breakpoint === 'desktop' ? (
+                <Grid columns={3} gap="sm4" rowGap="sm4">
+                  {post.relatedRecipes.map(recipe => (
+                    <GridCell key={recipe.title} width={1}>
+                      <Link to={`/post/${recipe.slug}`}>
+                        <Card
+                          image={
+                            <Img
+                              alt={recipe.title}
+                              fluid={recipe.images[0].fluid}
+                            />
+                          }
+                          publishDate={recipe.publishDate}
+                          title={recipe.title}
+                        />
+                      </Link>
+                    </GridCell>
+                  ))}
+                </Grid>
+              ) : (
+                <Scroller>
+                  {post.relatedRecipes.map(recipe => (
+                    <Link to={`/post/${recipe.slug}`}>
+                      <Card
+                        image={
+                          <Img
+                            alt={recipe.title}
+                            fluid={recipe.images[0].fluid}
+                          />
+                        }
+                        publishDate={recipe.publishDate}
+                        title={recipe.title}
+                      />
+                    </Link>
+                  ))}
+                </Scroller>
+              )}
+            </StackItem>
+          )}
+          <StackItem>
             <BackToTop onClick={handleScroll} />
           </StackItem>
         </Stack>
