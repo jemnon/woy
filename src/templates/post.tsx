@@ -174,22 +174,24 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
               )}
             </Grid>
           </StackItem>
-          <StackItem>
-            <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
-              <GridCell width={breakpoint === 'desktop' ? 5 : 1}>
-                {post.ingredients && <H4 bottomSpacing="sp-0">You Need</H4>}
-              </GridCell>
-              <GridCell width={breakpoint === 'desktop' ? 7 : 1}>
-                {post.ingredients?.childMarkdownRemark && (
-                  <MarkdownList
-                    dangerouslySetInnerHTML={{
-                      __html: post.ingredients?.childMarkdownRemark?.html,
-                    }}
-                  />
-                )}
-              </GridCell>
-            </Grid>
-          </StackItem>
+          {post.ingredients && (
+            <StackItem>
+              <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
+                <GridCell width={breakpoint === 'desktop' ? 5 : 1}>
+                  {post.ingredients && <H4 bottomSpacing="sp-0">You Need</H4>}
+                </GridCell>
+                <GridCell width={breakpoint === 'desktop' ? 7 : 1}>
+                  {post.ingredients?.childMarkdownRemark && (
+                    <MarkdownList
+                      dangerouslySetInnerHTML={{
+                        __html: post.ingredients?.childMarkdownRemark?.html,
+                      }}
+                    />
+                  )}
+                </GridCell>
+              </Grid>
+            </StackItem>
+          )}
           {post.optionalIngredients && (
             <StackItem>
               <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
@@ -211,22 +213,24 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
               </Grid>
             </StackItem>
           )}
-          <StackItem bottomSpacing="xlg4">
-            <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
-              <GridCell width={breakpoint === 'desktop' ? 5 : 1}>
-                {post.instructions && <H4 bottomSpacing="sp-0">Do It</H4>}
-              </GridCell>
-              <GridCell width={breakpoint === 'desktop' ? 7 : 1}>
-                {post.instructions?.childMarkdownRemark && (
-                  <MarkdownList
-                    dangerouslySetInnerHTML={{
-                      __html: post.instructions?.childMarkdownRemark?.html,
-                    }}
-                  />
-                )}
-              </GridCell>
-            </Grid>
-          </StackItem>
+          {post.instructions && (
+            <StackItem bottomSpacing="xlg4">
+              <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
+                <GridCell width={breakpoint === 'desktop' ? 5 : 1}>
+                  {post.instructions && <H4 bottomSpacing="sp-0">Do It</H4>}
+                </GridCell>
+                <GridCell width={breakpoint === 'desktop' ? 7 : 1}>
+                  {post.instructions?.childMarkdownRemark && (
+                    <MarkdownList
+                      dangerouslySetInnerHTML={{
+                        __html: post.instructions?.childMarkdownRemark?.html,
+                      }}
+                    />
+                  )}
+                </GridCell>
+              </Grid>
+            </StackItem>
+          )}
           <StackItem bottomSpacing="xlg4">
             <PosterIterator
               next={{
@@ -275,7 +279,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                   ))}
                 </Grid>
               ) : (
-                <Scroller>
+                <Scroller columnWidth="75%">
                   {post.relatedRecipes.map(recipe => (
                     <Link to={`/post/${recipe.slug}`}>
                       <Card

@@ -1,7 +1,8 @@
 import React, { FC, ReactNode } from 'react';
-import styled from 'styled-components';
+import styled, { SimpleInterpolation } from 'styled-components';
 
 interface ScrollerProps {
+  columnWidth?: string;
   children: ReactNode;
 }
 
@@ -9,11 +10,14 @@ const ScrollerContainer = styled.section`
   overflow: hidden;
 `;
 
-const ScrollerContent = styled.div`
+const ScrollerContent = styled.div<{ columnWidth?: string }>`
   display: grid;
   grid-gap: ${({ theme: { spacing } }): string => spacing.sm4};
   grid-auto-flow: column;
   grid-auto-columns: calc(47% - (16px) * 2);
+  ${({ columnWidth = '47%' }): SimpleInterpolation => {
+    return `grid-auto-columns: calc(${columnWidth} - (16px) * 2);`;
+  }}
 
   overflow-x: scroll;
   scroll-snap-type: x proximity;
@@ -24,9 +28,9 @@ const ScrollerContent = styled.div`
   }
 `;
 
-const Scroller: FC<ScrollerProps> = ({ children }) => (
+const Scroller: FC<ScrollerProps> = ({ children, columnWidth }) => (
   <ScrollerContainer>
-    <ScrollerContent>{children}</ScrollerContent>
+    <ScrollerContent columnWidth={columnWidth}>{children}</ScrollerContent>
   </ScrollerContainer>
 );
 

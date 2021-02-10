@@ -4,6 +4,7 @@ import styled from 'styled-components';
 
 const LinkTag = styled.a`
   text-decoration: none;
+  font-style: normal;
   color: ${({ theme: { colors } }): string => colors.nearBlack};
 `;
 

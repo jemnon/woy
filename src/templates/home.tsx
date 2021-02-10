@@ -213,7 +213,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
               <Newsletter />
             </Stack>
             {instagram && (
-              <Stack bottomSpacing="sp-0">
+              <Stack>
                 <H4>Instagram</H4>
                 <InstaDesktop>
                   <Grid columns={2} gap="sm4" rowGap="sm4">
