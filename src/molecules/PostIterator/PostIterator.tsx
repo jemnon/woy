@@ -5,23 +5,30 @@ import { ButtonReset } from '../../atoms/Button';
 import ImgWrapper from '../../atoms/ImgWrapper';
 import Text from '../../atoms/Text';
 
+interface PostIterator {
+  image?: ReactNode;
+  name: string;
+  slug: string;
+}
+
 interface PostIteratorProps {
-  prev?: {
-    image?: ReactNode;
-    name: string;
-    slug: string;
-  };
-  next?: {
-    image?: ReactNode;
-    name: string;
-    slug: string;
-  };
+  prev?: PostIterator;
+  next?: PostIterator;
   onClick: (slug: string) => void;
 }
 
-const PostIteratorContainer = styled.section`
+interface PostIteratorContainerProps {
+  prev?: PostIterator;
+  next?: PostIterator;
+}
+
+const PostIteratorContainer = styled.section<PostIteratorContainerProps>`
   display: flex;
-  justify-content: space-between;
+  justify-content: ${({ next, prev }): string => {
+    if (next?.image && !prev?.image) return 'flex-end';
+    if (!next?.image && prev?.image) return 'flex-start';
+    return 'space-between';
+  }};
 
   width: 100%;
 
@@ -69,7 +76,7 @@ const PostIterator: FC<PostIteratorProps> = ({ next, prev, onClick }) => {
     onClick(pathname);
   };
   return (
-    <PostIteratorContainer>
+    <PostIteratorContainer next={next} prev={prev}>
       {prev?.slug && (
         <PostIteratorButton onClick={(): void => handleClick(prev.slug)}>
           <PostIteratorFigure>

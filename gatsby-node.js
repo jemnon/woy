@@ -1,39 +1,35 @@
 const getInstagramData = async graphql => {
-  try {
-    const data = await graphql(`
-      query {
-        allInstagramContent(limit: 4) {
-          edges {
-            node {
-              media_type
-              permalink
-              id
-              localImage {
-                childImageSharp {
-                  fluid(
-                    cropFocus: CENTER
-                    maxHeight: 500
-                    maxWidth: 500
-                    quality: 90
-                  ) {
-                    aspectRatio
-                    sizes
-                    src
-                    srcSet
-                    srcSetWebp
-                    srcWebp
-                  }
+  const data = await graphql(`
+    query {
+      allInstagramContent(limit: 4) {
+        edges {
+          node {
+            media_type
+            permalink
+            id
+            localImage {
+              childImageSharp {
+                fluid(
+                  cropFocus: CENTER
+                  maxHeight: 500
+                  maxWidth: 500
+                  quality: 90
+                ) {
+                  aspectRatio
+                  sizes
+                  src
+                  srcSet
+                  srcSetWebp
+                  srcWebp
                 }
               }
             }
           }
         }
       }
-    `);
-    return data;
-  } catch (error) {
-    console.error(error);
-  }
+    }
+  `);
+  return data;
 };
 
 const getFavorites = async graphql => {
