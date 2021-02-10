@@ -28,7 +28,7 @@ exports[`<PartnerCard /> renders defaults correctly 1`] = `
     :
   </div>
   <p
-    className="sc-fubCfw edRsyU sc-pFZIQ fhOkRz"
+    className="sc-fubCfw khejlI sc-pFZIQ fhOkRz"
     fontSize="f1"
     fontWeight="bold"
   >

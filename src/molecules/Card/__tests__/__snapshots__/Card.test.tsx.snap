@@ -9,7 +9,7 @@ exports[`<Card /> renders defaults correctly 1`] = `
     className="sc-jSgupP cOGRqD"
   >
     <div
-      className="sc-bdfBwQ jYcsaj"
+      className="sc-bdfBwQ jlkewK"
     >
       <img
         src="some-image.jpg"
