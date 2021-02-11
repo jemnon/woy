@@ -8,9 +8,11 @@ describe('<ProfileCard />', (): void => {
   const component = renderer.create(
     <ThemeProvider theme={theme}>
       <ProfileCard
-        description="I get down on making all sorts of eats"
+        name="jerildine"
         image="https://images.ctfassets.net/lz7g6u6kccw7/2PXqIKP4gcdBKWQ4sUuqaa/c4ea960704b036c285cd6061400c447e/IMG_6D21ECE4038E-1.jpeg?h=250"
-      />
+      >
+        <p>I get down on making all sorts of eats</p>
+      </ProfileCard>
     </ThemeProvider>,
   );
   it('exists', (): void => {

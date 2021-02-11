@@ -1,3 +1,24 @@
+const getProfileAbout = async graphql => {
+  const data = await graphql(`
+    query {
+      contentfulProfileAbout {
+        avatar {
+          fixed(quality: 80, width: 400) {
+            src
+          }
+        }
+        description {
+          childMarkdownRemark {
+            html
+          }
+        }
+        name
+      }
+    }
+  `);
+  return data;
+};
+
 const getInstagramData = async graphql => {
   const data = await graphql(`
     query {
@@ -243,20 +264,46 @@ const getRecentPosts = async graphql => {
   return data;
 };
 
+const getReels = async graphql => {
+  const data = await graphql(`
+    query {
+      contentfulReels {
+        videos {
+          id
+          secure_url
+          format
+          duration
+        }
+      }
+    }
+  `);
+  return data;
+};
+
 exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const { data: latestPostData } = await getLatestPost(graphql);
   const { data: favoritesData } = await getFavorites(graphql);
-  const { data: instaData } = await getInstagramData(graphql);
   const { data: recentPostsData } = await getRecentPosts(graphql);
   const { data: postsData } = await getAllPosts(graphql);
+  const { data: profileAboutData } = await getProfileAbout(graphql);
+  const { data: reelsData } = await getReels(graphql);
+  let instaData = null;
+  try {
+    const { data } = await getInstagramData(graphql);
+    instaData = data;
+  } catch (error) {
+    console.error('ig error: ', error);
+  }
   createPage({
     path: '/',
     component: require.resolve('./src/templates/home.tsx'),
     context: {
       page: {
+        about: profileAboutData.contentfulProfileAbout,
+        reels: reelsData.contentfulReels,
         latestPost: latestPostData.allContentfulPosts.edges,
         favorites: favoritesData.allContentfulFavoritePosts.edges,
-        instagram: instaData.allInstagramContent.edges,
+        instagram: instaData ? instaData.allInstagramContent.edges : null,
         recentPosts: recentPostsData.allContentfulPosts.edges,
       },
     },
@@ -281,6 +328,9 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       path: `/posts/${idx + 1}`,
       component: require.resolve('./src/templates/post-list.tsx'),
       context: {
+        about: profileAboutData.contentfulProfileAbout,
+        reels: reelsData.contentfulReels,
+        instagram: instaData ? instaData.allInstagramContent.edges : null,
         currentPage: idx + 1,
         limit: postsPerPage,
         skip: idx * postsPerPage,

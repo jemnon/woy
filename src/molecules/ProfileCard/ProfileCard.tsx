@@ -1,12 +1,13 @@
-import React, { FC } from 'react';
+import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
 import Avatar from '../../atoms/Avatar';
-import Paragraph from '../../atoms/Paragraph';
 import Text from '../../atoms/Text';
 import CalloutLink from '../CalloutLink';
 
 interface ProfileCardProps {
-  description: string;
+  children?: ReactNode;
+  descriptionHtml?: string;
+  name: string;
   image: string;
   onClick?: () => void;
 }
@@ -37,6 +38,15 @@ const ProfileCardDivider = styled.div`
   margin-bottom: ${({ theme }): string => theme.spacing.sm4};
 `;
 
+const ProfileCardDescription = styled.div`
+  font-size: ${({ theme: { fontSizes } }): string => fontSizes.f1};
+  p {
+    font-size: ${({ theme: { fontSizes } }): string => fontSizes.f1};
+  }
+
+  margin-bottom: ${({ theme }): string => theme.spacing.sm4};
+`;
+
 const ProfileFooter = styled.footer`
   display: flex;
   justify-content: flex-end;
@@ -44,14 +54,25 @@ const ProfileFooter = styled.footer`
   width: 100%;
 `;
 
-const ProfileCard: FC<ProfileCardProps> = ({ description, image, onClick }) => (
+const ProfileCard: FC<ProfileCardProps> = ({
+  children,
+  descriptionHtml,
+  name,
+  image,
+  onClick,
+}) => (
   <ProfileCardContainer>
     <Avatar alt="jerildine" src={image} />
     <ProfileCardName as={Text} fontSize="f4" fontWeight="bold">
-      Jerildine
+      {name}
     </ProfileCardName>
     <ProfileCardDivider />
-    <Paragraph fontSize="f1">{description}</Paragraph>
+    <ProfileCardDescription
+      dangerouslySetInnerHTML={{
+        __html: descriptionHtml ?? '',
+      }}
+    />
+
     <ProfileFooter>
       <CalloutLink colorScheme="nearBlack" onClick={onClick}>
         More

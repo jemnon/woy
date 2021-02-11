@@ -1,6 +1,8 @@
 import React, { FC, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
+import { ButtonReset } from '../../atoms/Button';
+import { LeftArrow, RightArrow } from '../../atoms/Icons';
 
 const PaginationContainer = styled.section`
   display: flex;
@@ -8,11 +10,7 @@ const PaginationContainer = styled.section`
   justify-content: center;
   flex-wrap: wrap;
 
-  padding: ${({ theme }): string => theme.spacing.sm4} 0 0;
   margin: 0 -0.5rem;
-  ${up('md')} {
-    padding: 4rem 0 0;
-  }
 `;
 
 interface PaginationButtonsProps {

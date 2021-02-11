@@ -21,6 +21,8 @@ import { useBreakpointContext } from '../context/BreakpointContextProvider';
 import { ColorMode as ColorModeType } from '../types/theme';
 import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
+import ProfileAboutType from '../types/profile-about';
+import VideoReelType from '../types/video-reel';
 
 interface LatestPost {
   node: PostType;
@@ -43,6 +45,10 @@ interface Instagram {
 interface HomeProps {
   pageContext?: {
     page?: {
+      about?: ProfileAboutType;
+      reels?: {
+        videos: VideoReelType[];
+      };
       favorites?: Favorites[];
       instagram?: Instagram[];
       latestPost?: LatestPost[];
@@ -69,6 +75,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
   const [headerColorTheme, setHeaderColorTheme] = useState<ColorModeType>(
     'dark',
   );
+  const { about } = pageContext?.page || {};
   const [{ node: latestPostNode }] = pageContext?.page?.latestPost || [];
   const [{ node: favoritesNode }] = pageContext?.page?.favorites || [];
   const { instagram } = pageContext?.page || {};
@@ -128,13 +135,13 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
         </>
       )}
       <Container ref={containerRef} hasTopMargin={false}>
-        <Grid columns={breakpoint === 'desktop' ? 3 : 1}>
-          <GridCell width={breakpoint === 'desktop' ? 2 : 1}>
+        <Grid columns={breakpoint === 'desktop' ? 12 : 1}>
+          <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
             {recentPosts && (
               <Stack>
                 <H4>Latest</H4>
-                {recentPosts.map((post, id) => (
-                  <StackItem key={id}>
+                {recentPosts.map(post => (
+                  <StackItem key={post.node.id}>
                     <Link to={`/post/${post.node.slug}`}>
                       <Media
                         description={
@@ -198,16 +205,19 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
               </Stack>
             )}
           </GridCell>
-          <GridCell width={1}>
-            <Stack>
-              <ProfileCard
-                description="I get down on making all sorts of eats, especially Filipino dishes from my childhood, oh–and soup (regardless of the season). A lot of what I know about cooking I learned from my momma, and as this blog grows, you'll see a lot of that goodness shared here."
-                image="https://images.ctfassets.net/lz7g6u6kccw7/1lzmUE7c0YYKaUx6bTDVJx/4167bcab3f7b32f40a8473a2775aa9bf/avatar.jpg?h=250"
-                onClick={(): void => {
-                  navigate('/about');
-                }}
-              />
-            </Stack>
+          <GridCell width={breakpoint === 'desktop' ? 4 : 1}>
+            {about && (
+              <Stack>
+                <ProfileCard
+                  descriptionHtml={about?.description.childMarkdownRemark.html}
+                  image={about?.avatar.fixed.src}
+                  name={about?.name}
+                  onClick={(): void => {
+                    navigate('/about');
+                  }}
+                />
+              </Stack>
+            )}
             <Stack>
               <H4>Newsletter</H4>
               <Newsletter />

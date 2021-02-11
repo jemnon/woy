@@ -4,7 +4,6 @@ import { up } from 'styled-breakpoints';
 import ImgWrapper from '../../atoms/ImgWrapper';
 import PostDate from '../../atoms/PostDate';
 import PostTitle from '../../atoms/PostTitle';
-import { EllipsisCSS } from '../../atoms/Text';
 
 interface MediaProps {
   description?: string | ReactNode;
@@ -55,7 +54,6 @@ const MediaContent = styled.div`
 `;
 
 const MediaDescription = styled.div`
-  // ${EllipsisCSS};
   overflow: hidden;
   max-height: 46px;
 

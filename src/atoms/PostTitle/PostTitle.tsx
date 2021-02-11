@@ -15,7 +15,7 @@ const PostTitle = styled.h2`
     font-size: ${({ theme }): string => theme.fontSizes.f4};
   }
 
-  margin-bottom: 0.35em;
+  margin-bottom: 0.25em;
 `;
 
 export default PostTitle;
