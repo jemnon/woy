@@ -2,7 +2,7 @@
 
 exports[`<Newsletter /> renders defaults correctly 1`] = `
 <section
-  className="sc-lmoMRL cuGrRl"
+  className="sc-iJuUWI hYMHdl"
 >
   <ul
     className="sc-bdfBwQ gryA-dE"
@@ -11,13 +11,13 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
       className="sc-gsTCUz lUVQF"
     >
       <form
-        className="sc-dIUggk gvEMCX"
+        className="sc-hHftDr elyimM"
         method="POST"
         name="newsletter"
         onSubmit={[Function]}
       >
         <input
-          className="sc-idOhPF hQicDC sc-dmlrTW ijpcCR"
+          className="sc-dIUggk cwvyXB sc-kfzAmx dgOJIu"
           disabled={false}
           id="email"
           name="email"
@@ -29,7 +29,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
           value=""
         />
         <button
-          className="sc-dlfnbm dpvbnN sc-kfzAmx cgMhBe"
+          className="sc-dlfnbm dpvbnN sc-fKFyDc cmbrWw"
           disabled={false}
           shape="rectangle"
           type="submit"
@@ -42,7 +42,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
       className="sc-gsTCUz lUVQF"
     >
       <div
-        className="sc-bkzZxe hAQQPl"
+        className="sc-idOhPF hEigPd"
       >
         Stay up to date with our newsletter.
       </div>
@@ -51,13 +51,13 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
       className="sc-gsTCUz vqMUF"
     >
       <section
-        className="sc-cxFLnm bNDYkl"
+        className="sc-lmoMRL dRHmzO"
       >
         <section
-          className="sc-fKFyDc fOitBx"
+          className="sc-bBXqnf jGbfjt"
         >
           <div
-            className="sc-bBXqnf izLWAo"
+            className="sc-iwyYcG esjDtH"
             width={1}
           >
             <a
@@ -81,7 +81,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
             </a>
           </div>
           <div
-            className="sc-bBXqnf ejkoNI"
+            className="sc-iwyYcG hANPcD"
             width={1}
           >
             <a
@@ -105,7 +105,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
             </a>
           </div>
           <div
-            className="sc-bBXqnf ejkoNI"
+            className="sc-iwyYcG hANPcD"
             width={1}
           >
             <a

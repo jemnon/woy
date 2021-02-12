@@ -14,6 +14,7 @@ import CalloutLink from '../molecules/CalloutLink';
 import Media from '../molecules/Media';
 import ProfileCard from '../molecules/ProfileCard';
 import SEO from '../molecules/SEO';
+import VideoThumb from '../molecules/VideoThumb';
 import { H4 } from '../atoms/Headings';
 import ImgWrapper from '../atoms/ImgWrapper';
 import Link from '../atoms/Link';
@@ -23,7 +24,10 @@ import { ColorMode as ColorModeType } from '../types/theme';
 import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
 import ProfileAboutType from '../types/profile-about';
-import VideoReelType from '../types/video-reel';
+import {
+  VideoReel as VideoReelType,
+  VideoReelThumb as VideoReelThumbType,
+} from '../types/video-reel';
 
 interface LatestPost {
   node: PostType;
@@ -49,6 +53,7 @@ interface HomeProps {
       about?: ProfileAboutType;
       reels?: {
         videos: VideoReelType[];
+        videoThumbs: VideoReelThumbType[];
       };
       favorites?: Favorites[];
       instagram?: Instagram[];
@@ -81,6 +86,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
   const [{ node: favoritesNode }] = pageContext?.page?.favorites || [];
   const { instagram } = pageContext?.page || {};
   const { recentPosts } = pageContext?.page || {};
+  const { reels } = pageContext?.page || {};
   const handleScroll = (): void => {
     if (containerRef.current)
       containerRef?.current.scrollIntoView({
@@ -171,6 +177,37 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
                   </StackItem>
                 ))}
                 <CalloutLink onClick={handleViewAllClick}>View All</CalloutLink>
+              </Stack>
+            )}
+            {reels && (
+              <Stack>
+                <H4>Reels</H4>
+                {breakpoint !== 'desktop' ? (
+                  <Scroller columnWidth="75%">
+                    {reels.videoThumbs.map((thumb, idx) => (
+                      <VideoThumb
+                        key={`video-thumb-${idx}`}
+                        image={
+                          <Img alt={thumb.fluid.src} fluid={thumb.fluid} />
+                        }
+                        onClick={(): void => {
+                          console.log('video: ', reels.videos[idx].secure_url);
+                        }}
+                      />
+                    ))}
+                  </Scroller>
+                ) : (
+                  <Grid columns={3} gap="sm4">
+                    {reels.videoThumbs.map((thumb, idx) => (
+                      <VideoThumb
+                        key={`video-thumb-${idx}`}
+                        image={
+                          <Img alt={thumb.fluid.src} fluid={thumb.fluid} />
+                        }
+                      />
+                    ))}
+                  </Grid>
+                )}
               </Stack>
             )}
 

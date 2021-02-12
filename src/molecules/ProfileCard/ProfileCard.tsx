@@ -5,7 +5,6 @@ import Text from '../../atoms/Text';
 import CalloutLink from '../CalloutLink';
 
 interface ProfileCardProps {
-  children?: ReactNode;
   descriptionHtml?: string;
   name: string;
   image: string;
@@ -55,7 +54,6 @@ const ProfileFooter = styled.footer`
 `;
 
 const ProfileCard: FC<ProfileCardProps> = ({
-  children,
   descriptionHtml,
   name,
   image,

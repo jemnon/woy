@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import MarkdownList from '../MarkdownList';
+import PlayButton from '../PlayButton';
 
 const disableProp = {
   table: {
@@ -9,8 +9,8 @@ const disableProp = {
 };
 
 export default {
-  title: 'Molecules/MarkdownList',
-  component: MarkdownList,
+  title: 'Atoms/PlayButton',
+  component: PlayButton,
   argTypes: {
     as: { ...disableProp },
     ref: { ...disableProp },
@@ -21,7 +21,7 @@ export default {
   },
 } as Meta;
 
-const Template = (args: any) => <MarkdownList {...args} />;
+const Template = (args: any) => <PlayButton {...args} />;
 
 export const Default = Template.bind({});
 // @ts-ignore

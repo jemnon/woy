@@ -264,6 +264,16 @@ const getReels = async graphql => {
           format
           duration
         }
+        videoThumbs {
+          fluid {
+            aspectRatio
+            sizes
+            src
+            srcSet
+            srcSetWebp
+            srcWebp
+          }
+        }
       }
     }
   `);

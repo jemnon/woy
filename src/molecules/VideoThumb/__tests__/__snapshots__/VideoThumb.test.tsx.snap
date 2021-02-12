@@ -1,0 +1,48 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<VideoThumb /> renders defaults correctly 1`] = `
+<button
+  className="sc-bkzZxe fhxOKb"
+>
+  <div
+    className="sc-gsTCUz ehtEdy"
+    style={
+      Object {
+        "opacity": "90%",
+      }
+    }
+  >
+    <img
+      src="https://images.ctfassets.net/lz7g6u6kccw7/6UirvdRJtVmSvDZ0jIBMTO/054fe6caf9245d1e580056fe5dcd565e/chili-oil.jpg?w=800&q=50"
+    />
+  </div>
+  <div
+    className="sc-idOhPF cpofAt"
+  >
+    <div
+      className="sc-fFubgz bdWdvL"
+    >
+      <svg
+        className="sc-kEjbxe fcmYBP"
+        fill="#fff"
+        fontSize="1.5rem"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style={
+          Object {
+            "marginLeft": "5px",
+          }
+        }
+        viewBox="0 0 13 16"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 8.912V16l13-8L0 0v8.912z"
+          fillRule="evenodd"
+        />
+      </svg>
+    </div>
+  </div>
+</button>
+`;

@@ -95,29 +95,31 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
                 {posts.map(post => (
                   <StackItem key={post.node.id}>
                     <Link to={`/post/${post.node.slug}`}>
-                      <Media
-                        description={
-                          <>
-                            {post.node.bodyPreview && (
-                              <div
-                                dangerouslySetInnerHTML={{
-                                  __html:
-                                    post.node.bodyPreview.childMarkdownRemark
-                                      ?.html || '',
-                                }}
-                              />
-                            )}
-                          </>
-                        }
-                        publishDate={post.node.publishDate || ''}
-                        title={post.node.title}
-                        image={
-                          <Img
-                            alt={post.node.title}
-                            fluid={post.node.images[0].fluid}
-                          />
-                        }
-                      />
+                      {
+                        <Media
+                          description={
+                            <>
+                              {post.node.bodyPreview && (
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html:
+                                      post.node.bodyPreview.childMarkdownRemark
+                                        ?.html || '',
+                                  }}
+                                />
+                              )}
+                            </>
+                          }
+                          publishDate={post.node.publishDate || ''}
+                          title={post.node.title}
+                          image={
+                            <Img
+                              alt={post.node.title}
+                              fluid={post.node.images[0].fluid}
+                            />
+                          }
+                        />
+                      }
                     </Link>
                   </StackItem>
                 ))}
@@ -140,14 +142,18 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
           <GridCell width={breakpoint === 'desktop' ? 4 : 1}>
             {about && (
               <Stack>
-                <ProfileCard
-                  descriptionHtml={about?.description.childMarkdownRemark.html}
-                  image={about?.avatar.fixed.src}
-                  name={about?.name}
-                  onClick={(): void => {
-                    navigate('/about');
-                  }}
-                />
+                {
+                  <ProfileCard
+                    descriptionHtml={
+                      about?.description.childMarkdownRemark.html
+                    }
+                    image={about?.avatar.fixed.src}
+                    name={about?.name}
+                    onClick={(): void => {
+                      navigate('/about');
+                    }}
+                  />
+                }
               </Stack>
             )}
             <Stack>

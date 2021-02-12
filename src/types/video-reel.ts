@@ -1,8 +1,12 @@
-interface VideoReel {
+import { FluidObject } from 'gatsby-image';
+
+export interface VideoReel {
   id: string;
   secure_url: string;
   format: string;
   duration: number;
 }
 
-export default VideoReel;
+export interface VideoReelThumb {
+  fluid: FluidObject;
+}

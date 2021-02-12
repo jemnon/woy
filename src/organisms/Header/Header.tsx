@@ -15,6 +15,8 @@ const FixedCSS = css`
   top: 0;
   left: 0;
   z-index: 5;
+
+  transform: translate3d(0, 0, 0);
 `;
 
 const HeaderContainer = styled.header<HeaderProps>`

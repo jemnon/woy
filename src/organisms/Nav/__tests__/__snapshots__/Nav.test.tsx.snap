@@ -2,11 +2,11 @@
 
 exports[`<Nav /> renders defaults correctly 1`] = `
 <nav
-  className="sc-bkzZxe jcBMvf"
+  className="sc-idOhPF cpVPxL"
   role="main"
 >
   <button
-    className="sc-hBEYos hPWJPE"
+    className="sc-fodVxV jabJiT"
     onClick={[Function]}
   >
     <svg
@@ -33,64 +33,64 @@ exports[`<Nav /> renders defaults correctly 1`] = `
     </svg>
   </button>
   <ul
-    className="sc-dIUggk hVdrsd"
+    className="sc-hHftDr lhiCni"
   >
     <li
-      className="sc-dmlrTW ewXdAG"
+      className="sc-kfzAmx hySTxt"
     >
       <button
-        className="sc-kfzAmx htjhuH"
+        className="sc-fKFyDc jAhucp"
         onClick={[Function]}
       >
         Home
       </button>
     </li>
     <li
-      className="sc-dmlrTW ewXdAG"
+      className="sc-kfzAmx hySTxt"
     >
       <div
-        className="sc-idOhPF hutWsq"
+        className="sc-dIUggk hFMVIF"
       />
     </li>
     <li
-      className="sc-dmlrTW ewXdAG"
+      className="sc-kfzAmx hySTxt"
     >
       <button
-        className="sc-kfzAmx htjhuH"
+        className="sc-fKFyDc jAhucp"
         onClick={[Function]}
       >
         Recipes
       </button>
     </li>
     <li
-      className="sc-dmlrTW ewXdAG"
+      className="sc-kfzAmx hySTxt"
     >
       <div
-        className="sc-idOhPF hutWsq"
+        className="sc-dIUggk hFMVIF"
       />
     </li>
     <li
-      className="sc-dmlrTW ewXdAG"
+      className="sc-kfzAmx hySTxt"
     >
       <button
-        className="sc-kfzAmx htjhuH"
+        className="sc-fKFyDc jAhucp"
         onClick={[Function]}
       >
         About
       </button>
     </li>
     <li
-      className="sc-dmlrTW ewXdAG"
+      className="sc-kfzAmx hySTxt"
     >
       <div
-        className="sc-idOhPF hutWsq"
+        className="sc-dIUggk hFMVIF"
       />
     </li>
     <li
-      className="sc-dmlrTW ewXdAG"
+      className="sc-kfzAmx hySTxt"
     >
       <a
-        className="sc-fKFyDc kcLxzH"
+        className="sc-bBXqnf dTmjEP"
         href="https://www.instagram.com/whisperofyum/?hl=en"
         target="_blank"
       >
@@ -98,17 +98,17 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       </a>
     </li>
     <li
-      className="sc-dmlrTW ewXdAG"
+      className="sc-kfzAmx hySTxt"
     >
       <div
-        className="sc-idOhPF hutWsq"
+        className="sc-dIUggk hFMVIF"
       />
     </li>
     <li
-      className="sc-dmlrTW ewXdAG"
+      className="sc-kfzAmx hySTxt"
     >
       <a
-        className="sc-fKFyDc kcLxzH"
+        className="sc-bBXqnf dTmjEP"
         href="mailto:whisperofyum@gmail.com"
         target="_top"
       >
@@ -116,14 +116,14 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       </a>
     </li>
     <li
-      className="sc-dmlrTW ewXdAG"
+      className="sc-kfzAmx hySTxt"
     >
       <button
-        className="sc-fFubgz rlQbr"
+        className="sc-bkzZxe ggJhZV"
         onClick={[Function]}
       >
         <svg
-          className="sc-kEjbxe duriSo"
+          className="sc-iqHYGH kcIPYR"
           fill="#111"
           fontSize="1rem"
           height="1em"
@@ -162,17 +162,17 @@ exports[`<Nav /> renders defaults correctly 1`] = `
     </li>
   </ul>
   <ul
-    className="sc-hHftDr kJpLSS"
+    className="sc-dmlrTW flojEu"
   >
     <li
-      className="sc-dmlrTW ewXdAG"
+      className="sc-kfzAmx hySTxt"
     >
       <button
-        className="sc-fFubgz rlQbr"
+        className="sc-bkzZxe ggJhZV"
         onClick={[Function]}
       >
         <svg
-          className="sc-kEjbxe duriSo"
+          className="sc-iqHYGH kcIPYR"
           fill="#111"
           fontSize="1rem"
           height="1em"
@@ -210,10 +210,10 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       </button>
     </li>
     <li
-      className="sc-dmlrTW ewXdAG"
+      className="sc-kfzAmx hySTxt"
     >
       <button
-        className="sc-fodVxV ivEaAj"
+        className="sc-fFubgz iJWFeU"
       >
         <svg
           className="sc-jSgupP laEzvH"
