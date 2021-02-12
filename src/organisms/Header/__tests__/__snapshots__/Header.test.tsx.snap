@@ -79,23 +79,6 @@ exports[`<Header /> renders defaults correctly 1`] = `
           className="sc-kfzAmx htjhuH"
           onClick={[Function]}
         >
-          Partners
-        </button>
-      </li>
-      <li
-        className="sc-dmlrTW ewXdAG"
-      >
-        <div
-          className="sc-idOhPF hutWsq"
-        />
-      </li>
-      <li
-        className="sc-dmlrTW ewXdAG"
-      >
-        <button
-          className="sc-kfzAmx htjhuH"
-          onClick={[Function]}
-        >
           About
         </button>
       </li>
@@ -140,6 +123,7 @@ exports[`<Header /> renders defaults correctly 1`] = `
       >
         <button
           className="sc-fFubgz rlQbr"
+          onClick={[Function]}
         >
           <svg
             className="sc-kEjbxe duriSo"
@@ -188,6 +172,7 @@ exports[`<Header /> renders defaults correctly 1`] = `
       >
         <button
           className="sc-fFubgz rlQbr"
+          onClick={[Function]}
         >
           <svg
             className="sc-kEjbxe duriSo"

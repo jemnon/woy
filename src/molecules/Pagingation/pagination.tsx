@@ -10,7 +10,12 @@ const PaginationContainer = styled.section`
   justify-content: center;
   flex-wrap: wrap;
 
-  margin: 0 -0.5rem;
+  margin-top: ${({ theme: { spacing } }): string => spacing.sm4};
+
+  ${up('md')} {
+    margin-top: 0;
+    margin-bottom: ${({ theme: { spacing } }): string => spacing.xlg4};
+  }
 `;
 
 interface PaginationButtonsProps {
@@ -18,6 +23,8 @@ interface PaginationButtonsProps {
 }
 
 const PaginationButton = styled.button<PaginationButtonsProps>`
+  ${ButtonReset};
+
   display: inline-block;
 
   padding: 0.5rem 1rem;
@@ -36,9 +43,14 @@ const PaginationButton = styled.button<PaginationButtonsProps>`
     isCurrentPage ? theme.colors.white : theme.colors.nearBlack};
 
   cursor: pointer;
-  border: none;
-  outline: none;
   transition: ${({ theme }): string => theme.transition};
+`;
+
+const PaginationPrevNextButton = styled.button`
+  ${ButtonReset};
+
+  padding-left: ${({ theme: { spacing } }): string => spacing.sm2};
+  padding-right: ${({ theme: { spacing } }): string => spacing.sm2};
 `;
 
 interface PaginationProps {
@@ -101,7 +113,9 @@ const Pagination: FC<PaginationProps> = ({
       {currentPages && (
         <PaginationContainer>
           {currentPageIdx > 1 && (
-            <PaginationButton onClick={handlePrevClick}>Prev</PaginationButton>
+            <PaginationPrevNextButton onClick={handlePrevClick}>
+              <LeftArrow fontSize="1rem" />
+            </PaginationPrevNextButton>
           )}
           {currentPages.map(page => {
             return (
@@ -117,7 +131,9 @@ const Pagination: FC<PaginationProps> = ({
             );
           })}
           {currentPageIdx !== totalPages && (
-            <PaginationButton onClick={handleNextClick}>Next</PaginationButton>
+            <PaginationPrevNextButton onClick={handleNextClick}>
+              <RightArrow fontSize="1rem" />
+            </PaginationPrevNextButton>
           )}
         </PaginationContainer>
       )}

@@ -2,7 +2,7 @@
 
 exports[`<PostTitle /> renders defaults correctly 1`] = `
 <h2
-  className="sc-gsTCUz czKPGq"
+  className="sc-gsTCUz hfRQBf"
 >
   Filipino Pork Adobo
 </h2>

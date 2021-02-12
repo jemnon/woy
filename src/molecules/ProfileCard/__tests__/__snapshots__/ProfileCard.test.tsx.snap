@@ -20,13 +20,12 @@ exports[`<ProfileCard /> renders defaults correctly 1`] = `
     className="sc-hHftDr eLjxck"
   />
   <div
-    className="sc-gsTCUz ityDRR sc-dmlrTW ejklch"
+    className="sc-dmlrTW gVpfeN"
     dangerouslySetInnerHTML={
       Object {
-        "__html": undefined,
+        "__html": "",
       }
     }
-    fontSize="f1"
   />
   <footer
     className="sc-kfzAmx bCBmbI"

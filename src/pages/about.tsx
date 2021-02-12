@@ -69,7 +69,7 @@ const AboutPage: FC<AboutPageProps> = ({
         description="Jeri Mobley creator of Whisper of Yum."
         title="About"
         type="article"
-        image="https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/social-logo.jpg"
+        image="https://images.ctfassets.net/lz7g6u6kccw7/5ZTQ6JUabdhzkYxGsOWwAN/38506c10912bb5fb03443efb790da33f/creamy_garlic_pork_chops.JPG?w=800&q=60"
         pathname={location.pathname}
       />
       <AboutPageContent>

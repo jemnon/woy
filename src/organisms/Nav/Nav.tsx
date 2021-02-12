@@ -12,7 +12,6 @@ interface NavProps {
   colorTheme?: ColorMode;
   pathname?: string;
   onMobileClick?: () => {};
-  onSearchClick?: () => {};
 }
 
 interface NavCTAProps {
@@ -105,7 +104,6 @@ const Nav: FC<NavProps> = ({
   colorTheme = 'light',
   pathname,
   onMobileClick,
-  onSearchClick,
 }) => {
   const handleClick = (pathname: string): void => {
     navigate(`${pathname}`);
@@ -133,18 +131,6 @@ const Nav: FC<NavProps> = ({
             onClick={(): void => handleClick('/posts/1')}
           >
             Recipes
-          </NavButton>
-        </NavListItem>
-        <NavListItem>
-          <NavDivider colorTheme={colorTheme} />
-        </NavListItem>
-        <NavListItem>
-          <NavButton
-            colorTheme={colorTheme}
-            isActive={pathname === '/partners'}
-            onClick={(): void => handleClick('/partners')}
-          >
-            Partners
           </NavButton>
         </NavListItem>
         <NavListItem>
@@ -184,12 +170,18 @@ const Nav: FC<NavProps> = ({
           </NavLink>
         </NavListItem>
         <NavListItem>
-          <SearchButton colorTheme={colorTheme} onClick={onSearchClick} />
+          <SearchButton
+            colorTheme={colorTheme}
+            onClick={(): void => handleClick('/search')}
+          />
         </NavListItem>
       </NavListDesktop>
       <NavList>
         <NavListItem>
-          <SearchButton colorTheme={colorTheme} onClick={onSearchClick} />
+          <SearchButton
+            colorTheme={colorTheme}
+            onClick={(): void => handleClick('/search')}
+          />
         </NavListItem>
         <NavListItem>
           <MobileButton colorTheme={colorTheme} onClick={onMobileClick} />

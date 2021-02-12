@@ -19,7 +19,6 @@ const NotFoundPage: FC = () => (
     <p>
       You've found yourself on a page that doesn't exist.
       <NotFoundLink as={Link} to="/">
-        {' '}
         Click Here
       </NotFoundLink>
     </p>

@@ -78,7 +78,6 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
       'ol',
     ),
   };
-  console.log(post);
   return (
     <Layout>
       <SEO

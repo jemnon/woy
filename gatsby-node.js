@@ -30,18 +30,8 @@ const getInstagramData = async graphql => {
             id
             localImage {
               childImageSharp {
-                fluid(
-                  cropFocus: CENTER
-                  maxHeight: 500
-                  maxWidth: 500
-                  quality: 90
-                ) {
-                  aspectRatio
-                  sizes
+                fixed(width: 500, height: 500, quality: 90) {
                   src
-                  srcSet
-                  srcSetWebp
-                  srcWebp
                 }
               }
             }

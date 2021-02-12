@@ -9,13 +9,13 @@ import Newsletter from '../organisms/Newsletter';
 import Scroller from '../organisms/Scroller';
 import Stack, { StackItem } from '../organisms/Stack';
 import BackToTop from '../molecules/BackToTop';
-import CalloutLink from '../molecules/CalloutLink';
 import Media from '../molecules/Media';
 import ProfileCard from '../molecules/ProfileCard';
 import Pagination from '../molecules/Pagingation';
 import SEO from '../molecules/SEO';
 import { H4 } from '../atoms/Headings';
 import Link from '../atoms/Link';
+import ImgWrapper from '../atoms/ImgWrapper';
 import { InstaDesktop, InstaMobile } from '../atoms/InstagramContainer';
 import { useBreakpointContext } from '../context/BreakpointContextProvider';
 import InstagramType from '../types/instagram';
@@ -36,7 +36,9 @@ interface PostListProps {
       edges?: PostNode[];
     };
   };
-
+  location: {
+    pathname: string;
+  };
   pageContext?: {
     about?: ProfileAboutType;
     instagram?: Instagram[];
@@ -57,7 +59,7 @@ const metaDesc =
   `chose a specific ingredient over another and get straight to what ` +
   `you want. Enjoy the content.`;
 
-const PostList: FC<PostListProps> = ({ data, pageContext }) => {
+const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const { name: breakpoint } = useBreakpointContext();
   const { edges: posts } = data?.allContentfulPosts || {};
@@ -78,8 +80,9 @@ const PostList: FC<PostListProps> = ({ data, pageContext }) => {
       <SEO
         description={metaDesc}
         image="https://res.cloudinary.com/dd8c1nipl/image/upload/c_scale,w_880/v1586932061/woy/pork-chop.jpg"
+        pathname={location.pathname}
         title="Whisper of Yum | Recipes, Cooking and Los Angeles"
-        type="article"
+        type="website"
       />
 
       <Header />
@@ -89,8 +92,8 @@ const PostList: FC<PostListProps> = ({ data, pageContext }) => {
             {posts && (
               <Stack>
                 <H4>Recipes</H4>
-                {posts.map((post, idx) => (
-                  <StackItem>
+                {posts.map(post => (
+                  <StackItem key={post.node.id}>
                     <Link to={`/post/${post.node.slug}`}>
                       <Media
                         description={
@@ -118,14 +121,18 @@ const PostList: FC<PostListProps> = ({ data, pageContext }) => {
                     </Link>
                   </StackItem>
                 ))}
-                {pageContext?.currentPage && pageContext.totalPages && (
-                  <StackItem>
-                    <Pagination
-                      currentPage={pageContext?.currentPage}
-                      onClick={handlePaginationClick}
-                      totalPages={pageContext?.totalPages}
-                    />
-                  </StackItem>
+                {breakpoint !== 'desktop' && (
+                  <>
+                    {pageContext?.currentPage && pageContext.totalPages && (
+                      <StackItem>
+                        <Pagination
+                          currentPage={pageContext?.currentPage}
+                          onClick={handlePaginationClick}
+                          totalPages={pageContext?.totalPages}
+                        />
+                      </StackItem>
+                    )}
+                  </>
                 )}
               </Stack>
             )}
@@ -155,10 +162,12 @@ const PostList: FC<PostListProps> = ({ data, pageContext }) => {
                     {instagram.map(item => (
                       <GridCell key={item.node.id} width={1}>
                         <Link to={item.node.permalink} target="_blank">
-                          <Img
-                            alt="whisperofyum instagram"
-                            fluid={item.node.localImage.childImageSharp.fluid}
-                          />
+                          <ImgWrapper ratio={1 / 1}>
+                            <Img
+                              alt="whisperofyum instagram"
+                              fixed={item.node.localImage.childImageSharp.fixed}
+                            />
+                          </ImgWrapper>
                         </Link>
                       </GridCell>
                     ))}
@@ -172,10 +181,12 @@ const PostList: FC<PostListProps> = ({ data, pageContext }) => {
                         key={item.node.id}
                         target="_blank"
                       >
-                        <Img
-                          alt="whisperofyum instagram"
-                          fluid={item.node.localImage.childImageSharp.fluid}
-                        />
+                        <ImgWrapper ratio={1 / 1}>
+                          <Img
+                            alt="whisperofyum instagram"
+                            fixed={item.node.localImage.childImageSharp.fixed}
+                          />
+                        </ImgWrapper>
                       </Link>
                     ))}
                   </Scroller>
@@ -184,6 +195,17 @@ const PostList: FC<PostListProps> = ({ data, pageContext }) => {
             )}
           </GridCell>
         </Grid>
+        {breakpoint === 'desktop' && (
+          <>
+            {pageContext?.currentPage && pageContext.totalPages && (
+              <Pagination
+                currentPage={pageContext?.currentPage}
+                onClick={handlePaginationClick}
+                totalPages={pageContext?.totalPages}
+              />
+            )}
+          </>
+        )}
         <BackToTop onClick={handleScroll} />
       </Container>
     </Layout>

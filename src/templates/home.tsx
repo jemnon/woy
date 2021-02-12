@@ -15,6 +15,7 @@ import Media from '../molecules/Media';
 import ProfileCard from '../molecules/ProfileCard';
 import SEO from '../molecules/SEO';
 import { H4 } from '../atoms/Headings';
+import ImgWrapper from '../atoms/ImgWrapper';
 import Link from '../atoms/Link';
 import { InstaDesktop, InstaMobile } from '../atoms/InstagramContainer';
 import { useBreakpointContext } from '../context/BreakpointContextProvider';
@@ -141,7 +142,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
               <Stack>
                 <H4>Latest</H4>
                 {recentPosts.map(post => (
-                  <StackItem key={post.node.id}>
+                  <StackItem key={post.node.slug}>
                     <Link to={`/post/${post.node.slug}`}>
                       <Media
                         description={
@@ -176,8 +177,8 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
             {favoritesNode && (
               <Stack>
                 <H4>Favs</H4>
-                {favoritesNode.posts.map((post, id) => (
-                  <StackItem key={id}>
+                {favoritesNode.posts.map(post => (
+                  <StackItem key={post.slug}>
                     <Link to={`/post/${post.slug}`}>
                       <Media
                         description={
@@ -230,10 +231,12 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
                     {instagram.map(item => (
                       <GridCell key={item.node.id} width={1}>
                         <Link to={item.node.permalink} target="_blank">
-                          <Img
-                            alt="whisperofyum instagram"
-                            fluid={item.node.localImage.childImageSharp.fluid}
-                          />
+                          <ImgWrapper ratio={1 / 1}>
+                            <Img
+                              alt="whisperofyum instagram"
+                              fixed={item.node.localImage.childImageSharp.fixed}
+                            />
+                          </ImgWrapper>
                         </Link>
                       </GridCell>
                     ))}
@@ -247,10 +250,12 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
                         key={item.node.id}
                         target="_blank"
                       >
-                        <Img
-                          alt="whisperofyum instagram"
-                          fluid={item.node.localImage.childImageSharp.fluid}
-                        />
+                        <ImgWrapper ratio={1 / 1}>
+                          <Img
+                            alt="whisperofyum instagram"
+                            fixed={item.node.localImage.childImageSharp.fixed}
+                          />
+                        </ImgWrapper>
                       </Link>
                     ))}
                   </Scroller>

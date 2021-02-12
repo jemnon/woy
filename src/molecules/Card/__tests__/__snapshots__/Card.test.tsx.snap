@@ -23,7 +23,7 @@ exports[`<Card /> renders defaults correctly 1`] = `
     Jan 20
   </time>
   <h2
-    className="sc-hKgILt jeZfwr"
+    className="sc-hKgILt bsXUuO"
   >
     Filipino Pork Adobo
   </h2>
