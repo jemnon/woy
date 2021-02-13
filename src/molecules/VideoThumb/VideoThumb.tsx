@@ -1,49 +1,59 @@
-import React, { FC, ReactNode } from 'react';
+import React, { FC, ReactNode, useState } from 'react';
 import styled from 'styled-components';
-import { ButtonReset } from '../../atoms/Button';
 import ImgWrapper from '../../atoms/ImgWrapper';
 import PlayButton from '../../atoms/PlayButton';
 
 interface VideoThumbProps {
   image: ReactNode;
-  onClick?: () => void;
+  videoUrl?: string;
 }
 
-const VideoThumbContainer = styled.button`
-  ${ButtonReset};
-  cursor: pointer;
-
+const VideoThumbContainer = styled.section`
   position: relative;
   width: 100%;
 
   background-color: ${({ theme: { colors } }): string => colors.nearBlack};
-
-  transition: ${({ theme: { transition } }): string => transition};
-
-  &:active {
-    box-shadow: ${({ theme }): string =>
-      `${theme.focusColors.blue} 0px 0px 0px 3px`};
-  }
 `;
 
 const VideoThumbPlayButtonWrapper = styled.div`
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
   z-index: ${({ theme: { zIndex } }): string => zIndex.z1};
-
-  transform: translate(-50%, -50%);
 `;
 
-const VideoThumb: FC<VideoThumbProps> = ({ image, onClick }) => (
-  <VideoThumbContainer onClick={onClick}>
-    <ImgWrapper ratio={16 / 9} style={{ opacity: '90%' }}>
-      {image}
-    </ImgWrapper>
-    <VideoThumbPlayButtonWrapper>
-      <PlayButton />
-    </VideoThumbPlayButtonWrapper>
-  </VideoThumbContainer>
-);
+const VideoThumbPlayer = styled.video`
+  width: 100%;
+
+  outline: 0;
+  border: none;
+`;
+
+const VideoThumb: FC<VideoThumbProps> = ({ image, videoUrl }) => {
+  const [isPlaying, setIsPlaying] = useState<boolean>(false);
+  const handleVideoClick = (): void => {
+    setIsPlaying(true);
+  };
+  return (
+    <VideoThumbContainer>
+      <ImgWrapper ratio={16 / 9} style={{ opacity: '90%' }}>
+        {isPlaying ? (
+          <VideoThumbPlayer controls autoPlay>
+            <source src={videoUrl} type="video/mp4" />
+          </VideoThumbPlayer>
+        ) : (
+          <>{image}</>
+        )}
+      </ImgWrapper>
+      {!isPlaying && (
+        <VideoThumbPlayButtonWrapper>
+          <PlayButton onClick={handleVideoClick} />
+        </VideoThumbPlayButtonWrapper>
+      )}
+    </VideoThumbContainer>
+  );
+};
 
 export default VideoThumb;

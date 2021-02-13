@@ -190,9 +190,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
                         image={
                           <Img alt={thumb.fluid.src} fluid={thumb.fluid} />
                         }
-                        onClick={(): void => {
-                          console.log('video: ', reels.videos[idx].secure_url);
-                        }}
+                        videoUrl={reels.videos[idx].secure_url}
                       />
                     ))}
                   </Scroller>
@@ -204,6 +202,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
                         image={
                           <Img alt={thumb.fluid.src} fluid={thumb.fluid} />
                         }
+                        videoUrl={reels.videos[idx].secure_url}
                       />
                     ))}
                   </Grid>

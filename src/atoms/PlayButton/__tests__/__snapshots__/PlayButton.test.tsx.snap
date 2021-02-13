@@ -1,28 +1,32 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`<PlayButton /> renders defaults correctly 1`] = `
-<div
-  className="sc-hBEYos ihFVWP"
+<button
+  className="sc-fodVxV kTnTss"
 >
-  <svg
-    className="sc-pFZIQ gnyZHg"
-    fill="#fff"
-    fontSize="1.5rem"
-    height="1em"
-    preserveAspectRatio="xMidYMid meet"
-    style={
-      Object {
-        "marginLeft": "5px",
-      }
-    }
-    viewBox="0 0 13 16"
-    width="1em"
-    xmlns="http://www.w3.org/2000/svg"
+  <div
+    className="sc-fFubgz bdWdvL"
   >
-    <path
-      d="M0 8.912V16l13-8L0 0v8.912z"
-      fillRule="evenodd"
-    />
-  </svg>
-</div>
+    <svg
+      className="sc-pFZIQ gnyZHg"
+      fill="#fff"
+      fontSize="1.5rem"
+      height="1em"
+      preserveAspectRatio="xMidYMid meet"
+      style={
+        Object {
+          "marginLeft": "5px",
+        }
+      }
+      viewBox="0 0 13 16"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 8.912V16l13-8L0 0v8.912z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </div>
+</button>
 `;
