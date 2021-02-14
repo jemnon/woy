@@ -49,7 +49,7 @@ const NewsletterFormButton = styled.button`
   z-index: ${({ theme: { zIndex } }): string => zIndex.z1};
 
   @supports (-webkit-touch-callout: none) {
-    margin-top: -0.5px;
+    //margin-top: -0.5px;
   }
 
   max-width: 110px;
