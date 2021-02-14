@@ -273,7 +273,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
               ) : (
                 <Scroller columnWidth="75%">
                   {post.relatedRecipes.map(recipe => (
-                    <Link to={`/post/${recipe.slug}`}>
+                    <Link key={recipe.slug} to={`/post/${recipe.slug}`}>
                       <Card
                         image={
                           <Img
