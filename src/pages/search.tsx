@@ -1,17 +1,34 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
+import Img from 'gatsby-image';
 import Container from '../organisms/Container';
 import Header from '../organisms/Header';
 import Layout from '../organisms/Layout';
+import Stack, { StackItem } from '../organisms/Stack';
+import Media from '../molecules/Media';
+import SearchForm from '../molecules/SearchForm';
 import SEO from '../molecules/SEO';
-import { H4 } from '../atoms/Headings';
+import { H1, H4 } from '../atoms/Headings';
+import Link from '../atoms/Link';
+import { SearchHit as Hit } from '../types/search';
+import useInstantSearch from '../hooks/useInstantSearch';
 
 interface SearchPageProps {
   location: {
     pathname: string;
+    search: string;
   };
 }
 
 const Search: FC<SearchPageProps> = ({ location }) => {
+  const params = new URLSearchParams(location.search);
+  const queryParam = params.get('query') || '';
+  const [query, setQuery] = useState<string>(queryParam);
+  const { hits } = useInstantSearch(query);
+  const isEmpty = hits && hits.length === 0;
+  const handleChange = (query: string): void => {
+    setQuery(query);
+  };
+  console.log(hits);
   return (
     <Layout>
       <SEO
@@ -22,8 +39,37 @@ const Search: FC<SearchPageProps> = ({ location }) => {
         pathname={location.pathname}
       />
       <Header />
-      <Container hasTopMargin>
-        <H4>Search</H4>
+      <Container hasTopMargin maxWidth="md">
+        <H1>Search</H1>
+        <Stack bottomSpacing="sp-0">
+          <StackItem>
+            <SearchForm onChange={handleChange} />
+          </StackItem>
+          {hits && hits.length > 0 && (
+            <>
+              {hits.map((hit: any): any => (
+                <StackItem key={hit.objectID}>
+                  <Link to={`/post/${hit.slug}`}>
+                    <Media
+                      description={
+                        <div
+                          dangerouslySetInnerHTML={{
+                            __html: hit.bodyPreview.childMarkdownRemark.html,
+                          }}
+                        />
+                      }
+                      publishDate={hit.publishDate}
+                      title={hit.title}
+                      image={
+                        <Img alt={hit.title} fluid={hit.images[0].fluid} />
+                      }
+                    />
+                  </Link>
+                </StackItem>
+              ))}
+            </>
+          )}
+        </Stack>
       </Container>
     </Layout>
   );

@@ -10,6 +10,7 @@ const postsQuery = `{
       node {
         title
         slug
+        publishDate
         categories {
           name
         }

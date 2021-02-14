@@ -3,22 +3,12 @@ import { SearchResponse } from '@algolia/client-search';
 import { SearchParams } from '../types/search';
 
 class Search {
-  constructor(
-    readonly appId: string,
-    readonly indexName: string,
-    readonly searchKey: string,
-  ) {
-    this.appId = appId;
-    this.indexName = indexName;
-    this.searchKey = searchKey;
-  }
-
   private getIndex = (): SearchIndex => {
     const searchClient: SearchClient = algoliasearch(
-      this.appId,
-      this.searchKey,
+      process.env.GATSBY_ALGOLIA_APP_ID || '',
+      process.env.GATSBY_ALGOLIA_API_KEY || '',
     );
-    return searchClient.initIndex(this.indexName);
+    return searchClient.initIndex(process.env.GATSBY_ALGOLIA_INDEX_NAME || '');
   };
 
   public getSearch = async (

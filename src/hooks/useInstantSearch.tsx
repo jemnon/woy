@@ -1,7 +1,6 @@
 import { useEffect, useState, useMemo } from 'react';
 import { SearchResponse } from '@algolia/client-search';
 import Search from '../lib/Search';
-import { SearchConfig } from '../types/search';
 
 interface InstantSearchState {
   isLoading: boolean;
@@ -9,15 +8,8 @@ interface InstantSearchState {
   error: string | null;
 }
 
-const useInstantSearch = (
-  query?: string,
-  config?: SearchConfig,
-): InstantSearchState => {
-  const { appId, indexName, searchKey } = config || {};
-  const search = useMemo(
-    () => new Search(appId || '', indexName || '', searchKey || ''),
-    [appId, indexName, searchKey],
-  );
+const useInstantSearch = (query?: string): InstantSearchState => {
+  const search = useMemo(() => new Search(), []);
   const [hits, setHits] = useState<SearchResponse['hits'] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isLoading, setIsLoading] = useState<boolean>(false);

@@ -8,7 +8,7 @@ import { EllipsisCSS } from '../../atoms/Text';
 
 interface MediaProps {
   description?: string | ReactNode;
-  image?: ReactNode;
+  image?: ReactNode | any;
   publishDate: string;
   title: string;
 }
