@@ -20,6 +20,7 @@ import ImgWrapper from '../atoms/ImgWrapper';
 import Link from '../atoms/Link';
 import { InstaDesktop, InstaMobile } from '../atoms/InstagramContainer';
 import { useBreakpointContext } from '../context/BreakpointContextProvider';
+import useWindowResize from '../hooks/useWindowResize';
 import { ColorMode as ColorModeType } from '../types/theme';
 import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
@@ -75,8 +76,10 @@ const metaDesc =
   `you want. Enjoy the content.`;
 
 const Home: FC<HomeProps> = ({ pageContext }) => {
+  const containerRef = useRef<HTMLDivElement | null>(null);
   const heroRef = useRef<HTMLDivElement | null>(null);
   const { name: breakpoint } = useBreakpointContext();
+  const { height } = useWindowResize();
   const [headerColorTheme, setHeaderColorTheme] = useState<ColorModeType>(
     'dark',
   );
@@ -86,6 +89,14 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
   const { instagram } = pageContext?.page || {};
   const { recentPosts } = pageContext?.page || {};
   const { reels } = pageContext?.page || {};
+  const handleDownScroll = (): void => {
+    if (window && typeof height === 'number')
+      window.scrollTo({
+        top: height - 64,
+        left: 0,
+        behavior: 'smooth',
+      });
+  };
   const handleViewPost = (slug?: string): void => {
     navigate(`/post/${slug}`);
   };
@@ -122,6 +133,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
           <Header colorTheme={headerColorTheme} pathname="/" />
           <Hero
             title={latestPostNode?.title}
+            onDownScroll={handleDownScroll}
             onViewPost={(): void => handleViewPost(latestPostNode?.slug)}
             image={
               <Img
@@ -133,7 +145,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
           />
         </>
       )}
-      <Container hasTopMargin={false}>
+      <Container ref={containerRef} hasTopMargin={false}>
         <Grid columns={breakpoint === 'desktop' ? 12 : 1}>
           <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
             {recentPosts && (

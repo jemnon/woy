@@ -1,9 +1,14 @@
 import { useEffect, useState } from 'react';
 import useDebounce from './useDebounce';
 
+interface ResizeState {
+  width: number | string;
+  height: number | string;
+}
+
 const useWindowResize = (
-  onResize: (width?: number | string, height?: number | string) => void,
-): void => {
+  onResize?: (width?: number | string, height?: number | string) => void,
+): ResizeState => {
   const initialWidth = typeof window !== `undefined` ? window.innerWidth : 0;
   const initialHeight = typeof window !== 'undefined' ? window.innerHeight : 0;
   const [width, setWidth] = useState<number>(initialWidth);
@@ -21,10 +26,14 @@ const useWindowResize = (
     };
   }, []);
   useEffect(() => {
-    if (debouncedWidth && debounceHeight) {
+    if (debouncedWidth && debounceHeight && onResize) {
       onResize(debouncedWidth, debounceHeight);
     }
   }, [debouncedWidth, debounceHeight]);
+  return {
+    width,
+    height,
+  };
 };
 
 export default useWindowResize;
