@@ -23,6 +23,11 @@ const SearchFormContainer = styled.form`
 
   display: flex;
   align-items: center;
+
+  padding: 0;
+  border: 0;
+  outline: none;
+  margin: 0;
 `;
 
 const SearchButton = styled.button<{ size?: Size }>`
@@ -38,8 +43,7 @@ const SearchButton = styled.button<{ size?: Size }>`
 
   width: ${({ size = 'medium' }): string =>
     size === 'large' ? '72px' : '53px'};
-  height: ${({ size = 'medium' }): string =>
-    size === 'large' ? '72px' : '53px'};
+  height: 100%;
 
   background-color: ${({ theme: { colors } }): string => colors.nearBlack};
 `;
@@ -74,7 +78,7 @@ const SearchForm: FC<SearchFormProps> = ({ size = 'medium', onChange }) => {
         ref={input}
         style={{
           paddingRight: '69px',
-          height: size === 'large' ? '72px' : 'auto',
+          height: size === 'large' ? '72px' : '53px',
         }}
         type="text"
         value={query}
