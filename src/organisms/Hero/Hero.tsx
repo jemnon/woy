@@ -1,11 +1,11 @@
-import React, { forwardRef, ReactNode } from 'react';
+import React, { forwardRef, ReactNode, useRef, useState } from 'react';
 import styled from 'styled-components';
 import DownButton from '../../atoms/DownButton';
 import HeroContent from '../../molecules/HeroContent';
+import useWindowResize from '../../hooks/useWindowResize';
 
 interface HeroProps {
   title?: string;
-  onDownScroll?: () => void;
   onViewPost?: () => void;
   image?: ReactNode;
 }
@@ -30,12 +30,27 @@ const HeroImgWrapper = styled.div`
 `;
 
 const Hero = forwardRef<HTMLDivElement, HeroProps>(
-  ({ image, title, onDownScroll, onViewPost }, ref) => {
+  ({ image, title, onViewPost }, heroRef) => {
+    const initialHeight =
+      typeof window !== 'undefined' ? window.innerHeight : 0;
+    const [height, setHeight] = useState<number | string>(initialHeight);
+    const handleResize = (
+      width?: number | string,
+      height?: number | string,
+    ): void => {
+      if (height) setHeight(height);
+    };
+    const handleDownScroll = (): void => {
+      if (height && typeof height === 'number') {
+        window.scrollBy({ top: height - 64, left: 0, behavior: 'smooth' });
+      }
+    };
+    useWindowResize(handleResize);
     return (
-      <HeroContainer ref={ref}>
+      <HeroContainer ref={heroRef}>
         {title && <HeroContent isCentered title={title} onClick={onViewPost} />}
         {image && <HeroImgWrapper>{image}</HeroImgWrapper>}
-        <DownButton isCentered onClick={onDownScroll} />
+        <DownButton isCentered onClick={handleDownScroll} />
       </HeroContainer>
     );
   },

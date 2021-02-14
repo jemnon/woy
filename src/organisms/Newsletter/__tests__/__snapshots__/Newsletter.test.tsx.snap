@@ -29,7 +29,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
           value=""
         />
         <button
-          className="sc-dlfnbm dpvbnN sc-fKFyDc cmbrWw"
+          className="sc-dlfnbm dpvbnN sc-fKFyDc eCCMMo"
           disabled={false}
           shape="rectangle"
           type="submit"

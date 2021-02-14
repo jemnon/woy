@@ -1,4 +1,4 @@
-import React, { FC, useRef } from 'react';
+import React, { FC } from 'react';
 import Img from 'gatsby-image';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
@@ -49,19 +49,12 @@ const PageHeader = styled.header`
 `;
 
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
   const { name: breakpoint } = useBreakpointContext();
   const { page: post } = pageContext || {};
   const totalImages = post.images.length;
   const [{ fixed }] = post.images || [];
   const handleIteratorClick = (slug: string): void => {
     navigate(`/post/${slug}`);
-  };
-  const handleScroll = (): void => {
-    if (containerRef.current)
-      containerRef?.current.scrollIntoView({
-        behavior: 'smooth',
-      });
   };
   const schemaJson = {
     '@context': 'http://schema.org',
@@ -89,7 +82,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
         script={JSON.stringify(schemaJson)}
       />
       <Header />
-      <Container ref={containerRef}>
+      <Container>
         <PageHeader>
           <Grid columns={12} gap="sm4">
             <GridCell width={9}>
@@ -298,7 +291,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             </StackItem>
           )}
           <StackItem>
-            <BackToTop onClick={handleScroll} />
+            <BackToTop />
           </StackItem>
         </Stack>
       </Container>

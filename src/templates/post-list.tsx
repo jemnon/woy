@@ -1,4 +1,4 @@
-import React, { FC, useRef } from 'react';
+import React, { FC } from 'react';
 import { graphql, navigate } from 'gatsby';
 import Img from 'gatsby-image';
 import Container from '../organisms/Container';
@@ -60,21 +60,13 @@ const metaDesc =
   `you want. Enjoy the content.`;
 
 const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
   const { name: breakpoint } = useBreakpointContext();
   const { edges: posts } = data?.allContentfulPosts || {};
   const { about } = pageContext || {};
   const { instagram } = pageContext || {};
-  const handleScroll = (): void => {
-    if (containerRef.current)
-      containerRef?.current.scrollIntoView({
-        behavior: 'smooth',
-      });
-  };
   const handlePaginationClick = (page: number): void => {
     navigate(`/posts/${page}`);
   };
-
   return (
     <Layout>
       <SEO
@@ -86,7 +78,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
       />
 
       <Header />
-      <Container ref={containerRef}>
+      <Container>
         <Grid columns={breakpoint === 'desktop' ? 12 : 1}>
           <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
             {posts && (
@@ -212,7 +204,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
             )}
           </>
         )}
-        <BackToTop onClick={handleScroll} />
+        <BackToTop />
       </Container>
     </Layout>
   );

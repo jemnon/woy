@@ -1,15 +1,15 @@
 import { useEffect, useState } from 'react';
-import useWindowWidth from './useWindowWidth';
+import useWindowResize from './useWindowResize';
 import Breakpoint from '../types/breakpoint';
 
 const useBreakpoint = (): Breakpoint | null => {
   const initialWidth = typeof window !== `undefined` ? window.innerWidth : 0;
   const [width, setWidth] = useState<number>(initialWidth);
   const [breakpoint, setBreakpoint] = useState<Breakpoint | null>(null);
-  const handleResize = (width: number | string): void => {
+  const handleResize = (width?: number | string): void => {
     if (typeof width === 'number') setWidth(width);
   };
-  useWindowWidth(handleResize);
+  useWindowResize(handleResize);
   useEffect(() => {
     if (width >= 960) {
       setBreakpoint('desktop');

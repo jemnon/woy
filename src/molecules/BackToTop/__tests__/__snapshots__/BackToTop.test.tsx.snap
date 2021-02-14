@@ -6,6 +6,7 @@ exports[`<BackToTop /> renders defaults correctly 1`] = `
 >
   <button
     className="sc-bdfBwQ cUBhvx"
+    onClick={[Function]}
   >
     <span
       className="sc-fodVxV AxnnW"

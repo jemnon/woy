@@ -5,7 +5,7 @@ exports[`<Media /> renders defaults correctly 1`] = `
   className="sc-eCssSg bMMBMS"
 >
   <figure
-    className="sc-jSgupP bPvPOL"
+    className="sc-jSgupP hvCOCt"
   >
     <div
       className="sc-bdfBwQ jlkewK"
@@ -16,7 +16,7 @@ exports[`<Media /> renders defaults correctly 1`] = `
     </div>
   </figure>
   <div
-    className="sc-gKsewC gOOLjR"
+    className="sc-gKsewC dqxkbu"
   >
     <time
       className="sc-gsTCUz kVJUOL"
@@ -30,7 +30,7 @@ exports[`<Media /> renders defaults correctly 1`] = `
       Filipino Pork Adobo
     </h2>
     <div
-      className="sc-iBPRYJ kNzMll"
+      className="sc-iBPRYJ esCzZP"
     >
       media desc
     </div>

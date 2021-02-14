@@ -87,6 +87,11 @@ const NavCTACSS = css<NavCTAProps>`
     isActive ? theme.colors.orange : 'transparent'};
 
   cursor: pointer;
+
+  &:hover {
+    color: ${({ colorTheme = 'light', theme }): string =>
+      colorTheme === 'dark' ? theme.colors.white : theme.colors.nearBlack};
+  }
 `;
 
 const NavButton = styled.button<NavCTAProps>`

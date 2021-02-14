@@ -1,9 +1,10 @@
 import React, { FC, ReactNode } from 'react';
 import styled from 'styled-components';
-import { up } from 'styled-breakpoints';
+import { down, up } from 'styled-breakpoints';
 import ImgWrapper from '../../atoms/ImgWrapper';
 import PostDate from '../../atoms/PostDate';
 import PostTitle from '../../atoms/PostTitle';
+import { EllipsisCSS } from '../../atoms/Text';
 
 interface MediaProps {
   description?: string | ReactNode;
@@ -28,10 +29,9 @@ const MediaContainer = styled.article`
 `;
 
 const MediaFigure = styled.figure`
-  width: 30%;
-  max-width: 7.5rem;
+  width: 7.5rem;
   ${up('sm')} {
-    max-width: 10rem;
+    width: 30%;
   }
   ${up('lg')} {
     width: 40%;
@@ -47,15 +47,18 @@ const MediaFigure = styled.figure`
 
 const MediaContent = styled.div`
   margin-left: ${({ theme }): string => theme.spacing.sm4};
-  width: 70%;
-  ${up('lg')} {
+  width: calc(100% - 136px);
+  ${up('sm')} {
     width: 60%;
   }
 `;
 
 const MediaDescription = styled.div`
-  overflow: hidden;
-  max-height: 46px;
+  ${down('sm')} {
+    p {
+      ${EllipsisCSS};
+    }
+  }
 
   ${up('sm')} {
     max-height: 52px;

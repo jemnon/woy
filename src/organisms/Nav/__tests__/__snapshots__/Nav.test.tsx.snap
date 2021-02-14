@@ -39,7 +39,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-kfzAmx hySTxt"
     >
       <button
-        className="sc-fKFyDc jAhucp"
+        className="sc-fKFyDc bRdqtk"
         onClick={[Function]}
       >
         Home
@@ -56,7 +56,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-kfzAmx hySTxt"
     >
       <button
-        className="sc-fKFyDc jAhucp"
+        className="sc-fKFyDc bRdqtk"
         onClick={[Function]}
       >
         Recipes
@@ -73,7 +73,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-kfzAmx hySTxt"
     >
       <button
-        className="sc-fKFyDc jAhucp"
+        className="sc-fKFyDc bRdqtk"
         onClick={[Function]}
       >
         About
@@ -90,7 +90,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-kfzAmx hySTxt"
     >
       <a
-        className="sc-bBXqnf dTmjEP"
+        className="sc-bBXqnf jxylvS"
         href="https://www.instagram.com/whisperofyum/?hl=en"
         target="_blank"
       >
@@ -108,7 +108,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
       className="sc-kfzAmx hySTxt"
     >
       <a
-        className="sc-bBXqnf dTmjEP"
+        className="sc-bBXqnf jxylvS"
         href="mailto:whisperofyum@gmail.com"
         target="_top"
       >

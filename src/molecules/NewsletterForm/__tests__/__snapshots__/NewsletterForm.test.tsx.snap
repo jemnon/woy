@@ -20,7 +20,7 @@ exports[`<NewsletterForm /> renders defaults correctly 1`] = `
     value=""
   />
   <button
-    className="sc-bdfBwQ fXEqxe sc-dmlrTW fVgUux"
+    className="sc-bdfBwQ fXEqxe sc-dmlrTW biRTNl"
     disabled={false}
     shape="rectangle"
     type="submit"

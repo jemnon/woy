@@ -6,6 +6,7 @@ exports[`<Hero /> renders defaults correctly 1`] = `
 >
   <button
     className="sc-fodVxV bXTMBy"
+    onClick={[Function]}
   >
     <svg
       className="sc-gsTCUz chkPNN"

@@ -75,7 +75,6 @@ const metaDesc =
   `you want. Enjoy the content.`;
 
 const Home: FC<HomeProps> = ({ pageContext }) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
   const heroRef = useRef<HTMLDivElement | null>(null);
   const { name: breakpoint } = useBreakpointContext();
   const [headerColorTheme, setHeaderColorTheme] = useState<ColorModeType>(
@@ -87,12 +86,6 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
   const { instagram } = pageContext?.page || {};
   const { recentPosts } = pageContext?.page || {};
   const { reels } = pageContext?.page || {};
-  const handleScroll = (): void => {
-    if (containerRef.current)
-      containerRef?.current.scrollIntoView({
-        behavior: 'smooth',
-      });
-  };
   const handleViewPost = (slug?: string): void => {
     navigate(`/post/${slug}`);
   };
@@ -129,7 +122,6 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
           <Header colorTheme={headerColorTheme} pathname="/" />
           <Hero
             title={latestPostNode?.title}
-            onDownScroll={(): void => handleScroll()}
             onViewPost={(): void => handleViewPost(latestPostNode?.slug)}
             image={
               <Img
@@ -141,7 +133,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
           />
         </>
       )}
-      <Container ref={containerRef} hasTopMargin={false}>
+      <Container hasTopMargin={false}>
         <Grid columns={breakpoint === 'desktop' ? 12 : 1}>
           <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
             {recentPosts && (
@@ -183,7 +175,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
               <Stack>
                 <H4>Reels</H4>
                 {breakpoint !== 'desktop' ? (
-                  <Scroller columnWidth="75%">
+                  <Scroller columnWidth="85%">
                     {reels.videoThumbs.map((thumb, idx) => (
                       <VideoThumb
                         key={`video-thumb-${idx}`}
@@ -300,7 +292,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
             )}
           </GridCell>
         </Grid>
-        <BackToTop onClick={handleScroll} />
+        <BackToTop top={672} />
       </Container>
     </Layout>
   );
