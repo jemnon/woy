@@ -109,7 +109,17 @@ const Search: FC<SearchPageProps> = ({ location }) => {
                       fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
                       textColor="orange"
                     >
-                      Crispy Baked Coconut Shrimps
+                      Crispy Baked Coconut Shrimp
+                    </Text>
+                  </Link>
+                </StackItem>
+                <StackItem bottomSpacing="sm1">
+                  <Link to="/post/mushroom-soup">
+                    <Text
+                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                      textColor="orange"
+                    >
+                      Mushroom Soup
                     </Text>
                   </Link>
                 </StackItem>
