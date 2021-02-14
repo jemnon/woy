@@ -12,7 +12,9 @@ import { Search } from '../../atoms/Icons';
 import TextField from '../../atoms/TextField';
 import useDebounce from '../../hooks/useDebounce';
 
+type Size = 'medium' | 'large';
 interface SearchFormProps {
+  size?: Size;
   onChange: (query: string) => void;
 }
 
@@ -23,7 +25,7 @@ const SearchFormContainer = styled.form`
   align-items: center;
 `;
 
-const SearchButton = styled.button`
+const SearchButton = styled.button<{ size?: Size }>`
   ${ButtonReset};
 
   position: absolute;
@@ -34,13 +36,15 @@ const SearchButton = styled.button`
   align-items: center;
   justify-content: center;
 
-  width: 53px;
-  height: 53px;
+  width: ${({ size = 'medium' }): string =>
+    size === 'large' ? '72px' : '53px'};
+  height: ${({ size = 'medium' }): string =>
+    size === 'large' ? '72px' : '53px'};
 
   background-color: ${({ theme: { colors } }): string => colors.nearBlack};
 `;
 
-const SearchForm: FC<SearchFormProps> = ({ onChange }) => {
+const SearchForm: FC<SearchFormProps> = ({ size = 'medium', onChange }) => {
   const [query, setQuery] = useState<string>('');
   const input = useRef<HTMLInputElement>(null);
   const debouncedQuery = useDebounce(query);
@@ -68,12 +72,15 @@ const SearchForm: FC<SearchFormProps> = ({ onChange }) => {
         onChange={handleChange}
         placeholder="Search Recipes"
         ref={input}
-        style={{ paddingRight: '69px' }}
+        style={{
+          paddingRight: '69px',
+          height: size === 'large' ? '72px' : 'auto',
+        }}
         type="text"
         value={query}
       />
-      <SearchButton type="submit">
-        <Search fill="#fff" fontSize="1rem" />
+      <SearchButton type="submit" size={size}>
+        <Search fill="#fff" fontSize={size === 'large' ? '1.25rem' : '1rem'} />
       </SearchButton>
     </SearchFormContainer>
   );

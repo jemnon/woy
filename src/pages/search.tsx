@@ -7,9 +7,11 @@ import Stack, { StackItem } from '../organisms/Stack';
 import Media from '../molecules/Media';
 import SearchForm from '../molecules/SearchForm';
 import SEO from '../molecules/SEO';
-import { H1, H4 } from '../atoms/Headings';
+import { H1, H6 } from '../atoms/Headings';
 import Link from '../atoms/Link';
+import Text from '../atoms/Text';
 import { SearchHit as Hit } from '../types/search';
+import useBreakpoint from '../hooks/useBreakpoint';
 import useInstantSearch from '../hooks/useInstantSearch';
 
 interface SearchPageProps {
@@ -23,12 +25,12 @@ const Search: FC<SearchPageProps> = ({ location }) => {
   const params = new URLSearchParams(location.search);
   const queryParam = params.get('query') || '';
   const [query, setQuery] = useState<string>(queryParam);
+  const breakpoint = useBreakpoint();
   const { hits } = useInstantSearch(query);
   const isEmpty = hits && hits.length === 0;
   const handleChange = (query: string): void => {
     setQuery(query);
   };
-  console.log(hits);
   return (
     <Layout>
       <SEO
@@ -43,7 +45,10 @@ const Search: FC<SearchPageProps> = ({ location }) => {
         <H1>Search</H1>
         <Stack bottomSpacing="sp-0">
           <StackItem>
-            <SearchForm onChange={handleChange} />
+            <SearchForm
+              onChange={handleChange}
+              size={breakpoint === 'desktop' ? 'large' : 'medium'}
+            />
           </StackItem>
           {hits && hits.length > 0 && (
             <>
@@ -68,6 +73,58 @@ const Search: FC<SearchPageProps> = ({ location }) => {
                 </StackItem>
               ))}
             </>
+          )}
+          {isEmpty && (
+            <StackItem>
+              <Text textAlign="center">No Results</Text>
+            </StackItem>
+          )}
+          {hits === null && (
+            <StackItem>
+              <H6>Suggestions</H6>
+              <Stack bottomSpacing="sp-0">
+                <StackItem bottomSpacing="sm1">
+                  <Link to="/post/chicken-congee">
+                    <Text
+                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                      textColor="orange"
+                    >
+                      Chicken Congee
+                    </Text>
+                  </Link>
+                </StackItem>
+                <StackItem bottomSpacing="sm1">
+                  <Link to="/post/creamy-garlic-mushroom-pork-chops">
+                    <Text
+                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                      textColor="orange"
+                    >
+                      Creamy Garlic Mushroom Pork Chops
+                    </Text>
+                  </Link>
+                </StackItem>
+                <StackItem bottomSpacing="sm1">
+                  <Link to="/post/oven-baked-coconut-shrimp">
+                    <Text
+                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                      textColor="orange"
+                    >
+                      Crispy Baked Coconut Shrimps
+                    </Text>
+                  </Link>
+                </StackItem>
+                <StackItem bottomSpacing="sm1">
+                  <Link to="/post/filipino-pork-adobo">
+                    <Text
+                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                      textColor="orange"
+                    >
+                      Filipino Pork Adobo
+                    </Text>
+                  </Link>
+                </StackItem>
+              </Stack>
+            </StackItem>
           )}
         </Stack>
       </Container>

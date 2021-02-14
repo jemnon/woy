@@ -61,6 +61,7 @@ const MediaDescription = styled.div`
   }
 
   ${up('sm')} {
+    overflow: hidden;
     max-height: 52px;
   }
 

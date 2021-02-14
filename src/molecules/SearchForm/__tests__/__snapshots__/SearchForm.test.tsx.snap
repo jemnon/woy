@@ -12,6 +12,7 @@ exports[`<SearchForm /> renders defaults correctly 1`] = `
     placeholder="Search Recipes"
     style={
       Object {
+        "height": "auto",
         "paddingRight": "69px",
       }
     }
@@ -19,7 +20,8 @@ exports[`<SearchForm /> renders defaults correctly 1`] = `
     value=""
   />
   <button
-    className="sc-bkzZxe fyKQlF"
+    className="sc-bkzZxe gSzoeh"
+    size="medium"
     type="submit"
   >
     <svg
