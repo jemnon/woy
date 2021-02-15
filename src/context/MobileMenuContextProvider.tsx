@@ -5,7 +5,7 @@ import React, {
   useContext,
   useState,
 } from 'react';
-
+import { LocationProvider } from '@reach/router';
 import MobileMenu from '../organisms/MobileMenu';
 
 interface MobileMenuContextValue {
@@ -44,7 +44,9 @@ const MobileMenuContextProvider: FC<MobileMenuContextProviderProps> = ({
   return (
     <MobileMenuContext.Provider value={contextValue}>
       {children}
-      <MobileMenu isVisible={isVisible} />
+      <LocationProvider>
+        <MobileMenu isVisible={isVisible} />
+      </LocationProvider>
     </MobileMenuContext.Provider>
   );
 };

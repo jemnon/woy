@@ -91,6 +91,10 @@ export interface ZIndex {
   z4: string;
   z5: string;
   z6: string;
+  z995: string;
+  z996: string;
+  z997: string;
+  z998: string;
   z999: string;
   z9999: string;
 }
