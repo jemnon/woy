@@ -1,5 +1,7 @@
 import React, { FC, ReactNode } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+import theme from '../../theme';
+import GlobalStyle from '../../atoms/GlobalStyle';
 import Footer from '../Footer';
 
 interface LayoutProps {
@@ -24,12 +26,13 @@ const Main = styled.main<MainProps>`
 
 const Layout: FC<LayoutProps> = ({ bgColor = 'white', children }) => {
   return (
-    <>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
       <Main bgColor={bgColor} role="main">
         {children}
       </Main>
       <Footer />
-    </>
+    </ThemeProvider>
   );
 };
 

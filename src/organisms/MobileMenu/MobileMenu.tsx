@@ -54,7 +54,7 @@ const MobileMenuContent = styled.div<MobileMenuProps>`
   right: 0;
   z-index: ${({ theme: { zIndex } }): string => zIndex.z998};
 
-  width: 286px;
+  width: 240px;
   height: 100vh;
 
   background-color: ${({ theme: { colors } }): string => colors.white};
