@@ -10,7 +10,6 @@ import SEO from '../molecules/SEO';
 import { H1, H6 } from '../atoms/Headings';
 import Link from '../atoms/Link';
 import Text from '../atoms/Text';
-import { SearchHit as Hit } from '../types/search';
 import useBreakpoint from '../hooks/useBreakpoint';
 import useInstantSearch from '../hooks/useInstantSearch';
 

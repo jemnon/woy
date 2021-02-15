@@ -6,12 +6,12 @@ import { ButtonReset } from '../../atoms/Button';
 import Logo from '../../atoms/Logo';
 import MobileButton from '../../atoms/MobileButton';
 import SearchButton from '../../atoms/SearchButton';
+import { useMobileMenuContext } from '../../context/MobileMenuContextProvider';
 import { ColorMode } from '../../types/theme';
 
 interface NavProps {
   colorTheme?: ColorMode;
   pathname?: string;
-  onMobileClick?: () => {};
 }
 
 interface NavCTAProps {
@@ -105,13 +105,13 @@ const NavLink = styled.a<NavCTAProps>`
   ${NavCTACSS};
 `;
 
-const Nav: FC<NavProps> = ({
-  colorTheme = 'light',
-  pathname,
-  onMobileClick,
-}) => {
+const Nav: FC<NavProps> = ({ colorTheme = 'light', pathname }) => {
+  const { open } = useMobileMenuContext();
   const handleClick = (pathname: string): void => {
     navigate(`${pathname}`);
+  };
+  const handleMobileClick = (): void => {
+    open();
   };
   return (
     <NavContainer role="main">
@@ -189,7 +189,7 @@ const Nav: FC<NavProps> = ({
           />
         </NavListItem>
         <NavListItem>
-          <MobileButton colorTheme={colorTheme} onClick={onMobileClick} />
+          <MobileButton colorTheme={colorTheme} onClick={handleMobileClick} />
         </NavListItem>
       </NavList>
     </NavContainer>

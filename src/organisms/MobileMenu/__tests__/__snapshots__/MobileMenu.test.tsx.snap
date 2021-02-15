@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MobileMenu /> renders defaults correctly 1`] = `
+<div
+  className="sc-bdfBwQ cJFhzM"
+>
+  <div
+    className="sc-gsTCUz kXXRPS"
+    onClick={[Function]}
+    role="button"
+  />
+</div>
+`;

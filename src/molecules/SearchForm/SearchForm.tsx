@@ -23,11 +23,6 @@ const SearchFormContainer = styled.form`
 
   display: flex;
   align-items: center;
-
-  padding: 0;
-  border: 0;
-  outline: none;
-  margin: 0;
 `;
 
 const SearchButton = styled.button<{ size?: Size }>`

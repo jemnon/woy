@@ -214,6 +214,7 @@ exports[`<Nav /> renders defaults correctly 1`] = `
     >
       <button
         className="sc-fFubgz iJWFeU"
+        onClick={[Function]}
       >
         <svg
           className="sc-jSgupP laEzvH"

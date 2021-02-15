@@ -12,7 +12,7 @@ exports[`<SearchForm /> renders defaults correctly 1`] = `
     placeholder="Search Recipes"
     style={
       Object {
-        "height": "auto",
+        "height": "53px",
         "paddingRight": "69px",
       }
     }
@@ -20,7 +20,7 @@ exports[`<SearchForm /> renders defaults correctly 1`] = `
     value=""
   />
   <button
-    className="sc-bkzZxe gSzoeh"
+    className="sc-bkzZxe hVMcac"
     size="medium"
     type="submit"
   >
