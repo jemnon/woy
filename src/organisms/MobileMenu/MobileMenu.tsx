@@ -57,7 +57,7 @@ const MobileMenuContent = styled.div<MobileMenuProps>`
   width: 240px;
   height: 100vh;
 
-  background-color: ${({ theme: { colors } }): string => colors.white};
+  background-color: ${({ theme: { colors } }): string => colors.nearWhite};
 
   transition: transform 0.47s ease;
   transform: ${({ isVisible }): string =>
@@ -80,7 +80,7 @@ const MobileMenuButtonCSS = css<{ isActive?: boolean }>`
   display: block;
 
   width: 100%;
-  padding: ${({ theme: { spacing } }): string => spacing.sm4};
+  padding: ${({ theme: { spacing } }): string => spacing.sm3};
   border-bottom: 1px solid ${(): string => hexToRGBA('#000', 10)};
 
   color: ${({ isActive, theme: { colors } }): string =>
@@ -93,6 +93,8 @@ const MobileMenuButtonCSS = css<{ isActive?: boolean }>`
   text-transform: uppercase;
   letter-spacing: 1px;
   text-decoration: none;
+
+  background-color: ${({ theme: { colors } }): string => colors.white};
 
   cursor: pointer;
 `;
