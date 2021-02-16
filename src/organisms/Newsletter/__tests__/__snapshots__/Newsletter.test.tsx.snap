@@ -42,7 +42,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
       className="sc-gsTCUz lUVQF"
     >
       <div
-        className="sc-idOhPF hEigPd"
+        className="sc-idOhPF kZtWmj"
       >
         Stay up to date with our newsletter.
       </div>
@@ -67,6 +67,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
             >
               <svg
                 className="sc-fubCfw klUqJt"
+                fill="#111"
                 fontSize="1.25rem"
                 height="1em"
                 preserveAspectRatio="xMidYMid meet"
@@ -91,6 +92,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
             >
               <svg
                 className="sc-kEjbxe dDeeAp"
+                fill="#111"
                 fontSize="1.25rem"
                 height="1em"
                 preserveAspectRatio="xMidYMid meet"
@@ -115,6 +117,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
             >
               <svg
                 className="sc-gKsewC iAjfck"
+                fill="#111"
                 fontSize="1.25rem"
                 height="1em"
                 preserveAspectRatio="xMidYMid meet"

@@ -1,6 +1,13 @@
 import styled from 'styled-components';
+import { Colors } from '../../types/theme';
 
-const TextField = styled.input`
+type BorderColor = keyof Colors;
+
+interface TextFieldProps {
+  borderColor?: BorderColor;
+}
+
+const TextField = styled.input<TextFieldProps>`
   font-family: ${({ theme }): string => theme.fonts.lato};
   font-size: ${({ theme }): string => theme.fontSizes.f1};
 
@@ -11,7 +18,8 @@ const TextField = styled.input`
   background-color: ${({ theme }): string => theme.colors.white};
   border-width: 1px;
   border-style: solid;
-  border-color: ${({ theme }): string => theme.colors.nearBlack};
+  border-color: ${({ borderColor = 'nearBlack', theme: { colors } }): string =>
+    colors[borderColor]};
   border-radius: 0;
 
   transition: ${({ theme }): string => theme.transition};

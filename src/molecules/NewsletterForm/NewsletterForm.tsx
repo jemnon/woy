@@ -1,11 +1,18 @@
 import React, { ChangeEvent, FormEvent, FC, useState } from 'react';
 import styled from 'styled-components';
 import addToMailchimp from 'gatsby-plugin-mailchimp';
-import { hexToRGBA } from '../../utils/colors';
 import Button from '../../atoms/Button';
 import CloseButton from '../../atoms/CloseButton';
 import Text from '../../atoms/Text';
 import TextField from '../../atoms/TextField';
+import { hexToRGBA } from '../../utils/colors';
+import { Colors } from '../../types/theme';
+
+type BorderColor = keyof Colors;
+
+interface NewsletterFormProps {
+  borderColor?: BorderColor;
+}
 
 const NewsletterFormContainer = styled.form`
   position: relative;
@@ -60,7 +67,9 @@ const NewsletterFormButton = styled.button`
   letter-spacing: 0.1em;
 `;
 
-const NewsletterForm: FC = () => {
+const NewsletterForm: FC<NewsletterFormProps> = ({
+  borderColor = 'nearBlack',
+}) => {
   const [email, setEmail] = useState<string>('');
   const [message, setMessage] = useState<string | null>(null);
   const [isError, setIsError] = useState<boolean>(false);
@@ -107,6 +116,7 @@ const NewsletterForm: FC = () => {
       )}
       <NewsletterFormField
         as={TextField}
+        borderColor={borderColor}
         disabled={isSubmitting}
         id="email"
         name="email"

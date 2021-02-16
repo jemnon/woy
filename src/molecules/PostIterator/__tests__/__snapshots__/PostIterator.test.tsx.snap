@@ -23,14 +23,14 @@ exports[`<PostIterator /> renders defaults correctly 1`] = `
       className="sc-gKsewC iyJKSp"
     >
       <div
-        className="sc-dlfnbm cKiecJ"
+        className="sc-dlfnbm gnOgrr"
         fontSize="f-sm"
         fontWeight="bold"
       >
         Previous
       </div>
       <div
-        className="sc-dlfnbm fKcsfB sc-iBPRYJ QuaPf"
+        className="sc-dlfnbm eobeyX sc-iBPRYJ QuaPf"
         fontSize="f-sm"
         fontWeight="bold"
         title="Shrimp Scampi"
@@ -48,14 +48,14 @@ exports[`<PostIterator /> renders defaults correctly 1`] = `
       direction="right"
     >
       <div
-        className="sc-dlfnbm fynSpe"
+        className="sc-dlfnbm dUeyhs"
         fontSize="f-sm"
         fontWeight="bold"
       >
         Next
       </div>
       <div
-        className="sc-dlfnbm fKcsfB sc-iBPRYJ QuaPf"
+        className="sc-dlfnbm eobeyX sc-iBPRYJ QuaPf"
         fontSize="f-sm"
         fontWeight="bold"
         title="Tomato Bisque"

@@ -22,13 +22,13 @@ exports[`<PartnerCard /> renders defaults correctly 1`] = `
     Title
   </h5>
   <div
-    className="sc-pFZIQ fOSuzR"
+    className="sc-pFZIQ cZsunn"
   >
     Some Desc
     :
   </div>
   <p
-    className="sc-fubCfw khejlI sc-pFZIQ fhOkRz"
+    className="sc-fubCfw khejlI sc-pFZIQ gdjSXh"
     fontSize="f1"
     fontWeight="bold"
   >
