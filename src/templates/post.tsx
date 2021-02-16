@@ -18,6 +18,7 @@ import SEO from '../molecules/SEO';
 import Share from '../molecules/Share';
 import BackToTop from '../molecules/BackToTop';
 import BreadCrumbs from '../molecules/BreadCrumbs';
+import Button from '../atoms/Button';
 import { H1, H4 } from '../atoms/Headings';
 import Link from '../atoms/Link';
 import PostDate from '../atoms/PostDate';

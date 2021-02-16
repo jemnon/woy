@@ -8,7 +8,7 @@ exports[`<NewsletterForm /> renders defaults correctly 1`] = `
   onSubmit={[Function]}
 >
   <input
-    className="sc-bkzZxe hlVLRC sc-hHftDr eNEJml"
+    className="sc-bkzZxe eFFmRE sc-hHftDr eNEJml"
     disabled={false}
     id="email"
     name="email"

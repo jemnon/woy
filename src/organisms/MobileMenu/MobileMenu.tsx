@@ -72,20 +72,19 @@ const MobileMenuContentHeader = styled.header`
   justify-content: flex-end;
 
   padding: ${({ theme: { spacing } }): string => spacing.sm4};
-
-  border-bottom: 1px solid ${(): string => hexToRGBA('#000', 10)};
+  padding-bottom: 0;
 `;
 
-const MobileMenuNav = styled.nav`
-  background-color: ${({ theme: { colors } }): string => colors.white};
-`;
+const MobileMenuNav = styled.nav``;
 
 const MobileMenuButtonCSS = css<{ isActive?: boolean }>`
   display: block;
 
   width: 100%;
-  padding: ${({ theme: { spacing } }): string => spacing.sm3};
-  border-bottom: 1px solid ${(): string => hexToRGBA('#000', 10)};
+  padding-top: ${({ theme: { spacing } }): string => spacing.sm2};
+  padding-bottom: ${({ theme: { spacing } }): string => spacing.sm2};
+  padding-left: ${({ theme: { spacing } }): string => spacing.sm4};
+  padding-right: ${({ theme: { spacing } }): string => spacing.sm4};
 
   color: ${({ isActive, theme: { colors } }): string =>
     isActive ? colors.orange : colors.nearBlack};
@@ -97,8 +96,6 @@ const MobileMenuButtonCSS = css<{ isActive?: boolean }>`
   text-transform: uppercase;
   letter-spacing: 1px;
   text-decoration: none;
-
-  background-color: ${({ theme: { colors } }): string => colors.white};
 
   cursor: pointer;
 `;

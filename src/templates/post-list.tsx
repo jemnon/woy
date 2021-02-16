@@ -4,11 +4,12 @@ import Img from 'gatsby-image';
 import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
-import Layout from '../organisms/Layout';
+import Layout, { PageHeader } from '../organisms/Layout';
 import Newsletter from '../organisms/Newsletter';
 import Scroller from '../organisms/Scroller';
 import Stack, { StackItem } from '../organisms/Stack';
 import BackToTop from '../molecules/BackToTop';
+import BreadCrumbs from '../molecules/BreadCrumbs';
 import Media from '../molecules/Media';
 import ProfileCard from '../molecules/ProfileCard';
 import Pagination from '../molecules/Pagingation';
@@ -77,8 +78,11 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
         type="website"
       />
 
-      <Header />
+      <Header pathname="/recipes" />
       <Container>
+        <PageHeader>
+          <BreadCrumbs title="recipes" />
+        </PageHeader>
         <Grid columns={breakpoint === 'desktop' ? 12 : 1}>
           <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
             {posts && (

@@ -132,7 +132,7 @@ const Nav: FC<NavProps> = ({ colorTheme = 'light', pathname }) => {
         <NavListItem>
           <NavButton
             colorTheme={colorTheme}
-            isActive={pathname === '/posts'}
+            isActive={pathname === '/recipes'}
             onClick={(): void => handleClick('/posts/1')}
           >
             Recipes

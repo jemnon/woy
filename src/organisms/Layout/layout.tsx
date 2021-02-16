@@ -1,5 +1,6 @@
 import React, { FC, ReactNode } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+import { up } from 'styled-breakpoints';
 import theme from '../../theme';
 import GlobalStyle from '../../atoms/GlobalStyle';
 import Footer from '../Footer';
@@ -22,6 +23,13 @@ const Main = styled.main<MainProps>`
   }
   font-size: 1rem;
   min-height: 100vh;
+`;
+
+export const PageHeader = styled.header`
+  margin-bottom: ${({ theme: { spacing } }): string => spacing.sm4};
+  ${up('sm')} {
+    margin-bottom: ${({ theme: { spacing } }): string => spacing.md4};
+  }
 `;
 
 const Layout: FC<LayoutProps> = ({ bgColor = 'white', children }) => {

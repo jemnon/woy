@@ -4,6 +4,7 @@ import Container from '../organisms/Container';
 import Header from '../organisms/Header';
 import Layout from '../organisms/Layout';
 import Stack, { StackItem } from '../organisms/Stack';
+import BackToTop from '../molecules/BackToTop';
 import Media from '../molecules/Media';
 import SearchForm from '../molecules/SearchForm';
 import SEO from '../molecules/SEO';
@@ -27,6 +28,7 @@ const Search: FC<SearchPageProps> = ({ location }) => {
   const breakpoint = useBreakpoint();
   const { hits } = useInstantSearch(query);
   const isEmpty = hits && hits.length === 0;
+  const showBackToTop = hits && hits.length >= 4;
   const handleChange = (query: string): void => {
     setQuery(query);
   };
@@ -42,7 +44,7 @@ const Search: FC<SearchPageProps> = ({ location }) => {
       <Header />
       <Container hasTopMargin maxWidth="md">
         <H1>Search</H1>
-        <Stack bottomSpacing="sp-0">
+        <Stack>
           <StackItem>
             <SearchForm
               onChange={handleChange}
@@ -136,6 +138,7 @@ const Search: FC<SearchPageProps> = ({ location }) => {
             </StackItem>
           )}
         </Stack>
+        {showBackToTop && <BackToTop />}
       </Container>
     </Layout>
   );

@@ -15,7 +15,7 @@ const ScrollerContent = styled.div<{ columnWidth?: string }>`
   grid-gap: ${({ theme: { spacing } }): string => spacing.sm4};
   grid-auto-flow: column;
   ${({ columnWidth = '47%' }): SimpleInterpolation => {
-    return `grid-auto-columns: calc(${columnWidth} - (16px) * 2);`;
+    return `grid-auto-columns: calc(${columnWidth} - (1rem) * 2);`;
   }}
 
   overflow-x: scroll;

@@ -17,8 +17,6 @@ const FooterContainer = styled.footer`
 
   color: ${({ theme }): string => theme.colors.white};
   background-color: ${({ theme }): string => theme.colors.orange};
-  background-image: url('/images/footer-bg.png');
-  background-repeat: repeat-x;
 `;
 
 const FooterContent = styled.div<{ fontWeight: any }>`
@@ -34,7 +32,7 @@ const FooterLink = styled(Link)`
   font-style: normal;
   font-weight: bold;
 
-  ${up('lg')} {
+  ${up('md')} {
     font-size: ${({ theme: { fontSizes } }): string => fontSizes.f1};
   }
 
@@ -120,16 +118,20 @@ const Footer: FC = () => {
             </Text>
           </StackItem>
           <StackItem>
-            <FooterLink
-              as={Text}
-              fontWeight="normal"
-              textAlign="center"
-              textDecoration="underline"
+            <Link
               to="https://www.linkedin.com/in/david-arias-b79a706/"
               target="_blank"
             >
-              Designed and Developed by David Arias
-            </FooterLink>
+              <Text
+                fontSize={breakpoint === 'desktop' ? 'f1' : 'f-sm'}
+                fontWeight="normal"
+                textAlign="center"
+                textColor="white"
+                textDecoration="underline"
+              >
+                Designed and Developed by David Arias
+              </Text>
+            </Link>
           </StackItem>
         </Stack>
       </FooterContent>

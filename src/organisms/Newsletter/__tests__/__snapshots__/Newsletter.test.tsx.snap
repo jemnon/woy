@@ -17,7 +17,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
         onSubmit={[Function]}
       >
         <input
-          className="sc-dIUggk cwvyXB sc-kfzAmx dgOJIu"
+          className="sc-dIUggk kWBjwv sc-kfzAmx dgOJIu"
           disabled={false}
           id="email"
           name="email"
@@ -42,7 +42,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
       className="sc-gsTCUz lUVQF"
     >
       <div
-        className="sc-idOhPF kZtWmj"
+        className="sc-idOhPF kKBMUY"
       >
         Stay up to date with our newsletter.
       </div>

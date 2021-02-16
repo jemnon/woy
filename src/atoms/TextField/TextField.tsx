@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { hexToRGBA } from '../../utils/colors';
 import { Colors } from '../../types/theme';
 
 type BorderColor = keyof Colors;
@@ -34,8 +35,9 @@ const TextField = styled.input<TextFieldProps>`
       `${theme.focusColors.blue} 0px 0px 0px 3px`};
   }
 
-  ::placeholder {
-    color: ${({ theme: { colors } }): string => colors.nearBlack};
+  &::placeholder {
+    color: ${({ theme: { colors } }): string =>
+      `${hexToRGBA(colors.nearBlack, 50)}`};
   }
 `;
 
