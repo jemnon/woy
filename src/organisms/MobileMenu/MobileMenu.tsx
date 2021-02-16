@@ -76,6 +76,10 @@ const MobileMenuContentHeader = styled.header`
   border-bottom: 1px solid ${(): string => hexToRGBA('#000', 10)};
 `;
 
+const MobileMenuNav = styled.nav`
+  background-color: ${({ theme: { colors } }): string => colors.white};
+`;
+
 const MobileMenuButtonCSS = css<{ isActive?: boolean }>`
   display: block;
 
@@ -124,7 +128,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isVisible = false }) => {
         <MobileMenuContentHeader>
           <CloseButton colorTheme="light" onClick={handleClose} />
         </MobileMenuContentHeader>
-        <nav>
+        <MobileMenuNav>
           <MobileMenuButton
             isActive={location.pathname === '/'}
             onClick={(): void => handleClick('/')}
@@ -152,7 +156,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isVisible = false }) => {
           <MobileMenuLink href="mailto:whisperofyum@gmail.com" target="_top">
             Contact
           </MobileMenuLink>
-        </nav>
+        </MobileMenuNav>
       </MobileMenuContent>
       <MobileMenuBg role="button" isVisible={isVisible} onClick={handleClose} />
     </MobileMenuContainer>
