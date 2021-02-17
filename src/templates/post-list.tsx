@@ -162,25 +162,23 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
                 <H4>Featured On</H4>
                 <Grid columns={3} rowGap="sm4" gap="sm4">
                   {featuredOn.logos.map((logo, idx) => (
-                    <GridCell key={idx} width={1}>
-                      <Link to={featuredOn.links[idx]} target="_blank">
-                        <Box
-                          display="flex"
-                          bgColor="nearWhite"
-                          width="100%"
-                          padding="sm4"
-                          height="100%"
-                        >
-                          {logo.fluid && (
-                            <Img
-                              alt="feature on logos"
-                              fluid={logo.fluid}
-                              style={{ width: '100%' }}
-                            />
-                          )}
-                        </Box>
-                      </Link>
-                    </GridCell>
+                    <Link to={featuredOn.links[idx]} target="_blank">
+                      <Box
+                        display="flex"
+                        bgColor="nearWhite"
+                        width="100%"
+                        padding="sm4"
+                        height="100%"
+                      >
+                        {logo.fluid && (
+                          <Img
+                            alt="feature on logos"
+                            fluid={logo.fluid}
+                            style={{ width: '100%' }}
+                          />
+                        )}
+                      </Box>
+                    </Link>
                   ))}
                 </Grid>
               </Stack>
