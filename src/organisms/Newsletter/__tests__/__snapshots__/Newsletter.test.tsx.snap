@@ -54,10 +54,10 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
         className="sc-lmoMRL dRHmzO"
       >
         <section
-          className="sc-bBXqnf jGbfjt"
+          className="sc-bBXqnf hrCEIN"
         >
           <div
-            className="sc-iwyYcG esjDtH"
+            className="sc-iwyYcG jLsOKr"
             width={1}
           >
             <a
@@ -82,7 +82,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
             </a>
           </div>
           <div
-            className="sc-iwyYcG hANPcD"
+            className="sc-iwyYcG iBGRrv"
             width={1}
           >
             <a
@@ -107,7 +107,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
             </a>
           </div>
           <div
-            className="sc-iwyYcG hANPcD"
+            className="sc-iwyYcG iBGRrv"
             width={1}
           >
             <a

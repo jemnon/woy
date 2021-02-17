@@ -280,9 +280,32 @@ const getReels = async graphql => {
   return data;
 };
 
+const getFeaturedOn = async graphql => {
+  const data = await graphql(`
+    query {
+      contentfulFeaturedOn {
+        name
+        logos {
+          fluid {
+            aspectRatio
+            sizes
+            src
+            srcSet
+            srcSetWebp
+            srcWebp
+          }
+        }
+        links
+      }
+    }
+  `);
+  return data;
+};
+
 exports.createPages = async ({ actions: { createPage }, graphql }) => {
   const { data: latestPostData } = await getLatestPost(graphql);
   const { data: favoritesData } = await getFavorites(graphql);
+  const { data: featuredOnData } = await getFeaturedOn(graphql);
   const { data: recentPostsData } = await getRecentPosts(graphql);
   const { data: postsData } = await getAllPosts(graphql);
   const { data: profileAboutData } = await getProfileAbout(graphql);
@@ -301,6 +324,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       page: {
         about: profileAboutData.contentfulProfileAbout,
         reels: reelsData.contentfulReels,
+        featuredOn: featuredOnData.contentfulFeaturedOn,
         latestPost: latestPostData.allContentfulPosts.edges,
         favorites: favoritesData.allContentfulFavoritePosts.edges,
         instagram: instaData ? instaData.allInstagramContent.edges : null,
@@ -330,6 +354,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       context: {
         about: profileAboutData.contentfulProfileAbout,
         reels: reelsData.contentfulReels,
+        featuredOn: featuredOnData.contentfulFeaturedOn,
         instagram: instaData ? instaData.allInstagramContent.edges : null,
         currentPage: idx + 1,
         limit: postsPerPage,

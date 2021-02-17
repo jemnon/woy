@@ -14,11 +14,13 @@ import Media from '../molecules/Media';
 import ProfileCard from '../molecules/ProfileCard';
 import Pagination from '../molecules/Pagingation';
 import SEO from '../molecules/SEO';
+import Box from '../atoms/Box';
 import { H4 } from '../atoms/Headings';
 import Link from '../atoms/Link';
 import ImgWrapper from '../atoms/ImgWrapper';
 import { InstaDesktop, InstaMobile } from '../atoms/InstagramContainer';
 import { useBreakpointContext } from '../context/BreakpointContextProvider';
+import FeaturedOnType from '../types/featured-on';
 import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
 import ProfileAboutType from '../types/profile-about';
@@ -42,6 +44,7 @@ interface PostListProps {
   };
   pageContext?: {
     about?: ProfileAboutType;
+    featuredOn?: FeaturedOnType;
     instagram?: Instagram[];
     currentPage: number;
     limit: number;
@@ -64,6 +67,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
   const { name: breakpoint } = useBreakpointContext();
   const { edges: posts } = data?.allContentfulPosts || {};
   const { about } = pageContext || {};
+  const { featuredOn } = pageContext || {};
   const { instagram } = pageContext || {};
   const handlePaginationClick = (page: number): void => {
     navigate(`/posts/${page}`);
@@ -77,7 +81,6 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
         title="Whisper of Yum | Recipes, Cooking and Los Angeles"
         type="website"
       />
-
       <Header pathname="/recipes" />
       <Container>
         <PageHeader>
@@ -109,10 +112,12 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
                           publishDate={post.node.publishDate || ''}
                           title={post.node.title}
                           image={
-                            <Img
-                              alt={post.node.title}
-                              fluid={post.node.images[0].fluid}
-                            />
+                            post.node.images[0].fluid && (
+                              <Img
+                                alt={post.node.title}
+                                fluid={post.node.images[0].fluid}
+                              />
+                            )
                           }
                         />
                       }
@@ -152,6 +157,35 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
                 }
               </Stack>
             )}
+            {featuredOn && (
+              <Stack>
+                <H4>Featured On</H4>
+                <Grid columns={3} rowGap="sm4" gap="sm4">
+                  {featuredOn.logos.map((logo, idx) => (
+                    <GridCell key={idx} width={1}>
+                      <Link to={featuredOn.links[idx]} target="_blank">
+                        <Box
+                          display="flex"
+                          bgColor="nearWhite"
+                          width="100%"
+                          padding="sm4"
+                          height="100%"
+                        >
+                          {logo.fluid && (
+                            <Img
+                              alt="feature on logos"
+                              fluid={logo.fluid}
+                              style={{ width: '100%' }}
+                            />
+                          )}
+                        </Box>
+                      </Link>
+                    </GridCell>
+                  ))}
+                </Grid>
+              </Stack>
+            )}
+
             <Stack>
               <H4>Newsletter</H4>
               <Newsletter />

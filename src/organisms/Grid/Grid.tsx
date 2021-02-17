@@ -45,7 +45,6 @@ const Grid = styled.section<GridProps>`
   grid-template-areas: ${({ areas }): string =>
     areas ? areas.map(area => `"${area}"`).join(' ') : 'none'};
 
-  gap: ${({ theme, gap = 'md4' }): string => theme.spacing[gap]};
   row-gap: ${({ theme, rowGap = 'md4' }): string => theme.spacing[rowGap]};
   column-gap: ${({ theme, gap = 'md4' }): string => theme.spacing[gap]};
 

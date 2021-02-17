@@ -2,10 +2,10 @@
 
 exports[`<Grid /> renders defaults correctly 1`] = `
 <section
-  className="sc-bdfBwQ gEvjCq"
+  className="sc-bdfBwQ GwJk"
 >
   <div
-    className="sc-gsTCUz ikXDNh"
+    className="sc-gsTCUz gXNqFJ"
     width={1}
   >
     1/1

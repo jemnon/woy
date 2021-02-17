@@ -84,11 +84,13 @@ const AboutPage: FC<AboutPageProps> = ({
         <H1>About</H1>
         <Grid columns={breakpoint === 'desktop' ? 2 : 1}>
           <GridCell width={1}>
-            <Img
-              alt="about jeri mobley"
-              durationFadeIn={0}
-              fluid={contentfulAbout.image.fluid}
-            />
+            {contentfulAbout.image?.fluid && (
+              <Img
+                alt="about jeri mobley"
+                durationFadeIn={0}
+                fluid={contentfulAbout.image?.fluid}
+              />
+            )}
           </GridCell>
           {contentfulAbout.description.childMarkdownRemark.html && (
             <GridCell width={1}>

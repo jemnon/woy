@@ -15,12 +15,14 @@ import Media from '../molecules/Media';
 import ProfileCard from '../molecules/ProfileCard';
 import SEO from '../molecules/SEO';
 import VideoThumb from '../molecules/VideoThumb';
+import Box from '../atoms/Box';
 import { H4 } from '../atoms/Headings';
 import ImgWrapper from '../atoms/ImgWrapper';
 import Link from '../atoms/Link';
 import { InstaDesktop, InstaMobile } from '../atoms/InstagramContainer';
 import { useBreakpointContext } from '../context/BreakpointContextProvider';
 import useWindowResize from '../hooks/useWindowResize';
+import FeaturedOnType from '../types/featured-on';
 import { ColorMode as ColorModeType } from '../types/theme';
 import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
@@ -52,6 +54,7 @@ interface HomeProps {
   pageContext?: {
     page?: {
       about?: ProfileAboutType;
+      featuredOn?: FeaturedOnType;
       reels?: {
         videos: VideoReelType[];
         videoThumbs: VideoReelThumbType[];
@@ -89,6 +92,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
   const { instagram } = pageContext?.page || {};
   const { recentPosts } = pageContext?.page || {};
   const { reels } = pageContext?.page || {};
+  const { featuredOn } = pageContext?.page || {};
   const handleDownScroll = (): void => {
     if (window && typeof height === 'number')
       window.scrollTo({
@@ -136,10 +140,12 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
             onDownScroll={handleDownScroll}
             onViewPost={(): void => handleViewPost(latestPostNode?.slug)}
             image={
-              <Img
-                alt={latestPostNode?.title}
-                fluid={latestPostNode?.images[0].fluid}
-              />
+              latestPostNode?.images[0].fluid && (
+                <Img
+                  alt={latestPostNode?.title}
+                  fluid={latestPostNode?.images[0].fluid}
+                />
+              )
             }
             ref={heroRef}
           />
@@ -171,10 +177,12 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
                         publishDate={post.node.publishDate || ''}
                         title={post.node.title}
                         image={
-                          <Img
-                            alt={post.node.title}
-                            fluid={post.node.images[0].fluid}
-                          />
+                          post.node.images[0].fluid && (
+                            <Img
+                              alt={post.node.title}
+                              fluid={post.node.images[0].fluid}
+                            />
+                          )
                         }
                       />
                     </Link>
@@ -237,7 +245,12 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
                         publishDate={post.publishDate || ''}
                         title={post.title}
                         image={
-                          <Img alt={post.title} fluid={post.images[0].fluid} />
+                          post.images[0].fluid && (
+                            <Img
+                              alt={post.title}
+                              fluid={post.images[0].fluid}
+                            />
+                          )
                         }
                       />
                     </Link>
@@ -257,6 +270,34 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
                     navigate('/about');
                   }}
                 />
+              </Stack>
+            )}
+            {featuredOn && (
+              <Stack>
+                <H4>Featured On</H4>
+                <Grid columns={3} rowGap="sm4" gap="sm4">
+                  {featuredOn.logos.map((logo, idx) => (
+                    <GridCell key={idx} width={1}>
+                      <Link to={featuredOn.links[idx]} target="_blank">
+                        <Box
+                          display="flex"
+                          bgColor="nearWhite"
+                          width="100%"
+                          padding="sm4"
+                          height="100%"
+                        >
+                          {logo.fluid && (
+                            <Img
+                              alt="feature on logos"
+                              fluid={logo.fluid}
+                              style={{ width: '100%' }}
+                            />
+                          )}
+                        </Box>
+                      </Link>
+                    </GridCell>
+                  ))}
+                </Grid>
               </Stack>
             )}
             <Stack>
@@ -304,7 +345,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
             )}
           </GridCell>
         </Grid>
-        <BackToTop top={672} />
+        <BackToTop top={(height as number) - 64} />
       </Container>
     </Layout>
   );

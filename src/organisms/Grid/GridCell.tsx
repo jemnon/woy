@@ -42,7 +42,8 @@ const GridCell = styled.div<GridCellProps>`
 
   text-align: ${({ textAlign = 'left' }): string => textAlign};
 
-  background-color: ${({ bgColor }): SimpleInterpolation => bgColor ?? 'none'};
+  background-color: ${({ theme: { colors }, bgColor }): SimpleInterpolation =>
+    bgColor ? colors[bgColor] : 'transparent'};
 
   border-color: ${({ borderColor = 'nearBlack', theme }): string =>
     theme.colors[borderColor]};

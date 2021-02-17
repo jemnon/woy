@@ -118,16 +118,27 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                       {totalImages > 1 ? (
                         <Carousel>
                           {post.images.map(img => (
-                            <Img
-                              alt={post.title}
-                              key={post.id}
-                              style={{ width: '100%' }}
-                              fluid={img.fluid}
-                            />
+                            <>
+                              {img.fluid && (
+                                <Img
+                                  alt={post.title}
+                                  key={post.id}
+                                  style={{ width: '100%' }}
+                                  fluid={img.fluid}
+                                />
+                              )}
+                            </>
                           ))}
                         </Carousel>
                       ) : (
-                        <Img alt={post.title} fluid={post.images[0].fluid} />
+                        <>
+                          {post.images[0].fluid && (
+                            <Img
+                              alt={post.title}
+                              fluid={post.images[0].fluid}
+                            />
+                          )}
+                        </>
                       )}
                     </StackItem>
                   )}
@@ -152,16 +163,24 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                   {totalImages > 1 ? (
                     <Carousel>
                       {post.images.map(img => (
-                        <Img
-                          alt={post.title}
-                          key={post.id}
-                          style={{ width: '100%' }}
-                          fluid={img.fluid}
-                        />
+                        <>
+                          {img.fluid && (
+                            <Img
+                              alt={post.title}
+                              key={post.id}
+                              style={{ width: '100%' }}
+                              fluid={img.fluid}
+                            />
+                          )}
+                        </>
                       ))}
                     </Carousel>
                   ) : (
-                    <Img alt={post.title} fluid={post.images[0].fluid} />
+                    <>
+                      {post.images[0].fluid && (
+                        <Img alt={post.title} fluid={post.images[0].fluid} />
+                      )}
+                    </>
                   )}
                 </GridCell>
               )}
@@ -227,7 +246,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
           <StackItem bottomSpacing="xlg4">
             <PosterIterator
               next={{
-                image: post.next && (
+                image: post.next && post.next?.images[0].fluid && (
                   <Img
                     alt={post.next?.title}
                     fluid={post.next?.images[0].fluid}
@@ -237,7 +256,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 slug: post.next?.slug || '',
               }}
               prev={{
-                image: post.previous && (
+                image: post.previous && post.previous?.images[0].fluid && (
                   <Img
                     alt={post.previous?.title}
                     fluid={post.previous?.images[0].fluid}
@@ -259,10 +278,12 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                       <Link to={`/post/${recipe.slug}`}>
                         <Card
                           image={
-                            <Img
-                              alt={recipe.title}
-                              fluid={recipe.images[0].fluid}
-                            />
+                            recipe.images[0].fluid && (
+                              <Img
+                                alt={recipe.title}
+                                fluid={recipe.images[0].fluid}
+                              />
+                            )
                           }
                           publishDate={recipe.publishDate}
                           title={recipe.title}
@@ -277,10 +298,12 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                     <Link key={recipe.slug} to={`/post/${recipe.slug}`}>
                       <Card
                         image={
-                          <Img
-                            alt={recipe.title}
-                            fluid={recipe.images[0].fluid}
-                          />
+                          recipe.images[0].fluid && (
+                            <Img
+                              alt={recipe.title}
+                              fluid={recipe.images[0].fluid}
+                            />
+                          )
                         }
                         publishDate={recipe.publishDate}
                         title={recipe.title}

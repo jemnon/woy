@@ -5,10 +5,10 @@ exports[`<Social /> renders defaults correctly 1`] = `
   className="sc-bkzZxe bxAmNj"
 >
   <section
-    className="sc-bdfBwQ dBfNOc"
+    className="sc-bdfBwQ hiaScI"
   >
     <div
-      className="sc-gsTCUz fEGyfx"
+      className="sc-gsTCUz jNsdXt"
       width={1}
     >
       <a
@@ -33,7 +33,7 @@ exports[`<Social /> renders defaults correctly 1`] = `
       </a>
     </div>
     <div
-      className="sc-gsTCUz ikXDNh"
+      className="sc-gsTCUz gXNqFJ"
       width={1}
     >
       <a
@@ -58,7 +58,7 @@ exports[`<Social /> renders defaults correctly 1`] = `
       </a>
     </div>
     <div
-      className="sc-gsTCUz ikXDNh"
+      className="sc-gsTCUz gXNqFJ"
       width={1}
     >
       <a
