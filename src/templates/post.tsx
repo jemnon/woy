@@ -1,13 +1,11 @@
 import React, { FC } from 'react';
 import Img from 'gatsby-image';
-import styled from 'styled-components';
-import { up } from 'styled-breakpoints';
 import { navigate } from 'gatsby';
 import Carousel from '../organisms/Carousel';
 import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
-import Layout from '../organisms/Layout';
+import Layout, { PageHeader } from '../organisms/Layout';
 import Scroller from '../organisms/Scroller';
 import Stack, { StackItem } from '../organisms/Stack';
 import Card from '../molecules/Card';
@@ -18,7 +16,6 @@ import SEO from '../molecules/SEO';
 import Share from '../molecules/Share';
 import BackToTop from '../molecules/BackToTop';
 import BreadCrumbs from '../molecules/BreadCrumbs';
-import Button from '../atoms/Button';
 import { H1, H4 } from '../atoms/Headings';
 import Link from '../atoms/Link';
 import PostDate from '../atoms/PostDate';
@@ -41,13 +38,6 @@ interface PostPageProps {
 const capitalize = (word: string): string => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
-
-const PageHeader = styled.header`
-  margin-bottom: ${({ theme: { spacing } }): string => spacing.sm4};
-  ${up('sm')} {
-    margin-bottom: ${({ theme: { spacing } }): string => spacing.md4};
-  }
-`;
 
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const { name: breakpoint } = useBreakpointContext();
@@ -190,7 +180,9 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             <StackItem>
               <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
                 <GridCell width={breakpoint === 'desktop' ? 5 : 1}>
-                  {post.ingredients && <H4 bottomSpacing="sp-0">You Need</H4>}
+                  {post.ingredients && (
+                    <H4 bottomSpacing="sp-0">Ingredients</H4>
+                  )}
                 </GridCell>
                 <GridCell width={breakpoint === 'desktop' ? 7 : 1}>
                   {post.ingredients?.childMarkdownRemark && (
@@ -209,7 +201,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
               <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
                 <GridCell width={breakpoint === 'desktop' ? 5 : 1}>
                   {post.optionalIngredients && (
-                    <H4 bottomSpacing="sp-0">Additional</H4>
+                    <H4 bottomSpacing="sp-0">Optional</H4>
                   )}
                 </GridCell>
                 <GridCell width={breakpoint === 'desktop' ? 7 : 1}>
@@ -229,7 +221,9 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             <StackItem bottomSpacing="xlg4">
               <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
                 <GridCell width={breakpoint === 'desktop' ? 5 : 1}>
-                  {post.instructions && <H4 bottomSpacing="sp-0">Do It</H4>}
+                  {post.instructions && (
+                    <H4 bottomSpacing="sp-0">Instructions</H4>
+                  )}
                 </GridCell>
                 <GridCell width={breakpoint === 'desktop' ? 7 : 1}>
                   {post.instructions?.childMarkdownRemark && (

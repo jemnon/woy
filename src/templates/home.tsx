@@ -224,7 +224,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
 
             {favoritesNode && (
               <Stack>
-                <H4>Favs</H4>
+                <H4>Popular Recipes</H4>
                 {favoritesNode.posts.map(post => (
                   <StackItem key={post.slug}>
                     <Link to={`/post/${post.slug}`}>
