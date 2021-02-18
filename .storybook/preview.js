@@ -1,14 +1,23 @@
 import React from 'react';
 import { action } from '@storybook/addon-actions';
+import { LocationProvider } from '@reach/router';
 import { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../src/atoms/GlobalStyle';
 import theme from '../src/theme';
+import BreakpointContextProvider from '../src/context/BreakpointContextProvider';
+import MobileMenuContextProvider from '../src/context/MobileMenuContextProvider';
 
 export const decorators = [
   Story => (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Story />
+      <LocationProvider>
+        <BreakpointContextProvider>
+          <MobileMenuContextProvider>
+            <GlobalStyle />
+            <Story />
+          </MobileMenuContextProvider>
+        </BreakpointContextProvider>
+      </LocationProvider>
     </ThemeProvider>
   ),
 ];

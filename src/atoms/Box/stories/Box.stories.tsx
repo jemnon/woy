@@ -9,7 +9,7 @@ const disableProp = {
 };
 
 export default {
-  title: 'Atom/Box',
+  title: 'Atoms/Box',
   component: Box,
   argTypes: {
     as: { ...disableProp },
