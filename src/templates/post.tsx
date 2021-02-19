@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
+import { css } from 'styled-components';
 import Carousel from '../organisms/Carousel';
 import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
@@ -247,7 +248,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             </Grid>
           </StackItem>
           <StackItem bottomSpacing="xlg4">
-            <Box padding="sm4">
+            <Box padding="sm4" borderTop="4px solid" borderColor="orange">
               <Text
                 bottomSpacing="sm4"
                 fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}

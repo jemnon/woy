@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { SimpleInterpolation } from 'styled-components';
 import { Colors, Spacing } from '../../types/theme';
 
 type BgColor = keyof Colors;
@@ -12,6 +12,12 @@ interface BoxProps {
 
   bgColor?: BgColor;
   padding?: Padding;
+
+  borderTop?: string;
+  borderLeft?: string;
+  borderBottom?: string;
+  borderRight?: string;
+  borderColor?: keyof Colors;
 
   width?: string;
   height?: string;
@@ -29,6 +35,17 @@ const Box = styled.div<BoxProps>`
 
   background-color: ${({ bgColor = 'nearWhite', theme: { colors } }): string =>
     colors[bgColor]};
+
+  ${({ borderTop }): SimpleInterpolation =>
+    borderTop && `border-top: ${borderTop}`};
+  ${({ borderLeft }): SimpleInterpolation =>
+    borderLeft && `border-left: ${borderLeft}`};
+  ${({ borderRight }): SimpleInterpolation =>
+    borderRight && `border-right: ${borderRight}`};
+  ${({ borderBottom }): SimpleInterpolation =>
+    borderBottom && `border-left: ${borderBottom}`};
+  ${({ borderColor, theme: { colors } }): SimpleInterpolation =>
+    borderColor && `border-color: ${colors[borderColor]}`};
 `;
 
 export default Box;
