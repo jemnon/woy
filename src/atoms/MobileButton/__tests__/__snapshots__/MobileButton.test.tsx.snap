@@ -1,0 +1,23 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<MobileButton /> renders defaults correctly 1`] = `
+<button
+  className="sc-fodVxV ivEaAj"
+>
+  <svg
+    className="sc-eCssSg gaZxCm"
+    fill="#111"
+    fontSize="1.5rem"
+    height="1em"
+    preserveAspectRatio="xMidYMid meet"
+    viewBox="0 0 24 16"
+    width="1em"
+    xmlns="http://www.w3.org/2000/svg"
+  >
+    <path
+      d="M0 9h24V7.03H0V9zM0 16h24v-2H0v2zM0 2h24V0H0v2z"
+      fillRule="evenodd"
+    />
+  </svg>
+</button>
+`;

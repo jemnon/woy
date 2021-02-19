@@ -1,0 +1,27 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Hero /> renders defaults correctly 1`] = `
+<section
+  className="sc-bBXqnf kNgjlf"
+>
+  <button
+    className="sc-fodVxV bXTMBy"
+  >
+    <svg
+      className="sc-gsTCUz chkPNN"
+      fill="#fff"
+      fontSize="2.25rem"
+      height="1em"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 36 19.12"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M34.87 0L18 16.88 1.13 0 0 1.13 16.88 18 18 19.12 19.13 18 36 1.13 34.87 0z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </button>
+</section>
+`;

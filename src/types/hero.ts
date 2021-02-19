@@ -1,4 +1,4 @@
-import { Images } from '../types/images';
+import { Images } from './images';
 
 export interface HeroType {
   id: string;

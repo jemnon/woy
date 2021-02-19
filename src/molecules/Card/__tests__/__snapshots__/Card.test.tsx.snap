@@ -1,0 +1,31 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Card /> renders defaults correctly 1`] = `
+<article
+  aria-label="Filipino Pork Adobo"
+  className="sc-eCssSg kMfKjy"
+>
+  <figure
+    className="sc-jSgupP cOGRqD"
+  >
+    <div
+      className="sc-bdfBwQ jlkewK"
+    >
+      <img
+        src="some-image.jpg"
+      />
+    </div>
+  </figure>
+  <time
+    className="sc-gsTCUz kVJUOL"
+    dateTime="2021-01-20T00:00-08:00"
+  >
+    Jan 20, 2021
+  </time>
+  <h2
+    className="sc-hKgILt bsXUuO"
+  >
+    Filipino Pork Adobo
+  </h2>
+</article>
+`;

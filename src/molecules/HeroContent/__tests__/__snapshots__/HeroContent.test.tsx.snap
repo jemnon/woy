@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<HeroContent /> renders defaults correctly 1`] = `
+<div
+  className="sc-fubCfw jiVMnK"
+>
+  <h6
+    className="sc-gsTCUz bEeIzf"
+  >
+    Latest Post
+  </h6>
+  <h1
+    className="sc-dlfnbm cRbETI"
+    color="white"
+  >
+    Hero Title
+  </h1>
+  <button
+    className="sc-bdfBwQ cFPAQh"
+  >
+    View Recipe
+  </button>
+</div>
+`;

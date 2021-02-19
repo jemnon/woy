@@ -1,28 +1,36 @@
-import React, { FC, useState, useEffect, useRef } from 'react';
-import styled from 'styled-components';
-import { graphql } from 'gatsby';
-import { useNavigate } from '@reach/router';
-import { HeroType } from '../types/hero';
+import React, { FC } from 'react';
+import { graphql, navigate } from 'gatsby';
+import Img from 'gatsby-image';
+import Container from '../organisms/Container';
+import Grid, { GridCell } from '../organisms/Grid';
+import Header from '../organisms/Header';
+import Layout, { PageHeader } from '../organisms/Layout';
+import Newsletter from '../organisms/Newsletter';
+import Scroller from '../organisms/Scroller';
+import Stack, { StackItem } from '../organisms/Stack';
+import BackToTop from '../molecules/BackToTop';
+import BreadCrumbs from '../molecules/BreadCrumbs';
+import Media from '../molecules/Media';
+import ProfileCard from '../molecules/ProfileCard';
+import Pagination from '../molecules/Pagingation';
+import SEO from '../molecules/SEO';
+import Box from '../atoms/Box';
+import { H4 } from '../atoms/Headings';
+import Link from '../atoms/Link';
+import ImgWrapper from '../atoms/ImgWrapper';
+import { InstaDesktop, InstaMobile } from '../atoms/InstagramContainer';
+import { useBreakpointContext } from '../context/BreakpointContextProvider';
+import FeaturedOnType from '../types/featured-on';
+import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
-import Container from '../components/Styles/container-styled';
-import Grid from '../components/Styles/grid-styled';
-import Header, { HEADER_HEIGHT } from '../components/Header';
-import Nav from '../components/Nav';
-import Hero from '../components/Hero';
-import Layout from '../components/Layout';
-import Link from '../components/Link';
-import Pagination from '../components/Pagingation';
-import PostDetail from '../components/PostDetail';
-import RecipeCard from '../components/RecipeCard';
-import SEO from '../components/SEO';
-import useShowHero from '../hooks/useShowHero';
+import ProfileAboutType from '../types/profile-about';
 
 interface PostNode {
   node: PostType;
 }
 
-interface HeroNode {
-  node: HeroType;
+interface Instagram {
+  node: InstagramType;
 }
 
 interface PostListProps {
@@ -30,137 +38,203 @@ interface PostListProps {
     allContentfulPosts?: {
       edges?: PostNode[];
     };
-    allContentfulHeroes?: {
-      edges?: HeroNode[];
-    };
   };
-
   location: {
     pathname: string;
-    state: {
-      page?: number;
-    };
   };
-
   pageContext?: {
+    about?: ProfileAboutType;
+    featuredOn?: FeaturedOnType;
+    instagram?: Instagram[];
     currentPage: number;
     limit: number;
     totalPages: number;
   };
 }
 
-const PostLink = styled.a`
-  text-decoration: none;
-  color: ${({ theme }): string => theme.colors.nearBlack};
-`;
-
-const metaDesc =
-  `Just like you (or not), I love food. So much so, ` +
-  `my partner and I decided to create this repository of my go-to, ` +
-  `flavor-bomb dishes, with simple-ish prep. I get down making all sorts ` +
-  `of eats, especially Filipino dishes from my childhood. ` +
-  `I keep it simple and straight to the point; brief-ish description, ingredients, and steps.` +
-  `I figure, if it looks good and you feel so inclined to making it, ` +
-  `I'll spare you the endless scrolling through the details of why I ` +
-  `chose a specific ingredient over another and get straight to what ` +
-  `you want. Enjoy the content.`;
-
 const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
-  const [isHeaderVisible, setIsHeaderVisible] = useState<boolean>(false);
-  const heroRef = useRef<HTMLDivElement | null>(null);
-  const showHero = useShowHero(location);
-  const navigate = useNavigate();
-
+  const { name: breakpoint } = useBreakpointContext();
   const { edges: posts } = data?.allContentfulPosts || {};
-  const { edges: hero } = data?.allContentfulHeroes || {};
-  const [{ node: heroNode }] = hero || [];
-  const paddingTop = showHero ? '0' : HEADER_HEIGHT;
-
+  const { about } = pageContext || {};
+  const { featuredOn } = pageContext || {};
+  const { instagram } = pageContext || {};
   const handlePaginationClick = (page: number): void => {
-    navigate(`/${page === 1 ? '' : page}`, {
-      state: {
-        page,
-      },
-    });
+    navigate(`/posts/${page}`);
   };
-
-  useEffect(() => {
-    const heroHeight = heroRef.current?.clientHeight || 0;
-    const handleScroll = (): void => {
-      if (!showHero) return;
-      const windowY = window.pageYOffset;
-      const waypoint = heroHeight / 2;
-      if (waypoint >= windowY) {
-        setIsHeaderVisible(false);
-      }
-      if (waypoint <= windowY) {
-        setIsHeaderVisible(true);
-      }
-    };
-    window.addEventListener('scroll', handleScroll);
-    return (): void => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [isHeaderVisible, setIsHeaderVisible, showHero]);
-  useEffect(() => {
-    if (!showHero) {
-      setIsHeaderVisible(true);
-    }
-    if (showHero) {
-      setIsHeaderVisible(false);
-    }
-  }, [showHero]);
   return (
     <Layout>
-      <SEO
-        description={metaDesc}
-        image="https://res.cloudinary.com/dd8c1nipl/image/upload/c_scale,w_880/v1586932061/woy/pork-chop.jpg"
-        title="Whisper of Yum | Recipes, Cooking and Los Angeles"
-        type="article"
-      />
-      <Header isVisible={isHeaderVisible}>
-        <Nav isHeaderVisible={isHeaderVisible} />
-      </Header>
-      {showHero && <Hero ref={heroRef} images={heroNode.images} />}
-      <div style={{ paddingTop }}>
-        <Container>
-          {posts && (
-            <>
-              <Grid columns={3}>
-                {posts.map((post, idx) => {
-                  return (
-                    <PostLink
-                      as={Link}
-                      key={post.node.id}
-                      to={`/post/${post.node.slug}`}
-                    >
-                      <RecipeCard
-                        publishDate={post.node.publishDate}
-                        images={post.node.images}
-                        title={post.node.title}
-                        bodyPreview={post.node.bodyPreview}
-                      />
-                    </PostLink>
-                  );
-                })}
-              </Grid>
-              {pageContext?.currentPage && pageContext.totalPages && (
-                <Pagination
-                  currentPage={pageContext?.currentPage}
-                  onClick={handlePaginationClick}
-                  totalPages={pageContext?.totalPages}
-                />
-              )}
-            </>
-          )}
-        </Container>
-      </div>
+      <SEO pathname={location.pathname} />
+      <Header pathname="/recipes" />
+      <Container>
+        <PageHeader>
+          <BreadCrumbs title="recipes" />
+        </PageHeader>
+        <Grid columns={breakpoint === 'desktop' ? 12 : 1}>
+          <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
+            {posts && (
+              <Stack>
+                <H4>Recipes</H4>
+                {posts.map(post => (
+                  <StackItem key={post.node.id}>
+                    <Link to={`/post/${post.node.slug}`}>
+                      {
+                        <Media
+                          description={
+                            <>
+                              {post.node.bodyPreview && (
+                                <div
+                                  dangerouslySetInnerHTML={{
+                                    __html:
+                                      post.node.bodyPreview.childMarkdownRemark
+                                        ?.html || '',
+                                  }}
+                                />
+                              )}
+                            </>
+                          }
+                          publishDate={post.node.publishDate || ''}
+                          title={post.node.title}
+                          image={
+                            post.node.images[0].fluid && (
+                              <Img
+                                alt={post.node.title}
+                                fluid={post.node.images[0].fluid}
+                              />
+                            )
+                          }
+                        />
+                      }
+                    </Link>
+                  </StackItem>
+                ))}
+                {breakpoint !== 'desktop' && (
+                  <>
+                    {pageContext?.currentPage && pageContext.totalPages && (
+                      <StackItem>
+                        <Pagination
+                          currentPage={pageContext?.currentPage}
+                          onClick={handlePaginationClick}
+                          totalPages={pageContext?.totalPages}
+                        />
+                      </StackItem>
+                    )}
+                  </>
+                )}
+              </Stack>
+            )}
+          </GridCell>
+          <GridCell width={breakpoint === 'desktop' ? 4 : 1}>
+            {about && (
+              <Stack>
+                {
+                  <ProfileCard
+                    descriptionHtml={
+                      about?.description.childMarkdownRemark.html
+                    }
+                    image={about?.avatar.fixed.src}
+                    name={about?.name}
+                    onClick={(): void => {
+                      navigate('/about');
+                    }}
+                  />
+                }
+              </Stack>
+            )}
+            {featuredOn && (
+              <Stack>
+                <H4>Featured On</H4>
+                <Grid columns={3} rowGap="sm4" gap="sm4">
+                  {featuredOn.logos.map((logo, idx) => (
+                    <Link key={idx} to={featuredOn.links[idx]} target="_blank">
+                      <Box
+                        display="flex"
+                        bgColor="nearWhite"
+                        width="100%"
+                        padding="sm4"
+                        height="100%"
+                      >
+                        {logo.fluid && (
+                          <Img
+                            alt="feature on logos"
+                            fluid={logo.fluid}
+                            style={{ width: '100%' }}
+                          />
+                        )}
+                      </Box>
+                    </Link>
+                  ))}
+                </Grid>
+              </Stack>
+            )}
+
+            <Stack>
+              <H4>Newsletter</H4>
+              <Newsletter />
+            </Stack>
+            {instagram && (
+              <Stack>
+                <H4>Instagram</H4>
+                <InstaDesktop>
+                  <Grid columns={2} gap="sm4" rowGap="sm4">
+                    {instagram.map(item => (
+                      <GridCell key={item.node.id} width={1}>
+                        <Link to={item.node.permalink} target="_blank">
+                          <ImgWrapper ratio={1 / 1}>
+                            <img
+                              alt="whisperofyum instagram"
+                              loading="lazy"
+                              src={
+                                item.node.localImage.childImageSharp.fixed.src
+                              }
+                            />
+                          </ImgWrapper>
+                        </Link>
+                      </GridCell>
+                    ))}
+                  </Grid>
+                </InstaDesktop>
+                <InstaMobile>
+                  <Scroller>
+                    {instagram.map(item => (
+                      <Link
+                        to={item.node.permalink}
+                        key={item.node.id}
+                        target="_blank"
+                      >
+                        <ImgWrapper ratio={1 / 1}>
+                          <img
+                            alt="whisperofyum instagram"
+                            loading="lazy"
+                            src={item.node.localImage.childImageSharp.fixed.src}
+                          />
+                        </ImgWrapper>
+                      </Link>
+                    ))}
+                  </Scroller>
+                </InstaMobile>
+              </Stack>
+            )}
+          </GridCell>
+        </Grid>
+        {breakpoint === 'desktop' && (
+          <>
+            {pageContext?.currentPage && pageContext.totalPages && (
+              <Pagination
+                currentPage={pageContext?.currentPage}
+                onClick={handlePaginationClick}
+                totalPages={pageContext?.totalPages}
+              />
+            )}
+          </>
+        )}
+        <BackToTop />
+      </Container>
     </Layout>
   );
 };
 
 export const query = graphql`
-  query homePageQuery($skip: Int!, $limit: Int!) {
+  query postsPageQuery($skip: Int!, $limit: Int!) {
     allContentfulPosts(
       limit: $limit
       skip: $skip
@@ -171,12 +245,6 @@ export const query = graphql`
           id
           slug
           publishDate
-          categories {
-            name
-            posts {
-              slug
-            }
-          }
           title
           images {
             fixed(width: 400) {
@@ -195,22 +263,6 @@ export const query = graphql`
             bodyPreview
             childMarkdownRemark {
               html
-            }
-          }
-        }
-      }
-    }
-    allContentfulHeroes {
-      edges {
-        node {
-          images {
-            fluid(maxWidth: 1920) {
-              aspectRatio
-              sizes
-              src
-              srcSet
-              srcSetWebp
-              srcWebp
             }
           }
         }

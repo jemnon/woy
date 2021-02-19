@@ -1,0 +1,44 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<PartnerCard /> renders defaults correctly 1`] = `
+<article
+  aria-label="Title"
+  className="sc-jrAGrp cfzywa"
+>
+  <figure
+    className="sc-kEjbxe leExdT"
+  >
+    <div
+      className="sc-iBPRYJ bXkdcQ"
+    >
+      <img
+        src="some-image.jpg"
+      />
+    </div>
+  </figure>
+  <h5
+    className="sc-jSgupP kmFZoT"
+  >
+    Title
+  </h5>
+  <div
+    className="sc-pFZIQ kHJviY"
+  >
+    Some Desc
+    :
+  </div>
+  <p
+    className="sc-fubCfw khejlI sc-pFZIQ bwpjVS"
+    fontSize="f1"
+    fontWeight="bold"
+  >
+    WHISPEROFYUM
+  </p>
+  <button
+    className="sc-bdfBwQ cUBhvx"
+    onClick={[Function]}
+  >
+    Shop Now
+  </button>
+</article>
+`;

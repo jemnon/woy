@@ -10,6 +10,7 @@ const postsQuery = `{
       node {
         title
         slug
+        publishDate
         categories {
           name
         }
@@ -42,9 +43,11 @@ const queries = [
 
 module.exports = {
   siteMetadata: {
-    title: `Whisper of Yum`,
-    description: `Recipes, Asian Cooking, Food Blog, Easy Recipes, Los Angeles`,
-    author: `Jeri Mobley`,
+    title: `Whisper of Yum | Recipes, Cooking and Los Angeles`,
+    description: `Simple-ish, healthy and comforting eats for the homecook; compilation of Filipino, wholesome, and international recipes.`,
+    image:
+      'https://images.ctfassets.net/lz7g6u6kccw7/5ZTQ6JUabdhzkYxGsOWwAN/38506c10912bb5fb03443efb790da33f/creamy_garlic_pork_chops.JPG?w=800&q=60',
+    author: `Jeri Mobley-Arias`,
     siteUrl: `https://whisperofyum.com`,
   },
   plugins: [
@@ -113,14 +116,12 @@ module.exports = {
         head: false,
       },
     },
-    /* {
-      resolve: `gatsby-plugin-facebook-analytics`,
+    {
+      resolve: `gatsby-source-instagram-all`,
       options: {
-        appId: process.env.GATSBY_FB_APP_ID,
-        xfbml: true,
-        includeInDevelopment: true,
+        access_token: process.env.INSTAGRAM_TOKEN,
       },
-    }, */
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

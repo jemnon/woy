@@ -1,0 +1,16 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<RecipeMeta /> renders defaults correctly 1`] = `
+<div
+  className="sc-bdfBwQ huOKEU"
+>
+  <span>
+    Total Time: 
+    10 minutes
+  </span>
+  <span>
+    Servings: 
+    10 ounces
+  </span>
+</div>
+`;

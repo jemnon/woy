@@ -1,0 +1,64 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<ProfileCard /> renders defaults correctly 1`] = `
+<section
+  className="sc-dIUggk coItBx"
+>
+  <img
+    alt="jerildine"
+    className="sc-bdfBwQ CGFBo"
+    src="https://images.ctfassets.net/lz7g6u6kccw7/2PXqIKP4gcdBKWQ4sUuqaa/c4ea960704b036c285cd6061400c447e/IMG_6D21ECE4038E-1.jpeg?h=250"
+  />
+  <div
+    className="sc-gsTCUz fzDpmx sc-hHftDr rpaOV"
+    fontSize="f4"
+    fontWeight="bold"
+  >
+    jerildine
+  </div>
+  <div
+    className="sc-dmlrTW pyRcA"
+  />
+  <div
+    className="sc-kfzAmx ctTtnC"
+    dangerouslySetInnerHTML={
+      Object {
+        "__html": "",
+      }
+    }
+  />
+  <footer
+    className="sc-fKFyDc fPjqWa"
+  >
+    <button
+      className="sc-bkzZxe fmogGB"
+    >
+      <span
+        className="sc-idOhPF jycPrB"
+      >
+        More
+      </span>
+      <svg
+        className="sc-crrsfI dRiUeO"
+        fill="#2B2B2B"
+        fontSize="10px"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        style={
+          Object {
+            "marginTop": "1px",
+          }
+        }
+        viewBox="0 0 9.9 16.97"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M1.41 0L0 1.41l7.07 7.07L0 15.56l1.41 1.41L8.48 9.9 9.9 8.48 1.41 0z"
+          fillRule="evenodd"
+        />
+      </svg>
+    </button>
+  </footer>
+</section>
+`;

@@ -1,14 +1,121 @@
-exports.createPages = async ({ actions: { createPage }, graphql }) => {
-  const { data } = await graphql(`
+const getProfileAbout = async graphql => {
+  const data = await graphql(`
+    query {
+      contentfulProfileAbout {
+        avatar {
+          fixed(quality: 80, width: 400) {
+            src
+          }
+        }
+        description {
+          childMarkdownRemark {
+            html
+          }
+        }
+        name
+      }
+    }
+  `);
+  return data;
+};
+
+const getInstagramData = async graphql => {
+  const data = await graphql(`
+    query {
+      allInstagramContent(limit: 4) {
+        edges {
+          node {
+            media_type
+            permalink
+            id
+            localImage {
+              childImageSharp {
+                fixed(width: 500, height: 500, quality: 90) {
+                  src
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+  return data;
+};
+
+const getFavorites = async graphql => {
+  const data = await graphql(`
+    {
+      allContentfulFavoritePosts(limit: 5) {
+        edges {
+          node {
+            posts {
+              title
+              publishDate
+              slug
+              images {
+                fluid {
+                  aspectRatio
+                  sizes
+                  src
+                  srcSet
+                  srcSetWebp
+                  srcWebp
+                }
+              }
+              bodyPreview {
+                bodyPreview
+                childMarkdownRemark {
+                  html
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+  return data;
+};
+
+const getAllPosts = async graphql => {
+  const data = await graphql(`
     {
       allContentfulPosts {
         edges {
+          previous {
+            title
+            slug
+            images {
+              fluid {
+                aspectRatio
+                sizes
+                src
+                srcSet
+                srcSetWebp
+                srcWebp
+                tracedSVG
+              }
+            }
+          }
+          next {
+            title
+            slug
+            images {
+              fluid {
+                aspectRatio
+                sizes
+                src
+                srcSet
+                srcSetWebp
+                srcWebp
+                tracedSVG
+              }
+            }
+          }
           node {
             slug
             publishDate
-            categories {
-              name
-            }
             title
             bodyPreview {
               bodyPreview
@@ -43,31 +150,214 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
                 srcWebp
               }
             }
+            totalTime
+            servings
+            ingredients {
+              childMarkdownRemark {
+                html
+              }
+            }
+            optionalIngredients {
+              childMarkdownRemark {
+                html
+              }
+            }
+            instructions {
+              childMarkdownRemark {
+                html
+              }
+            }
+            relatedRecipes {
+              id
+              title
+              images {
+                fluid {
+                  aspectRatio
+                  sizes
+                  src
+                  srcSet
+                  srcSetWebp
+                  srcWebp
+                }
+              }
+              publishDate
+              slug
+            }
           }
         }
       }
     }
   `);
+  return data;
+};
+
+const getLatestPost = async graphql => {
+  const data = await graphql(`
+    query {
+      allContentfulPosts(limit: 1, sort: { fields: publishDate, order: DESC }) {
+        edges {
+          node {
+            title
+            slug
+            images {
+              fluid {
+                aspectRatio
+                sizes
+                src
+                srcSet
+                srcSetWebp
+                srcWebp
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+  return data;
+};
+
+const getRecentPosts = async graphql => {
+  const data = await graphql(`
+    query {
+      allContentfulPosts(
+        limit: 5
+        sort: { fields: publishDate, order: DESC }
+        skip: 1
+      ) {
+        edges {
+          node {
+            title
+            publishDate
+            slug
+            images {
+              fluid(cropFocus: CENTER) {
+                aspectRatio
+                sizes
+                src
+                srcSet
+                srcSetWebp
+                srcWebp
+              }
+            }
+            bodyPreview {
+              bodyPreview
+              childMarkdownRemark {
+                html
+              }
+            }
+          }
+        }
+      }
+    }
+  `);
+  return data;
+};
+
+const getReels = async graphql => {
+  const data = await graphql(`
+    query {
+      contentfulReels {
+        videos {
+          id
+          secure_url
+          format
+          duration
+        }
+        videoThumbs {
+          fluid {
+            aspectRatio
+            sizes
+            src
+            srcSet
+            srcSetWebp
+            srcWebp
+          }
+        }
+      }
+    }
+  `);
+  return data;
+};
+
+const getFeaturedOn = async graphql => {
+  const data = await graphql(`
+    query {
+      contentfulFeaturedOn {
+        name
+        logos {
+          fluid {
+            aspectRatio
+            sizes
+            src
+            srcSet
+            srcSetWebp
+            srcWebp
+          }
+        }
+        links
+      }
+    }
+  `);
+  return data;
+};
+
+exports.createPages = async ({ actions: { createPage }, graphql }) => {
+  const { data: latestPostData } = await getLatestPost(graphql);
+  const { data: favoritesData } = await getFavorites(graphql);
+  const { data: featuredOnData } = await getFeaturedOn(graphql);
+  const { data: recentPostsData } = await getRecentPosts(graphql);
+  const { data: postsData } = await getAllPosts(graphql);
+  const { data: profileAboutData } = await getProfileAbout(graphql);
+  const { data: reelsData } = await getReels(graphql);
+  let instaData = null;
+  try {
+    const { data } = await getInstagramData(graphql);
+    instaData = data;
+  } catch (error) {
+    console.error('ig error: ', error);
+  }
+  createPage({
+    path: '/',
+    component: require.resolve('./src/templates/home.tsx'),
+    context: {
+      page: {
+        about: profileAboutData.contentfulProfileAbout,
+        reels: reelsData.contentfulReels,
+        featuredOn: featuredOnData.contentfulFeaturedOn,
+        latestPost: latestPostData.allContentfulPosts.edges,
+        favorites: favoritesData.allContentfulFavoritePosts.edges,
+        instagram: instaData ? instaData.allInstagramContent.edges : null,
+        recentPosts: recentPostsData.allContentfulPosts.edges,
+      },
+    },
+  });
   // post pages
-  data.allContentfulPosts.edges.forEach(edge => {
+  postsData.allContentfulPosts.edges.forEach(edge => {
     const { slug } = edge.node;
     createPage({
       path: `post/${slug}`,
       component: require.resolve('./src/templates/post.tsx'),
       context: {
-        page: edge.node,
+        about: profileAboutData.contentfulProfileAbout,
+        instagram: instaData ? instaData.allInstagramContent.edges : null,
+        page: { ...edge.node, next: edge.next, previous: edge.previous },
       },
     });
   });
-  // generate pagination for homepage
+  // generate pagination for posts page
   const postsPerPage = 9;
-  const postsLen = data.allContentfulPosts.edges.length;
+  const postsLen = postsData.allContentfulPosts.edges.length;
   const totalPages = Math.ceil(postsLen / postsPerPage);
   Array.from({ length: totalPages }).forEach((_, idx) => {
     createPage({
-      path: idx === 0 ? `/` : `/${idx + 1}`,
+      path: `/posts/${idx + 1}`,
       component: require.resolve('./src/templates/post-list.tsx'),
       context: {
+        about: profileAboutData.contentfulProfileAbout,
+        reels: reelsData.contentfulReels,
+        featuredOn: featuredOnData.contentfulFeaturedOn,
+        instagram: instaData ? instaData.allInstagramContent.edges : null,
         currentPage: idx + 1,
         limit: postsPerPage,
         skip: idx * postsPerPage,

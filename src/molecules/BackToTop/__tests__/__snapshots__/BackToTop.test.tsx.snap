@@ -1,0 +1,33 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<BackToTop /> renders defaults correctly 1`] = `
+<section
+  className="sc-fFubgz kZFFkV"
+>
+  <button
+    className="sc-bdfBwQ cUBhvx"
+    onClick={[Function]}
+  >
+    <span
+      className="sc-fodVxV AxnnW"
+    >
+      Back to top
+    </span>
+    <svg
+      className="sc-dQppl hrCsGr"
+      fill="#BB5B34"
+      fontSize="0.75rem"
+      height="1em"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 16 8"
+      width="1em"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M8.91 8H16L8 0 0 8z"
+        fillRule="evenodd"
+      />
+    </svg>
+  </button>
+</section>
+`;

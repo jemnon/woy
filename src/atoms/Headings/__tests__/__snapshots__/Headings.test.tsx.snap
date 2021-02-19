@@ -1,0 +1,24 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Headings /> renders defaults correctly 1`] = `
+Array [
+  <h1
+    className="sc-bdfBwQ kgBeFo"
+  />,
+  <h2
+    className="sc-gsTCUz jHSrHZ"
+  />,
+  <h3
+    className="sc-dlfnbm hYvFYw"
+  />,
+  <h4
+    className="sc-hKgILt jYwWFD"
+  />,
+  <h5
+    className="sc-eCssSg bpmnQu"
+  />,
+  <h6
+    className="sc-jSgupP gOyKjb"
+  />,
+]
+`;
