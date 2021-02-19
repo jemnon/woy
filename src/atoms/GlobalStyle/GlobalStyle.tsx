@@ -1,4 +1,6 @@
 import { createGlobalStyle } from 'styled-components';
+import { up } from 'styled-breakpoints';
+import { sharedCSS as HeadingCSS } from '../Headings';
 import { ParagraphCSS } from '../Paragraph';
 
 const GlobalStyle = createGlobalStyle`
@@ -21,14 +23,7 @@ const GlobalStyle = createGlobalStyle`
   body.disable-scroll {
     overflow: hidden;
   }
-  h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6 {
-    font-family: "Noto Serif TC", 'serif';
-  }
+  
   h1,
   h2,
   h3,
@@ -42,6 +37,78 @@ const GlobalStyle = createGlobalStyle`
   } 
   p {
     ${ParagraphCSS};
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    ${HeadingCSS};
+  }
+  h1 {
+    font-size: ${({ theme }): string => theme.fontSizes.f10};
+    ${up('sm')} {
+      font-size: ${({ theme }): string => theme.fontSizes.f11};
+    }
+    ${up('lg')} {
+      font-size: ${({ theme }): string => theme.fontSizes.f13};
+    }
+  }
+  h2 {
+    font-size: ${({ theme }): string => theme.fontSizes.f9};
+
+    ${up('sm')} {
+      font-size: ${({ theme }): string => theme.fontSizes.f10};
+    }
+
+    ${up('lg')} {
+      font-size: ${({ theme }): string => theme.fontSizes.f12};
+    }
+  }
+  h3 {
+    font-size: ${({ theme }): string => theme.fontSizes.f8};
+
+    ${up('sm')} {
+      font-size: ${({ theme }): string => theme.fontSizes.f9};
+    }
+
+    ${up('lg')} {
+      font-size: ${({ theme }): string => theme.fontSizes.f11};
+    }
+  }
+  h4 {
+    font-size: ${({ theme }): string => theme.fontSizes.f7};
+
+    ${up('sm')} {
+      font-size: ${({ theme }): string => theme.fontSizes.f8};
+    }
+
+    ${up('lg')} {
+      font-size: ${({ theme }): string => theme.fontSizes.f10};
+    }
+  }
+  h5 {
+    font-size: ${({ theme }): string => theme.fontSizes.f6};
+
+    ${up('sm')} {
+      font-size: ${({ theme }): string => theme.fontSizes.f7};
+    }
+
+    ${up('lg')} {
+      font-size: ${({ theme }): string => theme.fontSizes.f9};
+    }
+  }
+  h6 {
+    font-size: ${({ theme }): string => theme.fontSizes.f5};
+
+    ${up('sm')} {
+      font-size: ${({ theme }): string => theme.fontSizes.f6};
+    }
+
+    ${up('lg')} {
+      font-size: ${({ theme }): string => theme.fontSizes.f8};
+    }
   }
   a {
     font-style: italic;

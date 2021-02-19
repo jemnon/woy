@@ -64,13 +64,7 @@ const AboutPage: FC<AboutPageProps> = ({
   const breakpoint = useBreakpoint();
   return (
     <Layout>
-      <SEO
-        description="Jeri Mobley creator of Whisper of Yum."
-        title="About"
-        type="article"
-        image="https://images.ctfassets.net/lz7g6u6kccw7/5ZTQ6JUabdhzkYxGsOWwAN/38506c10912bb5fb03443efb790da33f/creamy_garlic_pork_chops.JPG?w=800&q=60"
-        pathname={location.pathname}
-      />
+      <SEO title="About" type="article" pathname={location.pathname} />
       <Header pathname="/about" />
       <Container>
         <PageHeader>

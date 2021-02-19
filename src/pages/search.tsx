@@ -34,13 +34,7 @@ const Search: FC<SearchPageProps> = ({ location }) => {
   };
   return (
     <Layout>
-      <SEO
-        description="Whisper of yum search page"
-        image="https://images.ctfassets.net/lz7g6u6kccw7/5ZTQ6JUabdhzkYxGsOWwAN/38506c10912bb5fb03443efb790da33f/creamy_garlic_pork_chops.JPG?w=800&q=60"
-        title="Search"
-        type="website"
-        pathname={location.pathname}
-      />
+      <SEO title="Search" type="website" pathname={location.pathname} />
       <Header />
       <Container hasTopMargin maxWidth="md">
         <H1>Search</H1>

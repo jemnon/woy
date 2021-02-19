@@ -67,17 +67,6 @@ interface HomeProps {
   };
 }
 
-const metaDesc =
-  `Just like you (or not), I love food. So much so, ` +
-  `my partner and I decided to create this repository of my go-to, ` +
-  `flavor-bomb dishes, with simple-ish prep. I get down making all sorts ` +
-  `of eats, especially Filipino dishes from my childhood. ` +
-  `I keep it simple and straight to the point; brief-ish description, ingredients, and steps.` +
-  `I figure, if it looks good and you feel so inclined to making it, ` +
-  `I'll spare you the endless scrolling through the details of why I ` +
-  `chose a specific ingredient over another and get straight to what ` +
-  `you want. Enjoy the content.`;
-
 const Home: FC<HomeProps> = ({ pageContext }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const heroRef = useRef<HTMLDivElement | null>(null);
@@ -126,12 +115,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
   }, [headerColorTheme, setHeaderColorTheme]);
   return (
     <Layout>
-      <SEO
-        description={metaDesc}
-        image="https://images.ctfassets.net/lz7g6u6kccw7/5ZTQ6JUabdhzkYxGsOWwAN/38506c10912bb5fb03443efb790da33f/creamy_garlic_pork_chops.JPG?w=800&q=60"
-        title="Whisper of Yum | Recipes, Cooking and Los Angeles"
-        type="website"
-      />
+      <SEO />
       {latestPostNode?.images && (
         <>
           <Header colorTheme={headerColorTheme} pathname="/" />
@@ -277,7 +261,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
                 <H4>Featured On</H4>
                 <Grid columns={3} rowGap="sm4" gap="sm4">
                   {featuredOn.logos.map((logo, idx) => (
-                    <Link to={featuredOn.links[idx]} target="_blank">
+                    <Link key={idx} to={featuredOn.links[idx]} target="_blank">
                       <Box
                         display="flex"
                         bgColor="nearWhite"
@@ -311,9 +295,12 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
                       <GridCell key={item.node.id} width={1}>
                         <Link to={item.node.permalink} target="_blank">
                           <ImgWrapper ratio={1 / 1}>
-                            <Img
+                            <img
                               alt="whisperofyum instagram"
-                              fixed={item.node.localImage.childImageSharp.fixed}
+                              loading="lazy"
+                              src={
+                                item.node.localImage.childImageSharp.fixed.src
+                              }
                             />
                           </ImgWrapper>
                         </Link>
@@ -330,9 +317,10 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
                         target="_blank"
                       >
                         <ImgWrapper ratio={1 / 1}>
-                          <Img
+                          <img
                             alt="whisperofyum instagram"
-                            fixed={item.node.localImage.childImageSharp.fixed}
+                            loading="lazy"
+                            src={item.node.localImage.childImageSharp.fixed.src}
                           />
                         </ImgWrapper>
                       </Link>

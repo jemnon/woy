@@ -5,6 +5,6 @@ exports[`<PostDate /> renders defaults correctly 1`] = `
   className="sc-bdfBwQ dFRsIL"
   dateTime="2021-01-20T00:00-08:00"
 >
-  Jan 20
+  Jan 20, 2021
 </time>
 `;

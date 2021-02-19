@@ -339,6 +339,8 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       path: `post/${slug}`,
       component: require.resolve('./src/templates/post.tsx'),
       context: {
+        about: profileAboutData.contentfulProfileAbout,
+        instagram: instaData ? instaData.allInstagramContent.edges : null,
         page: { ...edge.node, next: edge.next, previous: edge.previous },
       },
     });

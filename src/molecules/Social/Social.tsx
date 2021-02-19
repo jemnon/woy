@@ -19,20 +19,20 @@ const SocialContainer = styled.section`
 const Social: FC<SocialProps> = ({ colorTheme = 'dark' }) => (
   <SocialContainer>
     <Grid columns={3} gap="sm3">
+      <GridCell width={1}>
+        <Link to="https://www.pinterest.com/whisperofyum/" target="_blank">
+          <Pinterest
+            fill={colorTheme === 'dark' ? '#111' : '#fff'}
+            fontSize="1.25rem"
+          />
+        </Link>
+      </GridCell>
       <GridCell width={1} middle>
         <Link
           to="https://www.instagram.com/whisperofyum/?hl=en"
           target="_blank"
         >
           <Instagram
-            fill={colorTheme === 'dark' ? '#111' : '#fff'}
-            fontSize="1.25rem"
-          />
-        </Link>
-      </GridCell>
-      <GridCell width={1}>
-        <Link to="https://www.pinterest.com/whisperofyum/" target="_blank">
-          <Pinterest
             fill={colorTheme === 'dark' ? '#111' : '#fff'}
             fontSize="1.25rem"
           />

@@ -2,6 +2,6 @@
 
 exports[`<Box /> renders defaults correctly 1`] = `
 <div
-  className="sc-bdfBwQ QBXgX"
+  className="sc-bdfBwQ bgyXBT"
 />
 `;

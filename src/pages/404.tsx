@@ -14,11 +14,7 @@ const NotFoundLink = styled.a`
 
 const NotFoundPage: FC = () => (
   <Layout>
-    <SEO
-      description="Recipes, Cooking, and Los Angeles"
-      title="Whisper of Yum | Recipes, Cooking and Los Angeles"
-      image="https://res.cloudinary.com/dd8c1nipl/image/upload/v1586838879/woy/social-logo.jpg"
-    />
+    <SEO />
     <Header />
     <Container>
       <H1>404</H1>

@@ -10,7 +10,7 @@ interface HeadingProps {
   bottomSpacing?: BottomSpacing | string;
 }
 
-const sharedCSS = css<HeadingProps>`
+export const sharedCSS = css<HeadingProps>`
   font-weight: 900;
   font-family: ${({ theme }): string => theme.fonts.noto};
 

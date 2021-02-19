@@ -22,7 +22,7 @@ exports[`<Media /> renders defaults correctly 1`] = `
       className="sc-gsTCUz kVJUOL"
       dateTime="2021-01-20T00:00-08:00"
     >
-      Jan 20
+      Jan 20, 2021
     </time>
     <h2
       className="sc-hKgILt bsXUuO"

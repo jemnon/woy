@@ -12,12 +12,12 @@ import { useStaticQuery, graphql } from 'gatsby';
 import isDomUsable from '../../utils/utils';
 
 interface SEOProps {
-  description: string;
+  description?: string;
   lang?: string;
   meta?: any;
   title?: string;
   pathname?: string;
-  image: string;
+  image?: string;
   script?: any;
   type?: string;
 }
@@ -41,6 +41,7 @@ const SEO: FC<SEOProps> = ({
           siteMetadata {
             title
             description
+            image
             author
             siteUrl
           }
@@ -48,8 +49,10 @@ const SEO: FC<SEOProps> = ({
       }
     `,
   );
-  const metaDescription = description || site.siteMetadata.description;
+  const metaImage = image ?? site.siteMetadata.image;
+  const metaDescription = description ?? site.siteMetadata.description;
   const metaTime = isDomUsable() ? new Date().getTime() : '';
+  const metaTitle = title ?? site.siteMetadata.title;
   return (
     <Helmet
       htmlAttributes={{
@@ -68,11 +71,11 @@ const SEO: FC<SEOProps> = ({
         },
         {
           name: 'title',
-          content: title,
+          content: metaTitle,
         },
         {
           name: 'image',
-          content: image,
+          content: metaImage,
         },
         {
           property: `og:locale`,
@@ -80,7 +83,7 @@ const SEO: FC<SEOProps> = ({
         },
         {
           property: `og:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           property: `og:description`,
@@ -116,7 +119,7 @@ const SEO: FC<SEOProps> = ({
         },
         {
           name: `twitter:image`,
-          content: image,
+          content: metaImage,
         },
         {
           name: `twitter:creator`,
@@ -124,7 +127,7 @@ const SEO: FC<SEOProps> = ({
         },
         {
           name: `twitter:title`,
-          content: title,
+          content: metaTitle,
         },
         {
           name: `twitter:description`,

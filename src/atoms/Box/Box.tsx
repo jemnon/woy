@@ -24,8 +24,8 @@ const Box = styled.div<BoxProps>`
 
   padding: ${({ padding = 'sp-0', theme: { spacing } }): string =>
     spacing[padding]};
-  width: ${({ width = '100px' }): string => width};
-  height: ${({ height = '100px' }): string => height};
+  width: ${({ width = '100%' }): string => width};
+  height: ${({ height = '100%' }): string => height};
 
   background-color: ${({ bgColor = 'nearWhite', theme: { colors } }): string =>
     colors[bgColor]};
