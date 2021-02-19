@@ -120,7 +120,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 {post.publishDate && (
                   <PostDate publishDate={post.publishDate} />
                 )}
-                <H1 bottomSpacing="0.5rem">{post.title}</H1>
+                <H1 bottomSpacing="1rem">{post.title}</H1>
                 <Text
                   bottomSpacing="sm4"
                   fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
