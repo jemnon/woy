@@ -54,18 +54,10 @@ const MediaContent = styled.div`
 `;
 
 const MediaDescription = styled.div`
-  ${down('sm')} {
-    p {
-      ${EllipsisCSS};
-    }
-  }
+  overflow: hidden;
+  max-height: 52px;
 
-  ${up('sm')} {
-    overflow: hidden;
-    max-height: 52px;
-  }
-
-  ${up('lg')} {
+  ${up('md')} {
     max-height: 100%;
   }
 `;

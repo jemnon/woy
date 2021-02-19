@@ -43,6 +43,8 @@ const ProfileCardDescription = styled.div`
     font-size: ${({ theme: { fontSizes } }): string => fontSizes.f1};
   }
 
+  text-align: center;
+
   margin-bottom: ${({ theme }): string => theme.spacing.sm4};
 `;
 
@@ -72,9 +74,7 @@ const ProfileCard: FC<ProfileCardProps> = ({
     />
 
     <ProfileFooter>
-      <CalloutLink colorScheme="nearBlack" onClick={onClick}>
-        More
-      </CalloutLink>
+      <CalloutLink onClick={onClick}>More</CalloutLink>
     </ProfileFooter>
   </ProfileCardContainer>
 );
