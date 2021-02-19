@@ -112,7 +112,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
           </Grid>
         </PageHeader>
         <Stack bottomSpacing="sp-0">
-          <StackItem>
+          <StackItem bottomSpacing="xlg4">
             <Grid
               columns={breakpoint === 'desktop' ? 12 : 1}
               rowGap={breakpoint === 'desktop' ? 'md4' : 'sm4'}
