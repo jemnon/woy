@@ -2,15 +2,15 @@
 
 exports[`<CalloutLink /> renders defaults correctly 1`] = `
 <button
-  className="sc-fodVxV fHlIxV"
+  className="sc-fFubgz jcNjNi"
 >
   <span
-    className="sc-fFubgz kXjXDv"
+    className="sc-bkzZxe kVAFKx"
   >
     Callout Link
   </span>
   <svg
-    className="sc-kEjbxe dCbICm"
+    className="sc-iqHYGH gwtkrT"
     fill="#A2421B"
     fontSize="10px"
     height="1em"

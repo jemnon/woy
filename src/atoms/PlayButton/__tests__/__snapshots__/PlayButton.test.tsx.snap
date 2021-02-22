@@ -2,10 +2,10 @@
 
 exports[`<PlayButton /> renders defaults correctly 1`] = `
 <button
-  className="sc-fodVxV kTnTss"
+  className="sc-fFubgz hvkxRj"
 >
   <div
-    className="sc-fFubgz bdWdvL"
+    className="sc-bkzZxe cYsTrd"
   >
     <svg
       className="sc-pFZIQ gnyZHg"

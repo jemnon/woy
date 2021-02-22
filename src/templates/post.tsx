@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
-import { css } from 'styled-components';
 import Carousel from '../organisms/Carousel';
 import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
@@ -10,17 +9,20 @@ import Layout, { PageHeader } from '../organisms/Layout';
 import Newsletter from '../organisms/Newsletter';
 import Scroller from '../organisms/Scroller';
 import Stack, { StackItem } from '../organisms/Stack';
+import BackToTop from '../molecules/BackToTop';
+import BreadCrumbs from '../molecules/BreadCrumbs';
 import Card from '../molecules/Card';
+import JumpToRecipeButton from '../molecules/JumpToRecipeButton';
 import MarkdownList from '../molecules/MarkdownList';
+import PinButton from '../molecules/PinButton';
 import PosterIterator from '../molecules/PostIterator';
 import ProfileCard from '../molecules/ProfileCard';
-import RecipeMeta from '../molecules/RecipeMeta';
 import SEO from '../molecules/SEO';
 import Share from '../molecules/Share';
 import Social from '../molecules/Social';
-import BackToTop from '../molecules/BackToTop';
-import BreadCrumbs from '../molecules/BreadCrumbs';
+import Author from '../atoms/Author';
 import Box from '../atoms/Box';
+import Divider from '../atoms/Divider';
 import { H1, H4 } from '../atoms/Headings';
 import ImgWrapper from '../atoms/ImgWrapper';
 import Link from '../atoms/Link';
@@ -121,17 +123,13 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 {post.publishDate && (
                   <PostDate publishDate={post.publishDate} />
                 )}
-                <H1 bottomSpacing="1rem">{post.title}</H1>
-                <Text
-                  bottomSpacing="sm4"
-                  fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
-                  fontWeight="bold"
-                >
-                  By Jeri Mobley-Arias
-                </Text>
+                <H1 bottomSpacing="0.5rem">{post.title}</H1>
+                <Author />
                 {post.bodyPreview && (
                   <Paragraph>{post.bodyPreview.bodyPreview}</Paragraph>
                 )}
+                <JumpToRecipeButton />
+                <PinButton />
                 <Stack bottomSpacing="sp-0">
                   <StackItem bottomSpacing="sm4">
                     {totalImages > 1 ? (
@@ -157,14 +155,6 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                       </>
                     )}
                   </StackItem>
-                  {post.totalTime && post.servings && (
-                    <StackItem bottomSpacing="sm4">
-                      <RecipeMeta
-                        cookTime={post.totalTime}
-                        servings={post.servings}
-                      />
-                    </StackItem>
-                  )}
                   {post?.bodyShort?.childMarkdownRemark && (
                     <StackItem bottomSpacing="sm4">
                       <MarkdownList
@@ -255,8 +245,8 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 fontWeight="bold"
                 textAlign="center"
               >
-                Have we connected on social media, yet? If not, be sure to
-                follow me on:
+                Have we connected on social media, yet? <br /> If not, be sure
+                to follow me on:
               </Text>
               <Social />
             </Box>
@@ -264,6 +254,45 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
           {post.ingredients && (
             <StackItem bottomSpacing="xlg4">
               <Box padding="sm4">
+                <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
+                  <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
+                    <H4>{post.title}</H4>
+                    <Author />
+                    {post.bodyPreview && (
+                      <Paragraph>{post.bodyPreview.bodyPreview}</Paragraph>
+                    )}
+                    <Stack bottomSpacing="sm4">
+                      <StackItem bottomSpacing="sp-0">
+                        <Text display="inline" fontWeight="bold">
+                          Total Time:{' '}
+                        </Text>
+                        {post.totalTime}
+                      </StackItem>
+
+                      <StackItem bottomSpacing="sp-0">
+                        <Text display="inline" fontWeight="bold">
+                          Servings:{' '}
+                        </Text>
+                        {post.servings}
+                      </StackItem>
+                    </Stack>
+                    <PinButton />
+                    {/* <Share
+                      description={post.bodyPreview?.bodyPreview}
+                      media={`https:${fixed?.src}`}
+                      title={post.title}
+                      url={location.href}
+                    /> */}
+                  </GridCell>
+                  <GridCell width={breakpoint === 'desktop' ? 4 : 1}>
+                    <ImgWrapper ratio={1 / 1}>
+                      {post.images[0].fluid && (
+                        <Img alt={post.title} fluid={post.images[0].fluid} />
+                      )}
+                    </ImgWrapper>
+                  </GridCell>
+                </Grid>
+                <Divider />
                 <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
                   <GridCell width={breakpoint === 'desktop' ? 6 : 1}>
                     {post.ingredients && (

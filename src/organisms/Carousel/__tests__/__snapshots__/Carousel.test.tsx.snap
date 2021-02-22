@@ -2,13 +2,13 @@
 
 exports[`<Carousel /> renders defaults correctly 1`] = `
 <section
-  className="sc-fodVxV kMITYL"
+  className="sc-fFubgz bQgpDU"
 >
   <div
-    className="sc-bkzZxe hvZVrS"
+    className="sc-idOhPF iaUvbu"
   >
     <div
-      className="sc-fFubgz hCyQgS"
+      className="sc-bkzZxe hVtwZE"
     >
       <div
         style={
@@ -44,7 +44,7 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
       />
     </div>
     <button
-      className="sc-kfzAmx eapsbp"
+      className="sc-fKFyDc dDIqIn"
       direction="left"
       onClick={[Function]}
     >
@@ -64,12 +64,12 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
       </svg>
     </button>
     <button
-      className="sc-kfzAmx khLRnw"
+      className="sc-fKFyDc byIage"
       direction="right"
       onClick={[Function]}
     >
       <svg
-        className="sc-jrAGrp ekiHGR"
+        className="sc-kEjbxe fRRqum"
         fill="#fff"
         height="1em"
         preserveAspectRatio="xMidYMid meet"
@@ -85,43 +85,43 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
     </button>
   </div>
   <section
-    className="sc-fKFyDc dHeOpS"
+    className="sc-bBXqnf crXpW"
   >
     <nav
-      className="sc-idOhPF gwMhLA"
+      className="sc-dIUggk iLkYPn"
     >
       <ul
-        className="sc-dIUggk bPCBFl"
+        className="sc-hHftDr kRIGKa"
       >
         <li
-          className="sc-hHftDr kEwZxp"
+          className="sc-dmlrTW dRbkSR"
         >
           <button
-            className="sc-dmlrTW VjOKZ"
+            className="sc-kfzAmx fOpycm"
             onClick={[Function]}
           />
         </li>
         <li
-          className="sc-hHftDr kEwZxp"
+          className="sc-dmlrTW dRbkSR"
         >
           <button
-            className="sc-dmlrTW oUuGz"
+            className="sc-kfzAmx ePJKBY"
             onClick={[Function]}
           />
         </li>
         <li
-          className="sc-hHftDr kEwZxp"
+          className="sc-dmlrTW dRbkSR"
         >
           <button
-            className="sc-dmlrTW oUuGz"
+            className="sc-kfzAmx ePJKBY"
             onClick={[Function]}
           />
         </li>
         <li
-          className="sc-hHftDr kEwZxp"
+          className="sc-dmlrTW dRbkSR"
         >
           <button
-            className="sc-dmlrTW oUuGz"
+            className="sc-kfzAmx ePJKBY"
             onClick={[Function]}
           />
         </li>

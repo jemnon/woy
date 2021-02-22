@@ -42,7 +42,7 @@ const Button = styled.button<ButtonProps>`
 
   font-family: ${({ theme }): string => theme.fonts.lato};
   font-size: ${({ size = 'medium', theme }): string =>
-    size === 'small' ? '0.75rem' : theme.fontSizes.f1};
+    size === 'small' ? '0.85rem' : theme.fontSizes.f1};
   font-weight: bold;
   letter-spacing: normal;
   text-decoration: none;

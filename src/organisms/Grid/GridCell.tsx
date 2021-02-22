@@ -25,6 +25,7 @@ const MiddleCSS = css`
   flex-flow: column wrap;
   justify-content: center;
   justify-self: stretch;
+  align-items: center;
 `;
 
 const GridCell = styled.div<GridCellProps>`

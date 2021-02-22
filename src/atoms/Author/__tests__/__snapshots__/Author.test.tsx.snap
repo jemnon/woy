@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Author /> renders defaults correctly 1`] = `
+<div
+  className="sc-bdfBwQ bJXVMl"
+>
+  <span>
+    By
+  </span>
+   
+  Jeri Mobley-Arias
+</div>
+`;
