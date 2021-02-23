@@ -1,17 +1,17 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
 import { ThemeProvider } from 'styled-components';
-import RecipeMeta from '../RecipeMeta';
+import PrintButton from '../PrintButton';
 import theme from '../../../theme';
 
-describe('<RecipeMeta />', (): void => {
+describe('<PrintButton />', (): void => {
   const component = renderer.create(
     <ThemeProvider theme={theme}>
-      <RecipeMeta cookTime="10 minutes" servings="10 ounces" />
-    </ThemeProvider>,
+      <PrintButton />
+    </ThemeProvider>
   );
   it('exists', (): void => {
-    expect(RecipeMeta).toBeDefined();
+    expect(PrintButton).toBeDefined();
   });
   it('renders defaults correctly', (): void => {
     const tree = component.toJSON();

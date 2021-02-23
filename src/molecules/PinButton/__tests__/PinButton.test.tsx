@@ -7,8 +7,12 @@ import theme from '../../../theme';
 describe('<PinButton />', (): void => {
   const component = renderer.create(
     <ThemeProvider theme={theme}>
-      <PinButton />
-    </ThemeProvider>
+      <PinButton
+        description="post desc"
+        media="some-image.jpg"
+        url="some-url"
+      />
+    </ThemeProvider>,
   );
   it('exists', (): void => {
     expect(PinButton).toBeDefined();

@@ -5,10 +5,10 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
   className="sc-giIncl fMtbBa"
 >
   <ul
-    className="sc-bdfBwQ gryA-dE"
+    className="sc-bdfBwQ kgNPIO"
   >
     <li
-      className="sc-gsTCUz lUVQF"
+      className="sc-gsTCUz dAeQxC"
     >
       <form
         className="sc-dmlrTW fzlzTs"
@@ -29,7 +29,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
           value=""
         />
         <button
-          className="sc-dlfnbm dpvbnN sc-bBXqnf fOyPE"
+          className="sc-dlfnbm jHuLKA sc-bBXqnf fOyPE"
           disabled={false}
           shape="rectangle"
           type="submit"
@@ -39,7 +39,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
       </form>
     </li>
     <li
-      className="sc-gsTCUz lUVQF"
+      className="sc-gsTCUz dAeQxC"
     >
       <div
         className="sc-dIUggk iAHNPH"
@@ -48,7 +48,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
       </div>
     </li>
     <li
-      className="sc-gsTCUz vqMUF"
+      className="sc-gsTCUz ilBoXu"
     >
       <section
         className="sc-iJuUWI gQtSHO"

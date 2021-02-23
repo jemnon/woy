@@ -1,6 +1,6 @@
 import React from 'react';
 import { Meta } from '@storybook/react';
-import RecipeMeta from '../RecipeMeta';
+import PrintButton from '../PrintButton';
 
 const disableProp = {
   table: {
@@ -9,8 +9,8 @@ const disableProp = {
 };
 
 export default {
-  title: 'Molecules/RecipeMeta',
-  component: RecipeMeta,
+  title: 'FILL IN/PrintButton',
+  component: PrintButton, 
   argTypes: {
     as: { ...disableProp },
     ref: { ...disableProp },
@@ -21,11 +21,11 @@ export default {
   },
 } as Meta;
 
-const Template = (args: any) => <RecipeMeta {...args} />;
+const Template = (args: any) => (
+  <PrintButton {...args} />
+);
 
 export const Default = Template.bind({});
 // @ts-ignore
-Default.args = {
-  cookTime: '10 minutes',
-  servings: '8 ounces',
-};
+Default.args = {};
+

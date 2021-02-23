@@ -345,6 +345,17 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
       },
     });
   });
+  // print recipe pages
+  postsData.allContentfulPosts.edges.forEach(edge => {
+    const { slug } = edge.node;
+    createPage({
+      path: `recipe-print/${slug}`,
+      component: require.resolve('./src/templates/recipe-print.tsx'),
+      context: {
+        page: { ...edge.node },
+      },
+    });
+  });
   // generate pagination for posts page
   const postsPerPage = 9;
   const postsLen = postsData.allContentfulPosts.edges.length;

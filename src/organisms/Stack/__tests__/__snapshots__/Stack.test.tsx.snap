@@ -2,6 +2,6 @@
 
 exports[`<Stack /> renders defaults correctly 1`] = `
 <ul
-  className="sc-bdfBwQ dcTsLa"
+  className="sc-bdfBwQ gTmWvA"
 />
 `;

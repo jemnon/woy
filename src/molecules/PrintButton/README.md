@@ -1,10 +1,10 @@
-# RecipeMeta
+# PrintButton
 
 ### Description
 Component description
 
 ```js
-import RecipeMeta from '@fenderdigital/ui/FILL IN TYPERecipeMeta';
+import PrintButton from '@fenderdigital/ui/FILL IN TYPEPrintButton';
 ```
 
 ### Props

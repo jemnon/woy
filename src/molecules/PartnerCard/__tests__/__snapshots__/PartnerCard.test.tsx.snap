@@ -35,7 +35,7 @@ exports[`<PartnerCard /> renders defaults correctly 1`] = `
     WHISPEROFYUM
   </p>
   <button
-    className="sc-bdfBwQ cUBhvx"
+    className="sc-bdfBwQ eICxxo"
     onClick={[Function]}
   >
     Shop Now

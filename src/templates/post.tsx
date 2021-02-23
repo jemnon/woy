@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
 import Carousel from '../organisms/Carousel';
@@ -15,6 +15,7 @@ import Card from '../molecules/Card';
 import JumpToRecipeButton from '../molecules/JumpToRecipeButton';
 import MarkdownList from '../molecules/MarkdownList';
 import PinButton from '../molecules/PinButton';
+import PrintButton from '../molecules/PrintButton';
 import PosterIterator from '../molecules/PostIterator';
 import ProfileCard from '../molecules/ProfileCard';
 import SEO from '../molecules/SEO';
@@ -34,7 +35,6 @@ import { useBreakpointContext } from '../context/BreakpointContextProvider';
 import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
 import ProfileAboutType from '../types/profile-about';
-import { generateFromAst } from '../utils/utils';
 
 interface Instagram {
   node: InstagramType;
@@ -59,12 +59,21 @@ const capitalize = (word: string): string => {
 };
 
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
+  const recipeRef = useRef<HTMLDivElement | null>(null);
   const { name: breakpoint } = useBreakpointContext();
   const { page: post, about, instagram } = pageContext || {};
   const totalImages = post.images.length;
   const [{ fixed }] = post.images || [];
   const handleIteratorClick = (slug: string): void => {
     navigate(`/post/${slug}`);
+  };
+  const handleJumpToRecipe = (): void => {
+    if (recipeRef.current) {
+      recipeRef.current.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+  const handlePrintClick = (): void => {
+    navigate(`/recipe-print/${post.slug}`);
   };
   const schemaJson = {
     '@context': 'http://schema.org',
@@ -74,12 +83,6 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     datePublished: post.publishDate,
     image: `https:${fixed?.src}`,
     name: capitalize(post.title),
-    recipeIngredient: generateFromAst(post.body?.childMarkdownRemark?.htmlAst),
-    recipeInstructions: generateFromAst(
-      post.body?.childMarkdownRemark?.htmlAst,
-      'instructions',
-      'ol',
-    ),
   };
   return (
     <Layout>
@@ -128,8 +131,28 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 {post.bodyPreview && (
                   <Paragraph>{post.bodyPreview.bodyPreview}</Paragraph>
                 )}
-                <JumpToRecipeButton />
-                <PinButton />
+                <Stack
+                  flow={breakpoint === 'desktop' ? 'row' : 'column'}
+                  bottomSpacing="sm4"
+                >
+                  <StackItem
+                    flow={breakpoint === 'desktop' ? 'row' : 'column'}
+                    rightSpacing="sm4"
+                  >
+                    <JumpToRecipeButton
+                      onClick={handleJumpToRecipe}
+                      width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                    />
+                  </StackItem>
+                  <StackItem flow={breakpoint === 'desktop' ? 'row' : 'column'}>
+                    <PinButton
+                      description={post.bodyPreview?.bodyPreview}
+                      media={`https:${fixed?.src}`}
+                      url={location.href}
+                      width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                    />
+                  </StackItem>
+                </Stack>
                 <Stack bottomSpacing="sp-0">
                   <StackItem bottomSpacing="sm4">
                     {totalImages > 1 ? (
@@ -253,7 +276,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
           </StackItem>
           {post.ingredients && (
             <StackItem bottomSpacing="xlg4">
-              <Box padding="sm4">
+              <Box padding="sm4" ref={recipeRef}>
                 <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
                   <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
                     <H4>{post.title}</H4>
@@ -276,13 +299,31 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                         {post.servings}
                       </StackItem>
                     </Stack>
-                    <PinButton />
-                    {/* <Share
-                      description={post.bodyPreview?.bodyPreview}
-                      media={`https:${fixed?.src}`}
-                      title={post.title}
-                      url={location.href}
-                    /> */}
+
+                    <Stack
+                      flow={breakpoint === 'desktop' ? 'row' : 'column'}
+                      bottomSpacing="sm4"
+                    >
+                      <StackItem
+                        flow={breakpoint === 'desktop' ? 'row' : 'column'}
+                        rightSpacing="sm4"
+                      >
+                        <PrintButton
+                          onClick={handlePrintClick}
+                          width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                        />
+                      </StackItem>
+                      <StackItem
+                        flow={breakpoint === 'desktop' ? 'row' : 'column'}
+                      >
+                        <PinButton
+                          description={post.bodyPreview?.bodyPreview}
+                          media={`https:${fixed?.src}`}
+                          url={location.href}
+                          width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                        />
+                      </StackItem>
+                    </Stack>
                   </GridCell>
                   <GridCell width={breakpoint === 'desktop' ? 4 : 1}>
                     <ImgWrapper ratio={1 / 1}>
