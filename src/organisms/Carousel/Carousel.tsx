@@ -18,6 +18,7 @@ import {
   CarouselListItem,
   CarouselNav,
 } from './CarouselStyled';
+import useWindowResize from '../../hooks/useWindowResize';
 import { Easing } from './carousel-types';
 
 interface CarouselProps {
@@ -42,6 +43,7 @@ const Carousel: FC<CarouselProps> = ({
   const [width, setWidth] = useState<number | undefined>(undefined);
   const [xPos, setXPos] = useState<number>(0);
   const target = useRef<HTMLDivElement | null>(null);
+  const windowWidth = useWindowResize();
   const setDimensions = useCallback(() => {
     if (target.current) {
       // each carousel item x the total
@@ -76,20 +78,10 @@ const Carousel: FC<CarouselProps> = ({
     }
   };
 
-  const handleResize = (): void => {
-    setDimensions();
-  };
-
   useEffect(() => {
     setDimensions();
-  }, [setDimensions]);
+  }, [setDimensions, windowWidth]);
 
-  useEffect(() => {
-    window.addEventListener('resize', handleResize);
-    return (): void => {
-      window.removeEventListener('resize', handleResize);
-    };
-  });
   return (
     <CarouselContainer ref={target} carouselWidth={carouselWidth}>
       <CarouselBody>
@@ -106,14 +98,14 @@ const Carousel: FC<CarouselProps> = ({
           isDisabled={currentIdx === 0}
           onClick={handlePrev}
         >
-          <LeftArrow fill="#fff" />
+          <LeftArrow fill="#fff" style={{ marginLeft: '-2px' }} />
         </CarouselButton>
         <CarouselButton
           direction="right"
           isDisabled={currentIdx === total - 1}
           onClick={handleNext}
         >
-          <RightArrow fill="#fff" />
+          <RightArrow fill="#fff" style={{ marginRight: '-2px' }} />
         </CarouselButton>
       </CarouselBody>
       <CarouselControls>

@@ -44,7 +44,7 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
       />
     </div>
     <button
-      className="sc-fKFyDc dDIqIn"
+      className="sc-fKFyDc jIAyRB"
       direction="left"
       onClick={[Function]}
     >
@@ -53,6 +53,11 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
         fill="#fff"
         height="1em"
         preserveAspectRatio="xMidYMid meet"
+        style={
+          Object {
+            "marginRight": "-3px",
+          }
+        }
         viewBox="0 0 9.9 16.97"
         width="1em"
         xmlns="http://www.w3.org/2000/svg"
@@ -64,7 +69,7 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
       </svg>
     </button>
     <button
-      className="sc-fKFyDc byIage"
+      className="sc-fKFyDc cWEiZc"
       direction="right"
       onClick={[Function]}
     >
@@ -73,6 +78,11 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
         fill="#fff"
         height="1em"
         preserveAspectRatio="xMidYMid meet"
+        style={
+          Object {
+            "marginLeft": "3px",
+          }
+        }
         viewBox="0 0 9.9 16.97"
         width="1em"
         xmlns="http://www.w3.org/2000/svg"

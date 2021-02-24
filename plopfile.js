@@ -28,11 +28,6 @@ const getActions = (type = 'atoms') => [
   },
   {
     type: 'add',
-    path: `src/${type}/{{properCase name}}/README.md`,
-    templateFile: 'plop-templates/README.hbs',
-  },
-  {
-    type: 'add',
     path: `src/${type}/{{properCase name}}/__tests__/{{properCase name}}.test.tsx`,
     templateFile: 'plop-templates/tests.hbs',
   },

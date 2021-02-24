@@ -6,8 +6,8 @@ import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
 import Layout, { PageHeader } from '../organisms/Layout';
-import Newsletter from '../organisms/Newsletter';
 import Scroller from '../organisms/Scroller';
+import SideContent from '../organisms/SideContent';
 import Stack, { StackItem } from '../organisms/Stack';
 import BackToTop from '../molecules/BackToTop';
 import BreadCrumbs from '../molecules/BreadCrumbs';
@@ -17,7 +17,6 @@ import MarkdownList from '../molecules/MarkdownList';
 import PinButton from '../molecules/PinButton';
 import PrintButton from '../molecules/PrintButton';
 import PosterIterator from '../molecules/PostIterator';
-import ProfileCard from '../molecules/ProfileCard';
 import SEO from '../molecules/SEO';
 import Share from '../molecules/Share';
 import Social from '../molecules/Social';
@@ -27,7 +26,6 @@ import Divider from '../atoms/Divider';
 import { H1, H4 } from '../atoms/Headings';
 import ImgWrapper from '../atoms/ImgWrapper';
 import Link from '../atoms/Link';
-import { InstaDesktop, InstaMobile } from '../atoms/InstagramContainer';
 import Paragraph from '../atoms/Paragraph';
 import PostDate from '../atoms/PostDate';
 import Text from '../atoms/Text';
@@ -69,7 +67,8 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   };
   const handleJumpToRecipe = (): void => {
     if (recipeRef.current) {
-      recipeRef.current.scrollIntoView({ behavior: 'smooth' });
+      const { offsetTop } = recipeRef.current;
+      window.scrollTo({ top: offsetTop - 64, left: 0, behavior: 'smooth' });
     }
   };
   const handlePrintClick = (): void => {
@@ -77,7 +76,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   };
   const schemaJson = {
     '@context': 'http://schema.org',
-    '@type': 'Recipe',
+    '@type': 'Website',
     author: 'Jeri Mobley-Arias',
     description: post.bodyPreview?.bodyPreview,
     datePublished: post.publishDate,
@@ -191,71 +190,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
               </GridCell>
               {breakpoint === 'desktop' && (
                 <GridCell width={4}>
-                  {about && (
-                    <Stack>
-                      <ProfileCard
-                        descriptionHtml={
-                          about?.description.childMarkdownRemark.html
-                        }
-                        image={about?.avatar.fixed.src}
-                        name={about?.name}
-                        onClick={(): void => {
-                          navigate('/about');
-                        }}
-                      />
-                    </Stack>
-                  )}
-                  <Stack>
-                    <H4>Newsletter</H4>
-                    <Newsletter />
-                  </Stack>
-                  {instagram && (
-                    <Stack>
-                      <H4>Instagram</H4>
-                      <InstaDesktop>
-                        <Grid columns={2} gap="sm4" rowGap="sm4">
-                          {instagram.map(item => (
-                            <GridCell key={item.node.id} width={1}>
-                              <Link to={item.node.permalink} target="_blank">
-                                <ImgWrapper ratio={1 / 1}>
-                                  <img
-                                    alt="whisperofyum instagram"
-                                    loading="lazy"
-                                    src={
-                                      item.node.localImage.childImageSharp.fixed
-                                        .src
-                                    }
-                                  />
-                                </ImgWrapper>
-                              </Link>
-                            </GridCell>
-                          ))}
-                        </Grid>
-                      </InstaDesktop>
-                      <InstaMobile>
-                        <Scroller>
-                          {instagram.map(item => (
-                            <Link
-                              to={item.node.permalink}
-                              key={item.node.id}
-                              target="_blank"
-                            >
-                              <ImgWrapper ratio={1 / 1}>
-                                <img
-                                  alt="whisperofyum instagram"
-                                  loading="lazy"
-                                  src={
-                                    item.node.localImage.childImageSharp.fixed
-                                      .src
-                                  }
-                                />
-                              </ImgWrapper>
-                            </Link>
-                          ))}
-                        </Scroller>
-                      </InstaMobile>
-                    </Stack>
-                  )}
+                  <SideContent about={about} instagram={instagram} />
                 </GridCell>
               )}
             </Grid>
@@ -302,7 +237,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
 
                     <Stack
                       flow={breakpoint === 'desktop' ? 'row' : 'column'}
-                      bottomSpacing="sm4"
+                      bottomSpacing={breakpoint === 'desktop' ? 'sm4' : 'sp-0'}
                     >
                       <StackItem
                         flow={breakpoint === 'desktop' ? 'row' : 'column'}
@@ -450,69 +385,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
           )}
           {breakpoint !== 'desktop' && (
             <StackItem>
-              {about && (
-                <Stack>
-                  <ProfileCard
-                    descriptionHtml={
-                      about?.description.childMarkdownRemark.html
-                    }
-                    image={about?.avatar.fixed.src}
-                    name={about?.name}
-                    onClick={(): void => {
-                      navigate('/about');
-                    }}
-                  />
-                </Stack>
-              )}
-              <Stack>
-                <H4>Newsletter</H4>
-                <Newsletter />
-              </Stack>
-              {instagram && (
-                <Stack>
-                  <H4>Instagram</H4>
-                  <InstaDesktop>
-                    <Grid columns={2} gap="sm4" rowGap="sm4">
-                      {instagram.map(item => (
-                        <GridCell key={item.node.id} width={1}>
-                          <Link to={item.node.permalink} target="_blank">
-                            <ImgWrapper ratio={1 / 1}>
-                              <img
-                                alt="whisperofyum instagram"
-                                loading="lazy"
-                                src={
-                                  item.node.localImage.childImageSharp.fixed.src
-                                }
-                              />
-                            </ImgWrapper>
-                          </Link>
-                        </GridCell>
-                      ))}
-                    </Grid>
-                  </InstaDesktop>
-                  <InstaMobile>
-                    <Scroller>
-                      {instagram.map(item => (
-                        <Link
-                          to={item.node.permalink}
-                          key={item.node.id}
-                          target="_blank"
-                        >
-                          <ImgWrapper ratio={1 / 1}>
-                            <img
-                              alt="whisperofyum instagram"
-                              loading="lazy"
-                              src={
-                                item.node.localImage.childImageSharp.fixed.src
-                              }
-                            />
-                          </ImgWrapper>
-                        </Link>
-                      ))}
-                    </Scroller>
-                  </InstaMobile>
-                </Stack>
-              )}
+              <SideContent about={about} instagram={instagram} />
             </StackItem>
           )}
           <StackItem>

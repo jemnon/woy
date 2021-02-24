@@ -1,6 +1,7 @@
 import React, { FC, ReactNode } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { up } from 'styled-breakpoints';
+import { useLocation } from '@reach/router';
 import theme from '../../theme';
 import GlobalStyle from '../../atoms/GlobalStyle';
 import Footer from '../Footer';
@@ -33,13 +34,14 @@ export const PageHeader = styled.header`
 `;
 
 const Layout: FC<LayoutProps> = ({ bgColor = 'white', children }) => {
+  const location = useLocation();
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
       <Main bgColor={bgColor} role="main">
         {children}
       </Main>
-      <Footer />
+      {!location.pathname.includes('recipe-print') && <Footer />}
     </ThemeProvider>
   );
 };

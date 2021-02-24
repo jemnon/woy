@@ -61,6 +61,7 @@ export interface MaxWidths {
   sm: string;
   md: string;
   lg: string;
+  xlg: string;
 }
 
 export interface Spacing {
