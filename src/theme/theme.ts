@@ -6,7 +6,7 @@ const theme: DefaultTheme = {
     sm: '640px',
     md: '960px',
     lg: '1280px',
-    xlg: '1440px',
+    xlg: '1920px',
   },
   colors: {
     cream: '#f4ede6',
