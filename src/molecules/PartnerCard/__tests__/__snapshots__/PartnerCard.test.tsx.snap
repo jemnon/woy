@@ -17,7 +17,7 @@ exports[`<PartnerCard /> renders defaults correctly 1`] = `
     </div>
   </figure>
   <h5
-    className="sc-jSgupP kmFZoT"
+    className="sc-jSgupP fedzsG"
   >
     Title
   </h5>
@@ -28,14 +28,14 @@ exports[`<PartnerCard /> renders defaults correctly 1`] = `
     :
   </div>
   <p
-    className="sc-fubCfw khejlI sc-pFZIQ bwpjVS"
+    className="sc-fubCfw hELhOm sc-pFZIQ bwpjVS"
     fontSize="f1"
     fontWeight="bold"
   >
     WHISPEROFYUM
   </p>
   <button
-    className="sc-bdfBwQ cUBhvx"
+    className="sc-bdfBwQ eICxxo"
     onClick={[Function]}
   >
     Shop Now

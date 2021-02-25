@@ -9,6 +9,7 @@ import LeftArrow from './LeftArrow';
 import Logo from './Logo';
 import Pinterest from './Pinterest';
 import Play from './Play';
+import Print from './Print';
 import RightArrow from './RightArrow';
 import Search from './Search';
 import TriangleDown from './TriangleDown';
@@ -28,6 +29,7 @@ export {
   Logo,
   Pinterest,
   Play,
+  Print,
   RightArrow,
   Search,
   TriangleDown,
@@ -48,6 +50,7 @@ export const Icons = {
   Logo,
   Pinterest,
   Play,
+  Print,
   RightArrow,
   Search,
   TriangleDown,

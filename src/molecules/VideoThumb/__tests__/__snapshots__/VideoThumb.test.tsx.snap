@@ -2,7 +2,7 @@
 
 exports[`<VideoThumb /> renders defaults correctly 1`] = `
 <section
-  className="sc-idOhPF bTjHlT"
+  className="sc-dIUggk heyJDc"
 >
   <div
     className="sc-bdfBwQ kNOhZq"
@@ -17,14 +17,14 @@ exports[`<VideoThumb /> renders defaults correctly 1`] = `
     />
   </div>
   <div
-    className="sc-dIUggk heTIsZ"
+    className="sc-hHftDr DJnUe"
   >
     <button
-      className="sc-fFubgz hvkxRj"
+      className="sc-bkzZxe eMjA-dV"
       onClick={[Function]}
     >
       <div
-        className="sc-bkzZxe cYsTrd"
+        className="sc-idOhPF hVLdpt"
       >
         <svg
           className="sc-jrAGrp hIakoQ"

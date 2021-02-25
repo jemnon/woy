@@ -30,9 +30,12 @@ const Container = styled.div<ContainerProps>`
     max-width: ${({ maxWidth, theme: { maxWidths } }): string =>
       maxWidths[maxWidth ?? 'lg'] ?? maxWidths.lg};
   }
-  ${up('lg')} {
+  ${up('xlg')} {
     padding-left: ${({ theme: { spacing } }): string => spacing.md4};
     padding-right: ${({ theme: { spacing } }): string => spacing.md4};
+
+    max-width: ${({ maxWidth, theme: { maxWidths } }): string =>
+      maxWidths[maxWidth ?? 'xlg'] ?? maxWidths.xlg};
   }
 `;
 

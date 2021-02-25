@@ -30,7 +30,7 @@ exports[`<Media /> renders defaults correctly 1`] = `
       Filipino Pork Adobo
     </h2>
     <div
-      className="sc-iBPRYJ gJRhDu"
+      className="sc-iBPRYJ kJYDux"
     >
       media desc
     </div>

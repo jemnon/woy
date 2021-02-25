@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
   }      
   body {
-    line-height: 1.5;
+    line-height: 1.6;
     font-family: ${({ theme }): string => theme.fonts.lato};
     font-weight: normal;
     font-size: 1rem;

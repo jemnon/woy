@@ -4,15 +4,19 @@ import { Colors, Spacing } from '../../types/theme';
 
 type Color = keyof Pick<Colors, 'white' | 'nearBlack'>;
 type BottomSpacing = keyof Spacing;
+type TextAlign = 'left' | 'center' | 'right';
 
 interface HeadingProps {
   color?: Color;
   bottomSpacing?: BottomSpacing | string;
+  textAlign?: TextAlign;
 }
 
 export const sharedCSS = css<HeadingProps>`
   font-weight: 900;
   font-family: ${({ theme }): string => theme.fonts.noto};
+
+  text-align: ${({ textAlign = 'left' }): string => textAlign};
 
   color: ${({ color = 'nearBlack', theme }): string => theme.colors[color]};
 

@@ -7,6 +7,7 @@ import ShareTwitter from './share-twitter';
 
 interface ShareProps {
   description?: string;
+  label?: string;
   media?: string;
   title: string;
   url: string;
@@ -16,13 +17,16 @@ interface ShareProps {
 const ShareContainer = styled.section`
   display: inline-flex;
   align-self: flex-end;
-
-  max-width: 5.375rem;
 `;
 
-const Share: FC<ShareProps> = ({ description, media, title, url }) => {
+const ShareLabel = styled.div`
+  margin-right: ${({ theme: { spacing } }): string => spacing.sm2};
+`;
+
+const Share: FC<ShareProps> = ({ description, label, media, title, url }) => {
   return (
     <ShareContainer>
+      {label && <ShareLabel>{label}</ShareLabel>}
       {description && title && url && (
         <Grid columns={3} gap="sm1">
           <GridCell width={1} middle>

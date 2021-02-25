@@ -2,13 +2,13 @@
 
 exports[`<Carousel /> renders defaults correctly 1`] = `
 <section
-  className="sc-fodVxV kMITYL"
+  className="sc-fFubgz bQgpDU"
 >
   <div
-    className="sc-bkzZxe hvZVrS"
+    className="sc-idOhPF iaUvbu"
   >
     <div
-      className="sc-fFubgz hCyQgS"
+      className="sc-bkzZxe hVtwZE"
     >
       <div
         style={
@@ -44,15 +44,21 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
       />
     </div>
     <button
-      className="sc-kfzAmx eapsbp"
+      className="sc-fKFyDc gDUDGt"
       direction="left"
       onClick={[Function]}
     >
       <svg
-        className="sc-gKsewC dFuSAH"
+        className="sc-gKsewC diJFwJ"
         fill="#fff"
+        fontSize="1rem"
         height="1em"
         preserveAspectRatio="xMidYMid meet"
+        style={
+          Object {
+            "marginLeft": "-2px",
+          }
+        }
         viewBox="0 0 9.9 16.97"
         width="1em"
         xmlns="http://www.w3.org/2000/svg"
@@ -64,15 +70,21 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
       </svg>
     </button>
     <button
-      className="sc-kfzAmx khLRnw"
+      className="sc-fKFyDc jVkLsY"
       direction="right"
       onClick={[Function]}
     >
       <svg
-        className="sc-jrAGrp ekiHGR"
+        className="sc-kEjbxe duriSo"
         fill="#fff"
+        fontSize="1rem"
         height="1em"
         preserveAspectRatio="xMidYMid meet"
+        style={
+          Object {
+            "marginRight": "-2px",
+          }
+        }
         viewBox="0 0 9.9 16.97"
         width="1em"
         xmlns="http://www.w3.org/2000/svg"
@@ -82,46 +94,47 @@ exports[`<Carousel /> renders defaults correctly 1`] = `
           fillRule="evenodd"
         />
       </svg>
+       
     </button>
   </div>
   <section
-    className="sc-fKFyDc dHeOpS"
+    className="sc-bBXqnf crXpW"
   >
     <nav
-      className="sc-idOhPF gwMhLA"
+      className="sc-dIUggk iLkYPn"
     >
       <ul
-        className="sc-dIUggk bPCBFl"
+        className="sc-hHftDr kRIGKa"
       >
         <li
-          className="sc-hHftDr kEwZxp"
+          className="sc-dmlrTW dRbkSR"
         >
           <button
-            className="sc-dmlrTW VjOKZ"
+            className="sc-kfzAmx fOpycm"
             onClick={[Function]}
           />
         </li>
         <li
-          className="sc-hHftDr kEwZxp"
+          className="sc-dmlrTW dRbkSR"
         >
           <button
-            className="sc-dmlrTW oUuGz"
+            className="sc-kfzAmx ePJKBY"
             onClick={[Function]}
           />
         </li>
         <li
-          className="sc-hHftDr kEwZxp"
+          className="sc-dmlrTW dRbkSR"
         >
           <button
-            className="sc-dmlrTW oUuGz"
+            className="sc-kfzAmx ePJKBY"
             onClick={[Function]}
           />
         </li>
         <li
-          className="sc-hHftDr kEwZxp"
+          className="sc-dmlrTW dRbkSR"
         >
           <button
-            className="sc-dmlrTW oUuGz"
+            className="sc-kfzAmx ePJKBY"
             onClick={[Function]}
           />
         </li>

@@ -10,13 +10,13 @@ exports[`<HeroContent /> renders defaults correctly 1`] = `
     Latest Post
   </h6>
   <h1
-    className="sc-dlfnbm cRbETI"
+    className="sc-dlfnbm bVnyRp"
     color="white"
   >
     Hero Title
   </h1>
   <button
-    className="sc-bdfBwQ cFPAQh"
+    className="sc-bdfBwQ hGYDtI"
   >
     View Recipe
   </button>

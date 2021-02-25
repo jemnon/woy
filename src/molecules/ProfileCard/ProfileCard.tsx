@@ -74,7 +74,7 @@ const ProfileCard: FC<ProfileCardProps> = ({
     />
 
     <ProfileFooter>
-      <CalloutLink onClick={onClick}>More</CalloutLink>
+      <CalloutLink onClick={onClick}>Read More</CalloutLink>
     </ProfileFooter>
   </ProfileCardContainer>
 );

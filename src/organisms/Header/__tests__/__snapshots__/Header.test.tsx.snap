@@ -2,14 +2,14 @@
 
 exports[`<Header /> renders defaults correctly 1`] = `
 <header
-  className="sc-iktFzd gjetrc"
+  className="sc-jJEJSO jjjWHN"
 >
   <nav
-    className="sc-cxFLnm dNGOTl"
+    className="sc-lmoMRL cFCsPS"
     role="main"
   >
     <button
-      className="sc-fodVxV jabJiT"
+      className="sc-fFubgz eEdbCI"
       onClick={[Function]}
     >
       <svg
@@ -36,64 +36,64 @@ exports[`<Header /> renders defaults correctly 1`] = `
       </svg>
     </button>
     <ul
-      className="sc-iJuUWI eUmmhP"
+      className="sc-giIncl jAkpHk"
     >
       <li
-        className="sc-ezrdKe fzqimB"
+        className="sc-bYEvPH fytWeS"
       >
         <button
-          className="sc-bYEvPH jZzyZN"
+          className="sc-kLgntA qJxHK"
           onClick={[Function]}
         >
           Home
         </button>
       </li>
       <li
-        className="sc-ezrdKe fzqimB"
+        className="sc-bYEvPH fytWeS"
       >
         <div
-          className="sc-lmoMRL cuVBiP"
+          className="sc-iJuUWI jTFRfL"
         />
       </li>
       <li
-        className="sc-ezrdKe fzqimB"
+        className="sc-bYEvPH fytWeS"
       >
         <button
-          className="sc-bYEvPH jZzyZN"
+          className="sc-kLgntA qJxHK"
           onClick={[Function]}
         >
           Recipes
         </button>
       </li>
       <li
-        className="sc-ezrdKe fzqimB"
+        className="sc-bYEvPH fytWeS"
       >
         <div
-          className="sc-lmoMRL cuVBiP"
+          className="sc-iJuUWI jTFRfL"
         />
       </li>
       <li
-        className="sc-ezrdKe fzqimB"
+        className="sc-bYEvPH fytWeS"
       >
         <button
-          className="sc-bYEvPH jZzyZN"
+          className="sc-kLgntA qJxHK"
           onClick={[Function]}
         >
           About
         </button>
       </li>
       <li
-        className="sc-ezrdKe fzqimB"
+        className="sc-bYEvPH fytWeS"
       >
         <div
-          className="sc-lmoMRL cuVBiP"
+          className="sc-iJuUWI jTFRfL"
         />
       </li>
       <li
-        className="sc-ezrdKe fzqimB"
+        className="sc-bYEvPH fytWeS"
       >
         <a
-          className="sc-kLgntA kYsros"
+          className="sc-iktFzd dxNDZd"
           href="https://www.instagram.com/whisperofyum/?hl=en"
           target="_blank"
         >
@@ -101,17 +101,17 @@ exports[`<Header /> renders defaults correctly 1`] = `
         </a>
       </li>
       <li
-        className="sc-ezrdKe fzqimB"
+        className="sc-bYEvPH fytWeS"
       >
         <div
-          className="sc-lmoMRL cuVBiP"
+          className="sc-iJuUWI jTFRfL"
         />
       </li>
       <li
-        className="sc-ezrdKe fzqimB"
+        className="sc-bYEvPH fytWeS"
       >
         <a
-          className="sc-kLgntA kYsros"
+          className="sc-iktFzd dxNDZd"
           href="mailto:whisperofyum@gmail.com"
           target="_top"
         >
@@ -119,14 +119,14 @@ exports[`<Header /> renders defaults correctly 1`] = `
         </a>
       </li>
       <li
-        className="sc-ezrdKe fzqimB"
+        className="sc-bYEvPH fytWeS"
       >
         <button
-          className="sc-bkzZxe ggJhZV"
+          className="sc-idOhPF czqtqd"
           onClick={[Function]}
         >
           <svg
-            className="sc-iqHYGH kcIPYR"
+            className="sc-crrsfI bhoreA"
             fill="#111"
             fontSize="1rem"
             height="1em"
@@ -165,17 +165,17 @@ exports[`<Header /> renders defaults correctly 1`] = `
       </li>
     </ul>
     <ul
-      className="sc-giIncl bqdgdY"
+      className="sc-ezrdKe dxUA-dt"
     >
       <li
-        className="sc-ezrdKe fzqimB"
+        className="sc-bYEvPH fytWeS"
       >
         <button
-          className="sc-bkzZxe ggJhZV"
+          className="sc-idOhPF czqtqd"
           onClick={[Function]}
         >
           <svg
-            className="sc-iqHYGH kcIPYR"
+            className="sc-crrsfI bhoreA"
             fill="#111"
             fontSize="1rem"
             height="1em"
@@ -213,10 +213,10 @@ exports[`<Header /> renders defaults correctly 1`] = `
         </button>
       </li>
       <li
-        className="sc-ezrdKe fzqimB"
+        className="sc-bYEvPH fytWeS"
       >
         <button
-          className="sc-fFubgz iJWFeU"
+          className="sc-bkzZxe fQGWIi"
           onClick={[Function]}
         >
           <svg

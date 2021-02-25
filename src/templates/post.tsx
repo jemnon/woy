@@ -1,30 +1,31 @@
-import React, { FC } from 'react';
+import React, { FC, useRef } from 'react';
 import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
-import { css } from 'styled-components';
 import Carousel from '../organisms/Carousel';
 import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
 import Layout, { PageHeader } from '../organisms/Layout';
-import Newsletter from '../organisms/Newsletter';
 import Scroller from '../organisms/Scroller';
+import SideContent from '../organisms/SideContent';
 import Stack, { StackItem } from '../organisms/Stack';
+import BackToTop from '../molecules/BackToTop';
+import BreadCrumbs from '../molecules/BreadCrumbs';
 import Card from '../molecules/Card';
+import JumpToRecipeButton from '../molecules/JumpToRecipeButton';
 import MarkdownList from '../molecules/MarkdownList';
+import PinButton from '../molecules/PinButton';
+import PrintButton from '../molecules/PrintButton';
 import PosterIterator from '../molecules/PostIterator';
-import ProfileCard from '../molecules/ProfileCard';
-import RecipeMeta from '../molecules/RecipeMeta';
 import SEO from '../molecules/SEO';
 import Share from '../molecules/Share';
 import Social from '../molecules/Social';
-import BackToTop from '../molecules/BackToTop';
-import BreadCrumbs from '../molecules/BreadCrumbs';
+import Author from '../atoms/Author';
 import Box from '../atoms/Box';
+import Divider from '../atoms/Divider';
 import { H1, H4 } from '../atoms/Headings';
 import ImgWrapper from '../atoms/ImgWrapper';
 import Link from '../atoms/Link';
-import { InstaDesktop, InstaMobile } from '../atoms/InstagramContainer';
 import Paragraph from '../atoms/Paragraph';
 import PostDate from '../atoms/PostDate';
 import Text from '../atoms/Text';
@@ -32,7 +33,6 @@ import { useBreakpointContext } from '../context/BreakpointContextProvider';
 import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
 import ProfileAboutType from '../types/profile-about';
-import { generateFromAst } from '../utils/utils';
 
 interface Instagram {
   node: InstagramType;
@@ -57,6 +57,7 @@ const capitalize = (word: string): string => {
 };
 
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
+  const recipeRef = useRef<HTMLDivElement | null>(null);
   const { name: breakpoint } = useBreakpointContext();
   const { page: post, about, instagram } = pageContext || {};
   const totalImages = post.images.length;
@@ -64,20 +65,23 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const handleIteratorClick = (slug: string): void => {
     navigate(`/post/${slug}`);
   };
+  const handleJumpToRecipe = (): void => {
+    if (recipeRef.current) {
+      const { offsetTop } = recipeRef.current;
+      window.scrollTo({ top: offsetTop - 64, left: 0, behavior: 'smooth' });
+    }
+  };
+  const handlePrintClick = (): void => {
+    navigate(`/recipe-print/${post.slug}`);
+  };
   const schemaJson = {
     '@context': 'http://schema.org',
-    '@type': 'Recipe',
+    '@type': 'Website',
     author: 'Jeri Mobley-Arias',
     description: post.bodyPreview?.bodyPreview,
     datePublished: post.publishDate,
     image: `https:${fixed?.src}`,
     name: capitalize(post.title),
-    recipeIngredient: generateFromAst(post.body?.childMarkdownRemark?.htmlAst),
-    recipeInstructions: generateFromAst(
-      post.body?.childMarkdownRemark?.htmlAst,
-      'instructions',
-      'ol',
-    ),
   };
   return (
     <Layout>
@@ -121,17 +125,33 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 {post.publishDate && (
                   <PostDate publishDate={post.publishDate} />
                 )}
-                <H1 bottomSpacing="1rem">{post.title}</H1>
-                <Text
-                  bottomSpacing="sm4"
-                  fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
-                  fontWeight="bold"
-                >
-                  By Jeri Mobley-Arias
-                </Text>
+                <H1 bottomSpacing="0.5rem">{post.title}</H1>
+                <Author />
                 {post.bodyPreview && (
                   <Paragraph>{post.bodyPreview.bodyPreview}</Paragraph>
                 )}
+                <Stack
+                  flow={breakpoint === 'desktop' ? 'row' : 'column'}
+                  bottomSpacing="sm4"
+                >
+                  <StackItem
+                    flow={breakpoint === 'desktop' ? 'row' : 'column'}
+                    rightSpacing="sm4"
+                  >
+                    <JumpToRecipeButton
+                      onClick={handleJumpToRecipe}
+                      width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                    />
+                  </StackItem>
+                  <StackItem flow={breakpoint === 'desktop' ? 'row' : 'column'}>
+                    <PinButton
+                      description={post.bodyPreview?.bodyPreview}
+                      media={`https:${fixed?.src}`}
+                      url={location.href}
+                      width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                    />
+                  </StackItem>
+                </Stack>
                 <Stack bottomSpacing="sp-0">
                   <StackItem bottomSpacing="sm4">
                     {totalImages > 1 ? (
@@ -157,14 +177,6 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                       </>
                     )}
                   </StackItem>
-                  {post.totalTime && post.servings && (
-                    <StackItem bottomSpacing="sm4">
-                      <RecipeMeta
-                        cookTime={post.totalTime}
-                        servings={post.servings}
-                      />
-                    </StackItem>
-                  )}
                   {post?.bodyShort?.childMarkdownRemark && (
                     <StackItem bottomSpacing="sm4">
                       <MarkdownList
@@ -178,71 +190,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
               </GridCell>
               {breakpoint === 'desktop' && (
                 <GridCell width={4}>
-                  {about && (
-                    <Stack>
-                      <ProfileCard
-                        descriptionHtml={
-                          about?.description.childMarkdownRemark.html
-                        }
-                        image={about?.avatar.fixed.src}
-                        name={about?.name}
-                        onClick={(): void => {
-                          navigate('/about');
-                        }}
-                      />
-                    </Stack>
-                  )}
-                  <Stack>
-                    <H4>Newsletter</H4>
-                    <Newsletter />
-                  </Stack>
-                  {instagram && (
-                    <Stack>
-                      <H4>Instagram</H4>
-                      <InstaDesktop>
-                        <Grid columns={2} gap="sm4" rowGap="sm4">
-                          {instagram.map(item => (
-                            <GridCell key={item.node.id} width={1}>
-                              <Link to={item.node.permalink} target="_blank">
-                                <ImgWrapper ratio={1 / 1}>
-                                  <img
-                                    alt="whisperofyum instagram"
-                                    loading="lazy"
-                                    src={
-                                      item.node.localImage.childImageSharp.fixed
-                                        .src
-                                    }
-                                  />
-                                </ImgWrapper>
-                              </Link>
-                            </GridCell>
-                          ))}
-                        </Grid>
-                      </InstaDesktop>
-                      <InstaMobile>
-                        <Scroller>
-                          {instagram.map(item => (
-                            <Link
-                              to={item.node.permalink}
-                              key={item.node.id}
-                              target="_blank"
-                            >
-                              <ImgWrapper ratio={1 / 1}>
-                                <img
-                                  alt="whisperofyum instagram"
-                                  loading="lazy"
-                                  src={
-                                    item.node.localImage.childImageSharp.fixed
-                                      .src
-                                  }
-                                />
-                              </ImgWrapper>
-                            </Link>
-                          ))}
-                        </Scroller>
-                      </InstaMobile>
-                    </Stack>
-                  )}
+                  <SideContent about={about} instagram={instagram} />
                 </GridCell>
               )}
             </Grid>
@@ -255,15 +203,72 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 fontWeight="bold"
                 textAlign="center"
               >
-                Have we connected on social media, yet? If not, be sure to
-                follow me on:
+                Have we connected on social media, yet? <br /> If not, be sure
+                to follow me on:
               </Text>
               <Social />
             </Box>
           </StackItem>
           {post.ingredients && (
             <StackItem bottomSpacing="xlg4">
-              <Box padding="sm4">
+              <Box padding="sm4" ref={recipeRef}>
+                <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
+                  <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
+                    <H4>{post.title}</H4>
+                    <Author />
+                    {post.bodyPreview && (
+                      <Paragraph>{post.bodyPreview.bodyPreview}</Paragraph>
+                    )}
+                    <Stack bottomSpacing="sm4">
+                      <StackItem bottomSpacing="sp-0">
+                        <Text display="inline" fontWeight="bold">
+                          Total Time:{' '}
+                        </Text>
+                        {post.totalTime}
+                      </StackItem>
+
+                      <StackItem bottomSpacing="sp-0">
+                        <Text display="inline" fontWeight="bold">
+                          Servings:{' '}
+                        </Text>
+                        {post.servings}
+                      </StackItem>
+                    </Stack>
+
+                    <Stack
+                      flow={breakpoint === 'desktop' ? 'row' : 'column'}
+                      bottomSpacing={breakpoint === 'desktop' ? 'sm4' : 'sp-0'}
+                    >
+                      <StackItem
+                        flow={breakpoint === 'desktop' ? 'row' : 'column'}
+                        rightSpacing="sm4"
+                      >
+                        <PrintButton
+                          onClick={handlePrintClick}
+                          width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                        />
+                      </StackItem>
+                      <StackItem
+                        flow={breakpoint === 'desktop' ? 'row' : 'column'}
+                      >
+                        <PinButton
+                          description={post.bodyPreview?.bodyPreview}
+                          media={`https:${fixed?.src}`}
+                          url={location.href}
+                          width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                        />
+                      </StackItem>
+                    </Stack>
+                  </GridCell>
+                  <GridCell width={breakpoint === 'desktop' ? 4 : 1}>
+                    <ImgWrapper ratio={1 / 1}>
+                      {post.images[0].fluid && (
+                        <Img alt={post.title} fluid={post.images[0].fluid} />
+                      )}
+                    </ImgWrapper>
+                  </GridCell>
+                </Grid>
+                <Divider />
                 <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
                   <GridCell width={breakpoint === 'desktop' ? 6 : 1}>
                     {post.ingredients && (
@@ -380,69 +385,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
           )}
           {breakpoint !== 'desktop' && (
             <StackItem>
-              {about && (
-                <Stack>
-                  <ProfileCard
-                    descriptionHtml={
-                      about?.description.childMarkdownRemark.html
-                    }
-                    image={about?.avatar.fixed.src}
-                    name={about?.name}
-                    onClick={(): void => {
-                      navigate('/about');
-                    }}
-                  />
-                </Stack>
-              )}
-              <Stack>
-                <H4>Newsletter</H4>
-                <Newsletter />
-              </Stack>
-              {instagram && (
-                <Stack>
-                  <H4>Instagram</H4>
-                  <InstaDesktop>
-                    <Grid columns={2} gap="sm4" rowGap="sm4">
-                      {instagram.map(item => (
-                        <GridCell key={item.node.id} width={1}>
-                          <Link to={item.node.permalink} target="_blank">
-                            <ImgWrapper ratio={1 / 1}>
-                              <img
-                                alt="whisperofyum instagram"
-                                loading="lazy"
-                                src={
-                                  item.node.localImage.childImageSharp.fixed.src
-                                }
-                              />
-                            </ImgWrapper>
-                          </Link>
-                        </GridCell>
-                      ))}
-                    </Grid>
-                  </InstaDesktop>
-                  <InstaMobile>
-                    <Scroller>
-                      {instagram.map(item => (
-                        <Link
-                          to={item.node.permalink}
-                          key={item.node.id}
-                          target="_blank"
-                        >
-                          <ImgWrapper ratio={1 / 1}>
-                            <img
-                              alt="whisperofyum instagram"
-                              loading="lazy"
-                              src={
-                                item.node.localImage.childImageSharp.fixed.src
-                              }
-                            />
-                          </ImgWrapper>
-                        </Link>
-                      ))}
-                    </Scroller>
-                  </InstaMobile>
-                </Stack>
-              )}
+              <SideContent about={about} instagram={instagram} />
             </StackItem>
           )}
           <StackItem>

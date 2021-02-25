@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { up } from 'styled-breakpoints';
 import { ButtonReset } from '../../atoms/Button';
 import {
   Easing,
@@ -74,6 +75,10 @@ export const CarouselDot = styled.button<CarouselDotProps>`
 export const CarouselButton = styled.button<CarouselButtonProps>`
   ${ButtonReset};
 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
   position: absolute;
   top: 50%;
   transform: translateY(-50%);
@@ -81,9 +86,20 @@ export const CarouselButton = styled.button<CarouselButtonProps>`
   ${({ direction = 'left' }): string =>
     direction === 'left' ? `left: 0.75rem` : `right: 0.75rem`};
 
+  width: 2rem;
+  height: 2rem;
+
+  ${up('md')} {
+    width: 3rem;
+    height: 3rem;
+  }
+
+  background-color: rgba(0, 0, 0, 0.4);
+
   opacity: ${({ isDisabled }): string => (isDisabled ? '0.30' : '100%')};
   cursor: ${({ isDisabled }): string =>
     isDisabled ? 'not-allowed' : 'pointer'};
+  border-radius: 100%;
 `;
 
 export const CarouselControls = styled.section`
