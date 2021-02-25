@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { up } from 'styled-breakpoints';
 import { ButtonReset } from '../../atoms/Button';
 import {
   Easing,
@@ -85,8 +86,13 @@ export const CarouselButton = styled.button<CarouselButtonProps>`
   ${({ direction = 'left' }): string =>
     direction === 'left' ? `left: 0.75rem` : `right: 0.75rem`};
 
-  width: 4rem;
-  height: 4rem;
+  width: 2rem;
+  height: 2rem;
+
+  ${up('md')} {
+    width: 3rem;
+    height: 3rem;
+  }
 
   background-color: rgba(0, 0, 0, 0.4);
 

@@ -36,7 +36,7 @@ exports[`<ProfileCard /> renders defaults correctly 1`] = `
       <span
         className="sc-dIUggk iUHtJK"
       >
-        More
+        Read More
       </span>
       <svg
         className="sc-dQppl eVssLA"

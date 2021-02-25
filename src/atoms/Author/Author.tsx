@@ -16,16 +16,10 @@ const AuthorContainer = styled.div`
   }
 
   margin-bottom: ${({ theme: { spacing } }): string => spacing.sm4};
-
-  > span {
-    color: ${({ theme: { colors } }): string => colors.nearBlack};
-  }
 `;
 
 const Author: FC<AuthorProps> = ({ name = 'Jeri Mobley-Arias' }) => (
-  <AuthorContainer>
-    <span>By</span> {name}
-  </AuthorContainer>
+  <AuthorContainer>By {name}</AuthorContainer>
 );
 
 export default Author;

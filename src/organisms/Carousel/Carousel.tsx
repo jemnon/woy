@@ -18,6 +18,7 @@ import {
   CarouselListItem,
   CarouselNav,
 } from './CarouselStyled';
+import useBreakpoint from '../../hooks/useBreakpoint';
 import useWindowResize from '../../hooks/useWindowResize';
 import { Easing } from './carousel-types';
 
@@ -43,6 +44,7 @@ const Carousel: FC<CarouselProps> = ({
   const [width, setWidth] = useState<number | undefined>(undefined);
   const [xPos, setXPos] = useState<number>(0);
   const target = useRef<HTMLDivElement | null>(null);
+  const breakpoint = useBreakpoint();
   const windowWidth = useWindowResize();
   const setDimensions = useCallback(() => {
     if (target.current) {
@@ -98,14 +100,22 @@ const Carousel: FC<CarouselProps> = ({
           isDisabled={currentIdx === 0}
           onClick={handlePrev}
         >
-          <LeftArrow fill="#fff" style={{ marginLeft: '-2px' }} />
+          <LeftArrow
+            fill="#fff"
+            fontSize={breakpoint === 'desktop' ? '1.5rem' : '1rem'}
+            style={{ marginLeft: '-2px' }}
+          />
         </CarouselButton>
         <CarouselButton
           direction="right"
           isDisabled={currentIdx === total - 1}
           onClick={handleNext}
         >
-          <RightArrow fill="#fff" style={{ marginRight: '-2px' }} />
+          <RightArrow
+            fill="#fff"
+            fontSize={breakpoint === 'desktop' ? '1.5rem' : '1rem'}
+            style={{ marginRight: '-2px' }}
+          />{' '}
         </CarouselButton>
       </CarouselBody>
       <CarouselControls>

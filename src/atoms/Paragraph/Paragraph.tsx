@@ -5,11 +5,13 @@ import { FontSizes } from '../../types/theme';
 type FontStyle = 'normal' | 'italic';
 type FontWeight = 'normal' | 'bold';
 type FontSize = keyof FontSizes;
+type TextAlign = 'left' | 'center' | 'right';
 
 interface ParagraphProps {
   fontStyle?: FontStyle;
   fontSize?: FontSize;
   fontWeight?: FontWeight;
+  textAlign?: TextAlign;
 }
 
 export const ParagraphCSS = css<ParagraphProps>`
@@ -22,6 +24,7 @@ export const ParagraphCSS = css<ParagraphProps>`
     font-size: ${({ theme, fontSize = 'f2' }): string =>
       theme.fontSizes[fontSize]};
   }
+  text-align: ${({ textAlign = 'left' }): string => textAlign};
 
   line-height: 1.5;
 

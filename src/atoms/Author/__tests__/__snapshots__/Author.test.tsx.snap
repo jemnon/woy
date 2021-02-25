@@ -2,12 +2,9 @@
 
 exports[`<Author /> renders defaults correctly 1`] = `
 <div
-  className="sc-bdfBwQ bJXVMl"
+  className="sc-bdfBwQ eeKxVo"
 >
-  <span>
-    By
-  </span>
-   
+  By 
   Jeri Mobley-Arias
 </div>
 `;

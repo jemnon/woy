@@ -2,8 +2,12 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import Button from '../../atoms/Button';
 import { Print } from '../../atoms/Icons';
+import { Colors } from '../../types/theme';
+
+type ColorScheme = keyof Pick<Colors, 'orange' | 'nearBlack'>;
 
 interface PrintButtonProps {
+  colorScheme?: ColorScheme;
   onClick?: () => void;
   width?: string;
 }
@@ -19,9 +23,14 @@ const PrintButtonLabel = styled.span`
   padding-right: ${({ theme }): string => theme.spacing.sm2};
 `;
 
-const PrintButton: FC<PrintButtonProps> = ({ onClick, width }) => (
+const PrintButton: FC<PrintButtonProps> = ({
+  colorScheme = 'orange',
+  onClick,
+  width,
+}) => (
   <PrintButtonContainer width={width}>
     <Button
+      colorScheme={colorScheme}
       onClick={onClick}
       variant="outline"
       shape="rectangle"
@@ -29,7 +38,11 @@ const PrintButton: FC<PrintButtonProps> = ({ onClick, width }) => (
       width={width}
     >
       <PrintButtonLabel>Print Recipe</PrintButtonLabel>
-      <Print fontSize="0.75rem" fill="#BB5B34" style={{ marginTop: '2px' }} />
+      <Print
+        fontSize="0.75rem"
+        fill={colorScheme === 'nearBlack' ? '#111' : '#BB5B34'}
+        style={{ marginTop: '2px' }}
+      />
     </Button>
   </PrintButtonContainer>
 );
