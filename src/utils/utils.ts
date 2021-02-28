@@ -13,7 +13,6 @@ export const generateFromAst = (
   name = 'ingredients',
   parentTagName = 'ul',
 ): string | string[] => {
-  console.log(element);
   let parsedAst: string[] = [];
   const ast = element?.children.filter(
     child => child.tagName === parentTagName,
