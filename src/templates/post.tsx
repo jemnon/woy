@@ -30,6 +30,7 @@ import Paragraph from '../atoms/Paragraph';
 import PostDate from '../atoms/PostDate';
 import Text from '../atoms/Text';
 import { useBreakpointContext } from '../context/BreakpointContextProvider';
+import { generateFromAst } from '../utils/utils';
 import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
 import ProfileAboutType from '../types/profile-about';
@@ -76,12 +77,18 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   };
   const schemaJson = {
     '@context': 'http://schema.org',
-    '@type': 'Website',
+    '@type': 'Recipe',
     author: 'Jeri Mobley-Arias',
     description: post.bodyPreview?.bodyPreview,
     datePublished: post.publishDate,
     image: `https:${fixed?.src}`,
     name: capitalize(post.title),
+    recipeIngredient: generateFromAst(post.body?.childMarkdownRemark?.htmlAst),
+    recipeInstructions: generateFromAst(
+      post.body?.childMarkdownRemark?.htmlAst,
+      'instructions',
+      'ol',
+    ),
   };
   return (
     <Layout>

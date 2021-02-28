@@ -143,13 +143,7 @@ const MobileMenu: FC<MobileMenuProps> = ({ isVisible = false }) => {
             onClick={(): void => handleClick('/about')}
           >
             About
-          </MobileMenuButton>
-          <MobileMenuLink
-            href="https://www.instagram.com/whisperofyum/?hl=en"
-            target="_blank"
-          >
-            Instagram
-          </MobileMenuLink>
+          </MobileMenuButton>{' '}
           <MobileMenuLink href="mailto:whisperofyum@gmail.com" target="_top">
             Contact
           </MobileMenuLink>

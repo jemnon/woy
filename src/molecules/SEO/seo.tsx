@@ -114,6 +114,10 @@ const SEO: FC<SEOProps> = ({
           content: 'e2f1349ea701f347a95c15bab1f0fc7a',
         },
         {
+          name: 'pinterest-rich-pin',
+          content: 'false',
+        },
+        {
           name: `twitter:card`,
           content: `summary`,
         },

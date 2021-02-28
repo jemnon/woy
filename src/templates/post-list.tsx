@@ -7,6 +7,7 @@ import Header from '../organisms/Header';
 import Layout, { PageHeader } from '../organisms/Layout';
 import Newsletter from '../organisms/Newsletter';
 import Scroller from '../organisms/Scroller';
+import SideContent from '../organisms/SideContent';
 import Stack, { StackItem } from '../organisms/Stack';
 import BackToTop from '../molecules/BackToTop';
 import BreadCrumbs from '../molecules/BreadCrumbs';
@@ -56,7 +57,6 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
   const { name: breakpoint } = useBreakpointContext();
   const { edges: posts } = data?.allContentfulPosts || {};
   const { about } = pageContext || {};
-  const { featuredOn } = pageContext || {};
   const { instagram } = pageContext || {};
   const handlePaginationClick = (page: number): void => {
     navigate(`/posts/${page}`);
@@ -124,96 +124,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
             )}
           </GridCell>
           <GridCell width={breakpoint === 'desktop' ? 4 : 1}>
-            {about && (
-              <Stack>
-                {
-                  <ProfileCard
-                    descriptionHtml={
-                      about?.description.childMarkdownRemark.html
-                    }
-                    image={about?.avatar.fixed.src}
-                    name={about?.name}
-                    onClick={(): void => {
-                      navigate('/about');
-                    }}
-                  />
-                }
-              </Stack>
-            )}
-            {featuredOn && (
-              <Stack>
-                <H4>Featured On</H4>
-                <Grid columns={3} rowGap="sm4" gap="sm4">
-                  {featuredOn.logos.map((logo, idx) => (
-                    <Link key={idx} to={featuredOn.links[idx]} target="_blank">
-                      <Box
-                        display="flex"
-                        bgColor="nearWhite"
-                        width="100%"
-                        padding="sm4"
-                        height="100%"
-                      >
-                        {logo.fluid && (
-                          <Img
-                            alt="feature on logos"
-                            fluid={logo.fluid}
-                            style={{ width: '100%' }}
-                          />
-                        )}
-                      </Box>
-                    </Link>
-                  ))}
-                </Grid>
-              </Stack>
-            )}
-
-            <Stack>
-              <H4>Newsletter</H4>
-              <Newsletter />
-            </Stack>
-            {instagram && (
-              <Stack>
-                <H4>Instagram</H4>
-                <InstaDesktop>
-                  <Grid columns={2} gap="sm4" rowGap="sm4">
-                    {instagram.map(item => (
-                      <GridCell key={item.node.id} width={1}>
-                        <Link to={item.node.permalink} target="_blank">
-                          <ImgWrapper ratio={1 / 1}>
-                            <img
-                              alt="whisperofyum instagram"
-                              loading="lazy"
-                              src={
-                                item.node.localImage.childImageSharp.fixed.src
-                              }
-                            />
-                          </ImgWrapper>
-                        </Link>
-                      </GridCell>
-                    ))}
-                  </Grid>
-                </InstaDesktop>
-                <InstaMobile>
-                  <Scroller>
-                    {instagram.map(item => (
-                      <Link
-                        to={item.node.permalink}
-                        key={item.node.id}
-                        target="_blank"
-                      >
-                        <ImgWrapper ratio={1 / 1}>
-                          <img
-                            alt="whisperofyum instagram"
-                            loading="lazy"
-                            src={item.node.localImage.childImageSharp.fixed.src}
-                          />
-                        </ImgWrapper>
-                      </Link>
-                    ))}
-                  </Scroller>
-                </InstaMobile>
-              </Stack>
-            )}
+            <SideContent about={about} instagram={instagram} />
           </GridCell>
         </Grid>
         {breakpoint === 'desktop' && (

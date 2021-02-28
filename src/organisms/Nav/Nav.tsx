@@ -156,18 +156,6 @@ const Nav: FC<NavProps> = ({ colorTheme = 'light', pathname }) => {
         <NavListItem>
           <NavLink
             colorTheme={colorTheme}
-            href="https://www.instagram.com/whisperofyum/?hl=en"
-            target="_blank"
-          >
-            Instagram
-          </NavLink>
-        </NavListItem>
-        <NavListItem>
-          <NavDivider colorTheme={colorTheme} />
-        </NavListItem>
-        <NavListItem>
-          <NavLink
-            colorTheme={colorTheme}
             href="mailto:whisperofyum@gmail.com"
             target="_top"
           >

@@ -91,24 +91,6 @@ exports[`<Nav /> renders defaults correctly 1`] = `
     >
       <a
         className="sc-iktFzd dxNDZd"
-        href="https://www.instagram.com/whisperofyum/?hl=en"
-        target="_blank"
-      >
-        Instagram
-      </a>
-    </li>
-    <li
-      className="sc-bYEvPH fytWeS"
-    >
-      <div
-        className="sc-iJuUWI jTFRfL"
-      />
-    </li>
-    <li
-      className="sc-bYEvPH fytWeS"
-    >
-      <a
-        className="sc-iktFzd dxNDZd"
         href="mailto:whisperofyum@gmail.com"
         target="_top"
       >
