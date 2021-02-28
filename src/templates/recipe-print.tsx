@@ -29,7 +29,7 @@ const RecipePrintPageButtons = styled.div`
 `;
 
 const RecipePrintPageTitle = styled.h1`
-  font-size: ${({ theme: { fontSizes } }): string => fontSizes.f9};
+  font-size: ${({ theme: { fontSizes } }): string => fontSizes.f6};
 `;
 
 const RecipePrintPageSubTitle = styled.h4`
@@ -93,23 +93,23 @@ const RecipePrintPage: FC<RecipePrintPageProps> = ({
             <RecipePrintPageTitle as={H1} bottomSpacing="0">
               {page.title}
             </RecipePrintPageTitle>
-            <Text fontSize="f-sm" fontWeight="bold">
+            <Text fontSize="f-xsm" fontWeight="bold">
               By Whisper of Yum
             </Text>
             <Stack bottomSpacing="sm4" flow="row">
               <StackItem bottomSpacing="sp-0" flow="row" rightSpacing="sm4">
-                <Text display="inline" fontSize="f-sm" fontWeight="bold">
+                <Text display="inline" fontSize="f-xsm" fontWeight="bold">
                   Total Time:{' '}
                 </Text>
-                <Text display="inline" fontSize="f-sm">
+                <Text display="inline" fontSize="f-xsm">
                   {page.totalTime}
                 </Text>
               </StackItem>
               <StackItem bottomSpacing="sp-0">
-                <Text display="inline" fontSize="f-sm" fontWeight="bold">
+                <Text display="inline" fontSize="f-xsm" fontWeight="bold">
                   Servings:{' '}
                 </Text>
-                <Text display="inline" fontSize="f-sm">
+                <Text display="inline" fontSize="f-xsm">
                   {page.servings}
                 </Text>
               </StackItem>

@@ -149,16 +149,19 @@ const getAllPosts = async graphql => {
             ingredients {
               childMarkdownRemark {
                 html
+                htmlAst
               }
             }
             optionalIngredients {
               childMarkdownRemark {
                 html
+                htmlAst
               }
             }
             instructions {
               childMarkdownRemark {
                 html
+                htmlAst
               }
             }
             relatedRecipes {

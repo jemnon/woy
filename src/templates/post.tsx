@@ -83,9 +83,11 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     datePublished: post.publishDate,
     image: `https:${fixed?.src}`,
     name: capitalize(post.title),
-    recipeIngredient: generateFromAst(post.body?.childMarkdownRemark?.htmlAst),
+    recipeIngredient: generateFromAst(
+      post.ingredients?.childMarkdownRemark?.htmlAst,
+    ),
     recipeInstructions: generateFromAst(
-      post.body?.childMarkdownRemark?.htmlAst,
+      post.instructions?.childMarkdownRemark?.htmlAst,
       'instructions',
       'ol',
     ),
