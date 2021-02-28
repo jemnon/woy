@@ -129,12 +129,6 @@ const getAllPosts = async graphql => {
                 html
               }
             }
-            body {
-              childMarkdownRemark {
-                html
-                htmlAst
-              }
-            }
             images {
               fixed(width: 400) {
                 src
@@ -155,16 +149,19 @@ const getAllPosts = async graphql => {
             ingredients {
               childMarkdownRemark {
                 html
+                htmlAst
               }
             }
             optionalIngredients {
               childMarkdownRemark {
                 html
+                htmlAst
               }
             }
             instructions {
               childMarkdownRemark {
                 html
+                htmlAst
               }
             }
             relatedRecipes {

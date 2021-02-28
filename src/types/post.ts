@@ -10,12 +10,6 @@ interface RelatedRecipes {
 }
 
 export interface Post {
-  body?: {
-    childMarkdownRemark?: {
-      html: string;
-      htmlAst?: Element;
-    };
-  };
   bodyPreview?: {
     bodyPreview?: string;
     childMarkdownRemark?: {
