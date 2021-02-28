@@ -35,6 +35,7 @@
     "gatsby-transformer-sharp": "^2.3.13",
     "lodash.truncate": "^4.4.2",
     "react": "^16.12.0",
+    "react-commentbox": "^3.0.1",
     "react-dom": "^16.12.0",
     "react-helmet": "^5.2.1",
     "styled-breakpoints": "^8.1.1",

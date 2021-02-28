@@ -114,6 +114,7 @@ const getAllPosts = async graphql => {
             }
           }
           node {
+            id
             slug
             publishDate
             title

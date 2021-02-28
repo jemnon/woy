@@ -1,5 +1,5 @@
 import React, { FC, useEffect, useRef } from 'react';
-import axios from 'axios';
+import { createClient } from 'contentful';
 import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
 import Carousel from '../organisms/Carousel';
@@ -58,6 +58,18 @@ const capitalize = (word: string): string => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
 
+const comment = async (data: any): Promise<Response> => {
+  const resp = await fetch(`/.netlify/functions/comments`, {
+    body: JSON.stringify(data),
+    headers: {
+      'content-type': 'application/json',
+    },
+    method: 'POST',
+    //mode: 'cors' // if your endpoints are on a different domain
+  });
+  return resp.json();
+};
+
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const recipeRef = useRef<HTMLDivElement | null>(null);
   const { name: breakpoint } = useBreakpointContext();
@@ -76,21 +88,6 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const handlePrintClick = (): void => {
     navigate(`/recipe-print/${post.slug}`);
   };
-  useEffect(() => {
-    const fetchComments = async (): Promise<void> => {
-      try {
-        const resp = await axios.get('/.netlify/woy_functions/comments.js', {
-          params: {
-            id: post.id,
-          },
-        });
-        console.log(resp);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchComments();
-  });
   const schemaJson = {
     '@context': 'http://schema.org',
     '@type': 'Recipe',
@@ -108,6 +105,23 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
       'ol',
     ),
   };
+  useEffect(() => {
+    const fetchComments = async (): Promise<void> => {
+      try {
+        const resp = await comment({
+          body: 'my first comment',
+          authorName: 'Jemnon',
+          parentCommentId: 'none',
+          subjectId: post.id,
+          rating: 5,
+        });
+        console.log(resp);
+      } catch (error) {
+        console.log('comment error: ', error);
+      }
+    };
+    fetchComments();
+  });
   return (
     <Layout>
       <SEO
