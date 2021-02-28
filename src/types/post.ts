@@ -25,6 +25,7 @@ export interface Post {
   };
   categories?: Categories[];
   id?: string;
+  contentful_id?: string;
   images: Images[];
   ingredients?: {
     childMarkdownRemark?: {

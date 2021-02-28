@@ -1,5 +1,4 @@
-import React, { FC, useEffect, useRef } from 'react';
-import { createClient } from 'contentful';
+import React, { FC, useEffect, useRef, useState } from 'react';
 import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
 import Carousel from '../organisms/Carousel';
@@ -30,8 +29,10 @@ import Link from '../atoms/Link';
 import Paragraph from '../atoms/Paragraph';
 import PostDate from '../atoms/PostDate';
 import Text from '../atoms/Text';
+import getComments from '../lib/Comments';
 import { useBreakpointContext } from '../context/BreakpointContextProvider';
 import { generateFromAst } from '../utils/utils';
+import CommentsType from '../types/comments';
 import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
 import ProfileAboutType from '../types/profile-about';
@@ -58,20 +59,9 @@ const capitalize = (word: string): string => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
 
-const comment = async (data: any): Promise<Response> => {
-  const resp = await fetch(`/.netlify/functions/comments`, {
-    body: JSON.stringify(data),
-    headers: {
-      'content-type': 'application/json',
-    },
-    method: 'POST',
-    //mode: 'cors' // if your endpoints are on a different domain
-  });
-  return resp.json();
-};
-
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const recipeRef = useRef<HTMLDivElement | null>(null);
+  const [comments, setComments] = useState<CommentsType[] | null>(null);
   const { name: breakpoint } = useBreakpointContext();
   const { page: post, about, instagram } = pageContext || {};
   const totalImages = post.images.length;
@@ -108,19 +98,16 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   useEffect(() => {
     const fetchComments = async (): Promise<void> => {
       try {
-        const resp = await comment({
-          body: 'my first comment',
-          authorName: 'Jemnon',
-          parentCommentId: 'none',
-          subjectId: post.id,
-          rating: 5,
-        });
+        const resp = await getComments(post.contentful_id);
+        setComments(resp);
         console.log(resp);
       } catch (error) {
         console.log('comment error: ', error);
       }
     };
-    fetchComments();
+    if (post.contentful_id && !comments) {
+      fetchComments();
+    }
   });
   return (
     <Layout>
