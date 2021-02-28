@@ -1,4 +1,5 @@
-import React, { FC, useRef } from 'react';
+import React, { FC, useEffect, useRef } from 'react';
+import axios from 'axios';
 import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
 import Carousel from '../organisms/Carousel';
@@ -75,6 +76,21 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const handlePrintClick = (): void => {
     navigate(`/recipe-print/${post.slug}`);
   };
+  useEffect(() => {
+    const fetchComments = async (): Promise<void> => {
+      try {
+        const resp = await axios.get('/.netlify/woy_functions/comments.js', {
+          params: {
+            id: post.id,
+          },
+        });
+        console.log(resp);
+      } catch (error) {
+        console.log(error);
+      }
+    };
+    fetchComments();
+  });
   const schemaJson = {
     '@context': 'http://schema.org',
     '@type': 'Recipe',
