@@ -10,7 +10,6 @@ import MarkdownList from '../molecules/MarkdownList';
 import SEO from '../molecules/SEO';
 import Button from '../atoms/Button';
 import ImgWrapper from '../atoms/ImgWrapper';
-import Paragraph from '../atoms/Paragraph';
 import Text from '../atoms/Text';
 import { H1, H4 } from '../atoms/Headings';
 import useBreakpoint from '../hooks/useBreakpoint';
