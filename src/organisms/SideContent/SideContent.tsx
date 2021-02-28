@@ -25,7 +25,6 @@ const SideContentContainer = styled.aside`
 `;
 
 const SideContent: FC<SideContentProps> = ({ about, instagram }) => {
-  console.log(instagram);
   return (
     <SideContentContainer>
       {about && (
