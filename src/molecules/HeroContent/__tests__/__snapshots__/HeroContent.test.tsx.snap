@@ -16,7 +16,7 @@ exports[`<HeroContent /> renders defaults correctly 1`] = `
     Hero Title
   </h1>
   <button
-    className="sc-bdfBwQ hGYDtI"
+    className="sc-bdfBwQ iETXlT"
   >
     View Recipe
   </button>

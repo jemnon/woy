@@ -123,7 +123,7 @@
     "format": "prettier --write \"**/*.{js,jsx,json,md}\"",
     "icons": "npx @svgr/cli --typescript --icon -d src/atoms/Icons/ src/atoms/Icons/svgs/",
     "start": "npm run develop",
-    "dev": "ntl dev",
+    "netlify": "ntl dev",
     "serve": "gatsby serve",
     "storybook": "start-storybook -p 6006",
     "storybook:build": "build-storybook -o ./sb-docs",

@@ -119,6 +119,7 @@ const getAllPosts = async graphql => {
             slug
             publishDate
             title
+            enableComments
             bodyPreview {
               bodyPreview
               childMarkdownRemark {

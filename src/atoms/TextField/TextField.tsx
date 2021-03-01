@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { hexToRGBA } from '../../utils/colors';
 import { Colors } from '../../types/theme';
 
@@ -8,7 +8,7 @@ interface TextFieldProps {
   borderColor?: BorderColor;
 }
 
-const TextField = styled.input<TextFieldProps>`
+const InputCSS = css<TextFieldProps>`
   font-family: ${({ theme }): string => theme.fonts.lato};
   font-size: ${({ theme }): string => theme.fontSizes.f1};
 
@@ -21,9 +21,9 @@ const TextField = styled.input<TextFieldProps>`
   border-style: solid;
   border-color: ${({ borderColor = 'nearBlack', theme: { colors } }): string =>
     colors[borderColor]};
-  border-radius: 0;
+  border-radius: 2px;
 
-  transition: ${({ theme }): string => theme.transition};
+  transition: box-shadow 0.15s ease;
 
   appearance: none;
   -moz-appearance: none;
@@ -39,6 +39,15 @@ const TextField = styled.input<TextFieldProps>`
     color: ${({ theme: { colors } }): string =>
       `${hexToRGBA(colors.nearBlack, 50)}`};
   }
+`;
+
+const TextField = styled.input<TextFieldProps>`
+  ${InputCSS};
+`;
+
+export const TextArea = styled.textarea<TextFieldProps>`
+  ${InputCSS};
+  min-height: 200px;
 `;
 
 export default TextField;

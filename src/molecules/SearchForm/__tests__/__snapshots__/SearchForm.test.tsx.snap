@@ -2,12 +2,12 @@
 
 exports[`<SearchForm /> renders defaults correctly 1`] = `
 <form
-  className="sc-bkzZxe gsALta"
+  className="sc-idOhPF kWyKGK"
   method="POST"
   onSubmit={[Function]}
 >
   <input
-    className="sc-fFubgz bsxZDW"
+    className="sc-fFubgz efgyxB"
     onChange={[Function]}
     placeholder="Search Recipes"
     style={
@@ -20,7 +20,7 @@ exports[`<SearchForm /> renders defaults correctly 1`] = `
     value=""
   />
   <button
-    className="sc-idOhPF fTGKzw"
+    className="sc-dIUggk dmJMev"
     size="medium"
     type="submit"
   >

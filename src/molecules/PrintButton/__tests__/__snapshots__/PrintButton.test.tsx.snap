@@ -5,7 +5,7 @@ exports[`<PrintButton /> renders defaults correctly 1`] = `
   className="sc-fFubgz eoTpYJ"
 >
   <button
-    className="sc-bdfBwQ kEQyMa"
+    className="sc-bdfBwQ gvawYh"
     shape="rectangle"
     size="small"
   >

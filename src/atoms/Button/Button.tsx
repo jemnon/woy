@@ -50,7 +50,7 @@ const Button = styled.button<ButtonProps>`
   text-decoration: none;
 
   border-radius: ${({ shape = 'rounded' }): string =>
-    shape === 'rectangle' ? '0' : '5rem'};
+    shape === 'rectangle' ? '2px' : '5rem'};
   border-width: ${({ variant = 'solid' }): string =>
     variant === 'outline' ? '1px' : ''};
   border-style: solid;
@@ -69,7 +69,9 @@ const Button = styled.button<ButtonProps>`
   overflow: hidden;
   cursor: ${({ isDisabled, isLoading }): string =>
     isDisabled || isLoading ? 'not-allowed' : 'pointer'};
-  transition: ${({ theme }): string => theme?.transition ?? ''};
+
+  transition: box-shadow 0.15s ease;
+  transition: background-color 0.47s ease;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

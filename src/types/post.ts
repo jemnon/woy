@@ -24,8 +24,9 @@ export interface Post {
     };
   };
   categories?: Categories[];
-  id?: string;
   contentful_id?: string;
+  enableComments?: boolean;
+  id?: string;
   images: Images[];
   ingredients?: {
     childMarkdownRemark?: {

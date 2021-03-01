@@ -2,6 +2,6 @@
 
 exports[`<Button /> renders defaults correctly 1`] = `
 <button
-  className="sc-bdfBwQ hGYDtI"
+  className="sc-bdfBwQ iETXlT"
 />
 `;

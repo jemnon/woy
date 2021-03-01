@@ -2,7 +2,7 @@
 
 exports[`<Newsletter /> renders defaults correctly 1`] = `
 <section
-  className="sc-giIncl fMtbBa"
+  className="sc-ezrdKe kwAELj"
 >
   <ul
     className="sc-bdfBwQ kgNPIO"
@@ -11,13 +11,13 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
       className="sc-gsTCUz dAeQxC"
     >
       <form
-        className="sc-dmlrTW fzlzTs"
+        className="sc-kfzAmx kfiCZv"
         method="POST"
         name="newsletter"
         onSubmit={[Function]}
       >
         <input
-          className="sc-hHftDr hqjQCA sc-fKFyDc ioRYWA"
+          className="sc-hHftDr iTayez sc-bBXqnf jmOpbQ"
           disabled={false}
           id="email"
           name="email"
@@ -29,7 +29,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
           value=""
         />
         <button
-          className="sc-dlfnbm jHuLKA sc-bBXqnf fOyPE"
+          className="sc-dlfnbm jitMYf sc-iwyYcG jALA-dn"
           disabled={false}
           shape="rectangle"
           type="submit"
@@ -51,13 +51,13 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
       className="sc-gsTCUz ilBoXu"
     >
       <section
-        className="sc-iJuUWI gQtSHO"
+        className="sc-giIncl gPMWrt"
       >
         <section
-          className="sc-iwyYcG jhKUpO"
+          className="sc-cxFLnm ceAgiC"
         >
           <div
-            className="sc-cxFLnm kfbQbD"
+            className="sc-lmoMRL iRGPPA"
             width={1}
           >
             <a
@@ -82,7 +82,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
             </a>
           </div>
           <div
-            className="sc-cxFLnm cyyKyp"
+            className="sc-lmoMRL iZierS"
             width={1}
           >
             <a
@@ -107,7 +107,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
             </a>
           </div>
           <div
-            className="sc-cxFLnm kfbQbD"
+            className="sc-lmoMRL iRGPPA"
             width={1}
           >
             <a

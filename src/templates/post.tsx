@@ -2,6 +2,7 @@ import React, { FC, useEffect, useRef, useState } from 'react';
 import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
 import Carousel from '../organisms/Carousel';
+import Comments, { CommentsForm } from '../organisms/Comments';
 import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
@@ -61,7 +62,13 @@ const capitalize = (word: string): string => {
 
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const recipeRef = useRef<HTMLDivElement | null>(null);
-  const [comments, setComments] = useState<CommentsType[] | null>(null);
+  const [isFetchingComments, setIsFetchingComments] = useState<boolean>(false);
+  const [isSubmittingComment, setIsSubmittingComment] = useState<boolean>(
+    false,
+  );
+  const [comments, setComments] = useState<CommentsType[] | undefined>(
+    undefined,
+  );
   const { name: breakpoint } = useBreakpointContext();
   const { page: post, about, instagram } = pageContext || {};
   const totalImages = post.images.length;
@@ -77,6 +84,9 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   };
   const handlePrintClick = (): void => {
     navigate(`/recipe-print/${post.slug}`);
+  };
+  const handleCommentFormSubmit = (comment: CommentsType): void => {
+    console.log('comment submit: ', comment);
   };
   const schemaJson = {
     '@context': 'http://schema.org',
@@ -97,12 +107,15 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   };
   useEffect(() => {
     const fetchComments = async (): Promise<void> => {
+      setIsFetchingComments(true);
       try {
         const resp = await getComments(post.contentful_id);
         setComments(resp);
+        setIsFetchingComments(false);
         console.log(resp);
       } catch (error) {
         console.log('comment error: ', error);
+        setIsFetchingComments(false);
       }
     };
     if (post.contentful_id && !comments) {
@@ -334,6 +347,21 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                     )}
                   </GridCell>
                 </Grid>
+              </Box>
+            </StackItem>
+          )}
+          {post.enableComments && (
+            <StackItem bottomSpacing="xlg4">
+              <H4>Comments</H4>
+              <Box padding="sm4">
+                <CommentsForm
+                  isLoading={isSubmittingComment}
+                  onSubmit={handleCommentFormSubmit}
+                />
+                {isFetchingComments && '...loading comments'}
+                {comments && comments.length > 0 && (
+                  <Comments comments={comments} />
+                )}
               </Box>
             </StackItem>
           )}
