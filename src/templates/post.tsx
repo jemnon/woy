@@ -66,6 +66,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const [isSubmittingComment, setIsSubmittingComment] = useState<boolean>(
     false,
   );
+  const [commentsError, setCommentsError] = useState<string | null>(null);
   const [comments, setComments] = useState<CommentsType[] | undefined>(
     undefined,
   );
@@ -116,9 +117,10 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
       } catch (error) {
         console.log('comment error: ', error);
         setIsFetchingComments(false);
+        setCommentsError(error);
       }
     };
-    if (post.contentful_id && !comments) {
+    if (post.contentful_id && !comments && !commentsError) {
       fetchComments();
     }
   });
@@ -362,6 +364,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 {comments && comments.length > 0 && (
                   <Comments comments={comments} />
                 )}
+                {commentsError && <Text>{commentsError}</Text>}
               </Box>
             </StackItem>
           )}
