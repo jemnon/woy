@@ -364,7 +364,6 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 {comments && comments.length > 0 && (
                   <Comments comments={comments} />
                 )}
-                {commentsError && <Text>{commentsError}</Text>}
               </Box>
             </StackItem>
           )}
