@@ -14,6 +14,11 @@ const postsQuery = `{
         categories {
           name
         }
+        bodyPreview {
+          childMarkdownRemark {
+            html
+          }
+        }
         images {
           fluid(maxWidth: 100) {
             aspectRatio
