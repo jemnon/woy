@@ -51,6 +51,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
   const { name: breakpoint } = useBreakpointContext();
   const { edges: posts } = data?.allContentfulPosts || {};
   const { about } = pageContext || {};
+  const { featuredOn } = pageContext || {};
   const { instagram } = pageContext || {};
   const handlePaginationClick = (page: number): void => {
     navigate(`/posts/${page}`);
@@ -118,7 +119,11 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
             )}
           </GridCell>
           <GridCell width={breakpoint === 'desktop' ? 4 : 1}>
-            <SideContent about={about} instagram={instagram} />
+            <SideContent
+              about={about}
+              featuredOn={featuredOn}
+              instagram={instagram}
+            />
           </GridCell>
         </Grid>
         {breakpoint === 'desktop' && (

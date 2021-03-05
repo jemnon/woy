@@ -1,20 +1,24 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { navigate } from 'gatsby';
+import Img from 'gatsby-image';
 import Grid, { GridCell } from '../../organisms/Grid';
 import Newsletter from '../../organisms/Newsletter';
 import Scroller from '../../organisms/Scroller';
 import Stack from '../../organisms/Stack';
 import ProfileCard from '../../molecules/ProfileCard';
+import Box from '../../atoms/Box';
 import { H4 } from '../../atoms/Headings';
 import ImgWrapper from '../../atoms/ImgWrapper';
 import Link from '../../atoms/Link';
 import { InstaDesktop, InstaMobile } from '../../atoms/InstagramContainer';
+import FeaturedOnType from '../../types/featured-on';
 import InstagramType from '../../types/instagram';
 import ProfileAboutType from '../../types/profile-about';
 
 interface SideContentProps {
   about?: ProfileAboutType;
+  featuredOn?: FeaturedOnType;
   instagram?: {
     node: InstagramType;
   }[];
@@ -24,7 +28,11 @@ const SideContentContainer = styled.aside`
   width: 100%;
 `;
 
-const SideContent: FC<SideContentProps> = ({ about, instagram }) => {
+const SideContent: FC<SideContentProps> = ({
+  about,
+  featuredOn,
+  instagram,
+}) => {
   return (
     <SideContentContainer>
       {about && (
@@ -43,6 +51,32 @@ const SideContent: FC<SideContentProps> = ({ about, instagram }) => {
         <H4>Newsletter</H4>
         <Newsletter />
       </Stack>
+      {featuredOn && (
+        <Stack>
+          <H4>Featured On</H4>
+          <Grid columns={3} rowGap="sm4" gap="sm4">
+            {featuredOn.logos.map((logo, idx) => (
+              <Link key={idx} to={featuredOn.links[idx]} target="_blank">
+                <Box
+                  display="flex"
+                  bgColor="nearWhite"
+                  width="100%"
+                  padding="sm4"
+                  height="100%"
+                >
+                  {logo.fluid && (
+                    <Img
+                      alt="feature on logos"
+                      fluid={logo.fluid}
+                      style={{ width: '100%' }}
+                    />
+                  )}
+                </Box>
+              </Link>
+            ))}
+          </Grid>
+        </Stack>
+      )}
       {instagram && (
         <Stack>
           <H4>Instagram</H4>
