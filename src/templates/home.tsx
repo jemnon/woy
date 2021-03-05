@@ -226,7 +226,11 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
             )}
           </GridCell>
           <GridCell width={breakpoint === 'desktop' ? 4 : 1}>
-            <SideContent about={about} instagram={instagram} />
+            <SideContent
+              about={about}
+              featuredOn={featuredOn}
+              instagram={instagram}
+            />
           </GridCell>
         </Grid>
         <BackToTop top={(height as number) - 64} />

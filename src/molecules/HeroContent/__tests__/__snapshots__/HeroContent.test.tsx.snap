@@ -10,7 +10,7 @@ exports[`<HeroContent /> renders defaults correctly 1`] = `
     Latest Post
   </h6>
   <h1
-    className="sc-dlfnbm bVnyRp"
+    className="sc-dlfnbm gUdIxp"
     color="white"
   >
     Hero Title
