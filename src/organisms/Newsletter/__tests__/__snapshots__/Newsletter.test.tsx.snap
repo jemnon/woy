@@ -17,7 +17,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
         onSubmit={[Function]}
       >
         <input
-          className="sc-hHftDr iTayez sc-bBXqnf jmOpbQ"
+          className="sc-hHftDr eGviVx sc-bBXqnf jmOpbQ"
           disabled={false}
           id="email"
           name="email"
@@ -29,7 +29,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
           value=""
         />
         <button
-          className="sc-dlfnbm jitMYf sc-iwyYcG jALA-dn"
+          className="sc-dlfnbm jujizJ sc-iwyYcG jALA-dn"
           disabled={false}
           shape="rectangle"
           type="submit"

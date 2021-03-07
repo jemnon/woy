@@ -28,14 +28,14 @@ exports[`<PartnerCard /> renders defaults correctly 1`] = `
     :
   </div>
   <p
-    className="sc-fubCfw hELhOm sc-pFZIQ bwpjVS"
+    className="sc-fubCfw fqqGiw sc-pFZIQ bwpjVS"
     fontSize="f1"
     fontWeight="bold"
   >
     WHISPEROFYUM
   </p>
   <button
-    className="sc-bdfBwQ fKLDdX"
+    className="sc-bdfBwQ daBxxX"
     onClick={[Function]}
   >
     Shop Now

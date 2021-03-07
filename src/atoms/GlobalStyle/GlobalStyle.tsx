@@ -6,6 +6,8 @@ import { ParagraphCSS } from '../Paragraph';
 const GlobalStyle = createGlobalStyle`
   * {
     box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }      
   body {
     line-height: 1.6;
@@ -17,8 +19,6 @@ const GlobalStyle = createGlobalStyle`
 
     margin: 0;
     padding: 0;
-    -webkit-font-smoothing: antialiased;
-    -moz-osx-font-smoothing: grayscale;
   }
   body.disable-scroll {
     overflow: hidden;

@@ -18,4 +18,23 @@ const getComments = async (id?: string): Promise<CommentsType[]> => {
   return payload.comments;
 };
 
+interface Body {
+  name: string;
+  email?: string;
+  message: string;
+  id: string;
+  reply?: string;
+  replyId?: string;
+}
+
+const postComments = async (body: Body): Promise<void> => {
+  const resp = await fetch(`/.netlify/functions/postComments`, {
+    headers: {
+      accept: 'application/json',
+      'content-type': 'application/json',
+    },
+    method: 'POST',
+  });
+};
+
 export default getComments;

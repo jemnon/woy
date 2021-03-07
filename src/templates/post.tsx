@@ -89,6 +89,10 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const handleCommentFormSubmit = (comment: CommentsType): void => {
     console.log('comment submit: ', comment);
   };
+  const handleReply = (id: string, name: string): void => {
+    console.log('reply id: ', id);
+    console.log('reply name:  ', name);
+  };
   const schemaJson = {
     '@context': 'http://schema.org',
     '@type': 'Recipe',
@@ -362,7 +366,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 />
                 {isFetchingComments && '...loading comments'}
                 {comments && comments.length > 0 && (
-                  <Comments comments={comments} />
+                  <Comments comments={comments} onReply={handleReply} />
                 )}
               </Box>
             </StackItem>

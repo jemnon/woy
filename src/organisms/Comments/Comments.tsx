@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
-import Grid, { GridCell } from '../../organisms/Grid';
-import Divider from '../../atoms/Divider';
+import Button from '../../atoms/Button';
 import Paragraph from '../../atoms/Paragraph';
 import Text from '../../atoms/Text';
 import { hexToRGBA } from '../../utils/colors';
@@ -40,9 +39,24 @@ const CommentsItem = styled.li<{ isReply?: boolean }>`
   }
 `;
 
-const Comments: FC<CommentsProps> = ({ comments }) => {
+const CommentsDate = styled.time``;
+
+const CommentsContent = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  > div {
+    max-width: 80%;
+  }
+`;
+
+const Comments: FC<CommentsProps> = ({ comments, onReply }) => {
   console.log('comments: ', comments);
   const total = comments?.length;
+  const handleOnReply = (id?: string, name?: string): void => {
+    if (onReply && id && name) onReply(id, name);
+  };
   return (
     <CommentsContainer>
       <CommentsHeader>
@@ -53,26 +67,88 @@ const Comments: FC<CommentsProps> = ({ comments }) => {
       </CommentsHeader>
       {comments && (
         <CommentsList>
-          {comments.map(comment => (
-            <CommentsItem key={comment.id}>
-              <Text fontWeight="bold" bottomSpacing="sm2">
-                {comment.name}
-              </Text>
-              <Paragraph fontSize="f1">{comment.message}</Paragraph>
-              {comment.replies && (
-                <CommentsList>
-                  {comment.replies.map(comment => (
-                    <CommentsItem key={comment.id} isReply>
-                      <Text fontWeight="bold" bottomSpacing="sm2">
-                        {comment.name}
-                      </Text>
+          {comments.map(comment => {
+            const { timestamp } = comment || {};
+            const commentDate = new Date(timestamp ?? '');
+            return (
+              <CommentsItem key={comment.id}>
+                <CommentsContent>
+                  <div>
+                    <Text fontWeight="bold" textColor="orange">
+                      {comment.name}
+                    </Text>
+                    {commentDate && (
+                      <>
+                        {/* @ts-ignore */}
+                        <CommentsDate
+                          as={Text}
+                          bottomSpacing="sm4"
+                          dateTime={commentDate}
+                          fontSize="f-sm"
+                          fontWeight="normal"
+                        >
+                          {commentDate.toLocaleDateString('en-us', {
+                            day: 'numeric',
+                            month: 'long',
+                            year: 'numeric',
+                          })}
+                        </CommentsDate>
+                      </>
+                    )}
+                    <Paragraph fontSize="f1" bottomSpacing="sm4">
                       {comment.message}
-                    </CommentsItem>
-                  ))}
-                </CommentsList>
-              )}
-            </CommentsItem>
-          ))}
+                    </Paragraph>
+                  </div>
+                  <Button
+                    minWidth={false}
+                    onClick={(): void =>
+                      handleOnReply(comment.id, comment.name)
+                    }
+                    width="53px"
+                    shape="rectangle"
+                    size="small"
+                    variant="outline"
+                  >
+                    Reply
+                  </Button>
+                </CommentsContent>
+                {comment.replies && (
+                  <CommentsList>
+                    {comment.replies.map(comment => {
+                      const { timestamp: timestampReply } = comment || {};
+                      const commentDateReply = new Date(timestampReply ?? '');
+                      return (
+                        <CommentsItem key={comment.id} isReply>
+                          <Text fontWeight="bold" textColor="orange">
+                            {comment.name}
+                          </Text>
+                          {commentDate && (
+                            <>
+                              {/* @ts-ignore */}
+                              <CommentsDate
+                                as={Text}
+                                bottomSpacing="sm4"
+                                dateTime={commentDateReply}
+                                fontSize="f-sm"
+                                fontWeight="normal"
+                              >
+                                {commentDateReply.toLocaleDateString('en-us', {
+                                  day: 'numeric',
+                                  month: 'long',
+                                  year: 'numeric',
+                                })}
+                              </CommentsDate>
+                            </>
+                          )}
+                          {comment.message}
+                        </CommentsItem>
+                      );
+                    })}
+                  </CommentsList>
+                )}
+              </CommentsItem>
+            );
+          })}
         </CommentsList>
       )}
     </CommentsContainer>

@@ -7,7 +7,7 @@ exports[`<SearchForm /> renders defaults correctly 1`] = `
   onSubmit={[Function]}
 >
   <input
-    className="sc-fFubgz efgyxB"
+    className="sc-fFubgz cloHHj"
     onChange={[Function]}
     placeholder="Search Recipes"
     style={

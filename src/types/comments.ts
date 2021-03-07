@@ -1,7 +1,7 @@
 interface Comments {
+  email?: string;
   id?: string;
   name?: string;
-  handle?: string;
   message?: string;
   rating?: number;
   replies?: Comments[];

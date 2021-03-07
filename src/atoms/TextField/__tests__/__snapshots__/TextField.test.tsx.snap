@@ -2,7 +2,7 @@
 
 exports[`<TextField /> renders defaults correctly 1`] = `
 <input
-  className="sc-bdfBwQ coxOSz"
+  className="sc-bdfBwQ eFcVqt"
   placeholder="email"
 />
 `;

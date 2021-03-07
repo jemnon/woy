@@ -5,7 +5,7 @@ exports[`<JumpToRecipeButton /> renders defaults correctly 1`] = `
   className="sc-fFubgz eoTpYJ"
 >
   <button
-    className="sc-bdfBwQ gvawYh"
+    className="sc-bdfBwQ cinLPW"
     shape="rectangle"
     size="small"
   >

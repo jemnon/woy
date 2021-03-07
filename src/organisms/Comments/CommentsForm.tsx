@@ -22,18 +22,18 @@ const CommentsFormFooter = styled.footer`
 const CommentsForm: FC<CommentsFormProps> = ({ isLoading, onSubmit }) => {
   const [name, setName] = useState<string>('');
   const [message, setMessage] = useState<string>('');
-  const [handle, setHandle] = useState<string>('');
+  const [email, setEmail] = useState<string>('');
   const [rating, setRating] = useState<number | undefined>(undefined);
-  const handleSubmit = (event: FormEvent<EventTarget>): void => {
+  const emailSubmit = (event: FormEvent<EventTarget>): void => {
     event.preventDefault();
     const timestamp = Date.now();
-    if (onSubmit) onSubmit({ name, message, handle, rating, timestamp });
+    if (onSubmit) onSubmit({ name, message, email, rating, timestamp });
   };
   return (
     <CommentsFormContainer
       name="comments-form"
       method="POST"
-      onSubmit={handleSubmit}
+      onSubmit={emailSubmit}
     >
       <Stack bottomSpacing="sp-0">
         <StackItem bottomSpacing="sm4">
@@ -50,12 +50,13 @@ const CommentsForm: FC<CommentsFormProps> = ({ isLoading, onSubmit }) => {
         </StackItem>
         <StackItem bottomSpacing="sm4">
           <TextField
-            id="handle"
-            name="handle"
-            placeholder="Social Handle (optional)"
-            type="text"
+            id="email"
+            name="email"
+            pattern="[^@]+@.+\..+"
+            placeholder="Email (optional)"
+            type="email"
             onChange={(event: ChangeEvent<HTMLInputElement>): void => {
-              setHandle(event.target.value);
+              setEmail(event.target.value);
             }}
           />
         </StackItem>
