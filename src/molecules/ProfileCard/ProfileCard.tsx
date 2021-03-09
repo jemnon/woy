@@ -41,9 +41,8 @@ const ProfileCardDescription = styled.div`
   font-size: ${({ theme: { fontSizes } }): string => fontSizes.f1};
   p {
     font-size: ${({ theme: { fontSizes } }): string => fontSizes.f1};
+    text-align: center;
   }
-
-  text-align: center;
 
   margin-bottom: ${({ theme }): string => theme.spacing.sm4};
 `;
