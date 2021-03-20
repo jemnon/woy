@@ -1,8 +1,8 @@
-import React, { FC, useEffect, useRef, useState } from 'react';
+import React, { FC, useRef } from 'react';
 import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
 import Carousel from '../organisms/Carousel';
-import Comments, { CommentsForm } from '../organisms/Comments';
+import Comments from '../organisms/Comments';
 import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
@@ -30,10 +30,8 @@ import Link from '../atoms/Link';
 import Paragraph from '../atoms/Paragraph';
 import PostDate from '../atoms/PostDate';
 import Text from '../atoms/Text';
-import getComments from '../lib/Comments';
 import { useBreakpointContext } from '../context/BreakpointContextProvider';
 import { generateFromAst } from '../utils/utils';
-import CommentsType from '../types/comments';
 import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
 import ProfileAboutType from '../types/profile-about';
@@ -62,14 +60,6 @@ const capitalize = (word: string): string => {
 
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const recipeRef = useRef<HTMLDivElement | null>(null);
-  const [isFetchingComments, setIsFetchingComments] = useState<boolean>(false);
-  const [isSubmittingComment, setIsSubmittingComment] = useState<boolean>(
-    false,
-  );
-  const [commentsError, setCommentsError] = useState<string | null>(null);
-  const [comments, setComments] = useState<CommentsType[] | undefined>(
-    undefined,
-  );
   const { name: breakpoint } = useBreakpointContext();
   const { page: post, about, instagram } = pageContext || {};
   const totalImages = post.images.length;
@@ -85,13 +75,6 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   };
   const handlePrintClick = (): void => {
     navigate(`/recipe-print/${post.slug}`);
-  };
-  const handleCommentFormSubmit = (comment: CommentsType): void => {
-    console.log('comment submit: ', comment);
-  };
-  const handleReply = (id: string, name: string): void => {
-    console.log('reply id: ', id);
-    console.log('reply name:  ', name);
   };
   const schemaJson = {
     '@context': 'http://schema.org',
@@ -110,24 +93,6 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
       'ol',
     ),
   };
-  useEffect(() => {
-    const fetchComments = async (): Promise<void> => {
-      setIsFetchingComments(true);
-      try {
-        const resp = await getComments(post.contentful_id);
-        setComments(resp);
-        setIsFetchingComments(false);
-        console.log(resp);
-      } catch (error) {
-        console.log('comment error: ', error);
-        setIsFetchingComments(false);
-        setCommentsError(error);
-      }
-    };
-    if (post.contentful_id && !comments && !commentsError) {
-      fetchComments();
-    }
-  });
   return (
     <Layout>
       <SEO
@@ -360,14 +325,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             <StackItem bottomSpacing="xlg4">
               <H4>Comments</H4>
               <Box padding="sm4">
-                <CommentsForm
-                  isLoading={isSubmittingComment}
-                  onSubmit={handleCommentFormSubmit}
-                />
-                {isFetchingComments && '...loading comments'}
-                {comments && comments.length > 0 && (
-                  <Comments comments={comments} onReply={handleReply} />
-                )}
+                {post.contentful_id && <Comments postId={post.contentful_id} />}
               </Box>
             </StackItem>
           )}

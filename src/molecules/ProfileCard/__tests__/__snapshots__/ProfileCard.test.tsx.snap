@@ -20,7 +20,7 @@ exports[`<ProfileCard /> renders defaults correctly 1`] = `
     className="sc-kfzAmx biwfnr"
   />
   <div
-    className="sc-fKFyDc kMuyGr"
+    className="sc-fKFyDc hxYzfh"
     dangerouslySetInnerHTML={
       Object {
         "__html": "",

@@ -1,14 +1,15 @@
-import React, { FC } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import styled from 'styled-components';
+import CommentsForm from './CommentsForm';
 import Button from '../../atoms/Button';
 import Paragraph from '../../atoms/Paragraph';
 import Text from '../../atoms/Text';
 import { hexToRGBA } from '../../utils/colors';
+import useGetComments from '../../hooks/useGetComments';
 import CommentsType from '../../types/comments';
 
 interface CommentsProps {
-  comments?: CommentsType[];
-  onReply?: (id: string, name: string) => void;
+  postId: string;
 }
 
 const CommentsContainer = styled.div``;
@@ -51,14 +52,37 @@ const CommentsContent = styled.div`
   }
 `;
 
-const Comments: FC<CommentsProps> = ({ comments, onReply }) => {
-  console.log('comments: ', comments);
+const Comments: FC<CommentsProps> = ({ postId }) => {
+  const commentsFormRef = useRef<HTMLFormElement | null>(null);
+  const { comments } = useGetComments(postId);
+  const [isSubmittingComment, setIsSubmittingComment] = useState<boolean>(
+    false,
+  );
+  const [replyId, setReplyId] = useState<string | undefined>(undefined);
+  const [replyName, setReplyName] = useState<string | undefined>(undefined);
   const total = comments?.length;
-  const handleOnReply = (id?: string, name?: string): void => {
-    if (onReply && id && name) onReply(id, name);
+  const handleCommentFormSubmit = (comment: CommentsType): void => {
+    console.log('comment submit: ', comment);
   };
+  const handleReply = (id?: string, name?: string): void => {
+    console.log('reply id: ', id);
+    console.log('reply name:  ', name);
+    setReplyId(id);
+    setReplyName(name);
+    if (commentsFormRef && commentsFormRef.current) {
+      commentsFormRef.current.focus();
+      const top = commentsFormRef.current.offsetTop - 160;
+      window.scrollTo({ top, left: 0, behavior: 'smooth' });
+    }
+  };
+
   return (
     <CommentsContainer>
+      <CommentsForm
+        isLoading={isSubmittingComment}
+        onSubmit={handleCommentFormSubmit}
+        ref={commentsFormRef}
+      />
       <CommentsHeader>
         <Text display="inline" fontWeight="bold">
           {total}
@@ -101,9 +125,7 @@ const Comments: FC<CommentsProps> = ({ comments, onReply }) => {
                   </div>
                   <Button
                     minWidth={false}
-                    onClick={(): void =>
-                      handleOnReply(comment.id, comment.name)
-                    }
+                    onClick={(): void => handleReply(comment.id, comment.name)}
                     width="53px"
                     shape="rectangle"
                     size="small"
