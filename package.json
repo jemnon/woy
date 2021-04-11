@@ -111,6 +111,10 @@
     "not dead",
     "not op_mini all"
   ],
+  "engines": {
+    "node": ">=12.0.0",
+    "npm": ">=6.0.0"
+  },
   "globals": {
     "FB": true
   },
