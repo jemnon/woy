@@ -2,11 +2,11 @@
 
 exports[`<CloseButton /> renders defaults correctly 1`] = `
 <button
-  className="sc-fFubgz hFqlIG"
+  className="sc-dJjZJu etvKfT"
   type="button"
 >
   <svg
-    className="sc-fodVxV lkkdhu"
+    className="sc-ieebsP EGzBJ"
     fill="#111"
     fontSize="1rem"
     height="1em"

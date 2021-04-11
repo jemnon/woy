@@ -2,12 +2,12 @@
 
 exports[`<SearchForm /> renders defaults correctly 1`] = `
 <form
-  className="sc-idOhPF kWyKGK"
+  className="sc-dlVyqM fChSbn"
   method="POST"
   onSubmit={[Function]}
 >
   <input
-    className="sc-fFubgz cloHHj"
+    className="sc-dJjZJu eSeNuK"
     onChange={[Function]}
     placeholder="Search Recipes"
     style={
@@ -20,12 +20,12 @@ exports[`<SearchForm /> renders defaults correctly 1`] = `
     value=""
   />
   <button
-    className="sc-dIUggk dmJMev"
+    className="sc-kfPtPH cUlVRz"
     size="medium"
     type="submit"
   >
     <svg
-      className="sc-crrsfI bhoreA"
+      className="sc-crHlIS ftzpui"
       fill="#fff"
       fontSize="1rem"
       height="1em"

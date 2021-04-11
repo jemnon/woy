@@ -2,21 +2,21 @@
 
 exports[`<PinButton /> renders defaults correctly 1`] = `
 <div
-  className="sc-fFubgz eoTpYJ"
+  className="sc-dJjZJu gJuiWY"
 >
   <button
-    className="sc-bdfBwQ cinLPW"
+    className="sc-bdvvaa fVbsZy"
     onClick={[Function]}
     shape="rectangle"
     size="small"
   >
     <span
-      className="sc-bkzZxe iWfDzb"
+      className="sc-hGPAah bvQlhi"
     >
       Pin It
     </span>
     <svg
-      className="sc-pFZIQ dnTUMB"
+      className="sc-pVTma eKehlp"
       fill="#BB5B34"
       fontSize="0.85rem"
       height="1em"

@@ -2,20 +2,20 @@
 
 exports[`<JumpToRecipeButton /> renders defaults correctly 1`] = `
 <div
-  className="sc-fFubgz eoTpYJ"
+  className="sc-dJjZJu gJuiWY"
 >
   <button
-    className="sc-bdfBwQ cinLPW"
+    className="sc-bdvvaa fVbsZy"
     shape="rectangle"
     size="small"
   >
     <span
-      className="sc-bkzZxe iWfDzb"
+      className="sc-hGPAah bvQlhi"
     >
       Jump to Recipe
     </span>
     <svg
-      className="sc-dQppl hrCsGr"
+      className="sc-hBURRC jqGJJQ"
       fill="#BB5B34"
       fontSize="0.75rem"
       height="1em"

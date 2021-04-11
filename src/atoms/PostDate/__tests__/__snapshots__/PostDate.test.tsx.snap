@@ -2,7 +2,7 @@
 
 exports[`<PostDate /> renders defaults correctly 1`] = `
 <time
-  className="sc-bdfBwQ dFRsIL"
+  className="sc-bdvvaa fMxPAv"
   dateTime="2021-01-20T00:00-08:00"
 >
   Jan 20, 2021

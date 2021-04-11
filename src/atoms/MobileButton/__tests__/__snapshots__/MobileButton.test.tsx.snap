@@ -2,10 +2,10 @@
 
 exports[`<MobileButton /> renders defaults correctly 1`] = `
 <button
-  className="sc-fFubgz iJWFeU"
+  className="sc-dJjZJu hWoFcp"
 >
   <svg
-    className="sc-eCssSg gaZxCm"
+    className="sc-eCImvq gtUUwb"
     fill="#111"
     fontSize="1.5rem"
     height="1em"

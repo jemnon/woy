@@ -2,18 +2,18 @@
 
 exports[`<Header /> renders defaults correctly 1`] = `
 <header
-  className="sc-jJEJSO jjjWHN"
+  className="sc-cCcYRi hyrZgJ"
 >
   <nav
-    className="sc-lmoMRL cFCsPS"
+    className="sc-ezbkgU kfhCJF"
     role="main"
   >
     <button
-      className="sc-fFubgz eEdbCI"
+      className="sc-dJjZJu jSRFKl"
       onClick={[Function]}
     >
       <svg
-        className="sc-fubCfw bYBCxp"
+        className="sc-furvIG kRwNSd"
         fill="#111"
         fontSize="187px"
         height="1.5rem"
@@ -36,64 +36,64 @@ exports[`<Header /> renders defaults correctly 1`] = `
       </svg>
     </button>
     <ul
-      className="sc-giIncl jAkpHk"
+      className="sc-kLwgWK gHiRL"
     >
       <li
-        className="sc-bYEvPH fytWeS"
+        className="sc-jJoQpE nlkCv"
       >
         <button
-          className="sc-kLgntA qJxHK"
+          className="sc-hiCivh hAEeMm"
           onClick={[Function]}
         >
           Home
         </button>
       </li>
       <li
-        className="sc-bYEvPH fytWeS"
+        className="sc-jJoQpE nlkCv"
       >
         <div
-          className="sc-iJuUWI jTFRfL"
+          className="sc-bYoCmx kRvQaK"
         />
       </li>
       <li
-        className="sc-bYEvPH fytWeS"
+        className="sc-jJoQpE nlkCv"
       >
         <button
-          className="sc-kLgntA qJxHK"
+          className="sc-hiCivh hAEeMm"
           onClick={[Function]}
         >
           Recipes
         </button>
       </li>
       <li
-        className="sc-bYEvPH fytWeS"
+        className="sc-jJoQpE nlkCv"
       >
         <div
-          className="sc-iJuUWI jTFRfL"
+          className="sc-bYoCmx kRvQaK"
         />
       </li>
       <li
-        className="sc-bYEvPH fytWeS"
+        className="sc-jJoQpE nlkCv"
       >
         <button
-          className="sc-kLgntA qJxHK"
+          className="sc-hiCivh hAEeMm"
           onClick={[Function]}
         >
           About
         </button>
       </li>
       <li
-        className="sc-bYEvPH fytWeS"
+        className="sc-jJoQpE nlkCv"
       >
         <div
-          className="sc-iJuUWI jTFRfL"
+          className="sc-bYoCmx kRvQaK"
         />
       </li>
       <li
-        className="sc-bYEvPH fytWeS"
+        className="sc-jJoQpE nlkCv"
       >
         <a
-          className="sc-iktFzd dxNDZd"
+          className="sc-gWXaA-D gptmjo"
           href="mailto:whisperofyum@gmail.com"
           target="_top"
         >
@@ -101,14 +101,14 @@ exports[`<Header /> renders defaults correctly 1`] = `
         </a>
       </li>
       <li
-        className="sc-bYEvPH fytWeS"
+        className="sc-jJoQpE nlkCv"
       >
         <button
-          className="sc-idOhPF czqtqd"
+          className="sc-dlVyqM gPQtjY"
           onClick={[Function]}
         >
           <svg
-            className="sc-crrsfI bhoreA"
+            className="sc-crHlIS ftzpui"
             fill="#111"
             fontSize="1rem"
             height="1em"
@@ -147,17 +147,17 @@ exports[`<Header /> renders defaults correctly 1`] = `
       </li>
     </ul>
     <ul
-      className="sc-ezrdKe dxUA-dt"
+      className="sc-ikJzcn cA-DVKv"
     >
       <li
-        className="sc-bYEvPH fytWeS"
+        className="sc-jJoQpE nlkCv"
       >
         <button
-          className="sc-idOhPF czqtqd"
+          className="sc-dlVyqM gPQtjY"
           onClick={[Function]}
         >
           <svg
-            className="sc-crrsfI bhoreA"
+            className="sc-crHlIS ftzpui"
             fill="#111"
             fontSize="1rem"
             height="1em"
@@ -195,14 +195,14 @@ exports[`<Header /> renders defaults correctly 1`] = `
         </button>
       </li>
       <li
-        className="sc-bYEvPH fytWeS"
+        className="sc-jJoQpE nlkCv"
       >
         <button
-          className="sc-bkzZxe fQGWIi"
+          className="sc-hGPAah hAxZQz"
           onClick={[Function]}
         >
           <svg
-            className="sc-jSgupP laEzvH"
+            className="sc-jRQAMF vaXaV"
             fill="#111"
             fontSize="1.5rem"
             height="1em"

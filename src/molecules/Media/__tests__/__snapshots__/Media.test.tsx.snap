@@ -2,13 +2,13 @@
 
 exports[`<Media /> renders defaults correctly 1`] = `
 <article
-  className="sc-eCssSg bMMBMS"
+  className="sc-eCImvq cbqsFv"
 >
   <figure
-    className="sc-jSgupP hvCOCt"
+    className="sc-jRQAMF fslYWP"
   >
     <div
-      className="sc-bdfBwQ jlkewK"
+      className="sc-bdvvaa kAltse"
     >
       <img
         src="some-image.jpg"
@@ -16,21 +16,21 @@ exports[`<Media /> renders defaults correctly 1`] = `
     </div>
   </figure>
   <div
-    className="sc-gKsewC dqxkbu"
+    className="sc-gKckTs cFWoEV"
   >
     <time
-      className="sc-gsTCUz kVJUOL"
+      className="sc-gsDJrp bcoJhx"
       dateTime="2021-01-20T00:00-08:00"
     >
       Jan 20, 2021
     </time>
     <h2
-      className="sc-hKgILt bsXUuO"
+      className="sc-hKwCoD cbtypN"
     >
       Filipino Pork Adobo
     </h2>
     <div
-      className="sc-iBPRYJ kJYDux"
+      className="sc-iCfLBT iZnesr"
     >
       media desc
     </div>

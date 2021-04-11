@@ -3,13 +3,13 @@
 exports[`<Card /> renders defaults correctly 1`] = `
 <article
   aria-label="Filipino Pork Adobo"
-  className="sc-eCssSg kMfKjy"
+  className="sc-eCImvq kZbPAH"
 >
   <figure
-    className="sc-jSgupP cOGRqD"
+    className="sc-jRQAMF dioOTJ"
   >
     <div
-      className="sc-bdfBwQ jlkewK"
+      className="sc-bdvvaa kAltse"
     >
       <img
         src="some-image.jpg"
@@ -17,13 +17,13 @@ exports[`<Card /> renders defaults correctly 1`] = `
     </div>
   </figure>
   <time
-    className="sc-gsTCUz kVJUOL"
+    className="sc-gsDJrp bcoJhx"
     dateTime="2021-01-20T00:00-08:00"
   >
     Jan 20, 2021
   </time>
   <h2
-    className="sc-hKgILt bsXUuO"
+    className="sc-hKwCoD cbtypN"
   >
     Filipino Pork Adobo
   </h2>

@@ -18,23 +18,18 @@ const getComments = async (id?: string): Promise<CommentsType[]> => {
   return payload.comments;
 };
 
-interface Body {
-  name: string;
-  email?: string;
-  message: string;
-  id: string;
-  reply?: string;
-  replyId?: string;
-}
-
-const postComments = async (body: Body): Promise<void> => {
-  const resp = await fetch(`/.netlify/functions/postComments`, {
+export const postComment = async (body: CommentsType): Promise<void> => {
+  const resp = await fetch(`/.netlify/functions/postComment`, {
     headers: {
-      accept: 'application/json',
-      'content-type': 'application/json',
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+      credentials: 'same-origin',
     },
     method: 'POST',
+    body: JSON.stringify(body),
   });
+  console.log('post comment: ', resp);
+  return resp.json();
 };
 
 export default getComments;

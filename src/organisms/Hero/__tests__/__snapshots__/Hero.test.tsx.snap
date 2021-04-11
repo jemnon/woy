@@ -2,13 +2,13 @@
 
 exports[`<Hero /> renders defaults correctly 1`] = `
 <section
-  className="sc-iwyYcG hdDWQc"
+  className="sc-iJKOzS iRYlIK"
 >
   <button
-    className="sc-fFubgz dnqTGB"
+    className="sc-dJjZJu FFlTU"
   >
     <svg
-      className="sc-gsTCUz chkPNN"
+      className="sc-gsDJrp dCJzuv"
       fill="#fff"
       fontSize="2.25rem"
       height="1em"

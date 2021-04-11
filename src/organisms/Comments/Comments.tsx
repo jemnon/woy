@@ -1,10 +1,12 @@
 import React, { FC, useRef, useState } from 'react';
 import styled from 'styled-components';
+import { v4 as uuid } from 'uuid';
 import CommentsForm from './CommentsForm';
 import Button from '../../atoms/Button';
 import Paragraph from '../../atoms/Paragraph';
 import Text from '../../atoms/Text';
 import { hexToRGBA } from '../../utils/colors';
+import { postComment } from '../../lib/Comments';
 import useGetComments from '../../hooks/useGetComments';
 import CommentsType from '../../types/comments';
 
@@ -61,8 +63,22 @@ const Comments: FC<CommentsProps> = ({ postId }) => {
   const [replyId, setReplyId] = useState<string | undefined>(undefined);
   const [replyName, setReplyName] = useState<string | undefined>(undefined);
   const total = comments?.length;
-  const handleCommentFormSubmit = (comment: CommentsType): void => {
-    console.log('comment submit: ', comment);
+  const handleCommentFormSubmit = async (
+    comment: CommentsType,
+  ): Promise<void> => {
+    localStorage.setItem('timestamp', `${comment?.timestamp}`);
+    const id = uuid();
+    const body = {
+      id,
+      postId,
+      replyId,
+      ...comment,
+    };
+    try {
+      await postComment(body);
+    } catch (error) {
+      console.log('form comment error: ', error);
+    }
   };
   const handleReply = (id?: string, name?: string): void => {
     console.log('reply id: ', id);

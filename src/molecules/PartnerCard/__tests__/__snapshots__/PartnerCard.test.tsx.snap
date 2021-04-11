@@ -3,13 +3,13 @@
 exports[`<PartnerCard /> renders defaults correctly 1`] = `
 <article
   aria-label="Title"
-  className="sc-jrAGrp cfzywa"
+  className="sc-jrQzUz ibQScY"
 >
   <figure
-    className="sc-kEjbxe leExdT"
+    className="sc-kDThTU isOPXU"
   >
     <div
-      className="sc-iBPRYJ bXkdcQ"
+      className="sc-iCfLBT bGCavi"
     >
       <img
         src="some-image.jpg"
@@ -17,25 +17,25 @@ exports[`<PartnerCard /> renders defaults correctly 1`] = `
     </div>
   </figure>
   <h5
-    className="sc-jSgupP fedzsG"
+    className="sc-jRQAMF cAtpyc"
   >
     Title
   </h5>
   <div
-    className="sc-pFZIQ kHJviY"
+    className="sc-pVTma jBccrw"
   >
     Some Desc
     :
   </div>
   <p
-    className="sc-fubCfw fqqGiw sc-pFZIQ bwpjVS"
+    className="sc-furvIG hdhXSU sc-pVTma dlHTzC"
     fontSize="f1"
     fontWeight="bold"
   >
     WHISPEROFYUM
   </p>
   <button
-    className="sc-bdfBwQ daBxxX"
+    className="sc-bdvvaa exycJr"
     onClick={[Function]}
   >
     Shop Now

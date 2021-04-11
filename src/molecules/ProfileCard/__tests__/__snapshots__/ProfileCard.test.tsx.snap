@@ -2,25 +2,25 @@
 
 exports[`<ProfileCard /> renders defaults correctly 1`] = `
 <section
-  className="sc-hHftDr giMufq"
+  className="sc-fKVsgm gHITeq"
 >
   <img
     alt="jerildine"
-    className="sc-bdfBwQ CGFBo"
+    className="sc-bdvvaa dOfXvM"
     src="https://images.ctfassets.net/lz7g6u6kccw7/2PXqIKP4gcdBKWQ4sUuqaa/c4ea960704b036c285cd6061400c447e/IMG_6D21ECE4038E-1.jpeg?h=250"
   />
   <div
-    className="sc-gsTCUz fzDpmx sc-dmlrTW ejklch"
+    className="sc-gsDJrp gnvuur sc-bBHwJV bRtXXM"
     fontSize="f4"
     fontWeight="bold"
   >
     jerildine
   </div>
   <div
-    className="sc-kfzAmx biwfnr"
+    className="sc-iwjezw CtbIG"
   />
   <div
-    className="sc-fKFyDc hxYzfh"
+    className="sc-cxpRKc bjBnP"
     dangerouslySetInnerHTML={
       Object {
         "__html": "",
@@ -28,18 +28,18 @@ exports[`<ProfileCard /> renders defaults correctly 1`] = `
     }
   />
   <footer
-    className="sc-bBXqnf kdDYVi"
+    className="sc-llYToB HdhJl"
   >
     <button
-      className="sc-idOhPF ynhbU"
+      className="sc-dlVyqM bxzSft"
     >
       <span
-        className="sc-dIUggk iUHtJK"
+        className="sc-kfPtPH iLVomG"
       >
         Read More
       </span>
       <svg
-        className="sc-dQppl eVssLA"
+        className="sc-egiSv fpsiTh"
         fill="#A2421B"
         fontSize="10px"
         height="1em"

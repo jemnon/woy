@@ -2,21 +2,21 @@
 
 exports[`<HeroContent /> renders defaults correctly 1`] = `
 <div
-  className="sc-fubCfw jiVMnK"
+  className="sc-furvIG dsSAfm"
 >
   <h6
-    className="sc-gsTCUz bEeIzf"
+    className="sc-gsDJrp DCocN"
   >
     Latest Post
   </h6>
   <h1
-    className="sc-dlfnbm gUdIxp"
+    className="sc-dkPtyc gmvyah"
     color="white"
   >
     Hero Title
   </h1>
   <button
-    className="sc-bdfBwQ iTApXf"
+    className="sc-bdvvaa fSalcr"
   >
     View Recipe
   </button>

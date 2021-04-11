@@ -2,10 +2,10 @@
 
 exports[`<Logo /> renders defaults correctly 1`] = `
 <button
-  className="sc-fFubgz eEdbCI"
+  className="sc-dJjZJu jSRFKl"
 >
   <svg
-    className="sc-fubCfw bYBCxp"
+    className="sc-furvIG kRwNSd"
     fill="#111"
     fontSize="187px"
     height="1.5rem"

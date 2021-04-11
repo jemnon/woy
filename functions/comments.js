@@ -3,7 +3,7 @@ const client = contentful.createClient({
   accessToken: `${process.env.CONTENTFUL_MANAGEMENT_API_TOKEN}`,
 });
 
-exports.handler = function(event, context, callback) {
+exports.handler = function (event, context, callback) {
   const fetchComments = async () => {
     let postComments = [];
     try {

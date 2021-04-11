@@ -2,13 +2,13 @@
 
 exports[`<Social /> renders defaults correctly 1`] = `
 <section
-  className="sc-idOhPF dZvpdX"
+  className="sc-dlVyqM hThFPu"
 >
   <section
-    className="sc-bdfBwQ hiaScI"
+    className="sc-bdvvaa dMfZpo"
   >
     <div
-      className="sc-gsTCUz gXNqFJ"
+      className="sc-gsDJrp exCnBT"
       width={1}
     >
       <a
@@ -17,7 +17,7 @@ exports[`<Social /> renders defaults correctly 1`] = `
         target="_blank"
       >
         <svg
-          className="sc-kEjbxe dDeeAp"
+          className="sc-kDThTU gYJdKC"
           fill="#111"
           fontSize="1.25rem"
           height="1em"
@@ -33,7 +33,7 @@ exports[`<Social /> renders defaults correctly 1`] = `
       </a>
     </div>
     <div
-      className="sc-gsTCUz kaTuJv"
+      className="sc-gsDJrp bNczCN"
       width={1}
     >
       <a
@@ -42,7 +42,7 @@ exports[`<Social /> renders defaults correctly 1`] = `
         target="_blank"
       >
         <svg
-          className="sc-fubCfw klUqJt"
+          className="sc-furvIG enITVB"
           fill="#111"
           fontSize="1.25rem"
           height="1em"
@@ -58,7 +58,7 @@ exports[`<Social /> renders defaults correctly 1`] = `
       </a>
     </div>
     <div
-      className="sc-gsTCUz gXNqFJ"
+      className="sc-gsDJrp exCnBT"
       width={1}
     >
       <a
@@ -67,7 +67,7 @@ exports[`<Social /> renders defaults correctly 1`] = `
         target="_blank"
       >
         <svg
-          className="sc-gKsewC iAjfck"
+          className="sc-gKckTs fvUMUv"
           fill="#111"
           fontSize="1.25rem"
           height="1em"

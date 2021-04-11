@@ -2,22 +2,22 @@
 
 exports[`<Newsletter /> renders defaults correctly 1`] = `
 <section
-  className="sc-ezrdKe kwAELj"
+  className="sc-ikJzcn kgvzlR"
 >
   <ul
-    className="sc-bdfBwQ kgNPIO"
+    className="sc-bdvvaa doZjMy"
   >
     <li
-      className="sc-gsTCUz dAeQxC"
+      className="sc-gsDJrp brVIog"
     >
       <form
-        className="sc-kfzAmx kfiCZv"
+        className="sc-iwjezw dndFhq"
         method="POST"
         name="newsletter"
         onSubmit={[Function]}
       >
         <input
-          className="sc-hHftDr eGviVx sc-bBXqnf jmOpbQ"
+          className="sc-fKVsgm hzofIp sc-llYToB bRCYvP"
           disabled={false}
           id="email"
           name="email"
@@ -29,7 +29,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
           value=""
         />
         <button
-          className="sc-dlfnbm jujizJ sc-iwyYcG jALA-dn"
+          className="sc-dkPtyc hFGRwd sc-iJKOzS dBZGpZ"
           disabled={false}
           shape="rectangle"
           type="submit"
@@ -39,25 +39,25 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
       </form>
     </li>
     <li
-      className="sc-gsTCUz dAeQxC"
+      className="sc-gsDJrp brVIog"
     >
       <div
-        className="sc-dIUggk iAHNPH"
+        className="sc-kfPtPH gHwgHr"
       >
         Stay up to date with our newsletter.
       </div>
     </li>
     <li
-      className="sc-gsTCUz ilBoXu"
+      className="sc-gsDJrp gREqKU"
     >
       <section
-        className="sc-giIncl gPMWrt"
+        className="sc-kLwgWK kmbmqO"
       >
         <section
-          className="sc-cxFLnm ceAgiC"
+          className="sc-giYgFv hLJfCS"
         >
           <div
-            className="sc-lmoMRL iRGPPA"
+            className="sc-ezbkgU dyLCOf"
             width={1}
           >
             <a
@@ -66,7 +66,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
               target="_blank"
             >
               <svg
-                className="sc-kEjbxe dDeeAp"
+                className="sc-kDThTU gYJdKC"
                 fill="#111"
                 fontSize="1.25rem"
                 height="1em"
@@ -82,7 +82,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
             </a>
           </div>
           <div
-            className="sc-lmoMRL iZierS"
+            className="sc-ezbkgU chsOEJ"
             width={1}
           >
             <a
@@ -91,7 +91,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
               target="_blank"
             >
               <svg
-                className="sc-fubCfw klUqJt"
+                className="sc-furvIG enITVB"
                 fill="#111"
                 fontSize="1.25rem"
                 height="1em"
@@ -107,7 +107,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
             </a>
           </div>
           <div
-            className="sc-lmoMRL iRGPPA"
+            className="sc-ezbkgU dyLCOf"
             width={1}
           >
             <a
@@ -116,7 +116,7 @@ exports[`<Newsletter /> renders defaults correctly 1`] = `
               target="_blank"
             >
               <svg
-                className="sc-gKsewC iAjfck"
+                className="sc-gKckTs fvUMUv"
                 fill="#111"
                 fontSize="1.25rem"
                 height="1em"

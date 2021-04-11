@@ -2,10 +2,10 @@
 
 exports[`<VideoThumb /> renders defaults correctly 1`] = `
 <section
-  className="sc-dIUggk heyJDc"
+  className="sc-kfPtPH kfFKcU"
 >
   <div
-    className="sc-bdfBwQ kNOhZq"
+    className="sc-bdvvaa dkBzby"
     style={
       Object {
         "opacity": "90%",
@@ -17,17 +17,17 @@ exports[`<VideoThumb /> renders defaults correctly 1`] = `
     />
   </div>
   <div
-    className="sc-hHftDr DJnUe"
+    className="sc-fKVsgm ehYEGO"
   >
     <button
-      className="sc-bkzZxe eMjA-dV"
+      className="sc-hGPAah bWrCmA"
       onClick={[Function]}
     >
       <div
-        className="sc-idOhPF hVLdpt"
+        className="sc-dlVyqM fBTkBo"
       >
         <svg
-          className="sc-jrAGrp hIakoQ"
+          className="sc-jrQzUz libjiq"
           fill="#fff"
           fontSize="1.5rem"
           height="1em"

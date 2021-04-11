@@ -2,13 +2,13 @@
 
 exports[`<PlayButton /> renders defaults correctly 1`] = `
 <button
-  className="sc-fFubgz hvkxRj"
+  className="sc-dJjZJu jVOApq"
 >
   <div
-    className="sc-bkzZxe cYsTrd"
+    className="sc-hGPAah bvapFk"
   >
     <svg
-      className="sc-pFZIQ gnyZHg"
+      className="sc-pVTma eUsOBM"
       fill="#fff"
       fontSize="1.5rem"
       height="1em"

@@ -12,6 +12,9 @@ import Play from './Play';
 import Print from './Print';
 import RightArrow from './RightArrow';
 import Search from './Search';
+import StarEmpty from './StarEmpty';
+import StarFull from './StarFull';
+import StarHalf from './StarHalf';
 import TriangleDown from './TriangleDown';
 import TriangleUp from './TriangleUp';
 import Twitter from './Twitter';
@@ -32,6 +35,9 @@ export {
   Print,
   RightArrow,
   Search,
+  StarEmpty,
+  StarFull,
+  StarHalf,
   TriangleDown,
   TriangleUp,
   Twitter,
@@ -53,6 +59,9 @@ export const Icons = {
   Print,
   RightArrow,
   Search,
+  StarEmpty,
+  StarFull,
+  StarHalf,
   TriangleDown,
   TriangleUp,
   Twitter,

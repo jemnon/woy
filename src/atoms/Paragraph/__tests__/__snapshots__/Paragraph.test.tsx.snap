@@ -2,7 +2,7 @@
 
 exports[`<Paragraph /> renders defaults correctly 1`] = `
 <p
-  className="sc-bdfBwQ bdboFd"
+  className="sc-bdvvaa jUlbvB"
 >
   Paragraph
 </p>
