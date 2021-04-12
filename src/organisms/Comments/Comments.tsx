@@ -74,10 +74,13 @@ const Comments: FC<CommentsProps> = ({ postId }) => {
       replyId,
       ...comment,
     };
+    setIsSubmittingComment(true);
     try {
       await postComment(body);
+      setIsSubmittingComment(false);
     } catch (error) {
       console.log('form comment error: ', error);
+      setIsSubmittingComment(false);
     }
   };
   const handleReply = (id?: string, name?: string): void => {
