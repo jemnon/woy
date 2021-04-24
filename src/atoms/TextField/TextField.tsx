@@ -21,7 +21,7 @@ const TextField = styled.input<TextFieldProps>`
   border-style: solid;
   border-color: ${({ borderColor = 'nearBlack', theme: { colors } }): string =>
     colors[borderColor]};
-  border-radius: 0;
+  border-radius: 0.25rem;
 
   transition: ${({ theme }): string => theme.transition};
 

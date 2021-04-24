@@ -19,7 +19,7 @@ const PinButtonContainer = styled.div<Pick<PinButtonProps, 'width'>>`
 `;
 
 const PinButtonLabel = styled.span`
-  padding-right: ${({ theme }): string => theme.spacing.sm2};
+  padding-right: ${({ theme }): string => theme.spacing.sm1};
 `;
 
 const PinButton: FC<PinButtonProps> = ({ description, media, url, width }) => {

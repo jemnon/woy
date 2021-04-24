@@ -50,7 +50,7 @@ const Button = styled.button<ButtonProps>`
   text-decoration: none;
 
   border-radius: ${({ shape = 'rounded' }): string =>
-    shape === 'rectangle' ? '0' : '5rem'};
+    shape === 'rectangle' ? '0.25rem' : '5rem'};
   border-width: ${({ variant = 'solid' }): string =>
     variant === 'outline' ? '1px' : ''};
   border-style: solid;
