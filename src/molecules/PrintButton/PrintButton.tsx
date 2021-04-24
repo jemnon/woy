@@ -20,7 +20,7 @@ const PrintButtonContainer = styled.div<Pick<PrintButtonProps, 'width'>>`
   width: ${({ width = 'auto' }): string => width};
 `;
 const PrintButtonLabel = styled.span`
-  padding-right: ${({ theme }): string => theme.spacing.sm2};
+  padding-right: ${({ theme }): string => theme.spacing.sm1};
 `;
 
 const PrintButton: FC<PrintButtonProps> = ({
