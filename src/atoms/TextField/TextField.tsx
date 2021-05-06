@@ -21,7 +21,7 @@ const InputCSS = css<TextFieldProps>`
   border-style: solid;
   border-color: ${({ borderColor = 'nearBlack', theme: { colors } }): string =>
     colors[borderColor]};
-  border-radius: 2px;
+  border-radius: 0.25rem;
 
   transition: box-shadow 0.15s ease;
 

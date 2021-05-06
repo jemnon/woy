@@ -7,6 +7,7 @@ import CommentsType from '../../types/comments';
 
 interface CommentsFormProps {
   isLoading?: boolean;
+  replyName?: string;
   onSubmit?: (comment: Omit<CommentsType, 'replies'>) => void;
 }
 
@@ -24,7 +25,7 @@ const CommentsFormFooter = styled.footer`
 `;
 
 const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
-  ({ isLoading, onSubmit }, commentsFormRef) => {
+  ({ isLoading, onSubmit, replyName }, commentsFormRef) => {
     const [name, setName] = useState<string>('');
     const [message, setMessage] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -46,7 +47,7 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
             <TextField
               id="name"
               name="name"
-              placeholder="Name"
+              placeholder={replyName ? `Replying to ${replyName}` : 'Name'}
               type="text"
               required
               onChange={(event: ChangeEvent<HTMLInputElement>): void => {

@@ -100,6 +100,7 @@ const Comments: FC<CommentsProps> = ({ postId }) => {
       <CommentsForm
         isLoading={isSubmittingComment}
         onSubmit={handleCommentFormSubmit}
+        replyName={replyName}
         ref={commentsFormRef}
       />
       <CommentsHeader>

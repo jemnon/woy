@@ -322,58 +322,60 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
     component: require.resolve('./src/templates/home.tsx'),
     context: {
       page: {
-        about: profileAboutData.contentfulProfileAbout,
-        reels: reelsData.contentfulReels,
-        featuredOn: featuredOnData.contentfulFeaturedOn,
-        latestPost: latestPostData.allContentfulPosts.edges,
-        favorites: favoritesData.allContentfulFavoritePosts.edges,
+        about: profileAboutData ? profileAboutData.contentfulProfileAbout : null,
+        reels: reelsData ? reelsData.contentfulReels: null,
+        featuredOn: featuredOnData ?  featuredOnData.contentfulFeaturedOn: null,
+        latestPost: latestPostData ? latestPostData.allContentfulPosts.edges: null,
+        favorites: favoritesData ? favoritesData.allContentfulFavoritePosts.edges: null,
         instagram: instaData ? instaData.allInstagramContent.edges : null,
-        recentPosts: recentPostsData.allContentfulPosts.edges,
+        recentPosts: recentPostsData ? recentPostsData.allContentfulPosts.edges: null,
       },
     },
   });
   // post pages
-  postsData.allContentfulPosts.edges.forEach(edge => {
-    const { slug } = edge.node;
-    createPage({
-      path: `post/${slug}`,
-      component: require.resolve('./src/templates/post.tsx'),
-      context: {
-        about: profileAboutData.contentfulProfileAbout,
-        instagram: instaData ? instaData.allInstagramContent.edges : null,
-        page: { ...edge.node, next: edge.next, previous: edge.previous },
-      },
+  if (postsData) {
+    postsData.allContentfulPosts.edges.forEach(edge => {
+      const { slug } = edge.node;
+      createPage({
+        path: `post/${slug}`,
+        component: require.resolve('./src/templates/post.tsx'),
+        context: {
+          about: profileAboutData.contentfulProfileAbout,
+          instagram: instaData ? instaData.allInstagramContent.edges : null,
+          page: { ...edge.node, next: edge.next, previous: edge.previous },
+        },
+      });
     });
-  });
-  // print recipe pages
-  postsData.allContentfulPosts.edges.forEach(edge => {
-    const { slug } = edge.node;
-    createPage({
-      path: `recipe-print/${slug}`,
-      component: require.resolve('./src/templates/recipe-print.tsx'),
-      context: {
-        page: { ...edge.node },
-      },
+    // print recipe pages
+    postsData.allContentfulPosts.edges.forEach(edge => {
+      const { slug } = edge.node;
+      createPage({
+        path: `recipe-print/${slug}`,
+        component: require.resolve('./src/templates/recipe-print.tsx'),
+        context: {
+          page: { ...edge.node },
+        },
+      });
     });
-  });
-  // generate pagination for posts page
-  const postsPerPage = 9;
-  const postsLen = postsData.allContentfulPosts.edges.length;
-  const totalPages = Math.ceil(postsLen / postsPerPage);
-  Array.from({ length: totalPages }).forEach((_, idx) => {
-    createPage({
-      path: `/posts/${idx + 1}`,
-      component: require.resolve('./src/templates/post-list.tsx'),
-      context: {
-        about: profileAboutData.contentfulProfileAbout,
-        reels: reelsData.contentfulReels,
-        featuredOn: featuredOnData.contentfulFeaturedOn,
-        instagram: instaData ? instaData.allInstagramContent.edges : null,
-        currentPage: idx + 1,
-        limit: postsPerPage,
-        skip: idx * postsPerPage,
-        totalPages,
-      },
+    // generate pagination for posts page
+    const postsPerPage = 9;
+    const postsLen = postsData.allContentfulPosts.edges.length;
+    const totalPages = Math.ceil(postsLen / postsPerPage);
+    Array.from({ length: totalPages }).forEach((_, idx) => {
+      createPage({
+        path: `/posts/${idx + 1}`,
+        component: require.resolve('./src/templates/post-list.tsx'),
+        context: {
+          about: profileAboutData.contentfulProfileAbout,
+          reels: reelsData.contentfulReels,
+          featuredOn: featuredOnData.contentfulFeaturedOn,
+          instagram: instaData ? instaData.allInstagramContent.edges : null,
+          currentPage: idx + 1,
+          limit: postsPerPage,
+          skip: idx * postsPerPage,
+          totalPages,
+        },
+      });
     });
-  });
+  }
 };

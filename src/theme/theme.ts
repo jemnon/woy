@@ -80,7 +80,7 @@ const theme: DefaultTheme = {
     xlg3: '3.75rem' /* 60px */,
     xlg4: '4rem' /* 64px */,
   },
-  transition: 'all 0.47s ease',
+  transition: 'all 0.15s ease',
   zIndex: {
     z0: '0',
     z1: '1',

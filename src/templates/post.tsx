@@ -146,7 +146,8 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 >
                   <StackItem
                     flow={breakpoint === 'desktop' ? 'row' : 'column'}
-                    rightSpacing="sm4"
+                    bottomSpacing="sm2"
+                    rightSpacing="sm2"
                   >
                     <JumpToRecipeButton
                       onClick={handleJumpToRecipe}
@@ -251,7 +252,8 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                     >
                       <StackItem
                         flow={breakpoint === 'desktop' ? 'row' : 'column'}
-                        rightSpacing="sm4"
+                        bottomSpacing="sm2"
+                        rightSpacing="sm2"
                       >
                         <PrintButton
                           onClick={handlePrintClick}
