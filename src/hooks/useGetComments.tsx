@@ -8,7 +8,7 @@ interface CommentsState {
   isFetching: boolean;
 }
 
-const useGetComments = (postId?: string): CommentsState => {
+const useGetComments = (commentId?: string, postId?: string): CommentsState => {
   const [comments, setComments] = useState<CommentsType[] | undefined>(
     undefined,
   );
@@ -21,17 +21,13 @@ const useGetComments = (postId?: string): CommentsState => {
         const resp = await getComments(postId);
         setComments(resp);
         setIsFetching(false);
-        console.log(resp);
       } catch (error) {
-        console.log('comment error: ', error);
         setIsFetching(false);
         setError(error);
       }
     };
-    if (postId && !comments && !error) {
-      fetchComments();
-    }
-  });
+    fetchComments();
+  }, [commentId, postId]);
   return {
     comments,
     error,

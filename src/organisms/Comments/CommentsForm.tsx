@@ -1,4 +1,11 @@
-import React, { ChangeEvent, FormEvent, forwardRef, FC, useState } from 'react';
+import React, {
+  ChangeEvent,
+  createContext,
+  FormEvent,
+  forwardRef,
+  useContext,
+  useState,
+} from 'react';
 import styled from 'styled-components';
 import Stack, { StackItem } from '../../organisms/Stack';
 import Button from '../../atoms/Button';
@@ -7,8 +14,9 @@ import CommentsType from '../../types/comments';
 
 interface CommentsFormProps {
   isLoading?: boolean;
-  replyName?: string;
+  onCancelReply?: () => void;
   onSubmit?: (comment: Omit<CommentsType, 'replies'>) => void;
+  replyName?: string;
 }
 
 const CommentsFormContainer = styled.form`
@@ -25,7 +33,7 @@ const CommentsFormFooter = styled.footer`
 `;
 
 const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
-  ({ isLoading, onSubmit, replyName }, commentsFormRef) => {
+  ({ isLoading, onCancelReply, onSubmit, replyName }, commentsFormRef) => {
     const [name, setName] = useState<string>('');
     const [message, setMessage] = useState<string>('');
     const [email, setEmail] = useState<string>('');
@@ -47,7 +55,7 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
             <TextField
               id="name"
               name="name"
-              placeholder={replyName ? `Replying to ${replyName}` : 'Name'}
+              placeholder="Name"
               type="text"
               required
               onChange={(event: ChangeEvent<HTMLInputElement>): void => {
@@ -71,7 +79,9 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
             <TextArea
               id="message"
               name="message"
-              placeholder="Leave a Comment"
+              placeholder={
+                replyName ? `Replying to ${replyName}` : 'Leave a Comment'
+              }
               required
               onChange={(event: ChangeEvent<HTMLTextAreaElement>): void => {
                 setMessage(event.target.value);
@@ -87,6 +97,11 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
             >
               {isLoading ? '...Loading' : 'Comment'}
             </Button>
+            {replyName && onCancelReply && (
+              <Button onClick={onCancelReply} variant="outline">
+                Cancel Reply
+              </Button>
+            )}
           </CommentsFormFooter>
         </Stack>
       </CommentsFormContainer>

@@ -3,6 +3,7 @@ import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
 import Carousel from '../organisms/Carousel';
 import Comments from '../organisms/Comments';
+import CommentsFormContextProvider from '../organisms/Comments/CommentsFormContextProvider';
 import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
@@ -327,7 +328,11 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             <StackItem bottomSpacing="xlg4">
               <H4>Comments</H4>
               <Box padding="sm4">
-                {post.contentful_id && <Comments postId={post.contentful_id} />}
+                <CommentsFormContextProvider>
+                  {post.contentful_id && (
+                    <Comments postId={post.contentful_id} />
+                  )}
+                </CommentsFormContextProvider>
               </Box>
             </StackItem>
           )}

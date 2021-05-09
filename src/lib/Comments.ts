@@ -1,5 +1,9 @@
 import CommentsType from '../types/comments';
 
+const sortComments = (comments: CommentsType[]) => {
+  return comments.sort((a, b) => b.timestamp - a.timestamp);
+};
+
 const getComments = async (id?: string): Promise<CommentsType[]> => {
   const resp = await fetch(`/.netlify/functions/comments?id=${id}`, {
     headers: {
@@ -15,7 +19,7 @@ const getComments = async (id?: string): Promise<CommentsType[]> => {
     };
     throw error;
   }
-  return payload.comments;
+  return sortComments(payload.comments);
 };
 
 export const postComment = async (body: CommentsType): Promise<void> => {
@@ -28,7 +32,6 @@ export const postComment = async (body: CommentsType): Promise<void> => {
     method: 'POST',
     body: JSON.stringify(body),
   });
-  console.log('post comment: ', resp);
   return resp.json();
 };
 

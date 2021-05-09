@@ -56,7 +56,8 @@ const CommentsContent = styled.div`
 
 const Comments: FC<CommentsProps> = ({ postId }) => {
   const commentsFormRef = useRef<HTMLFormElement | null>(null);
-  const { comments } = useGetComments(postId);
+  const [commentId, setCommentId] = useState<string | undefined>(undefined);
+  const { comments } = useGetComments(commentId, postId);
   const [isSubmittingComment, setIsSubmittingComment] = useState<boolean>(
     false,
   );
@@ -78,10 +79,15 @@ const Comments: FC<CommentsProps> = ({ postId }) => {
     try {
       await postComment(body);
       setIsSubmittingComment(false);
+      setCommentId(id);
     } catch (error) {
       console.log('form comment error: ', error);
       setIsSubmittingComment(false);
     }
+  };
+  const handleCancelReply = (): void => {
+    setReplyId(undefined);
+    setReplyName(undefined);
   };
   const handleReply = (id?: string, name?: string): void => {
     console.log('reply id: ', id);
@@ -99,16 +105,19 @@ const Comments: FC<CommentsProps> = ({ postId }) => {
     <CommentsContainer>
       <CommentsForm
         isLoading={isSubmittingComment}
+        onCancelReply={handleCancelReply}
         onSubmit={handleCommentFormSubmit}
         replyName={replyName}
         ref={commentsFormRef}
       />
-      <CommentsHeader>
-        <Text display="inline" fontWeight="bold">
-          {total}
-        </Text>
-        <Text> Comments</Text>
-      </CommentsHeader>
+      {comments && (
+        <CommentsHeader>
+          <Text display="inline" fontWeight="bold">
+            {total}
+          </Text>
+          <Text> Comments</Text>
+        </CommentsHeader>
+      )}
       {comments && (
         <CommentsList>
           {comments.map(comment => {

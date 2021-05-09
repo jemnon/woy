@@ -7,7 +7,7 @@ interface Comments {
   rating?: number;
   replies?: Comments[];
   replyId?: string;
-  timestamp?: number;
+  timestamp: number;
 }
 
 export default Comments;
