@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { v4 as uuid } from 'uuid';
 import CommentsForm from './CommentsForm';
 import { useCommentsFormContext } from './CommentsFormContext';
+import Rating from '../../molecules/Rating';
 import Button from '../../atoms/Button';
 import Paragraph from '../../atoms/Paragraph';
 import Text from '../../atoms/Text';
@@ -86,8 +87,11 @@ const Comments: FC<CommentsProps> = ({ postId }) => {
         commentsFormRef.current.reset();
         resetFormState();
       }
+      if (replyId) {
+        setReplyId(undefined);
+        setReplyName(undefined);
+      }
     } catch (error) {
-      console.log('form comment error: ', error);
       setIsSubmittingComment(false);
     }
   };
@@ -95,9 +99,8 @@ const Comments: FC<CommentsProps> = ({ postId }) => {
     setReplyId(undefined);
     setReplyName(undefined);
   };
+
   const handleReply = (id?: string, name?: string): void => {
-    console.log('reply id: ', id);
-    console.log('reply name:  ', name);
     setReplyId(id);
     setReplyName(name);
     if (commentsFormRef && commentsFormRef.current) {
@@ -154,6 +157,7 @@ const Comments: FC<CommentsProps> = ({ postId }) => {
                         </CommentsDate>
                       </>
                     )}
+                    <Rating size="small" rating={comment?.rating} />
                     <Paragraph fontSize="f1" bottomSpacing="sm4">
                       {comment.message}
                     </Paragraph>

@@ -10,7 +10,7 @@ export interface CommentsFormContextValue {
   email: string;
   message: string;
   name: string;
-  rating?: number;
+  rating: number;
   resetFormState?: () => void;
   setEmailVal: (email: string) => void;
   setMessageVal: (message: string) => void;
@@ -62,6 +62,7 @@ const CommentsFormContextProvider: FC<CommentsFormContextProviderProps> = ({
     setEmail('');
     setName('');
     setMessage('');
+    setRating(0);
   };
   const contextValue: CommentsFormContextValue = {
     email,
