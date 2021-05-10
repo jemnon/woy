@@ -14,7 +14,7 @@ exports.handler = function (event, context, callback) {
         name,
         postId,
         rating,
-        replies,
+        // replies,
         replyId,
         timestamp,
       } = data || {};
@@ -28,18 +28,30 @@ exports.handler = function (event, context, callback) {
           entry.fields.comments['en-US'].comments.forEach(comment => {
             postComments.push(comment);
           });
-          if (replies && replyId) {
-            console.log('is reply');
+          if (replyId) {
+            postComments.forEach(comment => {
+              if (comment.id === replyId) {
+                comment.replies.push({
+                  email,
+                  id,
+                  message,
+                  name,
+                  timestamp,
+                });
+              }
+            });
           }
-          postComments.push({
-            email,
-            id,
-            message,
-            name,
-            rating,
-            replies: [],
-            timestamp,
-          });
+          if (!replyId) {
+            postComments.push({
+              email,
+              id,
+              message,
+              name,
+              rating,
+              replies: [],
+              timestamp,
+            });
+          }
         });
       await client
         .getSpace(`${process.env.CONTENTFUL_SPACE_ID}`)

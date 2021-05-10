@@ -1,21 +1,15 @@
-import React, {
-  ChangeEvent,
-  createContext,
-  FormEvent,
-  forwardRef,
-  useContext,
-  useState,
-} from 'react';
+import React, { ChangeEvent, FormEvent, forwardRef, useState } from 'react';
 import styled from 'styled-components';
 import Stack, { StackItem } from '../../organisms/Stack';
 import Button from '../../atoms/Button';
 import TextField, { TextArea } from '../../atoms/TextField';
+import { useCommentsFormContext } from './CommentsFormContext';
 import CommentsType from '../../types/comments';
 
 interface CommentsFormProps {
   isLoading?: boolean;
   onCancelReply?: () => void;
-  onSubmit?: (comment: Omit<CommentsType, 'replies'>) => void;
+  onSubmit: (comment: Omit<CommentsType, 'replies'>) => void;
   replyName?: string;
 }
 
@@ -34,20 +28,25 @@ const CommentsFormFooter = styled.footer`
 
 const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
   ({ isLoading, onCancelReply, onSubmit, replyName }, commentsFormRef) => {
-    const [name, setName] = useState<string>('');
-    const [message, setMessage] = useState<string>('');
-    const [email, setEmail] = useState<string>('');
-    const [rating, setRating] = useState<number | undefined>(undefined);
-    const emailSubmit = (event: FormEvent<EventTarget>): void => {
+    const {
+      email,
+      name,
+      message,
+      rating,
+      setEmailVal,
+      setMessageVal,
+      setNameVal,
+    } = useCommentsFormContext();
+    const handleEmailSubmit = (event: FormEvent<EventTarget>): void => {
       event.preventDefault();
       const timestamp = Date.now();
-      if (onSubmit) onSubmit({ name, message, email, rating, timestamp });
+      onSubmit({ name, message, email, rating, timestamp });
     };
     return (
       <CommentsFormContainer
         name="comments-form"
         method="POST"
-        onSubmit={emailSubmit}
+        onSubmit={handleEmailSubmit}
         ref={commentsFormRef}
       >
         <Stack bottomSpacing="sp-0">
@@ -59,7 +58,7 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
               type="text"
               required
               onChange={(event: ChangeEvent<HTMLInputElement>): void => {
-                setName(event.target.value);
+                setNameVal(event.target.value);
               }}
             />
           </StackItem>
@@ -71,7 +70,7 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
               placeholder="Email (optional)"
               type="email"
               onChange={(event: ChangeEvent<HTMLInputElement>): void => {
-                setEmail(event.target.value);
+                setEmailVal(event.target.value);
               }}
             />
           </StackItem>
@@ -84,7 +83,7 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
               }
               required
               onChange={(event: ChangeEvent<HTMLTextAreaElement>): void => {
-                setMessage(event.target.value);
+                setMessageVal(event.target.value);
               }}
             />
           </StackItem>

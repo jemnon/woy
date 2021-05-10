@@ -2,6 +2,7 @@ import React, { FC, useRef, useState } from 'react';
 import styled from 'styled-components';
 import { v4 as uuid } from 'uuid';
 import CommentsForm from './CommentsForm';
+import { useCommentsFormContext } from './CommentsFormContext';
 import Button from '../../atoms/Button';
 import Paragraph from '../../atoms/Paragraph';
 import Text from '../../atoms/Text';
@@ -55,6 +56,7 @@ const CommentsContent = styled.div`
 `;
 
 const Comments: FC<CommentsProps> = ({ postId }) => {
+  const { resetFormState } = useCommentsFormContext();
   const commentsFormRef = useRef<HTMLFormElement | null>(null);
   const [commentId, setCommentId] = useState<string | undefined>(undefined);
   const { comments } = useGetComments(commentId, postId);
@@ -80,6 +82,10 @@ const Comments: FC<CommentsProps> = ({ postId }) => {
       await postComment(body);
       setIsSubmittingComment(false);
       setCommentId(id);
+      if (commentsFormRef?.current && resetFormState) {
+        commentsFormRef.current.reset();
+        resetFormState();
+      }
     } catch (error) {
       console.log('form comment error: ', error);
       setIsSubmittingComment(false);
