@@ -9,6 +9,7 @@ const postsQuery = `{
     edges {
       node {
         title
+        id
         slug
         publishDate
         categories {
