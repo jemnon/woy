@@ -2,19 +2,19 @@
 
 exports[`<BackToTop /> renders defaults correctly 1`] = `
 <section
-  className="sc-bkzZxe izWxMr"
+  className="sc-hGPAah egndRm"
 >
   <button
-    className="sc-bdfBwQ eICxxo"
+    className="sc-bdvvaa exycJr"
     onClick={[Function]}
   >
     <span
-      className="sc-fFubgz iiNISR"
+      className="sc-dJjZJu jZWfgk"
     >
       Back to top
     </span>
     <svg
-      className="sc-bqyKva etXdQg"
+      className="sc-fotPbf IHzKd"
       fill="#BB5B34"
       fontSize="0.75rem"
       height="1em"

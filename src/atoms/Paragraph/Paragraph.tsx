@@ -1,13 +1,15 @@
 import styled, { css } from 'styled-components';
 import { up } from 'styled-breakpoints';
-import { FontSizes } from '../../types/theme';
+import { FontSizes, Spacing } from '../../types/theme';
 
+type BottomSpacing = keyof Spacing;
 type FontStyle = 'normal' | 'italic';
 type FontWeight = 'normal' | 'bold';
 type FontSize = keyof FontSizes;
 type TextAlign = 'left' | 'center' | 'right';
 
 interface ParagraphProps {
+  bottomSpacing?: BottomSpacing;
   fontStyle?: FontStyle;
   fontSize?: FontSize;
   fontWeight?: FontWeight;
@@ -28,10 +30,12 @@ export const ParagraphCSS = css<ParagraphProps>`
 
   line-height: 1.5;
 
-  margin-bottom: ${({ theme }): string => theme.spacing.sm4};
+  margin-bottom: ${({ bottomSpacing, theme: { spacing } }): string =>
+    bottomSpacing ? spacing[bottomSpacing] : spacing.sm4};
 
   &:last-child {
-    margin-bottom: 0;
+    margin-bottom: ${({ bottomSpacing, theme: { spacing } }): string =>
+      bottomSpacing ? spacing[bottomSpacing] : '0'};
   }
 `;
 

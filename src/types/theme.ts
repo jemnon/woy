@@ -33,6 +33,8 @@ export interface Colors {
   cream: string;
   gray: string;
   green: string;
+  lightGray: string;
+  midGray: string;
   nearBlack: string;
   nearWhite: string;
   orange: string;

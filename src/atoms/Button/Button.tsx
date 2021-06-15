@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, SimpleInterpolation } from 'styled-components';
 import { Colors } from '../../types/theme';
 
 type ColorScheme = keyof Pick<Colors, 'orange' | 'teal' | 'nearBlack'>;
@@ -10,6 +10,7 @@ interface ButtonProps {
   colorScheme?: ColorScheme;
   isDisabled?: boolean;
   isLoading?: boolean;
+  minWidth?: boolean;
   variant?: Variant;
   size?: Size;
   shape?: Shape;
@@ -35,12 +36,13 @@ const Button = styled.button<ButtonProps>`
 
   padding: ${({ size = 'medium', theme }): string => {
     if (size === 'small') {
-      return `${theme.spacing.sm2} ${theme.spacing.md2}`;
+      return `${theme.spacing.sm2} ${theme.spacing.sm2}`;
     }
     return `${theme.spacing.sm3} ${theme.spacing.md4}`;
   }};
-  min-width: 10rem;
-  width: ${({ width = 'auto' }): string => width};
+  ${({ minWidth = true }): SimpleInterpolation =>
+    minWidth && 'min-width: 10rem'};
+  ${({ width }): SimpleInterpolation => width && `width: ${width};`};
 
   font-family: ${({ theme }): string => theme.fonts.lato};
   font-size: ${({ size = 'medium', theme }): string =>
@@ -69,7 +71,9 @@ const Button = styled.button<ButtonProps>`
   overflow: hidden;
   cursor: ${({ isDisabled, isLoading }): string =>
     isDisabled || isLoading ? 'not-allowed' : 'pointer'};
-  transition: ${({ theme }): string => theme?.transition ?? ''};
+
+  transition: box-shadow 0.15s ease;
+  transition: background-color 0.47s ease;
 
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;

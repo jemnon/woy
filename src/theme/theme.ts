@@ -12,6 +12,8 @@ const theme: DefaultTheme = {
     cream: '#f4ede6',
     gray: '#aaa',
     green: '#19a974',
+    lightGray: '#E0E0E0',
+    midGray: '#666',
     nearBlack: '#111',
     nearWhite: '#F9F9F9',
     orange: '#BB5B34',

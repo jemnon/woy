@@ -2,17 +2,17 @@
 
 exports[`<PostIterator /> renders defaults correctly 1`] = `
 <section
-  className="sc-hKgILt gRxjzL"
+  className="sc-hKwCoD jlfmGc"
 >
   <button
-    className="sc-eCssSg jLhGTw"
+    className="sc-eCImvq ejbZxt"
     onClick={[Function]}
   >
     <figure
-      className="sc-jSgupP frXCPv"
+      className="sc-jRQAMF eTnQcB"
     >
       <div
-        className="sc-gsTCUz iaHCbG"
+        className="sc-gsDJrp fjJyJM"
       >
         <img
           src="some-image.jpg"
@@ -20,17 +20,17 @@ exports[`<PostIterator /> renders defaults correctly 1`] = `
       </div>
     </figure>
     <div
-      className="sc-gKsewC iyJKSp"
+      className="sc-gKckTs kLRCIi"
     >
       <div
-        className="sc-dlfnbm cIChrY"
+        className="sc-dkPtyc ilzhhU"
         fontSize="f-sm"
         fontWeight="bold"
       >
         Previous
       </div>
       <div
-        className="sc-dlfnbm qncCs sc-iBPRYJ QuaPf"
+        className="sc-dkPtyc brifpI sc-iCfLBT WVbHt"
         fontSize="f-sm"
         fontWeight="bold"
         title="Shrimp Scampi"
@@ -40,22 +40,22 @@ exports[`<PostIterator /> renders defaults correctly 1`] = `
     </div>
   </button>
   <button
-    className="sc-eCssSg jLhGTw"
+    className="sc-eCImvq ejbZxt"
     onClick={[Function]}
   >
     <div
-      className="sc-gKsewC ircwHW"
+      className="sc-gKckTs cHBjvx"
       direction="right"
     >
       <div
-        className="sc-dlfnbm htbhof"
+        className="sc-dkPtyc ifZQtv"
         fontSize="f-sm"
         fontWeight="bold"
       >
         Next
       </div>
       <div
-        className="sc-dlfnbm qncCs sc-iBPRYJ QuaPf"
+        className="sc-dkPtyc brifpI sc-iCfLBT WVbHt"
         fontSize="f-sm"
         fontWeight="bold"
         title="Tomato Bisque"
@@ -64,10 +64,10 @@ exports[`<PostIterator /> renders defaults correctly 1`] = `
       </div>
     </div>
     <figure
-      className="sc-jSgupP frXCPv"
+      className="sc-jRQAMF eTnQcB"
     >
       <div
-        className="sc-gsTCUz iaHCbG"
+        className="sc-gsDJrp fjJyJM"
       >
         <img
           src="some-image.jpg"

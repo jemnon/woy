@@ -72,3 +72,6 @@ yarn.lock
 # Storybook
 /sb-docs
 sb-docs
+
+# Local Netlify folder
+.netlify

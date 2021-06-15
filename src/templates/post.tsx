@@ -2,6 +2,8 @@ import React, { FC, useRef } from 'react';
 import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
 import Carousel from '../organisms/Carousel';
+import Comments from '../organisms/Comments';
+import CommentsFormContext from '../organisms/Comments/CommentsFormContext';
 import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
@@ -319,6 +321,18 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                     )}
                   </GridCell>
                 </Grid>
+              </Box>
+            </StackItem>
+          )}
+          {post.enableComments && (
+            <StackItem bottomSpacing="xlg4">
+              <H4>Comments</H4>
+              <Box padding="sm4">
+                <CommentsFormContext>
+                  {post.contentful_id && (
+                    <Comments postId={post.contentful_id} />
+                  )}
+                </CommentsFormContext>
               </Box>
             </StackItem>
           )}

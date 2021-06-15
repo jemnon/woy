@@ -2,6 +2,6 @@
 
 exports[`<Avatar /> renders defaults correctly 1`] = `
 <img
-  className="sc-bdfBwQ CGFBo"
+  className="sc-bdvvaa dOfXvM"
 />
 `;

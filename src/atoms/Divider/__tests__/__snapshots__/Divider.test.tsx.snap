@@ -2,6 +2,6 @@
 
 exports[`<Divider /> renders defaults correctly 1`] = `
 <hr
-  className="sc-bdfBwQ fKxmoW"
+  className="sc-bdvvaa gcMVsW"
 />
 `;

@@ -9,8 +9,8 @@ const disableProp = {
 };
 
 export default {
-  title: 'FILL IN/SideContent',
-  component: SideContent, 
+  title: 'Organisms/SideContent',
+  component: SideContent,
   argTypes: {
     as: { ...disableProp },
     ref: { ...disableProp },
@@ -21,11 +21,8 @@ export default {
   },
 } as Meta;
 
-const Template = (args: any) => (
-  <SideContent {...args} />
-);
+const Template = (args: any) => <SideContent {...args} />;
 
 export const Default = Template.bind({});
 // @ts-ignore
 Default.args = {};
-

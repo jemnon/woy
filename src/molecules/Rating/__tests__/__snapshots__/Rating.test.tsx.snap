@@ -1,0 +1,133 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`<Rating /> renders defaults correctly 1`] = `
+<ul
+  className="sc-dJjZJu fgjTlw"
+>
+  <li
+    className="sc-hGPAah"
+  >
+    <button
+      className="sc-dlVyqM iDvsmE"
+      onClick={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    >
+      <svg
+        className="sc-bqiQRQ gBhRso"
+        fill="#666"
+        fontSize="1.25rem"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 32 30.43"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M32 11.63l-11.06-1.61L16 0l-4.94 10L0 11.63l8 7.8-1.89 11L16 25.22l9.89 5.2L24 19.43z"
+        />
+      </svg>
+    </button>
+  </li>
+  <li
+    className="sc-hGPAah"
+  >
+    <button
+      className="sc-dlVyqM iDvsmE"
+      onClick={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    >
+      <svg
+        className="sc-bqiQRQ gBhRso"
+        fill="#666"
+        fontSize="1.25rem"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 32 30.43"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M32 11.63l-11.06-1.61L16 0l-4.94 10L0 11.63l8 7.8-1.89 11L16 25.22l9.89 5.2L24 19.43z"
+        />
+      </svg>
+    </button>
+  </li>
+  <li
+    className="sc-hGPAah"
+  >
+    <button
+      className="sc-dlVyqM iDvsmE"
+      onClick={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    >
+      <svg
+        className="sc-bqiQRQ gBhRso"
+        fill="#666"
+        fontSize="1.25rem"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 32 30.43"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M32 11.63l-11.06-1.61L16 0l-4.94 10L0 11.63l8 7.8-1.89 11L16 25.22l9.89 5.2L24 19.43z"
+        />
+      </svg>
+    </button>
+  </li>
+  <li
+    className="sc-hGPAah"
+  >
+    <button
+      className="sc-dlVyqM iDvsmE"
+      onClick={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    >
+      <svg
+        className="sc-bqiQRQ gBhRso"
+        fill="#666"
+        fontSize="1.25rem"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 32 30.43"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M32 11.63l-11.06-1.61L16 0l-4.94 10L0 11.63l8 7.8-1.89 11L16 25.22l9.89 5.2L24 19.43z"
+        />
+      </svg>
+    </button>
+  </li>
+  <li
+    className="sc-hGPAah"
+  >
+    <button
+      className="sc-dlVyqM iDvsmE"
+      onClick={[Function]}
+      onMouseOut={[Function]}
+      onMouseOver={[Function]}
+    >
+      <svg
+        className="sc-bqiQRQ gBhRso"
+        fill="#666"
+        fontSize="1.25rem"
+        height="1em"
+        preserveAspectRatio="xMidYMid meet"
+        viewBox="0 0 32 30.43"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M32 11.63l-11.06-1.61L16 0l-4.94 10L0 11.63l8 7.8-1.89 11L16 25.22l9.89 5.2L24 19.43z"
+        />
+      </svg>
+    </button>
+  </li>
+</ul>
+`;

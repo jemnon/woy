@@ -1,4 +1,4 @@
-import React, { forwardRef, ReactNode, useRef, useState } from 'react';
+import React, { forwardRef, ReactNode } from 'react';
 import styled from 'styled-components';
 import DownButton from '../../atoms/DownButton';
 import HeroContent from '../../molecules/HeroContent';
