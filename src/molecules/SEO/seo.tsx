@@ -23,6 +23,7 @@ interface SEOProps {
   pathname?: string;
   image?: string;
   script?: any;
+  slug?: string;
   type?: string;
 }
 
@@ -40,6 +41,7 @@ const SEO: FC<SEOProps> = ({
   title,
   type,
   script,
+  slug,
   pathname,
 }) => {
   const { site } = useStaticQuery(
@@ -161,6 +163,12 @@ const SEO: FC<SEOProps> = ({
         <link
           rel="canonical"
           href={`${site.siteMetadata.siteUrl}${pathname || ''}`}
+        />
+      )}
+      {ampEnabled && (
+        <link
+          rel="amphtml"
+          href={`${site.siteMetadata.siteUrl}/web-stories/${slug}`}
         />
       )}
       {script && <script type="application/ld+json">{script}</script>}

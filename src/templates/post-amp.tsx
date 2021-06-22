@@ -3,7 +3,7 @@ import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../atoms/GlobalStyle';
 import theme from '../theme';
 import SEO from '../molecules/SEO';
-import isDomUsable, { generateFromAst } from '../utils/utils';
+import { generateFromAst } from '../utils/utils';
 import { Post as PostType } from '../types/post';
 
 interface PostPageAMPProps {
@@ -54,6 +54,7 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext, location }) => {
       'ol',
     ),
   };
+  const pathname = ``;
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -67,8 +68,9 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext, location }) => {
           title={`${capitalize(post.title)} | Whisper of Yum`}
           type="article"
           image={`https:${fixed?.src}`}
-          pathname={location.pathname}
+          pathname={`/post/${post.slug}`}
           script={JSON.stringify(schemaJson)}
+          slug={post.slug}
         />
         <amp-story
           standalone
