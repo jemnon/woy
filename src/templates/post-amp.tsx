@@ -1,5 +1,7 @@
 import React, { FC } from 'react';
-import styled from 'styled-components';
+import styled, { ThemeProvider } from 'styled-components';
+import GlobalStyle from '../atoms/GlobalStyle';
+import theme from '../theme';
 import SEO from '../molecules/SEO';
 import { generateFromAst } from '../utils/utils';
 import { Post as PostType } from '../types/post';
@@ -49,73 +51,76 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
     ),
   };
   return (
-    <Container>
-      <SEO
-        ampEnabled
-        ampBoilerplate={boilerplate}
-        ampNoscript={noscriptBoilerplate}
-        ampCustom={custom}
-        description={`${post.bodyPreview?.bodyPreview}`}
-        title={`${capitalize(post.title)} | Whisper of Yum`}
-        type="article"
-        image={`https:${fixed?.src}`}
-        pathname={location.pathname}
-        script={JSON.stringify(schemaJson)}
-      />
-      <amp-story
-        standalone
-        title={`${capitalize(post.title)}`}
-        publisher="Whipser of Yum"
-        publisher-logo-src="/logo-white.png"
-        poster-portrait-src=""
-      >
-        <amp-story-page id="cover">
-          <amp-story-grid-layer template="fill">
-            <amp-img
-              src={fixed?.src}
-              width="720"
-              height="1280"
-              layout="responsive"
-            />
-          </amp-story-grid-layer>
-          <amp-story-grid-layer template="vertical">
-            <h1>{post.title}</h1>
-            <p>By Jeri Mobley-Arias</p>
-          </amp-story-grid-layer>
-        </amp-story-page>
+    <ThemeProvider theme={theme}>
+      <GlobalStyle />
+      <Container>
+        <SEO
+          ampEnabled
+          ampBoilerplate={boilerplate}
+          ampNoscript={noscriptBoilerplate}
+          ampCustom={custom}
+          description={`${post.bodyPreview?.bodyPreview}`}
+          title={`${capitalize(post.title)} | Whisper of Yum`}
+          type="article"
+          image={`https:${fixed?.src}`}
+          pathname={location.pathname}
+          script={JSON.stringify(schemaJson)}
+        />
+        <amp-story
+          standalone
+          title={`${capitalize(post.title)}`}
+          publisher="Whipser of Yum"
+          publisher-logo-src="/logo-white.png"
+          poster-portrait-src=""
+        >
+          <amp-story-page id="cover">
+            <amp-story-grid-layer template="fill">
+              <amp-img
+                src={fixed?.src}
+                width="720"
+                height="1280"
+                layout="responsive"
+              />
+            </amp-story-grid-layer>
+            <amp-story-grid-layer template="vertical">
+              <h1>{post.title}</h1>
+              <p>By Jeri Mobley-Arias</p>
+            </amp-story-grid-layer>
+          </amp-story-page>
 
-        <amp-story-page id="page1">
-          <amp-story-grid-layer template="fill">
-            <amp-img
-              src={fixed?.src}
-              width="720"
-              height="1280"
-              layout="responsive"
-            />
-          </amp-story-grid-layer>
+          <amp-story-page id="page1">
+            <amp-story-grid-layer template="fill">
+              <amp-img
+                src={fixed?.src}
+                width="720"
+                height="1280"
+                layout="responsive"
+              />
+            </amp-story-grid-layer>
 
-          <amp-story-grid-layer template="vertical">
-            <h1>Page 1</h1>
-            <p>Page 1 text goes here.</p>
-          </amp-story-grid-layer>
-        </amp-story-page>
+            <amp-story-grid-layer template="vertical">
+              <h1>Page 1</h1>
+              <p>Page 1 text goes here.</p>
+            </amp-story-grid-layer>
+          </amp-story-page>
 
-        <amp-story-page id="page2">
-          <amp-story-grid-layer template="fill">
-            <amp-img
-              src={fixed?.src}
-              width="720"
-              height="1280"
-              layout="responsive"
-            />
-          </amp-story-grid-layer>
-          <amp-story-grid-layer template="vertical">
-            <h1>Page 2</h1>
-            <p>Page 2 text goes here.</p>
-          </amp-story-grid-layer>
-        </amp-story-page>
-      </amp-story>
-    </Container>
+          <amp-story-page id="page2">
+            <amp-story-grid-layer template="fill">
+              <amp-img
+                src={fixed?.src}
+                width="720"
+                height="1280"
+                layout="responsive"
+              />
+            </amp-story-grid-layer>
+            <amp-story-grid-layer template="vertical">
+              <h1>Page 2</h1>
+              <p>Page 2 text goes here.</p>
+            </amp-story-grid-layer>
+          </amp-story-page>
+        </amp-story>
+      </Container>
+    </ThemeProvider>
   );
 };
 
