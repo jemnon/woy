@@ -3,12 +3,16 @@ import styled, { ThemeProvider } from 'styled-components';
 import GlobalStyle from '../atoms/GlobalStyle';
 import theme from '../theme';
 import SEO from '../molecules/SEO';
-import { generateFromAst } from '../utils/utils';
+import isDomUsable, { generateFromAst } from '../utils/utils';
 import { Post as PostType } from '../types/post';
 
 interface PostPageAMPProps {
   pageContext: {
     page: PostType;
+  };
+  location: {
+    pathname: string;
+    href: string;
   };
 }
 
@@ -30,7 +34,7 @@ const noscriptBoilerplate =
   'body{-webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none}';
 const custom = 'amp-story-page { background-color: #000;}';
 
-const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
+const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext, location }) => {
   const { page: post } = pageContext || {};
   const [{ fixed }] = post.images || [];
   const schemaJson = {
