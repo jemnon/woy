@@ -165,7 +165,7 @@ const SEO: FC<SEOProps> = ({
           href={`${site.siteMetadata.siteUrl}${pathname || ''}`}
         />
       )}
-      {ampEnabled && (
+      {slug && (
         <link
           rel="amphtml"
           href={`${site.siteMetadata.siteUrl}/web-stories/${slug}`}

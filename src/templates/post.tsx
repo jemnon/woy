@@ -103,6 +103,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
         image={`https:${fixed?.src}`}
         pathname={location.pathname}
         script={JSON.stringify(schemaJson)}
+        slug={post.slug}
       />
       <Header />
       <Container>

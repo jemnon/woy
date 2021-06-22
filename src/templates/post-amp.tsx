@@ -54,7 +54,6 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext, location }) => {
       'ol',
     ),
   };
-  const pathname = ``;
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
@@ -70,7 +69,6 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext, location }) => {
           image={`https:${fixed?.src}`}
           pathname={`/post/${post.slug}`}
           script={JSON.stringify(schemaJson)}
-          slug={post.slug}
         />
         <amp-story
           standalone
