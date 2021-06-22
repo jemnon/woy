@@ -164,17 +164,17 @@ const SEO: FC<SEOProps> = ({
         />
       )}
       {script && <script type="application/ld+json">{script}</script>}
-      {ampEnabled && (
+      {ampEnabled && isDomUsable() && (
         <script async src="https://cdn.ampproject.org/v0.js"></script>
       )}
-      {ampEnabled && (
+      {ampEnabled && isDomUsable() && (
         <script
           async
           custom-element="amp-video"
           src="https://cdn.ampproject.org/v0/amp-video-0.1.js"
         ></script>
       )}
-      {ampEnabled && (
+      {ampEnabled && isDomUsable() && (
         <script
           async
           custom-element="amp-story"
