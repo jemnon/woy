@@ -12,6 +12,10 @@ import { useStaticQuery, graphql } from 'gatsby';
 import isDomUsable from '../../utils/utils';
 
 interface SEOProps {
+  ampEnabled?: boolean;
+  ampBoilerplate?: any;
+  ampCustom?: any;
+  ampNoscript?: any;
   description?: string;
   lang?: string;
   meta?: any;
@@ -25,6 +29,10 @@ interface SEOProps {
 const assetPath = withPrefix('/');
 
 const SEO: FC<SEOProps> = ({
+  ampEnabled,
+  ampBoilerplate,
+  ampCustom,
+  ampNoscript,
   description,
   image,
   lang,
@@ -156,6 +164,28 @@ const SEO: FC<SEOProps> = ({
         />
       )}
       {script && <script type="application/ld+json">{script}</script>}
+      {ampEnabled && (
+        <script async src="https://cdn.ampproject.org/v0.js"></script>
+      )}
+      {ampEnabled && (
+        <script
+          async
+          custom-element="amp-video"
+          src="https://cdn.ampproject.org/v0/amp-video-0.1.js"
+        ></script>
+      )}
+      {ampEnabled && (
+        <script
+          async
+          custom-element="amp-story"
+          src="https://cdn.ampproject.org/v0/amp-story-1.0.js"
+        ></script>
+      )}
+      {ampBoilerplate && <style amp-boilerplate>{`${ampBoilerplate}`}</style>}
+      {ampNoscript && (
+        <noscript>{`<style amp-boilerplate>${`${ampNoscript}`}</style>`}</noscript>
+      )}
+      {ampCustom && <style amp-custom>{`${ampCustom}`}</style>}
     </Helmet>
   );
 };
