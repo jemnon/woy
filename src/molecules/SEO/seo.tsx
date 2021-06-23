@@ -17,6 +17,7 @@ interface SEOProps {
   ampCustom?: string;
   ampNoscript?: string;
   ampHtml?: boolean;
+  amp?: string;
   description?: string;
   lang?: string;
   meta?: any;
@@ -36,9 +37,10 @@ const SEO: FC<SEOProps> = ({
   ampCustom,
   ampNoscript,
   ampHtml,
+  amp,
   description,
   image,
-  lang,
+  lang = 'en',
   meta,
   title,
   type,
@@ -68,6 +70,7 @@ const SEO: FC<SEOProps> = ({
   return (
     <Helmet
       htmlAttributes={{
+        ...(ampEnabled && { amp }),
         lang,
       }}
       title={title}
@@ -190,6 +193,13 @@ const SEO: FC<SEOProps> = ({
           async
           custom-element="amp-story"
           src="https://cdn.ampproject.org/v0/amp-story-1.0.js"
+        ></script>
+      )}
+      {ampEnabled && (
+        <script
+          async
+          custom-element="amp-smartlinks"
+          src="https://cdn.ampproject.org/v0/amp-smartlinks-0.1.js"
         ></script>
       )}
       {ampBoilerplate && <style amp-boilerplate>{`${ampBoilerplate}`}</style>}
