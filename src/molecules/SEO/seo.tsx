@@ -13,9 +13,9 @@ import isDomUsable from '../../utils/utils';
 
 interface SEOProps {
   ampEnabled?: boolean;
-  ampBoilerplate?: boolean;
-  ampCustom?: boolean;
-  ampNoscript?: boolean;
+  ampBoilerplate?: string;
+  ampCustom?: string;
+  ampNoscript?: string;
   ampHtml?: boolean;
   description?: string;
   lang?: string;
