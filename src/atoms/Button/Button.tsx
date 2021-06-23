@@ -97,9 +97,6 @@ const Button = styled.button<ButtonProps>`
         ? `${theme.focusColors.blue} 0px 0px 0px 3px`
         : ''};
   }
-  & + & {
-    margin-left: ${({ theme }): string => theme.spacing.sm4};
-  }
 `;
 
 export default Button;

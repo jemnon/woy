@@ -2,7 +2,6 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
 import { Search } from '../Icons';
-import { ButtonReset } from '../Button';
 import { ColorMode } from '../../types/theme';
 
 interface SearchButtonProps {
@@ -12,8 +11,6 @@ interface SearchButtonProps {
 }
 
 const SearchButtonContainer = styled.button`
-  ${ButtonReset};
-
   padding: ${({ theme }): string => theme.spacing.sm2};
   ${up('md')} {
     padding: ${({ theme }): string => theme.spacing.sm4};

@@ -1,4 +1,5 @@
 export interface Breakpoints {
+  xxsm: string;
   xsm: string;
   sm: string;
   md: string;
@@ -6,10 +7,14 @@ export interface Breakpoints {
   xlg: string;
 }
 
+export type BreakpointKeys = keyof Breakpoints;
+
 export interface Fonts {
   lato: string;
   noto: string;
 }
+
+export type FontKeys = keyof Fonts;
 
 export interface FontSizes {
   'f-xsm': string;
@@ -28,6 +33,8 @@ export interface FontSizes {
   f12: string;
   f13: string;
 }
+
+export type FontSizeKeys = keyof FontSizes | null;
 
 export interface Colors {
   cream: string;
@@ -85,6 +92,8 @@ export interface Spacing {
   xlg3: string;
   xlg4: string;
 }
+
+export type SpacingKeys = keyof Spacing | null;
 
 export interface ZIndex {
   z0: string;

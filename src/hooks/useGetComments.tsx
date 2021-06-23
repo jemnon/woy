@@ -6,12 +6,16 @@ interface CommentsState {
   comments?: CommentsType[];
   error: string | null;
   isFetching: boolean;
+  ratingsAvg: number | null;
+  ratingsTotal: number | null;
 }
 
 const useGetComments = (commentId?: string, postId?: string): CommentsState => {
   const [comments, setComments] = useState<CommentsType[] | undefined>(
     undefined,
   );
+  const [ratingsAvg, setRatingsAvg] = useState<number | null>(null);
+  const [ratingsTotal, setRatingsTotal] = useState<number | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [isFetching, setIsFetching] = useState<boolean>(false);
   useEffect(() => {
@@ -19,7 +23,9 @@ const useGetComments = (commentId?: string, postId?: string): CommentsState => {
       setIsFetching(true);
       try {
         const resp = await getComments(postId);
-        setComments(resp);
+        setComments(resp.list);
+        setRatingsAvg(resp.ratingsAvg);
+        setRatingsTotal(resp.ratingsTotal);
         setIsFetching(false);
       } catch (error) {
         setIsFetching(false);
@@ -32,6 +38,8 @@ const useGetComments = (commentId?: string, postId?: string): CommentsState => {
     comments,
     error,
     isFetching,
+    ratingsAvg,
+    ratingsTotal,
   };
 };
 export default useGetComments;

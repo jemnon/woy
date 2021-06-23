@@ -1,16 +1,17 @@
-import React, { FC, useRef } from 'react';
+import React, { FC, useRef, useState } from 'react';
 import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
+import { v4 as uuid } from 'uuid';
 import Carousel from '../organisms/Carousel';
 import Comments from '../organisms/Comments';
-import CommentsFormContext from '../organisms/Comments/CommentsFormContext';
+import CommentsForm from '../organisms/Comments/CommentsForm';
 import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
 import Layout, { PageHeader } from '../organisms/Layout';
 import Scroller from '../organisms/Scroller';
 import SideContent from '../organisms/SideContent';
-import Stack, { StackItem } from '../organisms/Stack';
+import Stack, { StackItem, VStack } from '../organisms/Stack';
 import BackToTop from '../molecules/BackToTop';
 import BreadCrumbs from '../molecules/BreadCrumbs';
 import Card from '../molecules/Card';
@@ -19,6 +20,7 @@ import MarkdownList from '../molecules/MarkdownList';
 import PinButton from '../molecules/PinButton';
 import PrintButton from '../molecules/PrintButton';
 import PosterIterator from '../molecules/PostIterator';
+import Rating from '../molecules/Rating';
 import SEO from '../molecules/SEO';
 import Share from '../molecules/Share';
 import Social from '../molecules/Social';
@@ -31,11 +33,14 @@ import Link from '../atoms/Link';
 import Paragraph from '../atoms/Paragraph';
 import PostDate from '../atoms/PostDate';
 import Text from '../atoms/Text';
+import useGetComments from '../hooks/useGetComments';
 import { useBreakpointContext } from '../context/BreakpointContextProvider';
+import { postComment } from '../lib/Comments';
 import { generateFromAst } from '../utils/utils';
 import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
 import ProfileAboutType from '../types/profile-about';
+import CommentsType from '../types/comments';
 
 interface Instagram {
   node: InstagramType;
@@ -60,20 +65,94 @@ const capitalize = (word: string): string => {
 };
 
 const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
+  const commentsFormRef = useRef<HTMLFormElement | null>(null);
+  const [commentId, setCommentId] = useState<string | undefined>(undefined);
   const recipeRef = useRef<HTMLDivElement | null>(null);
   const { name: breakpoint } = useBreakpointContext();
   const { page: post, about, instagram } = pageContext || {};
+  const { comments, ratingsTotal, ratingsAvg } = useGetComments(
+    commentId,
+    post.contentful_id,
+  );
   const totalImages = post.images.length;
   const [{ fixed }] = post.images || [];
+  const [isSubmittingComment, setIsSubmittingComment] = useState<boolean>(
+    false,
+  );
+  const [replyId, setReplyId] = useState<string | undefined>(undefined);
+  const [replyName, setReplyName] = useState<string | undefined>(undefined);
+  /**
+   * Hanles comment form submission
+   * @param comment
+   */
+  const handleCommentFormSubmit = async (
+    comment: CommentsType,
+  ): Promise<void> => {
+    localStorage.setItem('timestamp', `${comment?.timestamp}`);
+    const id = uuid();
+    const postId = post.contentful_id;
+    const body = {
+      id,
+      postId,
+      replyId,
+      ...comment,
+    };
+    setIsSubmittingComment(true);
+    try {
+      await postComment(body);
+      setIsSubmittingComment(false);
+      setCommentId(id);
+      if (commentsFormRef?.current) {
+        commentsFormRef.current.reset();
+      }
+      if (replyId) {
+        setReplyId(undefined);
+        setReplyName(undefined);
+      }
+    } catch (error) {
+      setIsSubmittingComment(false);
+    }
+  };
+  /**
+   * Handles cancel reply state
+   */
+  const handleCancelReply = (): void => {
+    setReplyId(undefined);
+    setReplyName(undefined);
+  };
+  /**
+   * Handles replay state
+   * @param id
+   * @param name
+   */
+  const handleReply = (id?: string, name?: string): void => {
+    setReplyId(id);
+    setReplyName(name);
+    if (commentsFormRef && commentsFormRef.current) {
+      commentsFormRef.current.focus();
+      const top = commentsFormRef.current.offsetTop - 160;
+      window.scrollTo({ top, left: 0, behavior: 'smooth' });
+    }
+  };
+  /**
+   * Handles next or prev post click
+   * @param slug
+   */
   const handleIteratorClick = (slug: string): void => {
     navigate(`/post/${slug}`);
   };
+  /**
+   * Handles jumpes to recipe card
+   */
   const handleJumpToRecipe = (): void => {
     if (recipeRef.current) {
       const { offsetTop } = recipeRef.current;
       window.scrollTo({ top: offsetTop - 64, left: 0, behavior: 'smooth' });
     }
   };
+  /**
+   * Handles link to print recipe
+   */
   const handlePrintClick = (): void => {
     navigate(`/recipe-print/${post.slug}`);
   };
@@ -81,6 +160,11 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     '@context': 'http://schema.org',
     '@type': 'Recipe',
     author: 'Jeri Mobley-Arias',
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: `${ratingsAvg}`,
+      reviewCount: `${ratingsTotal}`,
+    },
     description: post.bodyPreview?.bodyPreview,
     datePublished: post.publishDate,
     image: `https:${fixed?.src}`,
@@ -93,6 +177,8 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
       'instructions',
       'ol',
     ),
+    recipeYield: post.servings,
+    totalTime: post.totalTime,
   };
   return (
     <Layout>
@@ -280,6 +366,14 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                         <Img alt={post.title} fluid={post.images[0].fluid} />
                       )}
                     </ImgWrapper>
+                    {ratingsAvg && (
+                      <>
+                        <Rating rating={ratingsAvg ?? 0} size="small" />
+                        <div>
+                          {ratingsAvg} from {ratingsTotal} votes
+                        </div>
+                      </>
+                    )}
                   </GridCell>
                 </Grid>
                 <Divider />
@@ -329,11 +423,15 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             <StackItem bottomSpacing="xlg4">
               <H4>Comments</H4>
               <Box padding="sm4">
-                <CommentsFormContext>
-                  {post.contentful_id && (
-                    <Comments postId={post.contentful_id} />
-                  )}
-                </CommentsFormContext>
+                <CommentsForm
+                  commentId={commentId}
+                  isLoading={isSubmittingComment}
+                  onCancelReply={handleCancelReply}
+                  onSubmit={handleCommentFormSubmit}
+                  replyName={replyName}
+                  ref={commentsFormRef}
+                />
+                <Comments comments={comments} onReply={handleReply} />
               </Box>
             </StackItem>
           )}

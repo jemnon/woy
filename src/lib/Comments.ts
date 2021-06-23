@@ -4,7 +4,34 @@ const sortComments = (comments: CommentsType[]) => {
   return comments.sort((a, b) => b.timestamp - a.timestamp);
 };
 
-const getComments = async (id?: string): Promise<CommentsType[]> => {
+interface RatingsReturnType {
+  ratingsAvg: number;
+  ratingsTotal: number;
+}
+
+const getRatings = (comments: CommentsType[]): RatingsReturnType => {
+  const mappedComments = comments
+    .filter(comment => comment.rating && comment.rating !== 0)
+    .map(comment => comment.rating);
+  const sum = mappedComments.reduce((acc, val) => {
+    if (acc && val) return acc + val;
+  });
+  const ratingsTotal = mappedComments.length;
+  const avg = sum ? sum / ratingsTotal : 0;
+  const ratingsAvg = Number(avg.toFixed(1));
+  return {
+    ratingsAvg,
+    ratingsTotal,
+  };
+};
+
+interface CommentsReturnType {
+  list: CommentsType[];
+  ratingsAvg: number;
+  ratingsTotal: number;
+}
+
+const getComments = async (id?: string): Promise<CommentsReturnType> => {
   const resp = await fetch(`/.netlify/functions/comments?id=${id}`, {
     headers: {
       'content-type': 'application/json',
@@ -19,7 +46,10 @@ const getComments = async (id?: string): Promise<CommentsType[]> => {
     };
     throw error;
   }
-  return sortComments(payload.comments);
+  return {
+    list: sortComments(payload.comments),
+    ...getRatings(payload.comments),
+  };
 };
 
 export const postComment = async (body: CommentsType): Promise<void> => {

@@ -135,7 +135,15 @@ const GlobalStyle = createGlobalStyle`
     max-width: 100%;
     border-style: none;
   }
-  
+  button {
+    padding: 0;
+    border-style: none;
+    border-width: 0;
+    outline: 0;
+    background-color: transparent;
+    cursor: pointer;
+    text-align: left;
+  } 
 `;
 
 export default GlobalStyle;

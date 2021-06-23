@@ -1,3 +1,4 @@
+/* eslint-disable no-nested-ternary */
 /* eslint-disable no-bitwise */
 interface RGBFromHex {
   red: string;
@@ -61,31 +62,20 @@ export const hexToRGBA = (hex: string, alpha = 100): string => {
  * @param hex {String} - hexadecimal color string.
  * @return {String} - creates a new hex color that is dimmer or lighter;
  */
-export const luminosity = (hex: string, amount = -10): string => {
-  hex = hex.slice(1);
+export const luminosity = (hex: string, percent = -10): string => {
+  const num = parseInt(hex.replace('#', ''), 16);
+  const amt = Math.round(2.55 * percent);
 
-  const num = parseInt(hex, 16);
+  const red = (num >> 16) + amt;
+  const blue = ((num >> 8) & 0x00ff) + amt;
+  const green = (num & 0x0000ff) + amt;
 
-  let red = (num >> 16) + amount;
-  if (red > 255) {
-    red = 255;
-  } else if (red < 0) {
-    red = 0;
-  }
-
-  let green = (num & 0x0000ff) + amount;
-  if (green > 255) {
-    green = 255;
-  } else if (green < 0) {
-    green = 0;
-  }
-
-  let blue = ((num >> 8) & 0x00ff) + amount;
-  if (blue > 255) {
-    blue = 255;
-  } else if (blue < 0) {
-    blue = 0;
-  }
-
-  return `#${(green | (blue << 8) | (red << 16)).toString(16)}`;
+  return `#${(
+    0x1000000 +
+    (red < 255 ? (red < 1 ? 0 : red) : 255) * 0x10000 +
+    (blue < 255 ? (blue < 1 ? 0 : blue) : 255) * 0x100 +
+    (green < 255 ? (green < 1 ? 0 : green) : 255)
+  )
+    .toString(16)
+    .slice(1)}`;
 };

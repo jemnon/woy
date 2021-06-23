@@ -1,7 +1,6 @@
 import React, { FC } from 'react';
 import styled, { SimpleInterpolation } from 'styled-components';
 import { up } from 'styled-breakpoints';
-import { ButtonReset } from '../../atoms/Button';
 import { EllipsisCSS } from '../../atoms/Text';
 
 const BreadCrumbsContainer = styled.ul`
@@ -18,8 +17,6 @@ const BreadCrumbsContainer = styled.ul`
 `;
 
 const BreadCrumbsLink = styled.button`
-  ${ButtonReset};
-
   display: inline-block;
 
   cursor: pointer;

@@ -1,19 +1,15 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
-import { v4 as uuid } from 'uuid';
-import CommentsForm from './CommentsForm';
-import { useCommentsFormContext } from './CommentsFormContext';
 import Rating from '../../molecules/Rating';
 import Button from '../../atoms/Button';
 import Paragraph from '../../atoms/Paragraph';
 import Text from '../../atoms/Text';
 import { hexToRGBA } from '../../utils/colors';
-import { postComment } from '../../lib/Comments';
-import useGetComments from '../../hooks/useGetComments';
 import CommentsType from '../../types/comments';
 
 interface CommentsProps {
-  postId: string;
+  comments?: CommentsType[];
+  onReply: (id?: string, name?: string) => void;
 }
 
 const CommentsContainer = styled.div``;
@@ -56,69 +52,10 @@ const CommentsContent = styled.div`
   }
 `;
 
-const Comments: FC<CommentsProps> = ({ postId }) => {
-  const { resetFormState } = useCommentsFormContext();
-  const commentsFormRef = useRef<HTMLFormElement | null>(null);
-  const [commentId, setCommentId] = useState<string | undefined>(undefined);
-  const { comments } = useGetComments(commentId, postId);
-  const [isSubmittingComment, setIsSubmittingComment] = useState<boolean>(
-    false,
-  );
-  const [replyId, setReplyId] = useState<string | undefined>(undefined);
-  const [replyName, setReplyName] = useState<string | undefined>(undefined);
+const Comments: FC<CommentsProps> = ({ comments, onReply }) => {
   const total = comments?.length;
-  const handleCommentFormSubmit = async (
-    comment: CommentsType,
-  ): Promise<void> => {
-    localStorage.setItem('timestamp', `${comment?.timestamp}`);
-    const id = uuid();
-    const body = {
-      id,
-      postId,
-      replyId,
-      ...comment,
-    };
-    setIsSubmittingComment(true);
-    try {
-      await postComment(body);
-      setIsSubmittingComment(false);
-      setCommentId(id);
-      if (commentsFormRef?.current && resetFormState) {
-        commentsFormRef.current.reset();
-        resetFormState();
-      }
-      if (replyId) {
-        setReplyId(undefined);
-        setReplyName(undefined);
-      }
-    } catch (error) {
-      setIsSubmittingComment(false);
-    }
-  };
-  const handleCancelReply = (): void => {
-    setReplyId(undefined);
-    setReplyName(undefined);
-  };
-
-  const handleReply = (id?: string, name?: string): void => {
-    setReplyId(id);
-    setReplyName(name);
-    if (commentsFormRef && commentsFormRef.current) {
-      commentsFormRef.current.focus();
-      const top = commentsFormRef.current.offsetTop - 160;
-      window.scrollTo({ top, left: 0, behavior: 'smooth' });
-    }
-  };
-
   return (
     <CommentsContainer>
-      <CommentsForm
-        isLoading={isSubmittingComment}
-        onCancelReply={handleCancelReply}
-        onSubmit={handleCommentFormSubmit}
-        replyName={replyName}
-        ref={commentsFormRef}
-      />
       {comments && (
         <CommentsHeader>
           <Text display="inline" fontWeight="bold">
@@ -164,7 +101,7 @@ const Comments: FC<CommentsProps> = ({ postId }) => {
                   </div>
                   <Button
                     minWidth={false}
-                    onClick={(): void => handleReply(comment.id, comment.name)}
+                    onClick={(): void => onReply(comment.id, comment.name)}
                     width="53px"
                     shape="rectangle"
                     size="small"

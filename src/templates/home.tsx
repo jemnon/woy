@@ -173,7 +173,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
             )}
             {reels && (
               <Stack>
-                <H4>Reels</H4>
+                <H4>Videos</H4>
                 <Scroller
                   columnWidth={breakpoint === 'desktop' ? '33.33%' : '85%'}
                 >

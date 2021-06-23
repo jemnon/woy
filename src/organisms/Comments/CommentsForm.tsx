@@ -1,13 +1,21 @@
-import React, { ChangeEvent, FormEvent, forwardRef, useState } from 'react';
+import React, {
+  ChangeEvent,
+  FormEvent,
+  forwardRef,
+  useEffect,
+  useState,
+} from 'react';
+import { up } from 'styled-breakpoints';
+import { useBreakpoint } from 'styled-breakpoints/react-styled';
 import styled from 'styled-components';
 import Rating from '../../molecules/Rating';
 import Stack, { StackItem } from '../../organisms/Stack';
-import Button from '../../atoms/Button';
+import Button, { ButtonGroup } from '../../atoms/Button';
 import TextField, { TextArea } from '../../atoms/TextField';
-import { useCommentsFormContext } from './CommentsFormContext';
 import CommentsType from '../../types/comments';
 
 interface CommentsFormProps {
+  commentId?: string;
   isLoading?: boolean;
   onCancelReply?: () => void;
   onSubmit: (comment: Omit<CommentsType, 'replies'>) => void;
@@ -16,39 +24,39 @@ interface CommentsFormProps {
 
 const CommentsFormContainer = styled.form`
   margin-bottom: ${({ theme: { spacing } }): string => spacing.sm4};
-
-  &:focus {
-    border: 1px solid #000;
-  }
 `;
 
 const CommentsFormFooter = styled.footer`
-  display: flex;
-  justify-content: center;
+  ${up('sm')} {
+    display: flex;
+    justify-content: center;
+  }
 `;
 
 const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
-  ({ isLoading, onCancelReply, onSubmit, replyName }, commentsFormRef) => {
-    const {
-      email,
-      name,
-      message,
-      rating,
-      setEmailVal,
-      setMessageVal,
-      setNameVal,
-      setRatingVal,
-    } = useCommentsFormContext();
+  (
+    { commentId, isLoading, onCancelReply, onSubmit, replyName },
+    commentsFormRef,
+  ) => {
+    const [email, setEmail] = useState<string>('');
+    const [name, setName] = useState<string>('');
+    const [message, setMessage] = useState<string>('');
+    const [rating, setRating] = useState<number>(0);
     const handleEmailSubmit = (event: FormEvent<EventTarget>): void => {
       event.preventDefault();
       const timestamp = Date.now();
       onSubmit({ name, message, email, rating, timestamp });
     };
+    const isSmallUp = useBreakpoint(up('sm'));
+    useEffect(() => {
+      if (commentId) setRating(0);
+    }, [commentId]);
     return (
       <>
         <Rating
+          commentId={commentId}
           onSetRating={(val: number): void => {
-            setRatingVal(val);
+            setRating(val);
           }}
         />
         <CommentsFormContainer
@@ -66,7 +74,7 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
                 type="text"
                 required
                 onChange={(event: ChangeEvent<HTMLInputElement>): void => {
-                  setNameVal(event.target.value);
+                  setName(event.target.value);
                 }}
               />
             </StackItem>
@@ -78,7 +86,7 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
                 placeholder="Email (optional)"
                 type="email"
                 onChange={(event: ChangeEvent<HTMLInputElement>): void => {
-                  setEmailVal(event.target.value);
+                  setEmail(event.target.value);
                 }}
               />
             </StackItem>
@@ -91,24 +99,33 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
                 }
                 required
                 onChange={(event: ChangeEvent<HTMLTextAreaElement>): void => {
-                  setMessageVal(event.target.value);
+                  setMessage(event.target.value);
                 }}
               />
             </StackItem>
             <CommentsFormFooter>
-              <Button
-                isDisabled={isLoading}
-                disabled={isLoading}
-                isLoading={isLoading}
-                type="submit"
-              >
-                {isLoading ? '...Loading' : 'Comment'}
-              </Button>
-              {replyName && onCancelReply && (
-                <Button onClick={onCancelReply} variant="outline">
-                  Cancel Reply
+              <ButtonGroup flow={isSmallUp ? 'row' : 'column'} sp="sm3">
+                <Button
+                  isDisabled={isLoading}
+                  disabled={isLoading}
+                  isLoading={isLoading}
+                  minWidth={false}
+                  type="submit"
+                  width={isSmallUp ? '10rem' : '100%'}
+                >
+                  {isLoading ? '...Loading' : 'Comment'}
                 </Button>
-              )}
+                {replyName && onCancelReply && (
+                  <Button
+                    onClick={onCancelReply}
+                    minWidth={false}
+                    variant="outline"
+                    width={isSmallUp ? '10rem' : '100%'}
+                  >
+                    Cancel Reply
+                  </Button>
+                )}
+              </ButtonGroup>
             </CommentsFormFooter>
           </Stack>
         </CommentsFormContainer>
