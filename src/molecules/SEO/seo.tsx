@@ -13,9 +13,10 @@ import isDomUsable from '../../utils/utils';
 
 interface SEOProps {
   ampEnabled?: boolean;
-  ampBoilerplate?: any;
-  ampCustom?: any;
-  ampNoscript?: any;
+  ampBoilerplate?: boolean;
+  ampCustom?: boolean;
+  ampNoscript?: boolean;
+  ampHtml?: boolean;
   description?: string;
   lang?: string;
   meta?: any;
@@ -34,6 +35,7 @@ const SEO: FC<SEOProps> = ({
   ampBoilerplate,
   ampCustom,
   ampNoscript,
+  ampHtml,
   description,
   image,
   lang,
@@ -165,7 +167,7 @@ const SEO: FC<SEOProps> = ({
           href={`${site.siteMetadata.siteUrl}${pathname || ''}`}
         />
       )}
-      {slug && (
+      {ampHtml && (
         <link
           rel="amphtml"
           href={`${site.siteMetadata.siteUrl}/web-stories/${slug}`}
