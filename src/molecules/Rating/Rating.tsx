@@ -26,8 +26,10 @@ const RatingListItem = styled.li`
 const RatingButton = styled.button<{ size?: Size }>`
   ${ButtonReset};
   cursor: ${({ size }): string => (size === 'small' ? 'auto' : 'pointer')};
-  padding-right: ${({ theme: { spacing } }): string => spacing.sm1};
-  padding-left: ${({ theme: { spacing } }): string => spacing.sm1};
+  padding-right: ${({ theme: { spacing }, size }): string =>
+    size === 'small' ? '2px' : spacing.sm1};
+  padding-left: ${({ theme: { spacing }, size }): string =>
+    size === 'small' ? '2px' : spacing.sm1};
 `;
 
 const Rating: FC<RatingProps> = ({
