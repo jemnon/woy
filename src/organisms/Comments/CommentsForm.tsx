@@ -3,6 +3,7 @@ import React, {
   FormEvent,
   forwardRef,
   useEffect,
+  useRef,
   useState,
 } from 'react';
 import { up } from 'styled-breakpoints';
@@ -11,6 +12,7 @@ import styled from 'styled-components';
 import Rating from '../../molecules/Rating';
 import Stack, { StackItem } from '../../organisms/Stack';
 import Button, { ButtonGroup } from '../../atoms/Button';
+import Spacer from '../../atoms/Spacer';
 import TextField, { TextArea } from '../../atoms/TextField';
 import CommentsType from '../../types/comments';
 
@@ -22,7 +24,12 @@ interface CommentsFormProps {
   replyName?: string;
 }
 
-const CommentsFormContainer = styled.form`
+const CommentsFormContainer = styled.div`
+  margin: 0 auto;
+  max-width: 750px;
+`;
+
+const CommentsFormField = styled.form`
   margin-bottom: ${({ theme: { spacing } }): string => spacing.sm4};
 `;
 
@@ -33,11 +40,29 @@ const CommentsFormFooter = styled.footer`
   }
 `;
 
+const CommentsReplyLabel = styled.div`
+  display: inline-block;
+
+  padding-top: ${({ theme: { spacing } }): string => spacing.sm1};
+  padding-left: ${({ theme: { spacing } }): string => spacing.sm4};
+  padding-right: ${({ theme: { spacing } }): string => spacing.sm4};
+  padding-bottom: ${({ theme: { spacing } }): string => spacing.sm2};
+  margin-bottom: 16px;
+
+  color: ${({ theme: { colors } }): string => colors.white};
+  background-color: ${({ theme: { colors } }): string => colors.orange};
+
+  span {
+    font-weight: bold;
+  }
+`;
+
 const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
   (
     { commentId, isLoading, onCancelReply, onSubmit, replyName },
     commentsFormRef,
   ) => {
+    const nameInputRef = useRef<HTMLInputElement | null>(null);
     const [email, setEmail] = useState<string>('');
     const [name, setName] = useState<string>('');
     const [message, setMessage] = useState<string>('');
@@ -51,20 +76,31 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
     useEffect(() => {
       if (commentId) setRating(0);
     }, [commentId]);
+    useEffect(() => {
+      if (nameInputRef?.current && replyName) {
+        nameInputRef?.current.focus();
+      }
+    }, [replyName]);
     return (
-      <>
-        <Rating
-          commentId={commentId}
-          onSetRating={(val: number): void => {
-            setRating(val);
-          }}
-        />
-        <CommentsFormContainer
+      <CommentsFormContainer>
+        {!replyName && (
+          <Rating
+            commentId={commentId}
+            onSetRating={(val: number): void => {
+              setRating(val);
+            }}
+          />
+        )}
+        <Spacer />
+        <CommentsFormField
           name="comments-form"
           method="POST"
+          netlify-honeypot="bot-field"
+          data-netlify="true"
           onSubmit={handleEmailSubmit}
           ref={commentsFormRef}
         >
+          <input type="hidden" name="bot-field" value="comments-form" />
           <Stack bottomSpacing="sp-0">
             <StackItem bottomSpacing="sm4">
               <TextField
@@ -72,6 +108,7 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
                 name="name"
                 placeholder="Name"
                 type="text"
+                ref={nameInputRef}
                 required
                 onChange={(event: ChangeEvent<HTMLInputElement>): void => {
                   setName(event.target.value);
@@ -91,12 +128,15 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
               />
             </StackItem>
             <StackItem bottomSpacing="sm4">
+              {replyName && (
+                <CommentsReplyLabel>
+                  Replying to: <span>{replyName}</span>
+                </CommentsReplyLabel>
+              )}
               <TextArea
                 id="message"
                 name="message"
-                placeholder={
-                  replyName ? `Replying to ${replyName}` : 'Leave a Comment'
-                }
+                placeholder="Leave a Comment"
                 required
                 onChange={(event: ChangeEvent<HTMLTextAreaElement>): void => {
                   setMessage(event.target.value);
@@ -128,8 +168,8 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
               </ButtonGroup>
             </CommentsFormFooter>
           </Stack>
-        </CommentsFormContainer>
-      </>
+        </CommentsFormField>
+      </CommentsFormContainer>
     );
   },
 );

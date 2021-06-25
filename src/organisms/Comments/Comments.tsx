@@ -1,7 +1,8 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import Rating from '../../molecules/Rating';
 import Button from '../../atoms/Button';
+import Spacer from '../../atoms/Spacer';
 import Paragraph from '../../atoms/Paragraph';
 import Text from '../../atoms/Text';
 import { hexToRGBA } from '../../utils/colors';
@@ -9,6 +10,7 @@ import CommentsType from '../../types/comments';
 
 interface CommentsProps {
   comments?: CommentsType[];
+  currentCommentId?: string;
   onReply: (id?: string, name?: string) => void;
 }
 
@@ -95,6 +97,7 @@ const Comments: FC<CommentsProps> = ({ comments, onReply }) => {
                       </>
                     )}
                     <Rating size="small" rating={comment?.rating} />
+                    <Spacer />
                     <Paragraph fontSize="f1" bottomSpacing="sm4">
                       {comment.message}
                     </Paragraph>

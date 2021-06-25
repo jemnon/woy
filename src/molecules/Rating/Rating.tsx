@@ -16,7 +16,6 @@ const RatingContainer = styled.ul`
   display: flex;
   align-items: center;
 
-  margin-bottom: ${({ theme: { spacing } }): string => spacing.sm4};
   margin-left: ${({ theme: { spacing } }): string => `-${spacing.sm1}`};
 `;
 

@@ -11,7 +11,7 @@ import Header from '../organisms/Header';
 import Layout, { PageHeader } from '../organisms/Layout';
 import Scroller from '../organisms/Scroller';
 import SideContent from '../organisms/SideContent';
-import Stack, { StackItem, VStack } from '../organisms/Stack';
+import Stack, { StackItem, HStack } from '../organisms/Stack';
 import BackToTop from '../molecules/BackToTop';
 import BreadCrumbs from '../molecules/BreadCrumbs';
 import Card from '../molecules/Card';
@@ -32,6 +32,7 @@ import ImgWrapper from '../atoms/ImgWrapper';
 import Link from '../atoms/Link';
 import Paragraph from '../atoms/Paragraph';
 import PostDate from '../atoms/PostDate';
+import Spacer from '../atoms/Spacer';
 import Text from '../atoms/Text';
 import useGetComments from '../hooks/useGetComments';
 import { useBreakpointContext } from '../context/BreakpointContextProvider';
@@ -311,9 +312,20 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
           </StackItem>
           {post.ingredients && (
             <StackItem bottomSpacing="xlg4">
-              <Box padding="sm4" ref={recipeRef}>
+              <Box data-id="recipe-card" padding="sm4" ref={recipeRef}>
                 <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
                   <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
+                    {ratingsAvg && (
+                      <>
+                        <HStack sp="sm2">
+                          <Rating rating={ratingsAvg ?? 0} size="small" />
+                          <div>
+                            {ratingsAvg} from {ratingsTotal} votes
+                          </div>
+                        </HStack>
+                        <Spacer sp="sm2" />
+                      </>
+                    )}
                     <H4>{post.title}</H4>
                     <Author />
                     {post.bodyPreview && (
@@ -367,14 +379,6 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                         <Img alt={post.title} fluid={post.images[0].fluid} />
                       )}
                     </ImgWrapper>
-                    {ratingsAvg && (
-                      <>
-                        <Rating rating={ratingsAvg ?? 0} size="small" />
-                        <div>
-                          {ratingsAvg} from {ratingsTotal} votes
-                        </div>
-                      </>
-                    )}
                   </GridCell>
                 </Grid>
                 <Divider />

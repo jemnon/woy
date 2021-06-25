@@ -18,7 +18,7 @@ const getRatings = (comments: CommentsType[]): RatingsReturnType => {
   });
   const ratingsTotal = mappedComments.length;
   const avg = sum ? sum / ratingsTotal : 0;
-  const ratingsAvg = Number(avg.toFixed(1));
+  const ratingsAvg = Number(avg.toFixed(2));
   return {
     ratingsAvg,
     ratingsTotal,
