@@ -161,11 +161,13 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     '@context': 'http://schema.org',
     '@type': 'Recipe',
     author: 'Jeri Mobley-Arias',
-    aggregateRating: {
-      '@type': 'AggregateRating',
-      ratingValue: `${ratingsAvg}`,
-      reviewCount: `${ratingsTotal}`,
-    },
+    ...(ratingsAvg && {
+      aggregateRating: {
+        '@type': 'AggregateRating',
+        ratingValue: `${ratingsAvg}`,
+        reviewCount: `${ratingsTotal}`,
+      },
+    }),
     description: post.bodyPreview?.bodyPreview,
     datePublished: post.publishDate,
     image: `https:${fixed?.src}`,
