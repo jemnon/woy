@@ -118,6 +118,9 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
    * Handles cancel reply state
    */
   const handleCancelReply = (): void => {
+    if (commentsFormRef?.current) {
+      commentsFormRef.current.reset();
+    }
     setReplyId(undefined);
     setReplyName(undefined);
   };
