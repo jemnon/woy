@@ -1,10 +1,12 @@
 {
   "include": ["./src/**/*"],
+  "exclude": ["node_modules"],
   "compilerOptions": {
-    "target": "esnext",
-    "module": "commonjs",
-    "lib": ["dom", "es2015", "es2017"],
-    // "allowJs": true,
+    "target": "es5",
+    "module": "esnext",
+    "moduleResolution": "node",
+    "lib": ["dom", "dom.iterable", "esnext"],
+    "allowJs": true,
     // "checkJs": true,
     "jsx": "react",
     "strict": true,

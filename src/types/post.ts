@@ -26,6 +26,7 @@ export interface Post {
   categories?: Categories[];
   contentful_id?: string;
   enableComments?: boolean;
+  enableAmp?: boolean;
   id?: string;
   images: Images[];
   ingredients?: {

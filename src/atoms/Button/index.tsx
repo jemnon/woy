@@ -1,4 +1,5 @@
 import Button, { ButtonReset } from './Button';
+import ButtonGroup from './ButtonGroup';
 
-export { ButtonReset };
+export { ButtonGroup, ButtonReset };
 export default Button;

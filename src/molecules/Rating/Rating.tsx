@@ -1,12 +1,12 @@
-import React, { FC, useEffect, useState, useContext } from 'react';
+import React, { FC, useState, useContext, useEffect } from 'react';
 import styled, { ThemeContext } from 'styled-components';
 import { ButtonReset } from '../../atoms/Button';
 import { StarFull } from '../../atoms/Icons';
-import { useCommentsFormContext } from '../../organisms/Comments/CommentsFormContext';
 
 type Size = 'normal' | 'small';
 
 interface RatingProps {
+  commentId?: string;
   onSetRating?: (val: number) => void;
   rating?: number;
   size?: Size;
@@ -16,7 +16,6 @@ const RatingContainer = styled.ul`
   display: flex;
   align-items: center;
 
-  margin-bottom: ${({ theme: { spacing } }): string => spacing.sm4};
   margin-left: ${({ theme: { spacing } }): string => `-${spacing.sm1}`};
 `;
 
@@ -27,17 +26,19 @@ const RatingListItem = styled.li`
 const RatingButton = styled.button<{ size?: Size }>`
   ${ButtonReset};
   cursor: ${({ size }): string => (size === 'small' ? 'auto' : 'pointer')};
-  padding-right: ${({ theme: { spacing } }): string => spacing.sm1};
-  padding-left: ${({ theme: { spacing } }): string => spacing.sm1};
+  padding-right: ${({ theme: { spacing }, size }): string =>
+    size === 'small' ? '2px' : spacing.sm1};
+  padding-left: ${({ theme: { spacing }, size }): string =>
+    size === 'small' ? '2px' : spacing.sm1};
 `;
 
 const Rating: FC<RatingProps> = ({
+  commentId,
   onSetRating,
   rating = 0,
   size = 'normal',
 }) => {
   const { colors, fontSizes } = useContext(ThemeContext);
-  const { rating: rt } = useCommentsFormContext();
   const [value, setValue] = useState<number>(rating);
   const total = 5;
   const handleRating = (val: number): void => {
@@ -45,15 +46,16 @@ const Rating: FC<RatingProps> = ({
     setValue(val);
   };
   const getFill = (val: number, idx: number): string => {
-    if (idx <= val && val !== 0) {
+    const parseVal = Math.floor(val);
+    if (idx <= parseVal && parseVal !== 0) {
       return colors.orange;
     }
     return colors.lightGray;
   };
   if (rating === 0 && size === 'small') return null;
   useEffect(() => {
-    if (rt) console.log('rt: ', rt);
-  }, [rt]);
+    if (commentId) setValue(0);
+  }, [commentId]);
   return (
     <RatingContainer>
       {Array.from({ length: total }, (_, idx) => (

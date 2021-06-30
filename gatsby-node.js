@@ -81,7 +81,7 @@ const getFavorites = async graphql => {
 const getAllPosts = async graphql => {
   const data = await graphql(`
     {
-      allContentfulPosts {
+      allContentfulPosts(sort: { fields: publishDate, order: DESC }) {
         edges {
           previous {
             title
@@ -120,6 +120,7 @@ const getAllPosts = async graphql => {
             publishDate
             title
             enableComments
+            enableAmp
             bodyPreview {
               bodyPreview
               childMarkdownRemark {
@@ -322,20 +323,28 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
     component: require.resolve('./src/templates/home.tsx'),
     context: {
       page: {
-        about: profileAboutData ? profileAboutData.contentfulProfileAbout : null,
-        reels: reelsData ? reelsData.contentfulReels: null,
-        featuredOn: featuredOnData ?  featuredOnData.contentfulFeaturedOn: null,
-        latestPost: latestPostData ? latestPostData.allContentfulPosts.edges: null,
-        favorites: favoritesData ? favoritesData.allContentfulFavoritePosts.edges: null,
+        about: profileAboutData
+          ? profileAboutData.contentfulProfileAbout
+          : null,
+        reels: reelsData ? reelsData.contentfulReels : null,
+        featuredOn: featuredOnData ? featuredOnData.contentfulFeaturedOn : null,
+        latestPost: latestPostData
+          ? latestPostData.allContentfulPosts.edges
+          : null,
+        favorites: favoritesData
+          ? favoritesData.allContentfulFavoritePosts.edges
+          : null,
         instagram: instaData ? instaData.allInstagramContent.edges : null,
-        recentPosts: recentPostsData ? recentPostsData.allContentfulPosts.edges: null,
+        recentPosts: recentPostsData
+          ? recentPostsData.allContentfulPosts.edges
+          : null,
       },
     },
   });
   // post pages
   if (postsData) {
     postsData.allContentfulPosts.edges.forEach(edge => {
-      const { slug } = edge.node;
+      const { slug, enableAmp } = edge.node;
       createPage({
         path: `post/${slug}`,
         component: require.resolve('./src/templates/post.tsx'),
@@ -345,6 +354,16 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
           page: { ...edge.node, next: edge.next, previous: edge.previous },
         },
       });
+      // generate amp pages
+      if (enableAmp) {
+        createPage({
+          path: `web-stories/${slug}`,
+          component: require.resolve('./src/templates/post-amp.tsx'),
+          context: {
+            page: { ...edge.node, next: edge.next, previous: edge.previous },
+          },
+        });
+      }
     });
     // print recipe pages
     postsData.allContentfulPosts.edges.forEach(edge => {

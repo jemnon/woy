@@ -12,6 +12,12 @@ import { useStaticQuery, graphql } from 'gatsby';
 import isDomUsable from '../../utils/utils';
 
 interface SEOProps {
+  ampEnabled?: boolean;
+  ampBoilerplate?: string;
+  ampCustom?: string;
+  ampNoscript?: string;
+  ampHtml?: boolean;
+  amp?: string;
   description?: string;
   lang?: string;
   meta?: any;
@@ -19,19 +25,27 @@ interface SEOProps {
   pathname?: string;
   image?: string;
   script?: any;
+  slug?: string;
   type?: string;
 }
 
 const assetPath = withPrefix('/');
 
 const SEO: FC<SEOProps> = ({
+  ampEnabled,
+  ampBoilerplate,
+  ampCustom,
+  ampNoscript,
+  ampHtml,
+  amp,
   description,
   image,
-  lang,
+  lang = 'en',
   meta,
   title,
   type,
   script,
+  slug,
   pathname,
 }) => {
   const { site } = useStaticQuery(
@@ -56,6 +70,7 @@ const SEO: FC<SEOProps> = ({
   return (
     <Helmet
       htmlAttributes={{
+        ...(ampEnabled && { amp }),
         lang,
       }}
       title={title}
@@ -155,7 +170,43 @@ const SEO: FC<SEOProps> = ({
           href={`${site.siteMetadata.siteUrl}${pathname || ''}`}
         />
       )}
+      {ampHtml && (
+        <link
+          rel="amphtml"
+          href={`${site.siteMetadata.siteUrl}/web-stories/${slug}`}
+        />
+      )}
       {script && <script type="application/ld+json">{script}</script>}
+
+      {ampEnabled && (
+        <script async src="https://cdn.ampproject.org/v0.js"></script>
+      )}
+      {ampEnabled && (
+        <script
+          async
+          custom-element="amp-video"
+          src="https://cdn.ampproject.org/v0/amp-video-0.1.js"
+        ></script>
+      )}
+      {ampEnabled && (
+        <script
+          async
+          custom-element="amp-story"
+          src="https://cdn.ampproject.org/v0/amp-story-1.0.js"
+        ></script>
+      )}
+      {ampEnabled && (
+        <script
+          async
+          custom-element="amp-smartlinks"
+          src="https://cdn.ampproject.org/v0/amp-smartlinks-0.1.js"
+        ></script>
+      )}
+      {ampBoilerplate && <style amp-boilerplate>{`${ampBoilerplate}`}</style>}
+      {ampNoscript && (
+        <noscript>{`<style amp-boilerplate>${`${ampNoscript}`}</style>`}</noscript>
+      )}
+      {ampCustom && <style amp-custom>{`${ampCustom}`}</style>}
     </Helmet>
   );
 };
