@@ -309,8 +309,8 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 fontWeight="bold"
                 textAlign="center"
               >
-                Have we connected on social media, yet? <br /> If not, be sure
-                to follow me on:
+                Have we connected on social media, yet? <br /> Be sure to follow
+                me on:
               </Text>
               <Social />
             </Box>
