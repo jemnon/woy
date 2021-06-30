@@ -81,7 +81,7 @@ const getFavorites = async graphql => {
 const getAllPosts = async graphql => {
   const data = await graphql(`
     {
-      allContentfulPosts {
+      allContentfulPosts(sort: { fields: publishDate, order: DESC }) {
         edges {
           previous {
             title

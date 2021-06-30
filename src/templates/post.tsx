@@ -441,7 +441,9 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                   replyName={replyName}
                   ref={commentsFormRef}
                 />
-                <Comments comments={comments} onReply={handleReply} />
+                {comments && (
+                  <Comments comments={comments} onReply={handleReply} />
+                )}
               </Box>
             </StackItem>
           )}

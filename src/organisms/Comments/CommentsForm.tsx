@@ -104,6 +104,7 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
           <Stack bottomSpacing="sp-0">
             <StackItem bottomSpacing="sm4">
               <TextField
+                aria-label="name"
                 id="name"
                 name="name"
                 placeholder="Name"
@@ -117,6 +118,7 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
             </StackItem>
             <StackItem bottomSpacing="sm4">
               <TextField
+                aria-label="email"
                 id="email"
                 name="email"
                 pattern="[^@]+@.+\..+"
@@ -134,6 +136,7 @@ const CommentsForm = forwardRef<HTMLFormElement, CommentsFormProps>(
                 </CommentsReplyLabel>
               )}
               <TextArea
+                aria-label="message"
                 id="message"
                 name="message"
                 placeholder="Leave a Comment"
