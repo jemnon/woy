@@ -184,7 +184,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
       'ol',
     ),
     recipeYield: post.servings,
-    totalTime: post.totalTime,
+    // totalTime: post.totalTime,
   };
   return (
     <Layout>
