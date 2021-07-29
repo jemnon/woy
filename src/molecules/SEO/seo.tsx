@@ -7,8 +7,7 @@
 
 import React, { FC } from 'react';
 import Helmet from 'react-helmet';
-import { withPrefix } from 'gatsby';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, withPrefix } from 'gatsby';
 import isDomUsable from '../../utils/utils';
 
 interface SEOProps {
@@ -67,6 +66,7 @@ const SEO: FC<SEOProps> = ({
   const metaDescription = description ?? site.siteMetadata.description;
   const metaTime = isDomUsable() ? new Date().getTime() : '';
   const metaTitle = title ?? site.siteMetadata.title;
+
   return (
     <Helmet
       htmlAttributes={{
@@ -193,6 +193,13 @@ const SEO: FC<SEOProps> = ({
           async
           custom-element="amp-story"
           src="https://cdn.ampproject.org/v0/amp-story-1.0.js"
+        ></script>
+      )}
+      {ampEnabled && (
+        <script
+          async
+          custom-element="amp-analytics"
+          src="https://cdn.ampproject.org/v0/amp-analytics-0.1.js"
         ></script>
       )}
       {ampEnabled && (

@@ -1,7 +1,13 @@
 import React, { FC } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
+import { graphql, useStaticQuery } from 'gatsby';
+import { Helmet } from 'react-helmet';
+import Box from '../atoms/Box';
 import GlobalStyle from '../atoms/GlobalStyle';
-import { H1, H2 } from '../atoms/Headings';
+import Heading from '../atoms/Heading';
+import Spacer from '../atoms/Spacer';
+import Text from '../atoms/Text';
+import { VStack } from '../organisms/Stack';
 import theme from '../theme';
 import SEO from '../molecules/SEO';
 import { generateFromAst } from '../utils/utils';
@@ -33,11 +39,28 @@ const boilerplate =
   'body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}';
 const noscriptBoilerplate =
   'body{-webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none}';
-const custom = 'amp-story-page { background-color: #000;}';
+const custom =
+  'amp-story-page { background-color: #000;} amp-img { opacity: 0.8; } .content { display: flex; flex-direction: column; justify-content: flex-end; }';
 
-const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext, location }) => {
+const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
+  const { site } = useStaticQuery(
+    graphql`
+      query {
+        site {
+          siteMetadata {
+            title
+            description
+            image
+            author
+            siteUrl
+          }
+        }
+      }
+    `,
+  );
   const { page: post } = pageContext || {};
   const [{ fixed }] = post.images || [];
+  // const len = post.webStory?.[0].pages.length;
   const schemaJson = {
     '@context': 'http://schema.org',
     '@type': 'Recipe',
@@ -54,6 +77,14 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext, location }) => {
       'instructions',
       'ol',
     ),
+  };
+  const ampJson = {
+    vars: {
+      gtag_id: 'UA-163607733-1',
+      config: {
+        'UA-163607733-1': { groups: 'default' },
+      },
+    },
   };
   return (
     <ThemeProvider theme={theme}>
@@ -81,33 +112,126 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext, location }) => {
           <amp-story-page id="cover">
             <amp-story-grid-layer template="fill">
               <amp-img
-                src={post.webStory?.[0].coverPage.fixed.src}
+                alt=""
+                src={post.webStory?.[0].coverPageAsset.fixed.src}
                 width="720"
                 height="1280"
                 layout="responsive"
               />
             </amp-story-grid-layer>
-            <amp-story-grid-layer template="vertical">
-              <H1 color="white">{post.webStory?.[0].coverPage.title}</H1>
+            <amp-story-grid-layer template="thirds">
+              <div className="content" grid-area="middle-third">
+                <VStack sp="sp-0">
+                  <Heading alignment="center" c="white" lh="1.25">
+                    whisperofyum.com
+                  </Heading>
+                  <Heading alignment="center" c="white" level="3" lh="1.25">
+                    {post.webStory?.[0].coverPageTitle}
+                  </Heading>
+                </VStack>
+              </div>
             </amp-story-grid-layer>
+            <amp-story-page-attachment
+              layout="nodisplay"
+              cta-text="View Recipe"
+              href={`${site.siteMetadata.siteUrl}/post/${post.slug}`}
+            />
           </amp-story-page>
-          {post.webStory?.[0].pages.map((page, key: number) => (
+          {post.webStory?.[0].storyPages.map((page, key: number) => (
             <amp-story-page id={`page${key + 1}`} key={`page-${key}`}>
               <amp-story-grid-layer template="fill">
                 <amp-img
-                  src={page.fixed.src}
+                  alt=""
+                  src={page.asset.fixed.src}
                   width="720"
                   height="1280"
                   layout="responsive"
                 />
               </amp-story-grid-layer>
-
-              <amp-story-grid-layer template="vertical">
-                <H2 color="white">{page.title}</H2>
+              <amp-story-grid-layer>
+                <div className="content">
+                  <Box
+                    bgColor="nearBlack"
+                    bgColorAlpha={75}
+                    padding="sm3"
+                    height="auto"
+                  >
+                    <Text textColor="white" as="div" fontSize="f1">
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html:
+                            page.description?.childMarkdownRemark?.html ?? '',
+                        }}
+                      />
+                    </Text>
+                  </Box>
+                  <Spacer sp={[null, 'xlg3', 'xlg1', 'lg3']} />
+                </div>
               </amp-story-grid-layer>
+              <amp-story-page-attachment
+                layout="nodisplay"
+                cta-text="View Recipe"
+                href={`${site.siteMetadata.siteUrl}/post/${post.slug}`}
+              />
             </amp-story-page>
           ))}
+          <amp-story-page id="last-page">
+            <amp-story-grid-layer template="fill">
+              <amp-img
+                alt=""
+                src={post.webStory?.[0].lastPageAsset.fixed.src}
+                width="720"
+                height="1280"
+                layout="responsive"
+              />
+            </amp-story-grid-layer>
+            <amp-story-grid-layer template="thirds">
+              <div
+                grid-area="middle-third"
+                style={{
+                  display: 'flex',
+                  flexDirection: 'column',
+                  justifyContent: 'center',
+                }}
+              >
+                <div>
+                  <Box bgColor="orange" padding="sm3">
+                    <VStack sp="sp-0">
+                      <Text as="div" textColor="white">
+                        <Box
+                          bgColorAlpha={0}
+                          dangerouslySetInnerHTML={{
+                            __html:
+                              post.webStory?.[0]?.lastPageDescription
+                                ?.childMarkdownRemark?.html ?? '',
+                          }}
+                        />
+                      </Text>
+                      <Heading
+                        alignment="center"
+                        as="h4"
+                        c="white"
+                        textSize="f3"
+                      >
+                        {post.webStory?.[0]?.lastPageUrl ?? 'whisperofyum.com'}
+                      </Heading>
+                    </VStack>
+                  </Box>
+                </div>
+              </div>
+            </amp-story-grid-layer>
+            <amp-story-page-attachment
+              layout="nodisplay"
+              cta-text="View Recipe"
+              href={`${site.siteMetadata.siteUrl}/post/${post.slug}`}
+            />
+          </amp-story-page>
         </amp-story>
+        <amp-analytics type="gtag" data-credentials="include">
+          <script type="application/json">{`${JSON.stringify(
+            ampJson,
+          )}`}</script>
+        </amp-analytics>
       </Container>
     </ThemeProvider>
   );

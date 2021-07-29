@@ -185,22 +185,42 @@ const getAllPosts = async graphql => {
               slug
             }
             webStory {
-              pages {
-                title
+              coverPageAsset {
                 fixed(quality: 80) {
                   src
                   srcSet
                   srcSetWebp
                   srcWebp
-                  aspectRatio
                 }
               }
-              coverPage {
+              coverPageTitle
+              lastPageAsset {
                 fixed(quality: 80) {
                   src
                   srcSet
                   srcSetWebp
                   srcWebp
+                }
+              }
+              lastPageDescription {
+                childMarkdownRemark {
+                  html
+                }
+              }
+              lastPageUrl
+              storyPages {
+                asset {
+                  fixed {
+                    src
+                    srcSet
+                    srcSetWebp
+                    srcWebp
+                  }
+                }
+                description {
+                  childMarkdownRemark {
+                    html
+                  }
                 }
                 title
               }

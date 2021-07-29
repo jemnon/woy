@@ -1,4 +1,5 @@
 import styled, { SimpleInterpolation } from 'styled-components';
+import { hexToRGBA } from '../../utils/colors';
 import { Colors, Spacing } from '../../types/theme';
 
 type BgColor = keyof Colors;
@@ -11,6 +12,7 @@ interface BoxProps {
   justifyContent?: string;
 
   bgColor?: BgColor;
+  bgColorAlpha?: number;
   padding?: Padding;
 
   borderTop?: string;
@@ -24,7 +26,7 @@ interface BoxProps {
 }
 
 const Box = styled.div<BoxProps>`
-  display: ${({ display = 'display' }): string => display};
+  display: ${({ display = 'flex' }): string => display};
   align-items: ${({ alignItems = 'center' }): string => alignItems};
   justify-content: ${({ justifyContent = 'center' }): string => justifyContent};
 
@@ -33,8 +35,11 @@ const Box = styled.div<BoxProps>`
   width: ${({ width = '100%' }): string => width};
   height: ${({ height = '100%' }): string => height};
 
-  background-color: ${({ bgColor = 'nearWhite', theme: { colors } }): string =>
-    colors[bgColor]};
+  background-color: ${({
+    bgColor = 'nearWhite',
+    bgColorAlpha = 100,
+    theme: { colors },
+  }): string => hexToRGBA(colors[bgColor], bgColorAlpha)};
 
   ${({ borderTop }): SimpleInterpolation =>
     borderTop && `border-top: ${borderTop}`};

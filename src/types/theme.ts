@@ -50,6 +50,8 @@ export interface Colors {
   white: string;
 }
 
+export type ColorKeys = keyof Colors;
+
 export type ColorMode = 'dark' | 'light';
 
 export interface Header {

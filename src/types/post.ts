@@ -11,12 +11,28 @@ interface RelatedRecipes {
 }
 
 interface WebStory {
-  coverPage: {
+  coverPageTitle: string;
+  coverPageAsset: {
     fixed: FixedObject;
-    title: string;
   };
-  pages: {
+  lastPageAsset: {
     fixed: FixedObject;
+  };
+  lastPageDescription?: {
+    childMarkdownRemark?: {
+      html: string;
+    };
+  };
+  lastPageUrl?: string;
+  storyPages: {
+    description: {
+      childMarkdownRemark?: {
+        html: string;
+      };
+    };
+    asset: {
+      fixed: FixedObject;
+    };
     title: string;
   }[];
 }
