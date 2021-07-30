@@ -7,8 +7,7 @@
 
 import React, { FC } from 'react';
 import Helmet from 'react-helmet';
-import { withPrefix } from 'gatsby';
-import { useStaticQuery, graphql } from 'gatsby';
+import { useStaticQuery, graphql, withPrefix } from 'gatsby';
 import isDomUsable from '../../utils/utils';
 
 interface SEOProps {
@@ -67,6 +66,7 @@ const SEO: FC<SEOProps> = ({
   const metaDescription = description ?? site.siteMetadata.description;
   const metaTime = isDomUsable() ? new Date().getTime() : '';
   const metaTitle = title ?? site.siteMetadata.title;
+
   return (
     <Helmet
       htmlAttributes={{
@@ -163,7 +163,6 @@ const SEO: FC<SEOProps> = ({
         href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Noto+Serif+TC:wght@400;700&display=swap"
         rel="stylesheet"
       />
-      <link rel="stylesheet" href={`${assetPath}fonts/fonts.css`} />
       {isDomUsable() && (
         <link
           rel="canonical"
@@ -177,31 +176,6 @@ const SEO: FC<SEOProps> = ({
         />
       )}
       {script && <script type="application/ld+json">{script}</script>}
-
-      {ampEnabled && (
-        <script async src="https://cdn.ampproject.org/v0.js"></script>
-      )}
-      {ampEnabled && (
-        <script
-          async
-          custom-element="amp-video"
-          src="https://cdn.ampproject.org/v0/amp-video-0.1.js"
-        ></script>
-      )}
-      {ampEnabled && (
-        <script
-          async
-          custom-element="amp-story"
-          src="https://cdn.ampproject.org/v0/amp-story-1.0.js"
-        ></script>
-      )}
-      {ampEnabled && (
-        <script
-          async
-          custom-element="amp-smartlinks"
-          src="https://cdn.ampproject.org/v0/amp-smartlinks-0.1.js"
-        ></script>
-      )}
       {ampBoilerplate && <style amp-boilerplate>{`${ampBoilerplate}`}</style>}
       {ampNoscript && (
         <noscript>{`<style amp-boilerplate>${`${ampNoscript}`}</style>`}</noscript>

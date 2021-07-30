@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, SimpleInterpolation } from 'styled-components';
 import { up } from 'styled-breakpoints';
 import { FontSizes, Spacing } from '../../types/theme';
 
@@ -26,7 +26,8 @@ export const ParagraphCSS = css<ParagraphProps>`
     font-size: ${({ theme, fontSize = 'f2' }): string =>
       theme.fontSizes[fontSize]};
   }
-  text-align: ${({ textAlign = 'left' }): string => textAlign};
+  ${({ textAlign }): SimpleInterpolation =>
+    textAlign && `text-align: ${textAlign}`};
 
   line-height: 1.5;
 

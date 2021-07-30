@@ -184,6 +184,47 @@ const getAllPosts = async graphql => {
               publishDate
               slug
             }
+            webStory {
+              coverPageAsset {
+                fixed(quality: 80) {
+                  src
+                  srcSet
+                  srcSetWebp
+                  srcWebp
+                }
+              }
+              coverPageTitle
+              lastPageAsset {
+                fixed(quality: 80) {
+                  src
+                  srcSet
+                  srcSetWebp
+                  srcWebp
+                }
+              }
+              lastPageDescription {
+                childMarkdownRemark {
+                  html
+                }
+              }
+              lastPageUrl
+              storyPages {
+                asset {
+                  fixed {
+                    src
+                    srcSet
+                    srcSetWebp
+                    srcWebp
+                  }
+                }
+                description {
+                  childMarkdownRemark {
+                    html
+                  }
+                }
+                title
+              }
+            }
           }
         }
       }

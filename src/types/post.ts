@@ -1,3 +1,4 @@
+import { FixedObject } from 'gatsby-image';
 import { Element } from 'hast';
 import { Categories } from './categories';
 import { Images } from './images';
@@ -7,6 +8,33 @@ interface RelatedRecipes {
   slug: string;
   title: string;
   publishDate: string;
+}
+
+interface WebStory {
+  coverPageTitle: string;
+  coverPageAsset: {
+    fixed: FixedObject;
+  };
+  lastPageAsset: {
+    fixed: FixedObject;
+  };
+  lastPageDescription?: {
+    childMarkdownRemark?: {
+      html: string;
+    };
+  };
+  lastPageUrl?: string;
+  storyPages: {
+    description: {
+      childMarkdownRemark?: {
+        html: string;
+      };
+    };
+    asset: {
+      fixed: FixedObject;
+    };
+    title: string;
+  }[];
 }
 
 export interface Post {
@@ -63,4 +91,5 @@ export interface Post {
   servings?: string;
   slug?: string;
   title: string;
+  webStory?: WebStory[];
 }
