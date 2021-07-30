@@ -1,11 +1,10 @@
 import React, { FC } from 'react';
-import styled, { ThemeProvider } from 'styled-components';
+import { ThemeProvider } from 'styled-components';
 import { graphql, useStaticQuery } from 'gatsby';
+import useScript from 'react-script-hook';
 import Box from '../atoms/Box';
-import Eyebrow from '../atoms/Eyebrow';
 import GlobalStyle from '../atoms/GlobalStyle';
 import Heading from '../atoms/Heading';
-import Spacer from '../atoms/Spacer';
 import Text from '../atoms/Text';
 import { VStack } from '../organisms/Stack';
 import theme from '../theme';
@@ -37,6 +36,23 @@ const custom =
 const ctaLabel = 'Get Recipe';
 
 const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
+  const [loadingAmp] = useScript({ src: 'https://cdn.ampproject.org/v0.js' });
+  const [loadingAmpVideo] = useScript({
+    src: 'https://cdn.ampproject.org/v0/amp-video-0.1.js',
+    checkForExisting: true,
+  });
+  const [loadingAmpStory] = useScript({
+    src: 'https://cdn.ampproject.org/v0/amp-story-1.0.js',
+    checkForExisting: true,
+  });
+  const [loadingAmpAnalytics] = useScript({
+    src: 'https://cdn.ampproject.org/v0/amp-analytics-0.1.js',
+    checkForExisting: true,
+  });
+  const [loadingAmpSmartLinks] = useScript({
+    src: 'https://cdn.ampproject.org/v0/amp-smartlinks-0.1.js',
+    checkForExisting: true,
+  });
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -79,6 +95,14 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
       },
     },
   };
+  if (
+    loadingAmp &&
+    loadingAmpAnalytics &&
+    loadingAmpSmartLinks &&
+    loadingAmpStory &&
+    loadingAmpVideo
+  )
+    return null;
   return (
     <ThemeProvider theme={theme}>
       <GlobalStyle />
