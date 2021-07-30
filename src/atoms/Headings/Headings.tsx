@@ -1,4 +1,4 @@
-import styled, { css } from 'styled-components';
+import styled, { css, SimpleInterpolation } from 'styled-components';
 import { up } from 'styled-breakpoints';
 import { Colors, Spacing } from '../../types/theme';
 
@@ -16,7 +16,8 @@ export const sharedCSS = css<HeadingProps>`
   font-weight: 900;
   font-family: ${({ theme }): string => theme.fonts.noto};
 
-  text-align: ${({ textAlign = 'left' }): string => textAlign};
+  ${({ textAlign }): SimpleInterpolation =>
+    textAlign && `text-align: ${textAlign}`};
 
   color: ${({ color = 'nearBlack', theme }): string => theme.colors[color]};
 
