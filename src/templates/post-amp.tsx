@@ -38,7 +38,7 @@ const boilerplate =
 const noscriptBoilerplate =
   'body{-webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none}';
 const custom =
-  'amp-story-page { background-color: #000; } amp-story-page h1, h2, h3, h4, h5, h6 { color: #fff; } amp-img.cover-page { opacity: 0.7; } .content { display: flex; flex-direction: column; justify-content: flex-end; }';
+  'amp-story-page { background-color: #000; } amp-story-page h1, h2, h3, h4, h5, h6 { color: #fff; } amp-story-grid-layer.darken-cover { background-color: rgba(0, 0, 0, 0.26); } amp-story-grid-layer.darken-last { background-color: rgba(0, 0, 0, 0.4); } .content { display: flex; flex-direction: column; justify-content: flex-end; }';
 
 const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
   const { site } = useStaticQuery(
@@ -103,20 +103,19 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
         title={`${capitalize(post.title)}`}
         publisher="Whipser of Yum"
         publisher-logo-src="/logo-white.png"
-        poster-portrait-src=""
+        poster-portrait-src={post.webStory?.[0].coverPageAsset.fixed.src}
       >
         <amp-story-page id="cover">
           <amp-story-grid-layer template="fill">
             <amp-img
               alt=""
-              class="cover-page"
               src={post.webStory?.[0].coverPageAsset.fixed.src}
               width="720"
               height="1280"
               layout="responsive"
             />
           </amp-story-grid-layer>
-          <amp-story-grid-layer template="thirds">
+          <amp-story-grid-layer class="darken-cover" template="thirds">
             <div grid-area="middle-third">
               <VStack sp="sm3">
                 <Box bgColor="orange" padding="sm2">
@@ -196,34 +195,32 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
               layout="responsive"
             />
           </amp-story-grid-layer>
-          <amp-story-grid-layer template="thirds">
-            <div
-              grid-area="middle-third"
-              style={{
-                display: 'flex',
-                flexDirection: 'column',
-                justifyContent: 'center',
-              }}
-            >
-              <div>
-                <Box bgColor="orange" padding="sm3">
-                  <VStack sp="sp-0">
-                    <Text as="div" textColor="white">
-                      <Box
-                        bgColorAlpha={0}
-                        dangerouslySetInnerHTML={{
-                          __html:
-                            post.webStory?.[0]?.lastPageDescription
-                              ?.childMarkdownRemark?.html ?? '',
-                        }}
-                      />
-                    </Text>
-                    <Heading alignment="center" as="h4" c="white" textSize="f3">
-                      {post.webStory?.[0]?.lastPageUrl ?? 'whisperofyum.com'}
-                    </Heading>
-                  </VStack>
+          <amp-story-grid-layer class="darken-last" template="thirds">
+            <div grid-area="middle-third">
+              <VStack sp="sp-0">
+                <Box bgColor="orange" padding="sm2">
+                  <Heading alignment="center" c="white" lh="1.25" textSize="f5">
+                    {post.webStory?.[0]?.lastPageUrl ?? 'whisperofyum.com'}
+                  </Heading>
                 </Box>
-              </div>
+                <Text
+                  as="h3"
+                  fontSize="f9"
+                  fontFamily="noto"
+                  fontWeight="900"
+                  textAlign="center"
+                  textColor="white"
+                  style={{ lineHeight: '1.25' }}
+                >
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html:
+                        post.webStory?.[0]?.lastPageDescription
+                          ?.childMarkdownRemark?.html ?? '',
+                    }}
+                  />
+                </Text>
+              </VStack>
             </div>
           </amp-story-grid-layer>
           <amp-story-page-attachment

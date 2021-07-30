@@ -6,7 +6,7 @@ type Display = 'block' | 'inline' | 'inline-block';
 type FontFamily = keyof Fonts;
 type FontSize = keyof FontSizes;
 type FontStyle = 'normal' | 'italic';
-type FontWeight = 'normal' | 'bold';
+type FontWeight = 'normal' | 'bold' | string;
 type TextAlign = 'left' | 'right' | 'center';
 type TextColor = keyof Colors;
 type TextDecoration = 'none' | 'underline';
@@ -39,17 +39,21 @@ const Text = styled.div<TextProps>`
   margin-bottom: ${({ bottomSpacing = 'sp-0', theme: { spacing } }): string =>
     spacing[bottomSpacing]};
 
-  font-family: ${({ theme, fontFamily = 'lato' }): string =>
-    theme.fonts[fontFamily] as FontFamily};
   &,
   & p {
+    font-family: ${({ theme, fontFamily = 'lato' }): string =>
+      theme.fonts[fontFamily] as FontFamily};
     font-size: ${({ theme, fontSize = 'f1' }): string =>
       theme.fontSizes[fontSize]};
+    font-weight: ${({ fontWeight = 'normal' }): string =>
+      `${fontWeight} !important`};
+  }
+
+  & p {
+    line-height: 1.25;
   }
 
   font-style: ${({ fontStyle = 'normal' }): string => fontStyle};
-  font-weight: ${({ fontWeight = 'normal' }): string =>
-    `${fontWeight} !important`};
   text-align: ${({ textAlign = 'left' }): string => textAlign};
   text-decoration: ${({ textDecoration = 'none' }): string => textDecoration};
   text-transform: ${({ textTransform = 'none' }): string => textTransform};
