@@ -39,7 +39,7 @@ const boilerplate =
 const noscriptBoilerplate =
   'body{-webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none}';
 const custom =
-  'amp-story-page { background-color: #000;  } amp-story-page h1, h2, h3, h4, h5, h6 { color: #fff; } amp-img { opacity: 0.7; } .content { display: flex; flex-direction: column; justify-content: flex-end; }';
+  'amp-story-page { background-color: #000;  } amp-story-page h1, h2, h3, h4, h5, h6 { color: #fff; } amp-img.cover-page { opacity: 0.7; } .content { display: flex; flex-direction: column; justify-content: flex-end; }';
 
 const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
   const { site } = useStaticQuery(
@@ -112,6 +112,7 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
             <amp-story-grid-layer template="fill">
               <amp-img
                 alt=""
+                class="cover-page"
                 src={post.webStory?.[0].coverPageAsset.fixed.src}
                 width="720"
                 height="1280"
