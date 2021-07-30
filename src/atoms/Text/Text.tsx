@@ -41,8 +41,12 @@ const Text = styled.div<TextProps>`
 
   font-family: ${({ theme, fontFamily = 'lato' }): string =>
     theme.fonts[fontFamily] as FontFamily};
-  font-size: ${({ theme, fontSize = 'f1' }): string =>
-    theme.fontSizes[fontSize]};
+  &,
+  & p {
+    font-size: ${({ theme, fontSize = 'f1' }): string =>
+      theme.fontSizes[fontSize]};
+  }
+
   font-style: ${({ fontStyle = 'normal' }): string => fontStyle};
   font-weight: ${({ fontWeight = 'normal' }): string =>
     `${fontWeight} !important`};

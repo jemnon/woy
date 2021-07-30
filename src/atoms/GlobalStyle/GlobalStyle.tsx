@@ -143,6 +143,9 @@ const GlobalStyle = createGlobalStyle`
     background-color: transparent;
     cursor: pointer;
     text-align: left;
+  }
+  #gatsby-focus-wrapper {
+    height: 100%;
   } 
 `;
 
