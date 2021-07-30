@@ -27,18 +27,14 @@ const capitalize = (word: string): string => {
   return word.charAt(0).toUpperCase() + word.slice(1);
 };
 
-const Container = styled.section`
-  position: relative;
-  width: 100vw;
-  height: 100vh;
-`;
-
 const boilerplate =
   'body{-webkit-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-moz-animation:-amp-start 8s steps(1,end) 0s 1 normal both;-ms-animation:-amp-start 8s steps(1,end) 0s 1 normal both;animation:-amp-start 8s steps(1,end) 0s 1 normal both}@-webkit-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-moz-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-ms-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@-o-keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}@keyframes -amp-start{from{visibility:hidden}to{visibility:visible}}';
 const noscriptBoilerplate =
   'body{-webkit-animation: none;-moz-animation: none;-ms-animation: none;animation: none}';
 const custom =
   'amp-story-page { background-color: #000; } amp-story-page h1, h2, h3, h4, h5, h6 { color: #fff; } amp-story-grid-layer.darken-cover { background-color: rgba(0, 0, 0, 0.26); } amp-story-grid-layer.darken-last { background-color: rgba(0, 0, 0, 0.4); } .content { display: flex; flex-direction: column; justify-content: flex-end; }';
+
+const ctaLabel = 'Get Recipe';
 
 const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
   const { site } = useStaticQuery(
@@ -138,7 +134,7 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
           <amp-story-page-attachment
             class="cta"
             layout="nodisplay"
-            cta-text="View Recipe"
+            cta-text={ctaLabel}
             href={`${site.siteMetadata.siteUrl}/post/${post.slug}`}
           />
         </amp-story-page>
@@ -180,7 +176,7 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
             <amp-story-page-attachment
               class="cta"
               layout="nodisplay"
-              cta-text="View Recipe"
+              cta-text={ctaLabel}
               href={`${site.siteMetadata.siteUrl}/post/${post.slug}`}
             />
           </amp-story-page>
@@ -197,7 +193,7 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
           </amp-story-grid-layer>
           <amp-story-grid-layer class="darken-last" template="thirds">
             <div grid-area="middle-third">
-              <VStack sp="sp-0">
+              <VStack sp="sm3">
                 <Box bgColor="orange" padding="sm2">
                   <Heading alignment="center" c="white" lh="1.25" textSize="f5">
                     {post.webStory?.[0]?.lastPageUrl ?? 'whisperofyum.com'}
@@ -225,7 +221,7 @@ const PostPageAMP: FC<PostPageAMPProps> = ({ pageContext }) => {
           </amp-story-grid-layer>
           <amp-story-page-attachment
             layout="nodisplay"
-            cta-text="View Recipe"
+            cta-text={ctaLabel}
             href={`${site.siteMetadata.siteUrl}/post/${post.slug}`}
           />
         </amp-story-page>
