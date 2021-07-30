@@ -27,11 +27,9 @@ const capitalize = (word: string): string => {
 };
 
 const Container = styled.section`
-  position: fixed;
-  top: 0;
-  left: 0;
+  position: relative;
   width: 100vw;
-  height: 100vh;
+  height: 90vh;
 `;
 
 const boilerplate =
