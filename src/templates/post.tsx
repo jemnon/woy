@@ -302,7 +302,12 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             </Grid>
           </StackItem>
           <StackItem bottomSpacing="xlg4">
-            <Box padding="sm4" borderTop="4px solid" borderColor="orange">
+            <Box
+              display="block"
+              padding="sm4"
+              borderTop="4px solid"
+              borderColor="orange"
+            >
               <Text
                 bottomSpacing="sm4"
                 fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
@@ -317,7 +322,12 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
           </StackItem>
           {post.ingredients && (
             <StackItem bottomSpacing="xlg4">
-              <Box data-id="recipe-card" padding="sm4" ref={recipeRef}>
+              <Box
+                display="block"
+                data-id="recipe-card"
+                padding="sm4"
+                ref={recipeRef}
+              >
                 <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
                   <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
                     {ratingsAvg && (
@@ -432,7 +442,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
           {post.enableComments && (
             <StackItem bottomSpacing="xlg4">
               <H4>Comments</H4>
-              <Box padding="sm4">
+              <Box display="block" padding="sm4">
                 <CommentsForm
                   commentId={commentId}
                   isLoading={isSubmittingComment}
