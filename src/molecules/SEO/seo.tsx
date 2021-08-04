@@ -12,11 +12,6 @@ import isDomUsable from '../../utils/utils';
 
 interface SEOProps {
   ampEnabled?: boolean;
-  ampBoilerplate?: string;
-  ampCustom?: string;
-  ampNoscript?: string;
-  ampHtml?: boolean;
-  amp?: string;
   description?: string;
   lang?: string;
   meta?: any;
@@ -28,15 +23,8 @@ interface SEOProps {
   type?: string;
 }
 
-const assetPath = withPrefix('/');
-
 const SEO: FC<SEOProps> = ({
   ampEnabled,
-  ampBoilerplate,
-  ampCustom,
-  ampNoscript,
-  ampHtml,
-  amp,
   description,
   image,
   lang = 'en',
@@ -70,7 +58,6 @@ const SEO: FC<SEOProps> = ({
   return (
     <Helmet
       htmlAttributes={{
-        ...(ampEnabled && { amp }),
         lang,
       }}
       title={title}
@@ -169,18 +156,13 @@ const SEO: FC<SEOProps> = ({
           href={`${site.siteMetadata.siteUrl}${pathname || ''}`}
         />
       )}
-      {ampHtml && (
+      {ampEnabled && (
         <link
           rel="amphtml"
           href={`${site.siteMetadata.siteUrl}/web-stories/${slug}`}
         />
       )}
       {script && <script type="application/ld+json">{script}</script>}
-      {ampBoilerplate && <style amp-boilerplate>{`${ampBoilerplate}`}</style>}
-      {ampNoscript && (
-        <noscript>{`<style amp-boilerplate>${`${ampNoscript}`}</style>`}</noscript>
-      )}
-      {ampCustom && <style amp-custom>{`${ampCustom}`}</style>}
     </Helmet>
   );
 };

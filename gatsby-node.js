@@ -385,7 +385,7 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
   // post pages
   if (postsData) {
     postsData.allContentfulPosts.edges.forEach(edge => {
-      const { slug, enableAmp } = edge.node;
+      const { slug } = edge.node;
       createPage({
         path: `post/${slug}`,
         component: require.resolve('./src/templates/post.tsx'),
@@ -395,16 +395,6 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
           page: { ...edge.node, next: edge.next, previous: edge.previous },
         },
       });
-      // generate amp pages
-      if (enableAmp) {
-        createPage({
-          path: `web-stories/${slug}`,
-          component: require.resolve('./src/templates/post-amp.tsx'),
-          context: {
-            page: { ...edge.node, next: edge.next, previous: edge.previous },
-          },
-        });
-      }
     });
     // print recipe pages
     postsData.allContentfulPosts.edges.forEach(edge => {
