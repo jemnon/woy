@@ -45,6 +45,7 @@ const SEO: FC<SEOProps> = ({
             image
             author
             siteUrl
+            webStoryUrl
           }
         }
       }
@@ -159,7 +160,7 @@ const SEO: FC<SEOProps> = ({
       {ampEnabled && (
         <link
           rel="amphtml"
-          href={`${site.siteMetadata.siteUrl}/web-stories/${slug}`}
+          href={`${site.siteMetadata.webStoryUrl}/web-stories/${slug}`}
         />
       )}
       {script && <script type="application/ld+json">{script}</script>}

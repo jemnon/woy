@@ -50,6 +50,7 @@ module.exports = {
       'https://images.ctfassets.net/lz7g6u6kccw7/5ZTQ6JUabdhzkYxGsOWwAN/38506c10912bb5fb03443efb790da33f/creamy_garlic_pork_chops.JPG?w=800&q=60',
     author: `Jeri Mobley-Arias`,
     siteUrl: `https://whisperofyum.com`,
+    webStoryUrl: `https://web-stories.whisperofyum.com`,
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
