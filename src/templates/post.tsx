@@ -230,7 +230,18 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 {post.publishDate && (
                   <PostDate publishDate={post.publishDate} />
                 )}
-                <H1 bottomSpacing="0.5rem">{post.title}</H1>
+                <H1 bottomSpacing="0">{post.title}</H1>
+                {ratingsAvg && (
+                  <>
+                    <HStack sp="sm2">
+                      <Rating rating={ratingsAvg ?? 0} size="small" />
+                      <div style={{ marginBottom: '-2px' }}>
+                        {ratingsAvg} from {ratingsTotal} votes
+                      </div>
+                    </HStack>
+                    <Spacer sp="sm3" />
+                  </>
+                )}
                 <Author />
                 {post.bodyPreview && (
                   <Paragraph>{post.bodyPreview.bodyPreview}</Paragraph>
