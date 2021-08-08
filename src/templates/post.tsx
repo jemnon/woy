@@ -189,7 +189,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   return (
     <Layout>
       <SEO
-        ampHtml={post?.enableAmp}
+        ampEnabled={post?.enableAmp}
         description={`${post.bodyPreview?.bodyPreview}`}
         title={`${capitalize(post.title)} | Whisper of Yum`}
         type="article"
@@ -325,8 +325,8 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 fontWeight="bold"
                 textAlign="center"
               >
-                Have we connected on social media, yet? <br /> Be sure to follow
-                me on:
+                Have we connected on social media, yet? <br /> If not, follow me
+                on:
               </Text>
               <Social />
             </Box>
