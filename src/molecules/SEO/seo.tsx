@@ -7,7 +7,7 @@
 
 import React, { FC } from 'react';
 import Helmet from 'react-helmet';
-import { useStaticQuery, graphql, withPrefix } from 'gatsby';
+import { useStaticQuery, graphql } from 'gatsby';
 import isDomUsable from '../../utils/utils';
 
 interface SEOProps {
@@ -160,7 +160,7 @@ const SEO: FC<SEOProps> = ({
       {ampEnabled && (
         <link
           rel="amphtml"
-          href={`${site.siteMetadata.webStoryUrl}/amp/${slug}`}
+          href={`${site.siteMetadata.webStoryUrl}/web-stories/${slug}`}
         />
       )}
       {script && <script type="application/ld+json">{script}</script>}
