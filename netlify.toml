@@ -3,7 +3,7 @@
 
 [[redirects]]
   from = "/web-stories/*"
-  to = "https://web-stories.whisperofyum.com"
+  to = "https://whisperofyum.app/amp/:splat"
   status = 200
   force = true
   headers = {X-From = "Netlify"}
