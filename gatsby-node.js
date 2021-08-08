@@ -395,11 +395,11 @@ exports.createPages = async ({ actions: { createPage }, graphql }) => {
           page: { ...edge.node, next: edge.next, previous: edge.previous },
         },
       });
-      if (enableAmp) {
+      /* if (enableAmp) {
         createPage({
           path: `web-stories/${slug}`,
         });
-      }
+      } */
     });
     // print recipe pages
     postsData.allContentfulPosts.edges.forEach(edge => {

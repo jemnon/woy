@@ -160,7 +160,7 @@ const SEO: FC<SEOProps> = ({
       {ampEnabled && (
         <link
           rel="amphtml"
-          href={`${site.siteMetadata.webStoryUrl}/web-stories/${slug}`}
+          href={`${site.siteMetadata.webStoryUrl}/amp/${slug}`}
         />
       )}
       {script && <script type="application/ld+json">{script}</script>}

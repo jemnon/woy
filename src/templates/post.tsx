@@ -189,6 +189,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   return (
     <Layout>
       <SEO
+        ampEnabled={post.enableAmp}
         description={`${post.bodyPreview?.bodyPreview}`}
         title={`${capitalize(post.title)} | Whisper of Yum`}
         type="article"
