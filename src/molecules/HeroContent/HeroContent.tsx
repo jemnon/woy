@@ -35,7 +35,7 @@ const HeroContentContainer = styled.div<{ isCentered?: boolean }>`
 
 const HeroContent: FC<HeroContentProps> = ({ isCentered, title, onClick }) => (
   <HeroContentContainer isCentered={isCentered}>
-    <Eyebrow>New Recipe</Eyebrow>
+    <Eyebrow>Latest</Eyebrow>
     <H1 color="white" textAlign="center">
       {title}
     </H1>
