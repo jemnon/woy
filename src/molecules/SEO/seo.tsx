@@ -11,7 +11,6 @@ import { useStaticQuery, graphql } from 'gatsby';
 import isDomUsable from '../../utils/utils';
 
 interface SEOProps {
-  ampEnabled?: boolean;
   description?: string;
   lang?: string;
   meta?: any;
@@ -24,7 +23,6 @@ interface SEOProps {
 }
 
 const SEO: FC<SEOProps> = ({
-  ampEnabled,
   description,
   image,
   lang = 'en',
@@ -155,12 +153,6 @@ const SEO: FC<SEOProps> = ({
         <link
           rel="canonical"
           href={`${site.siteMetadata.siteUrl}${pathname || ''}`}
-        />
-      )}
-      {ampEnabled && (
-        <link
-          rel="amphtml"
-          href={`${site.siteMetadata.webStoryUrl}/web-stories/${slug}`}
         />
       )}
       {script && <script type="application/ld+json">{script}</script>}
