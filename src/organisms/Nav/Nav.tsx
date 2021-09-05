@@ -142,6 +142,18 @@ const Nav: FC<NavProps> = ({ colorTheme = 'light', pathname }) => {
           <NavDivider colorTheme={colorTheme} />
         </NavListItem>
         <NavListItem>
+          <NavLink
+            colorTheme={colorTheme}
+            href="https://www.amazon.com/shop/whisperofyum"
+            target="_blank"
+          >
+            Shop
+          </NavLink>
+        </NavListItem>
+        <NavListItem>
+          <NavDivider colorTheme={colorTheme} />
+        </NavListItem>
+        <NavListItem>
           <NavButton
             colorTheme={colorTheme}
             isActive={pathname === '/about'}
