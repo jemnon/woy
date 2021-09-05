@@ -13,6 +13,9 @@
     "cypress/globals": true,
     "jest": true
   },
+  "globals": {
+    "blogherads": true
+  },
   "settings": {
     "import/parsers": {
       "@typescript-eslint/parser": [".ts", ".tsx"]

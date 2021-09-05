@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useEffect } from 'react';
 import styled from 'styled-components';
 import { navigate } from 'gatsby';
 import Img from 'gatsby-image';
@@ -35,6 +35,12 @@ const SideContent: FC<SideContentProps> = ({
   instagram,
 }) => {
   const { isLoaded: isAdScriptLoaded } = useAdContext();
+  // console.log(blogherads);
+  useEffect(() => {
+    if (blogherads) {
+      blogherads?.adq?.push(['tinybanner', 'skm-ad-tinybanner']);
+    }
+  }, [isAdScriptLoaded]);
   return (
     <SideContentContainer>
       {about && (
@@ -49,23 +55,16 @@ const SideContent: FC<SideContentProps> = ({
           />
         </Stack>
       )}
-      {}
+      {isAdScriptLoaded && (
+        <Stack>
+          <div id="skm-ad-tinybanner" />
+        </Stack>
+      )}
       <Stack>
         <H4>Newsletter</H4>
         <Newsletter />
       </Stack>
-      {isAdScriptLoaded && (
-        <>
-          <div id="skm-ad-tinybanner" />
-          <script
-            dangerouslySetInnerHTML={{
-              __html: `
-              blogherads.adq.push(['tinybanner', 'skm-ad-tinybanner']);
-            `,
-            }}
-          />
-        </>
-      )}
+
       {featuredOn && (
         <Stack>
           <H4>Featured On</H4>

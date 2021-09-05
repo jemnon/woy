@@ -10,3 +10,9 @@ declare namespace JSX {
     [elemName: string]: any;
   }
 }
+
+declare let blogherads: Blogherads;
+
+interface Blogherads {
+  adq?: any[];
+}
