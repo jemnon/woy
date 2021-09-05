@@ -35,11 +35,8 @@ const SideContent: FC<SideContentProps> = ({
   instagram,
 }) => {
   const { isLoaded: isAdScriptLoaded } = useAdContext();
-  // console.log(blogherads);
   useEffect(() => {
-    if (blogherads) {
-      blogherads?.adq?.push(['tinybanner', 'skm-ad-tinybanner']);
-    }
+    blogherads?.adq?.push(['tinybanner', 'skm-ad-tinybanner']);
   }, [isAdScriptLoaded]);
   return (
     <SideContentContainer>
