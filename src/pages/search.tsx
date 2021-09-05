@@ -3,7 +3,7 @@ import Img from 'gatsby-image';
 import Container from '../organisms/Container';
 import Header from '../organisms/Header';
 import Layout from '../organisms/Layout';
-import Stack, { StackItem } from '../organisms/Stack';
+import Stack, { StackItem, VStack } from '../organisms/Stack';
 import BackToTop from '../molecules/BackToTop';
 import Media from '../molecules/Media';
 import SearchForm from '../molecules/SearchForm';
@@ -38,100 +38,78 @@ const Search: FC<SearchPageProps> = ({ location }) => {
       <Header />
       <Container hasTopMargin maxWidth="md">
         <H1>Search</H1>
-        <Stack>
-          <StackItem>
-            <SearchForm
-              onChange={handleChange}
-              size={breakpoint === 'desktop' ? 'large' : 'medium'}
-            />
-          </StackItem>
+        <VStack>
+          <SearchForm
+            onChange={handleChange}
+            size={breakpoint === 'desktop' ? 'large' : 'medium'}
+          />
           {hits && hits.length > 0 && (
-            <>
+            <VStack sp={[null, null, 'md1', 'md4']}>
               {hits.map((hit: any): any => (
-                <StackItem key={hit.objectID}>
-                  <Link to={`/post/${hit.slug}`}>
-                    <Media
-                      description={
-                        <div
-                          dangerouslySetInnerHTML={{
-                            __html: hit.bodyPreview.childMarkdownRemark.html,
-                          }}
-                        />
-                      }
-                      publishDate={hit.publishDate}
-                      title={hit.title}
-                      image={
-                        <Img alt={hit.title} fluid={hit.images[0].fluid} />
-                      }
-                    />
-                  </Link>
-                </StackItem>
+                <Link key={hit.objectID} to={`/post/${hit.slug}`}>
+                  <Media
+                    description={
+                      <div
+                        dangerouslySetInnerHTML={{
+                          __html: hit.bodyPreview.childMarkdownRemark.html,
+                        }}
+                      />
+                    }
+                    publishDate={hit.publishDate}
+                    title={hit.title}
+                    image={<Img alt={hit.title} fluid={hit.images[0].fluid} />}
+                  />
+                </Link>
               ))}
-            </>
+            </VStack>
           )}
-          {isEmpty && (
-            <StackItem>
-              <Text textAlign="center">No Results</Text>
-            </StackItem>
-          )}
+          {isEmpty && <Text textAlign="center">No Results</Text>}
           {hits === null && (
-            <StackItem>
+            <div>
               <H6>Suggestions</H6>
-              <Stack bottomSpacing="sp-0">
-                <StackItem bottomSpacing="sm1">
-                  <Link to="/post/chicken-congee">
-                    <Text
-                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
-                      textColor="orange"
-                    >
-                      Chicken Congee
-                    </Text>
-                  </Link>
-                </StackItem>
-                <StackItem bottomSpacing="sm1">
-                  <Link to="/post/creamy-garlic-mushroom-pork-chops">
-                    <Text
-                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
-                      textColor="orange"
-                    >
-                      Creamy Garlic Mushroom Pork Chops
-                    </Text>
-                  </Link>
-                </StackItem>
-                <StackItem bottomSpacing="sm1">
-                  <Link to="/post/oven-baked-coconut-shrimp">
-                    <Text
-                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
-                      textColor="orange"
-                    >
-                      Crispy Baked Coconut Shrimp
-                    </Text>
-                  </Link>
-                </StackItem>
-                <StackItem bottomSpacing="sm1">
-                  <Link to="/post/mushroom-soup">
-                    <Text
-                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
-                      textColor="orange"
-                    >
-                      Mushroom Soup
-                    </Text>
-                  </Link>
-                </StackItem>
-                <StackItem bottomSpacing="sm1">
-                  <Link to="/post/filipino-pork-adobo">
-                    <Text
-                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
-                      textColor="orange"
-                    >
-                      Filipino Pork Adobo
-                    </Text>
-                  </Link>
-                </StackItem>
-              </Stack>
-            </StackItem>
+              <Link to="/post/chicken-congee">
+                <Text
+                  fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                  textColor="orange"
+                >
+                  Chicken Congee
+                </Text>
+              </Link>
+              <Link to="/post/creamy-garlic-mushroom-pork-chops">
+                <Text
+                  fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                  textColor="orange"
+                >
+                  Creamy Garlic Mushroom Pork Chops
+                </Text>
+              </Link>
+              <Link to="/post/oven-baked-coconut-shrimp">
+                <Text
+                  fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                  textColor="orange"
+                >
+                  Crispy Baked Coconut Shrimp
+                </Text>
+              </Link>
+              <Link to="/post/mushroom-soup">
+                <Text
+                  fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                  textColor="orange"
+                >
+                  Mushroom Soup
+                </Text>
+              </Link>
+              <Link to="/post/filipino-pork-adobo">
+                <Text
+                  fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                  textColor="orange"
+                >
+                  Filipino Pork Adobo
+                </Text>
+              </Link>
+            </div>
           )}
-        </Stack>
+        </VStack>
         {showBackToTop && <BackToTop />}
       </Container>
     </Layout>
