@@ -36,7 +36,10 @@ const SideContent: FC<SideContentProps> = ({
 }) => {
   const { isLoaded: isAdScriptLoaded } = useAdContext();
   useEffect(() => {
-    blogherads?.adq?.push(['tinybanner', 'skm-ad-tinybanner']);
+    if (isAdScriptLoaded && blogherads?.adq?.length === 0) {
+      console.log('yo');
+      blogherads?.adq?.push(['tinybanner', 'skm-ad-tinybanner']);
+    }
   }, [isAdScriptLoaded]);
   return (
     <SideContentContainer>
