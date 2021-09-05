@@ -12,6 +12,7 @@ import { H4 } from '../../atoms/Headings';
 import ImgWrapper from '../../atoms/ImgWrapper';
 import Link from '../../atoms/Link';
 import { InstaDesktop, InstaMobile } from '../../atoms/InstagramContainer';
+import { useAdContext } from '../../context/AdContextProvider';
 import FeaturedOnType from '../../types/featured-on';
 import InstagramType from '../../types/instagram';
 import ProfileAboutType from '../../types/profile-about';
@@ -33,6 +34,7 @@ const SideContent: FC<SideContentProps> = ({
   featuredOn,
   instagram,
 }) => {
+  const { isLoaded: isAdScriptLoaded } = useAdContext();
   return (
     <SideContentContainer>
       {about && (
@@ -47,10 +49,23 @@ const SideContent: FC<SideContentProps> = ({
           />
         </Stack>
       )}
+      {}
       <Stack>
         <H4>Newsletter</H4>
         <Newsletter />
       </Stack>
+      {isAdScriptLoaded && (
+        <>
+          <div id="skm-ad-tinybanner" />
+          <script
+            dangerouslySetInnerHTML={{
+              __html: `
+              blogherads.adq.push(['tinybanner', 'skm-ad-tinybanner']);
+            `,
+            }}
+          />
+        </>
+      )}
       {featuredOn && (
         <Stack>
           <H4>Featured On</H4>
