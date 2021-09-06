@@ -1,6 +1,7 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
+import { useBreakpoint } from 'styled-breakpoints/react-styled';
 import Container from '../Container';
 import Grid, { GridCell } from '../Grid';
 import Stack, { StackItem } from '../Stack';
@@ -8,7 +9,6 @@ import NewsletterForm from '../../molecules/NewsletterForm';
 import Social from '../../molecules/Social';
 import Link from '../../atoms/Link';
 import Text from '../../atoms/Text';
-import useBreakpoint from '../../hooks/useBreakpoint';
 
 const FooterContainer = styled.footer`
   position: relative;
@@ -48,7 +48,7 @@ const FooterLink = styled(Link)`
 `;
 
 const Footer: FC = () => {
-  const breakpoint = useBreakpoint();
+  const isMediumUp = useBreakpoint(up('md'));
   return (
     <FooterContainer>
       <FooterContent as={Container} hasTopMargin={false}>
@@ -58,10 +58,10 @@ const Footer: FC = () => {
           </StackItem>
           <StackItem bottomSpacing="md4">
             <Grid columns={12} rowGap="md4" gap="sp-0">
-              <GridCell width={breakpoint === 'desktop' ? 3 : 6}>
+              <GridCell width={isMediumUp ? 3 : 6}>
                 <Text
                   bottomSpacing="sm1"
-                  fontSize={breakpoint === 'desktop' ? 'f-sm' : 'f-xsm'}
+                  fontSize={isMediumUp ? 'f-sm' : 'f-xsm'}
                   textColor="white"
                   textTransform="uppercase"
                   letterSpacing="0.05em"
@@ -74,10 +74,10 @@ const Footer: FC = () => {
                   Contact
                 </FooterLink>
               </GridCell>
-              <GridCell width={breakpoint === 'desktop' ? 3 : 6}>
+              <GridCell width={isMediumUp ? 3 : 6}>
                 <Text
                   bottomSpacing="sm1"
-                  fontSize={breakpoint === 'desktop' ? 'f-sm' : 'f-xsm'}
+                  fontSize={isMediumUp ? 'f-sm' : 'f-xsm'}
                   textColor="white"
                   textTransform="uppercase"
                   letterSpacing="0.05em"
@@ -94,10 +94,10 @@ const Footer: FC = () => {
                   Algolia Search
                 </FooterLink>
               </GridCell>
-              <GridCell width={breakpoint === 'desktop' ? 6 : 12}>
+              <GridCell width={isMediumUp ? 6 : 12}>
                 <Text
                   bottomSpacing="sm1"
-                  fontSize={breakpoint === 'desktop' ? 'f-sm' : 'f-xsm'}
+                  fontSize={isMediumUp ? 'f-sm' : 'f-xsm'}
                   textColor="white"
                   textTransform="uppercase"
                   letterSpacing="0.05em"
@@ -110,7 +110,7 @@ const Footer: FC = () => {
           </StackItem>
           <StackItem bottomSpacing="sm1">
             <Text
-              fontSize={breakpoint === 'desktop' ? 'f1' : 'f-sm'}
+              fontSize={isMediumUp ? 'f1' : 'f-sm'}
               textColor="white"
               textAlign="center"
             >
@@ -123,7 +123,7 @@ const Footer: FC = () => {
               target="_blank"
             >
               <Text
-                fontSize={breakpoint === 'desktop' ? 'f1' : 'f-sm'}
+                fontSize={isMediumUp ? 'f1' : 'f-sm'}
                 fontWeight="normal"
                 textAlign="center"
                 textColor="white"

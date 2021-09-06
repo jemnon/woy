@@ -1,7 +1,8 @@
-import React, { FC, useEffect } from 'react';
+import React, { FC } from 'react';
 import styled from 'styled-components';
 import { navigate } from 'gatsby';
 import Img from 'gatsby-image';
+import { SideContentAdContainer } from './SideContent-styled';
 import Grid, { GridCell } from '../../organisms/Grid';
 import Newsletter from '../../organisms/Newsletter';
 import Scroller from '../../organisms/Scroller';
@@ -12,7 +13,6 @@ import { H4 } from '../../atoms/Headings';
 import ImgWrapper from '../../atoms/ImgWrapper';
 import Link from '../../atoms/Link';
 import { InstaDesktop, InstaMobile } from '../../atoms/InstagramContainer';
-import { useAdContext } from '../../context/AdContextProvider';
 import FeaturedOnType from '../../types/featured-on';
 import InstagramType from '../../types/instagram';
 import ProfileAboutType from '../../types/profile-about';
@@ -34,13 +34,6 @@ const SideContent: FC<SideContentProps> = ({
   featuredOn,
   instagram,
 }) => {
-  const { isLoaded: isAdScriptLoaded } = useAdContext();
-  useEffect(() => {
-    if (isAdScriptLoaded && blogherads?.adq?.length === 0) {
-      console.log('yo');
-      blogherads?.adq?.push(['tinybanner', 'skm-ad-tinybanner']);
-    }
-  }, [isAdScriptLoaded]);
   return (
     <SideContentContainer>
       {about && (
@@ -55,16 +48,12 @@ const SideContent: FC<SideContentProps> = ({
           />
         </Stack>
       )}
-      {isAdScriptLoaded && (
-        <Stack>
-          <div id="skm-ad-tinybanner" />
-        </Stack>
-      )}
+      <SideContentAdContainer id="skm-ad-tinybanner" size="small" />
       <Stack>
         <H4>Newsletter</H4>
         <Newsletter />
       </Stack>
-
+      <SideContentAdContainer id="skm-ad-medrec-1" size="medium" />
       {featuredOn && (
         <Stack>
           <H4>Featured On</H4>

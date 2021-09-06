@@ -1,6 +1,8 @@
 import React, { FC, useState, useEffect, useRef } from 'react';
 import { navigate } from 'gatsby';
 import Img from 'gatsby-image';
+import { up } from 'styled-breakpoints';
+import { useBreakpoint } from 'styled-breakpoints/react-styled';
 import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
@@ -16,7 +18,6 @@ import SEO from '../molecules/SEO';
 import VideoThumb from '../molecules/VideoThumb';
 import { H4 } from '../atoms/Headings';
 import Link from '../atoms/Link';
-import { useBreakpointContext } from '../context/BreakpointContextProvider';
 import useWindowResize from '../hooks/useWindowResize';
 import FeaturedOnType from '../types/featured-on';
 import { ColorMode as ColorModeType } from '../types/theme';
@@ -66,7 +67,7 @@ interface HomeProps {
 const Home: FC<HomeProps> = ({ pageContext }) => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const heroRef = useRef<HTMLDivElement | null>(null);
-  const { name: breakpoint } = useBreakpointContext();
+  const isMediumUp = useBreakpoint(up('md'));
   const { height } = useWindowResize();
   const [headerColorTheme, setHeaderColorTheme] = useState<ColorModeType>(
     'dark',
@@ -132,8 +133,8 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
         </>
       )}
       <Container ref={containerRef} hasTopMargin={false}>
-        <Grid columns={breakpoint === 'desktop' ? 12 : 1}>
-          <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
+        <Grid columns={isMediumUp ? 12 : 1}>
+          <GridCell width={isMediumUp ? 8 : 1}>
             {recentPosts && (
               <Stack>
                 <H4>Latest</H4>
@@ -174,9 +175,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
             {reels && (
               <Stack>
                 <H4>Videos</H4>
-                <Scroller
-                  columnWidth={breakpoint === 'desktop' ? '33.33%' : '85%'}
-                >
+                <Scroller columnWidth={isMediumUp ? '33.33%' : '85%'}>
                   {reels.videoThumbs.map((thumb, idx) => (
                     <VideoThumb
                       key={`video-thumb-${idx}`}
@@ -225,7 +224,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
               </Stack>
             )}
           </GridCell>
-          <GridCell width={breakpoint === 'desktop' ? 4 : 1}>
+          <GridCell width={isMediumUp ? 4 : 1}>
             <SideContent
               about={about}
               featuredOn={featuredOn}

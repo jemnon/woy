@@ -146,6 +146,9 @@ const GlobalStyle = createGlobalStyle`
   }
   #gatsby-focus-wrapper {
     height: 100%;
+  }
+  #blogherads-branding-container {
+    display: none !important;
   } 
 `;
 

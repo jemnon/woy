@@ -15,4 +15,5 @@ declare let blogherads: Blogherads;
 
 interface Blogherads {
   adq?: any[];
+  clearSlots: (any) => any;
 }

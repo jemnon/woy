@@ -2,6 +2,8 @@ import React, { FC } from 'react';
 import styled from 'styled-components';
 import { navigate } from 'gatsby';
 import Img from 'gatsby-image';
+import { up } from 'styled-breakpoints';
+import { useBreakpoint } from 'styled-breakpoints/react-styled';
 import Grid, { GridCell } from '../organisms/Grid';
 import Layout from '../organisms/Layout';
 import Stack, { StackItem } from '../organisms/Stack';
@@ -12,7 +14,6 @@ import Button from '../atoms/Button';
 import ImgWrapper from '../atoms/ImgWrapper';
 import Text from '../atoms/Text';
 import { H1, H4 } from '../atoms/Headings';
-import useBreakpoint from '../hooks/useBreakpoint';
 import { Post as PostType } from '../types/post';
 
 interface RecipePrintPageProps {
@@ -47,7 +48,7 @@ const PrintPageContainer = styled.section`
 const RecipePrintPage: FC<RecipePrintPageProps> = ({
   pageContext: { page },
 }) => {
-  const breakpoint = useBreakpoint();
+  const isMediumUp = useBreakpoint(up('md'));
   const handleBackClick = (): void => {
     navigate(`/post/${page.slug}`);
   };
@@ -61,35 +62,32 @@ const RecipePrintPage: FC<RecipePrintPageProps> = ({
         <RecipePrintPageButtons>
           <Stack
             bottomSpacing="sm4"
-            flow={breakpoint === 'desktop' ? 'row' : 'column'}
+            flow={isMediumUp ? 'row' : 'column'}
             justifyContent="center"
           >
-            <StackItem
-              flow={breakpoint === 'desktop' ? 'row' : 'column'}
-              rightSpacing="sm4"
-            >
+            <StackItem flow={isMediumUp ? 'row' : 'column'} rightSpacing="sm4">
               <Button
                 colorScheme="nearBlack"
                 onClick={handleBackClick}
                 shape="rectangle"
                 size="small"
                 variant="outline"
-                width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                width={isMediumUp ? 'auto' : '100%'}
               >
                 Back
               </Button>
             </StackItem>
-            <StackItem flow={breakpoint === 'desktop' ? 'row' : 'column'}>
+            <StackItem flow={isMediumUp ? 'row' : 'column'}>
               <PrintButton
                 colorScheme="nearBlack"
                 onClick={handlePrint}
-                width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                width={isMediumUp ? 'auto' : '100%'}
               />
             </StackItem>
           </Stack>
         </RecipePrintPageButtons>
-        <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sp-0">
-          <GridCell width={breakpoint === 'desktop' ? 10 : 1}>
+        <Grid columns={isMediumUp ? 12 : 1} rowGap="sp-0">
+          <GridCell width={isMediumUp ? 10 : 1}>
             <RecipePrintPageTitle as={H1} bottomSpacing="0">
               {page.title}
             </RecipePrintPageTitle>
@@ -115,7 +113,7 @@ const RecipePrintPage: FC<RecipePrintPageProps> = ({
               </StackItem>
             </Stack>
           </GridCell>
-          <GridCell width={breakpoint === 'desktop' ? 2 : 1} middle>
+          <GridCell width={isMediumUp ? 2 : 1} middle>
             {page.images[0].fluid && (
               <div
                 style={{
@@ -131,7 +129,7 @@ const RecipePrintPage: FC<RecipePrintPageProps> = ({
             )}
           </GridCell>
         </Grid>
-        <Grid columns={breakpoint === 'desktop' ? 2 : 1} rowGap="sm4">
+        <Grid columns={isMediumUp ? 2 : 1} rowGap="sm4">
           <GridCell width={1}>
             {page.ingredients && (
               <RecipePrintPageSubTitle as={H4} bottomSpacing="sp-0">
