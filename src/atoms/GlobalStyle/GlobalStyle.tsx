@@ -147,9 +147,9 @@ const GlobalStyle = createGlobalStyle`
   #gatsby-focus-wrapper {
     height: 100%;
   }
-  #blogherads-branding-container {
+  /* #blogherads-branding-container {
     display: none !important;
-  } 
+  }  */
 `;
 
 export default GlobalStyle;

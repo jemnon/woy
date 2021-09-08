@@ -1,13 +1,14 @@
 import React, { FC } from 'react';
 import styled from 'styled-components';
 import { navigate } from 'gatsby';
+import { useLocation } from '@reach/router';
 import Img from 'gatsby-image';
-import { SideContentAdContainer } from './SideContent-styled';
 import Grid, { GridCell } from '../../organisms/Grid';
 import Newsletter from '../../organisms/Newsletter';
 import Scroller from '../../organisms/Scroller';
 import Stack from '../../organisms/Stack';
 import ProfileCard from '../../molecules/ProfileCard';
+import { AdSmall } from '../../atoms/Ads';
 import Box from '../../atoms/Box';
 import { H4 } from '../../atoms/Headings';
 import ImgWrapper from '../../atoms/ImgWrapper';
@@ -34,6 +35,7 @@ const SideContent: FC<SideContentProps> = ({
   featuredOn,
   instagram,
 }) => {
+  const location = useLocation();
   return (
     <SideContentContainer>
       {about && (
@@ -48,12 +50,10 @@ const SideContent: FC<SideContentProps> = ({
           />
         </Stack>
       )}
-      <SideContentAdContainer id="skm-ad-tinybanner" size="small" />
       <Stack>
         <H4>Newsletter</H4>
         <Newsletter />
       </Stack>
-      <SideContentAdContainer id="skm-ad-medrec-1" size="medium" />
       {featuredOn && (
         <Stack>
           <H4>Featured On</H4>

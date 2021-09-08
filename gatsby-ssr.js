@@ -10,6 +10,9 @@ exports.onRenderBody = function ({ setHeadComponents, setPreBodyComponents }) {
         `,
       }}
     />,
+  ]);
+
+  setPreBodyComponents([
     <script
       type="text/javascript"
       async="async"
@@ -23,6 +26,4 @@ exports.onRenderBody = function ({ setHeadComponents, setPreBodyComponents }) {
       src="https://ads.blogherads.com/sk/12/123/1235555/28585/header.js"
     ></script>,
   ]);
-
-  setPreBodyComponents([]);
 };

@@ -14,7 +14,7 @@ const HeroContainer = styled.section`
   position: relative;
   background-color: ${({ theme }): string => theme.colors.nearBlack};
   overflow: hidden;
-  height: 100vh;
+  height: 75vh;
 `;
 
 const HeroImgWrapper = styled.div`

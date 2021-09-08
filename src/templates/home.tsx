@@ -3,6 +3,7 @@ import { navigate } from 'gatsby';
 import Img from 'gatsby-image';
 import { up } from 'styled-breakpoints';
 import { useBreakpoint } from 'styled-breakpoints/react-styled';
+import { Helmet } from 'react-helmet';
 import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';

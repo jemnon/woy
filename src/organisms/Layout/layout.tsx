@@ -1,4 +1,4 @@
-import React, { FC, ReactNode, useEffect } from 'react';
+import React, { FC, ReactNode } from 'react';
 import styled, { ThemeProvider } from 'styled-components';
 import { up } from 'styled-breakpoints';
 import { useLocation } from '@reach/router';

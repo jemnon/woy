@@ -3,7 +3,6 @@ import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
 import { up } from 'styled-breakpoints';
 import { useBreakpoint } from 'styled-breakpoints/react-styled';
-import { Helmet } from 'react-helmet';
 import { v4 as uuid } from 'uuid';
 import Carousel from '../organisms/Carousel';
 import Comments from '../organisms/Comments';
@@ -199,14 +198,6 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
         script={JSON.stringify(schemaJson)}
         slug={post.slug}
       />
-      <Helmet>
-        <script type="text/javascript">
-          {`
-            blogherads?.adq?.push(['medrec', 'skm-ad-medrec-1']);
-            blogherads.adq.push(['tinybanner', 'skm-ad-tinybanner']);
-          `}
-        </script>
-      </Helmet>
       <Header />
       <Container>
         <PageHeader>
