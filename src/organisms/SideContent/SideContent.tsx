@@ -89,7 +89,7 @@ const SideContent: FC<SideContentProps> = ({
                       <img
                         alt="whisperofyum instagram"
                         loading="lazy"
-                        src={item.node.localImage.childImageSharp.fixed.src}
+                        src={item.node.localImage?.childImageSharp.fixed.src}
                       />
                     </ImgWrapper>
                   </Link>
@@ -109,7 +109,7 @@ const SideContent: FC<SideContentProps> = ({
                     <img
                       alt="whisperofyum instagram"
                       loading="lazy"
-                      src={item.node.localImage.childImageSharp.fixed.src}
+                      src={item.node.localImage?.childImageSharp.fixed.src}
                     />
                   </ImgWrapper>
                 </Link>
