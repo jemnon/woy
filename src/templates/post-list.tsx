@@ -1,6 +1,8 @@
 import React, { FC } from 'react';
 import { graphql, navigate } from 'gatsby';
 import Img from 'gatsby-image';
+import { up } from 'styled-breakpoints';
+import { useBreakpoint } from 'styled-breakpoints/react-styled';
 import Container from '../organisms/Container';
 import Grid, { GridCell } from '../organisms/Grid';
 import Header from '../organisms/Header';
@@ -14,7 +16,6 @@ import Pagination from '../molecules/Pagingation';
 import SEO from '../molecules/SEO';
 import { H4 } from '../atoms/Headings';
 import Link from '../atoms/Link';
-import { useBreakpointContext } from '../context/BreakpointContextProvider';
 import FeaturedOnType from '../types/featured-on';
 import InstagramType from '../types/instagram';
 import { Post as PostType } from '../types/post';
@@ -48,7 +49,7 @@ interface PostListProps {
 }
 
 const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
-  const { name: breakpoint } = useBreakpointContext();
+  const isMediumUp = useBreakpoint(up('md'));
   const { edges: posts } = data?.allContentfulPosts || {};
   const { about } = pageContext || {};
   const { featuredOn } = pageContext || {};
@@ -64,8 +65,8 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
         <PageHeader>
           <BreadCrumbs title="recipes" />
         </PageHeader>
-        <Grid columns={breakpoint === 'desktop' ? 12 : 1}>
-          <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
+        <Grid columns={isMediumUp ? 12 : 1}>
+          <GridCell width={isMediumUp ? 8 : 1}>
             {posts && (
               <Stack>
                 <H4>Recipes</H4>
@@ -102,7 +103,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
                     </Link>
                   </StackItem>
                 ))}
-                {breakpoint !== 'desktop' && (
+                {!isMediumUp && (
                   <>
                     {pageContext?.currentPage && pageContext.totalPages && (
                       <StackItem>
@@ -118,7 +119,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
               </Stack>
             )}
           </GridCell>
-          <GridCell width={breakpoint === 'desktop' ? 4 : 1}>
+          <GridCell width={isMediumUp ? 4 : 1}>
             <SideContent
               about={about}
               featuredOn={featuredOn}
@@ -126,7 +127,7 @@ const PostList: FC<PostListProps> = ({ data, location, pageContext }) => {
             />
           </GridCell>
         </Grid>
-        {breakpoint === 'desktop' && (
+        {isMediumUp && (
           <>
             {pageContext?.currentPage && pageContext.totalPages && (
               <Pagination

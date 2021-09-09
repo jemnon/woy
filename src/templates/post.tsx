@@ -1,6 +1,8 @@
-import React, { FC, useRef, useState } from 'react';
+import React, { FC, useRef, useState, useEffect } from 'react';
 import Img from 'gatsby-image';
 import { navigate } from 'gatsby';
+import { up } from 'styled-breakpoints';
+import { useBreakpoint } from 'styled-breakpoints/react-styled';
 import { v4 as uuid } from 'uuid';
 import Carousel from '../organisms/Carousel';
 import Comments from '../organisms/Comments';
@@ -35,7 +37,6 @@ import PostDate from '../atoms/PostDate';
 import Spacer from '../atoms/Spacer';
 import Text from '../atoms/Text';
 import useGetComments from '../hooks/useGetComments';
-import { useBreakpointContext } from '../context/BreakpointContextProvider';
 import { postComment } from '../lib/Comments';
 import { generateFromAst } from '../utils/utils';
 import InstagramType from '../types/instagram';
@@ -69,7 +70,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   const commentsFormRef = useRef<HTMLFormElement | null>(null);
   const [commentId, setCommentId] = useState<string | undefined>(undefined);
   const recipeRef = useRef<HTMLDivElement | null>(null);
-  const { name: breakpoint } = useBreakpointContext();
+  const isMediumUp = useBreakpoint(up('md'));
   const { page: post, about, instagram } = pageContext || {};
   const { comments, ratingsTotal, ratingsAvg } = useGetComments(
     commentId,
@@ -222,10 +223,10 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
         <Stack bottomSpacing="sp-0">
           <StackItem bottomSpacing="xlg4">
             <Grid
-              columns={breakpoint === 'desktop' ? 12 : 1}
-              rowGap={breakpoint === 'desktop' ? 'md4' : 'sm4'}
+              columns={isMediumUp ? 12 : 1}
+              rowGap={isMediumUp ? 'md4' : 'sm4'}
             >
-              <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
+              <GridCell width={isMediumUp ? 8 : 1}>
                 {post.publishDate && (
                   <PostDate publishDate={post.publishDate} />
                 )}
@@ -253,26 +254,23 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                   />
                 )}
                 <Spacer sp="sm4" />
-                <Stack
-                  flow={breakpoint === 'desktop' ? 'row' : 'column'}
-                  bottomSpacing="sm4"
-                >
+                <Stack flow={isMediumUp ? 'row' : 'column'} bottomSpacing="sm4">
                   <StackItem
-                    flow={breakpoint === 'desktop' ? 'row' : 'column'}
+                    flow={isMediumUp ? 'row' : 'column'}
                     bottomSpacing="sm2"
                     rightSpacing="sm2"
                   >
                     <JumpToRecipeButton
                       onClick={handleJumpToRecipe}
-                      width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                      width={isMediumUp ? 'auto' : '100%'}
                     />
                   </StackItem>
-                  <StackItem flow={breakpoint === 'desktop' ? 'row' : 'column'}>
+                  <StackItem flow={isMediumUp ? 'row' : 'column'}>
                     <PinButton
                       description={post.bodyPreview?.bodyPreview}
                       media={`https:${fixed?.src}`}
                       url={location.href}
-                      width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                      width={isMediumUp ? 'auto' : '100%'}
                     />
                   </StackItem>
                 </Stack>
@@ -312,7 +310,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                   )}
                 </Stack>
               </GridCell>
-              {breakpoint === 'desktop' && (
+              {isMediumUp && (
                 <GridCell width={4}>
                   <SideContent about={about} instagram={instagram} />
                 </GridCell>
@@ -328,7 +326,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             >
               <Text
                 bottomSpacing="sm4"
-                fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                fontSize={isMediumUp ? 'f2' : 'f1'}
                 fontWeight="bold"
                 textAlign="center"
               >
@@ -345,8 +343,8 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 padding="sm4"
                 ref={recipeRef}
               >
-                <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
-                  <GridCell width={breakpoint === 'desktop' ? 8 : 1}>
+                <Grid columns={isMediumUp ? 12 : 1} rowGap="sm4">
+                  <GridCell width={isMediumUp ? 8 : 1}>
                     {ratingsAvg && (
                       <>
                         <HStack sp="sm2">
@@ -380,32 +378,30 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                     </Stack>
 
                     <Stack
-                      flow={breakpoint === 'desktop' ? 'row' : 'column'}
-                      bottomSpacing={breakpoint === 'desktop' ? 'sm4' : 'sp-0'}
+                      flow={isMediumUp ? 'row' : 'column'}
+                      bottomSpacing={isMediumUp ? 'sm4' : 'sp-0'}
                     >
                       <StackItem
-                        flow={breakpoint === 'desktop' ? 'row' : 'column'}
+                        flow={isMediumUp ? 'row' : 'column'}
                         bottomSpacing="sm2"
                         rightSpacing="sm2"
                       >
                         <PrintButton
                           onClick={handlePrintClick}
-                          width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                          width={isMediumUp ? 'auto' : '100%'}
                         />
                       </StackItem>
-                      <StackItem
-                        flow={breakpoint === 'desktop' ? 'row' : 'column'}
-                      >
+                      <StackItem flow={isMediumUp ? 'row' : 'column'}>
                         <PinButton
                           description={post.bodyPreview?.bodyPreview}
                           media={`https:${fixed?.src}`}
                           url={location.href}
-                          width={breakpoint === 'desktop' ? 'auto' : '100%'}
+                          width={isMediumUp ? 'auto' : '100%'}
                         />
                       </StackItem>
                     </Stack>
                   </GridCell>
-                  <GridCell width={breakpoint === 'desktop' ? 4 : 1}>
+                  <GridCell width={isMediumUp ? 4 : 1}>
                     <ImgWrapper ratio={1 / 1}>
                       {post.images[0].fluid && (
                         <Img alt={post.title} fluid={post.images[0].fluid} />
@@ -414,8 +410,8 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                   </GridCell>
                 </Grid>
                 <Divider />
-                <Grid columns={breakpoint === 'desktop' ? 12 : 1} rowGap="sm4">
-                  <GridCell width={breakpoint === 'desktop' ? 6 : 1}>
+                <Grid columns={isMediumUp ? 12 : 1} rowGap="sm4">
+                  <GridCell width={isMediumUp ? 6 : 1}>
                     {post.ingredients && (
                       <H4 bottomSpacing="sp-0">Ingredients</H4>
                     )}
@@ -440,7 +436,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                       </>
                     )}
                   </GridCell>
-                  <GridCell width={breakpoint === 'desktop' ? 6 : 1}>
+                  <GridCell width={isMediumUp ? 6 : 1}>
                     {post.instructions && (
                       <H4 bottomSpacing="sp-0">Instructions</H4>
                     )}
@@ -503,7 +499,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
           {post.relatedRecipes && (
             <StackItem bottomSpacing="xlg4">
               <H4>Related Recipes</H4>
-              {breakpoint === 'desktop' ? (
+              {isMediumUp ? (
                 <Grid columns={3} gap="sm4" rowGap="sm4">
                   {post.relatedRecipes.map(recipe => (
                     <GridCell key={recipe.slug} width={1}>
@@ -546,7 +542,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
               )}
             </StackItem>
           )}
-          {breakpoint !== 'desktop' && (
+          {!isMediumUp && (
             <StackItem>
               <SideContent about={about} instagram={instagram} />
             </StackItem>

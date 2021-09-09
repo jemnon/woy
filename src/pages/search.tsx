@@ -1,5 +1,7 @@
 import React, { FC, useState } from 'react';
 import Img from 'gatsby-image';
+import { up } from 'styled-breakpoints';
+import { useBreakpoint } from 'styled-breakpoints/react-styled';
 import Container from '../organisms/Container';
 import Header from '../organisms/Header';
 import Layout from '../organisms/Layout';
@@ -11,7 +13,6 @@ import SEO from '../molecules/SEO';
 import { H1, H6 } from '../atoms/Headings';
 import Link from '../atoms/Link';
 import Text from '../atoms/Text';
-import useBreakpoint from '../hooks/useBreakpoint';
 import useInstantSearch from '../hooks/useInstantSearch';
 
 interface SearchPageProps {
@@ -25,7 +26,7 @@ const Search: FC<SearchPageProps> = ({ location }) => {
   const params = new URLSearchParams(location.search);
   const queryParam = params.get('query') || '';
   const [query, setQuery] = useState<string>(queryParam);
-  const breakpoint = useBreakpoint();
+  const isMediumUp = useBreakpoint(up('md'));
   const { hits } = useInstantSearch(query);
   const isEmpty = hits && hits.length === 0;
   const showBackToTop = hits && hits.length >= 4;
@@ -42,7 +43,7 @@ const Search: FC<SearchPageProps> = ({ location }) => {
           <StackItem>
             <SearchForm
               onChange={handleChange}
-              size={breakpoint === 'desktop' ? 'large' : 'medium'}
+              size={isMediumUp ? 'large' : 'medium'}
             />
           </StackItem>
           {hits && hits.length > 0 && (
@@ -81,7 +82,7 @@ const Search: FC<SearchPageProps> = ({ location }) => {
                 <StackItem bottomSpacing="sm1">
                   <Link to="/post/chicken-congee">
                     <Text
-                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                      fontSize={isMediumUp ? 'f2' : 'f1'}
                       textColor="orange"
                     >
                       Chicken Congee
@@ -91,7 +92,7 @@ const Search: FC<SearchPageProps> = ({ location }) => {
                 <StackItem bottomSpacing="sm1">
                   <Link to="/post/creamy-garlic-mushroom-pork-chops">
                     <Text
-                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                      fontSize={isMediumUp ? 'f2' : 'f1'}
                       textColor="orange"
                     >
                       Creamy Garlic Mushroom Pork Chops
@@ -101,7 +102,7 @@ const Search: FC<SearchPageProps> = ({ location }) => {
                 <StackItem bottomSpacing="sm1">
                   <Link to="/post/oven-baked-coconut-shrimp">
                     <Text
-                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                      fontSize={isMediumUp ? 'f2' : 'f1'}
                       textColor="orange"
                     >
                       Crispy Baked Coconut Shrimp
@@ -111,7 +112,7 @@ const Search: FC<SearchPageProps> = ({ location }) => {
                 <StackItem bottomSpacing="sm1">
                   <Link to="/post/mushroom-soup">
                     <Text
-                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                      fontSize={isMediumUp ? 'f2' : 'f1'}
                       textColor="orange"
                     >
                       Mushroom Soup
@@ -121,7 +122,7 @@ const Search: FC<SearchPageProps> = ({ location }) => {
                 <StackItem bottomSpacing="sm1">
                   <Link to="/post/filipino-pork-adobo">
                     <Text
-                      fontSize={breakpoint === 'desktop' ? 'f2' : 'f1'}
+                      fontSize={isMediumUp ? 'f2' : 'f1'}
                       textColor="orange"
                     >
                       Filipino Pork Adobo

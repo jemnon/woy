@@ -25,6 +25,7 @@ const Container = styled.div<ContainerProps>`
   padding-top: ${({ theme: { spacing } }): string => spacing.sm4};
   ${up('sm')} {
     padding-top: ${({ theme: { spacing } }): string => spacing.md4};
+    max-width: 100%;
   }
   ${up('md')} {
     max-width: ${({ maxWidth, theme: { maxWidths } }): string =>

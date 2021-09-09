@@ -2,6 +2,7 @@ import React, { FC } from 'react';
 import { graphql, navigate } from 'gatsby';
 import styled from 'styled-components';
 import { up } from 'styled-breakpoints';
+import { useBreakpoint } from 'styled-breakpoints/react-styled';
 import Img from 'gatsby-image';
 import { Images as Image } from '../types/images';
 import Container from '../organisms/Container';
@@ -11,7 +12,6 @@ import Layout, { PageHeader } from '../organisms/Layout';
 import BreadCrumbs from '../molecules/BreadCrumbs';
 import SEO from '../molecules/SEO';
 import { H1 } from '../atoms/Headings';
-import useBreakpoint from '../hooks/useBreakpoint';
 
 interface AboutPageProps {
   data: {
@@ -61,7 +61,7 @@ const AboutPage: FC<AboutPageProps> = ({
   data: { contentfulAbout },
   location,
 }) => {
-  const breakpoint = useBreakpoint();
+  const isMediumUp = useBreakpoint(up('md'));
   return (
     <Layout>
       <SEO title="About" type="article" pathname={location.pathname} />
@@ -76,7 +76,7 @@ const AboutPage: FC<AboutPageProps> = ({
           />
         </PageHeader>
         <H1>About</H1>
-        <Grid columns={breakpoint === 'desktop' ? 2 : 1}>
+        <Grid columns={isMediumUp ? 2 : 1}>
           <GridCell width={1}>
             {contentfulAbout.image?.fluid && (
               <Img

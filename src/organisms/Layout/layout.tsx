@@ -5,6 +5,7 @@ import { useLocation } from '@reach/router';
 import theme from '../../theme';
 import GlobalStyle from '../../atoms/GlobalStyle';
 import Footer from '../Footer';
+import MobileMenuContextProvider from '../../context/MobileMenuContextProvider';
 
 interface LayoutProps {
   bgColor?: string;
@@ -37,11 +38,13 @@ const Layout: FC<LayoutProps> = ({ bgColor = 'white', children }) => {
   const location = useLocation();
   return (
     <ThemeProvider theme={theme}>
-      <GlobalStyle />
-      <Main bgColor={bgColor} role="main">
-        {children}
-      </Main>
-      {!location.pathname.includes('recipe-print') && <Footer />}
+      <MobileMenuContextProvider>
+        <GlobalStyle />
+        <Main bgColor={bgColor} role="main">
+          {children}
+        </Main>
+        {!location.pathname.includes('recipe-print') && <Footer />}
+      </MobileMenuContextProvider>
     </ThemeProvider>
   );
 };

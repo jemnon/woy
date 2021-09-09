@@ -6,6 +6,8 @@ import React, {
   useState,
   useCallback,
 } from 'react';
+import { useBreakpoint } from 'styled-breakpoints/react-styled';
+import { up } from 'styled-breakpoints';
 import { LeftArrow, RightArrow } from '../../atoms/Icons';
 import {
   CarouselBody,
@@ -18,7 +20,6 @@ import {
   CarouselListItem,
   CarouselNav,
 } from './CarouselStyled';
-import useBreakpoint from '../../hooks/useBreakpoint';
 import useWindowResize from '../../hooks/useWindowResize';
 import { Easing } from './carousel-types';
 
@@ -44,7 +45,7 @@ const Carousel: FC<CarouselProps> = ({
   const [width, setWidth] = useState<number | undefined>(undefined);
   const [xPos, setXPos] = useState<number>(0);
   const target = useRef<HTMLDivElement | null>(null);
-  const breakpoint = useBreakpoint();
+  const isMediumUp = useBreakpoint(up('md'));
   const windowWidth = useWindowResize();
   const setDimensions = useCallback(() => {
     if (target.current) {
@@ -102,7 +103,7 @@ const Carousel: FC<CarouselProps> = ({
         >
           <LeftArrow
             fill="#fff"
-            fontSize={breakpoint === 'desktop' ? '1.5rem' : '1rem'}
+            fontSize={isMediumUp ? '1.5rem' : '1rem'}
             style={{ marginLeft: '-2px' }}
           />
         </CarouselButton>
@@ -113,7 +114,7 @@ const Carousel: FC<CarouselProps> = ({
         >
           <RightArrow
             fill="#fff"
-            fontSize={breakpoint === 'desktop' ? '1.5rem' : '1rem'}
+            fontSize={isMediumUp ? '1.5rem' : '1rem'}
             style={{ marginRight: '-2px' }}
           />{' '}
         </CarouselButton>
