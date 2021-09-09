@@ -73,6 +73,7 @@ const Footer: FC = () => {
                 <FooterLink to="mailto:whisperofyum@gmail.com" target="_top">
                   Contact
                 </FooterLink>
+                <FooterLink to="/privacy-policy">Privacy Policy</FooterLink>
               </GridCell>
               <GridCell width={breakpoint === 'desktop' ? 3 : 6}>
                 <Text
