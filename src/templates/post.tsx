@@ -246,15 +246,15 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                 {post.bodyPreview && (
                   <Paragraph>{post.bodyPreview.bodyPreview}</Paragraph>
                 )}
+                {post?.callToAction?.childMarkdownRemark && (
+                  <div
+                    dangerouslySetInnerHTML={{
+                      __html: post.callToAction?.childMarkdownRemark?.html,
+                    }}
+                  />
+                )}
+                <Spacer sp="sm4" />
                 <Stack flow={isMediumUp ? 'row' : 'column'} bottomSpacing="sm4">
-                  {post?.callToAction?.childMarkdownRemark && (
-                    <div
-                      dangerouslySetInnerHTML={{
-                        __html: post.callToAction?.childMarkdownRemark?.html,
-                      }}
-                    />
-                  )}
-                  <Spacer sp="sm4" />
                   <StackItem
                     flow={isMediumUp ? 'row' : 'column'}
                     bottomSpacing="sm2"
