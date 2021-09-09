@@ -138,12 +138,18 @@ const MobileMenu: FC<MobileMenuProps> = ({ isVisible = false }) => {
           >
             Recipes
           </MobileMenuButton>
+          <MobileMenuLink
+            href="https://www.amazon.com/shop/whisperofyum"
+            target="_blank"
+          >
+            Shop
+          </MobileMenuLink>
           <MobileMenuButton
             isActive={location.pathname === '/about'}
             onClick={(): void => handleClick('/about')}
           >
             About
-          </MobileMenuButton>{' '}
+          </MobileMenuButton>
           <MobileMenuLink href="mailto:whisperofyum@gmail.com" target="_top">
             Contact
           </MobileMenuLink>

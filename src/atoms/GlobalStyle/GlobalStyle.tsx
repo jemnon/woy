@@ -147,9 +147,17 @@ const GlobalStyle = createGlobalStyle`
   #gatsby-focus-wrapper {
     height: 100%;
   }
-  /* #blogherads-branding-container {
-    display: none !important;
-  }  */
+  table { margin-bottom: 1rem; };
+  table th,
+  table td {
+    padding: 1rem;
+  }
+  table thead {
+    background-color: ${({ theme }): string => theme.colors.lightGray};
+  } 
+  table tr:nth-child(even) {
+    background-color: ${({ theme }): string => theme.colors.nearWhite};
+  }
 `;
 
 export default GlobalStyle;

@@ -51,6 +51,11 @@ export interface Post {
       html: string;
     };
   };
+  callToAction?: {
+    childMarkdownRemark?: {
+      html: string;
+    };
+  };
   categories?: Categories[];
   contentful_id?: string;
   enableComments?: boolean;

@@ -116,6 +116,11 @@ const getAllPosts = async graphql => {
           node {
             id
             contentful_id
+            callToAction {
+              childMarkdownRemark {
+                html
+              }
+            }
             slug
             publishDate
             title
