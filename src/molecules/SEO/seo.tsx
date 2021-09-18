@@ -59,7 +59,7 @@ const SEO: FC<SEOProps> = ({
       htmlAttributes={{
         lang,
       }}
-      title={title}
+      title={metaTitle}
       titleTemplate={`%s`}
       meta={[
         {
