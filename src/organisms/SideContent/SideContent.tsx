@@ -8,7 +8,6 @@ import Newsletter from '../../organisms/Newsletter';
 import Scroller from '../../organisms/Scroller';
 import Stack from '../../organisms/Stack';
 import ProfileCard from '../../molecules/ProfileCard';
-import { AdSmall } from '../../atoms/Ads';
 import Box from '../../atoms/Box';
 import { H4 } from '../../atoms/Headings';
 import ImgWrapper from '../../atoms/ImgWrapper';

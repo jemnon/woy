@@ -26,6 +26,7 @@ import Rating from '../molecules/Rating';
 import SEO from '../molecules/SEO';
 import Share from '../molecules/Share';
 import Social from '../molecules/Social';
+import { AdSmall } from '../atoms/Ads';
 import Author from '../atoms/Author';
 import Box from '../atoms/Box';
 import Divider from '../atoms/Divider';
@@ -36,6 +37,7 @@ import Paragraph from '../atoms/Paragraph';
 import PostDate from '../atoms/PostDate';
 import Spacer from '../atoms/Spacer';
 import Text from '../atoms/Text';
+import useAd from '../hooks/useAd';
 import useGetComments from '../hooks/useGetComments';
 import { postComment } from '../lib/Comments';
 import { generateFromAst } from '../utils/utils';
@@ -59,6 +61,7 @@ interface PostPageProps {
   location: {
     pathname: string;
     href: string;
+    key: string;
   };
 }
 
@@ -187,6 +190,13 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     recipeYield: post.servings,
     // totalTime: post.totalTime,
   };
+  useEffect(() => {
+    const slots = blogherads?.getSlots();
+    if (slots) {
+      blogherads?.destroySlots(slots);
+    }
+  }, []);
+  useAd(location.key, 'tinybanner', 'skm-ad-tinybanner');
   return (
     <Layout>
       <SEO
@@ -200,6 +210,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
       />
       <Header />
       <Container>
+        <AdSmall />
         <PageHeader>
           <Grid columns={12} gap="sm4">
             <GridCell width={9}>
