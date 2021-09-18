@@ -11,6 +11,10 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, minimum-scale=1, shrink-to-fit=no"
         />
+        <meta
+          name="robots"
+          content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1"
+        />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
