@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import isDomUsable from '../utils/utils';
 
 interface AdOptions {
@@ -8,7 +8,7 @@ interface AdOptions {
 }
 
 const useAd = ({ key, size, id }: AdOptions): void => {
-  const slotId = blogherads?.getSlotById(id);
+  const slotId = isDomUsable() ? blogherads?.getSlotById(id) : null;
   useEffect(() => {
     if (isDomUsable() && slotId) {
       blogherads?.destroySlots([slotId]);
@@ -19,11 +19,6 @@ const useAd = ({ key, size, id }: AdOptions): void => {
       blogherads?.adq?.push([size, id]);
     }
   }, [key, slotId]);
-  /* useEffect(() => {
-    if (isDomUsable()) {
-      blogherads?.adq?.push([size, id]);
-    }
-  }, []); */
 };
 
 export default useAd;
