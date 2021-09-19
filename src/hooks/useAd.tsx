@@ -9,7 +9,7 @@ interface AdOptions {
 
 const useAd = ({ key, size, id }: AdOptions): void => {
   useEffect(() => {
-    if (isDomUsable() && blogherads) {
+    if (isDomUsable() && blogherads && blogherads.getSlotById) {
       const slotId = blogherads?.getSlotById(id);
       if (slotId) blogherads?.destroySlots([slotId]);
     }

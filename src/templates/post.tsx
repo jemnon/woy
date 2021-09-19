@@ -191,10 +191,10 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     // totalTime: post.totalTime,
   };
   useAd({ key: location?.key, size: 'tinybanner', id: 'skm-ad-tinybanner' });
-  useAd({ key: location?.key, size: 'banner', id: 'skm-ad-banner-1' });
-  useAd({ key: location?.key, size: 'banner', id: 'skm-ad-banner-2' });
   useAd({ key: location?.key, size: 'medrec', id: 'skm-ad-medrec-2' });
   useAd({ key: location?.key, size: 'medrec', id: 'skm-ad-medrec-1' });
+  useAd({ key: location?.key, size: 'banner', id: 'skm-ad-banner-1' });
+  useAd({ key: location?.key, size: 'banner', id: 'skm-ad-banner-2' });
   return (
     <Layout>
       <SEO
@@ -312,7 +312,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                   </StackItem>
                   <StackItem bottomSpacing="sm4">
                     <AdUnit>
-                      <div id="skm-ad-medrec-2" />
+                      <div id="skm-ad-medrec-1" />
                     </AdUnit>
                   </StackItem>
                   {post?.bodyShort?.childMarkdownRemark && (
@@ -476,7 +476,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             </StackItem>
           )}
           <AdUnit>
-            <div id="skm-ad-medrec-1" />
+            <div id="skm-ad-medrec-2" />
           </AdUnit>
           <Spacer sp="xlg4" />
           {post.enableComments && (
