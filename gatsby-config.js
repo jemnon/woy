@@ -89,9 +89,9 @@ module.exports = {
         policy: [
           {
             userAgent: '*',
-            disallow: '',
+            allow: '/',
           },
-          { userAgent: 'Googlebot', allow: ['.js', '.css'] },
+          { userAgent: 'Googlebot', allow: ['/', '.js', '.css'] },
         ],
       },
     },
