@@ -18,6 +18,7 @@ import SEO from '../molecules/SEO';
 import VideoThumb from '../molecules/VideoThumb';
 import { H4 } from '../atoms/Headings';
 import Link from '../atoms/Link';
+import Spacer from '../atoms/Spacer';
 import useWindowResize from '../hooks/useWindowResize';
 import FeaturedOnType from '../types/featured-on';
 import { ColorMode as ColorModeType } from '../types/theme';
@@ -232,6 +233,7 @@ const Home: FC<HomeProps> = ({ pageContext }) => {
             />
           </GridCell>
         </Grid>
+        <Spacer sp={[null, null, 'xlg4', 'sp-0']} />
         <BackToTop top={(height as number) - 64} />
       </Container>
     </Layout>

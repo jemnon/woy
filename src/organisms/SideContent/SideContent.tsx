@@ -39,7 +39,7 @@ const SideContent: FC<SideContentProps> = ({
   const location = useLocation();
   useAd({ key: location?.key, size: 'flexrec', id: 'skm-ad-flexrec-1' });
   useAd({ key: location?.key, size: 'sky', id: 'skm-ad-sky-1' });
-  useAd({ key: location?.key, size: 'medrec', id: 'skm-ad-medrec-2' });
+  useAd({ key: location?.key, size: 'medrec', id: 'skm-ad-medrec-1' });
   return (
     <SideContentContainer>
       <VStack sp="xlg4">
@@ -54,7 +54,7 @@ const SideContent: FC<SideContentProps> = ({
           />
         )}
         <AdUnit>
-          <div id="skm-ad-medrec-2" />
+          <div id="skm-ad-medrec-1" />
         </AdUnit>
         <div>
           <H4>Newsletter</H4>
