@@ -8,17 +8,17 @@ interface AdOptions {
 }
 
 const useAd = ({ key, size, id }: AdOptions): void => {
-  const slotId = isDomUsable() ? blogherads?.getSlotById(id) : null;
   useEffect(() => {
-    if (isDomUsable() && slotId) {
-      blogherads?.destroySlots([slotId]);
+    if (isDomUsable() && blogherads) {
+      const slotId = blogherads?.getSlotById(id);
+      if (slotId) blogherads?.destroySlots([slotId]);
     }
   }, [key]);
   useEffect(() => {
-    if (!slotId) {
+    if (blogherads) {
       blogherads?.adq?.push([size, id]);
     }
-  }, [key, slotId]);
+  }, [key]);
 };
 
 export default useAd;

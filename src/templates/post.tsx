@@ -194,6 +194,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
   useAd({ key: location?.key, size: 'banner', id: 'skm-ad-banner-1' });
   useAd({ key: location?.key, size: 'banner', id: 'skm-ad-banner-2' });
   useAd({ key: location?.key, size: 'medrec', id: 'skm-ad-medrec-2' });
+  useAd({ key: location?.key, size: 'medrec', id: 'skm-ad-medrec-1' });
   return (
     <Layout>
       <SEO
@@ -474,6 +475,10 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
               </Box>
             </StackItem>
           )}
+          <AdUnit>
+            <div id="skm-ad-medrec-1" />
+          </AdUnit>
+          <Spacer sp="xlg4" />
           {post.enableComments && (
             <StackItem bottomSpacing="xlg4">
               <H4>Comments</H4>
