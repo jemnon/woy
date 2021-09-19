@@ -26,7 +26,6 @@ import Rating from '../molecules/Rating';
 import SEO from '../molecules/SEO';
 import Share from '../molecules/Share';
 import Social from '../molecules/Social';
-import { AdSmall } from '../atoms/Ads';
 import Author from '../atoms/Author';
 import Box from '../atoms/Box';
 import Divider from '../atoms/Divider';
@@ -190,13 +189,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     recipeYield: post.servings,
     // totalTime: post.totalTime,
   };
-  useEffect(() => {
-    const slots = blogherads?.getSlots();
-    if (slots) {
-      blogherads?.destroySlots(slots);
-    }
-  }, []);
-  useAd(location.key, 'tinybanner', 'skm-ad-tinybanner');
+  // useAd(location.key, 'medrec', 'skm-ad-flexrec-1');
   return (
     <Layout>
       <SEO
@@ -210,7 +203,6 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
       />
       <Header />
       <Container>
-        <AdSmall />
         <PageHeader>
           <Grid columns={12} gap="sm4">
             <GridCell width={9}>

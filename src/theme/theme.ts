@@ -24,10 +24,10 @@ const theme: DefaultTheme = {
   },
   fonts: {
     lato:
-      `"Lato", BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
+      `"Lato Regular", BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
       `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
     noto:
-      `"Noto Serif TC", BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
+      `"Noto Serif TC Regular", BlinkMacSystemFont, 'avenir next', avenir, 'Helvetica Neue', ` +
       `helvetica, ubuntu, roboto, noto, 'Segoe UI', Arial, sans-serif`,
   },
   fontSizes: {
