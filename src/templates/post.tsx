@@ -26,6 +26,7 @@ import Rating from '../molecules/Rating';
 import SEO from '../molecules/SEO';
 import Share from '../molecules/Share';
 import Social from '../molecules/Social';
+import AdUnit from '../atoms/AdUnit';
 import Author from '../atoms/Author';
 import Box from '../atoms/Box';
 import Divider from '../atoms/Divider';
@@ -36,6 +37,7 @@ import Paragraph from '../atoms/Paragraph';
 import PostDate from '../atoms/PostDate';
 import Spacer from '../atoms/Spacer';
 import Text from '../atoms/Text';
+import useAd from '../hooks/useAd';
 import useGetComments from '../hooks/useGetComments';
 import { postComment } from '../lib/Comments';
 import { generateFromAst } from '../utils/utils';
@@ -59,6 +61,7 @@ interface PostPageProps {
   location: {
     pathname: string;
     href: string;
+    key: string;
   };
 }
 
@@ -187,6 +190,11 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
     recipeYield: post.servings,
     // totalTime: post.totalTime,
   };
+  useAd({ key: location?.key, size: 'tinybanner', id: 'skm-ad-tinybanner' });
+  useAd({ key: location?.key, size: 'medrec', id: 'skm-ad-medrec-2' });
+  useAd({ key: location?.key, size: 'medrec', id: 'skm-ad-medrec-1' });
+  useAd({ key: location?.key, size: 'banner', id: 'skm-ad-banner-1' });
+  useAd({ key: location?.key, size: 'banner', id: 'skm-ad-banner-2' });
   return (
     <Layout>
       <SEO
@@ -200,6 +208,9 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
       />
       <Header />
       <Container>
+        <AdUnit isMobileOnly>
+          <div id="skm-ad-tinybanner" />
+        </AdUnit>
         <PageHeader>
           <Grid columns={12} gap="sm4">
             <GridCell width={9}>
@@ -299,6 +310,11 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
                       </>
                     )}
                   </StackItem>
+                  <StackItem bottomSpacing="sm4">
+                    <AdUnit>
+                      <div id="skm-ad-medrec-1" />
+                    </AdUnit>
+                  </StackItem>
                   {post?.bodyShort?.childMarkdownRemark && (
                     <StackItem bottomSpacing="sm4">
                       <MarkdownList
@@ -317,6 +333,9 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
               )}
             </Grid>
           </StackItem>
+          <AdUnit isDesktopOnly>
+            <div id="skm-ad-banner-1" />
+          </AdUnit>
           <StackItem bottomSpacing="xlg4">
             <Box
               display="block"
@@ -335,6 +354,10 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
               <Social />
             </Box>
           </StackItem>
+          <AdUnit isDesktopOnly>
+            <div id="skm-ad-banner-2" />
+          </AdUnit>
+
           {post.ingredients && (
             <StackItem bottomSpacing="xlg4">
               <Box
@@ -452,6 +475,10 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
               </Box>
             </StackItem>
           )}
+          <AdUnit>
+            <div id="skm-ad-medrec-2" />
+          </AdUnit>
+          <Spacer sp="xlg4" />
           {post.enableComments && (
             <StackItem bottomSpacing="xlg4">
               <H4>Comments</H4>
@@ -548,6 +575,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             </StackItem>
           )}
           <StackItem>
+            <Spacer sp="md3" />
             <BackToTop />
           </StackItem>
         </Stack>

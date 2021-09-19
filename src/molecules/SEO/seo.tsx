@@ -144,17 +144,17 @@ const SEO: FC<SEOProps> = ({
         },
       ].concat(meta || [])}
     >
-      <link rel="preconnect" href="https://fonts.gstatic.com" />
-      <link
-        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Noto+Serif+TC:wght@400;700&display=swap"
-        rel="stylesheet"
-      />
       {isDomUsable() && (
         <link
           rel="canonical"
           href={`${site.siteMetadata.siteUrl}${pathname || ''}`}
         />
       )}
+      <link rel="preconnect" href="https://fonts.gstatic.com" />
+      <link
+        href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,400;0,700;1,400&family=Noto+Serif+TC:wght@400;700&display=swap"
+        rel="stylesheet"
+      />
       {script && <script type="application/ld+json">{script}</script>}
     </Helmet>
   );
