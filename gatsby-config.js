@@ -86,7 +86,7 @@ module.exports = {
       options: {
         host: 'https://www.whisperofyum.com',
         sitemap: 'https://www.whisperofyum.com/sitemap.xml',
-        policy: [{ userAgent: '*' }],
+        policy: [{ userAgent: '*', allow: ['', '.js', '.css'] }],
       },
     },
     {
