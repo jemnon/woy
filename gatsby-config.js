@@ -91,6 +91,7 @@ module.exports = {
     },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-typescript-checker`,
+    `gatsby-plugin-glamor`,
     {
       resolve: 'gatsby-plugin-robots-txt',
       options: {
