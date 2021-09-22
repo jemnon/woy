@@ -143,7 +143,7 @@ const getAllPosts = async graphql => {
                 src
                 base64
               }
-              fluid(quality: 90) {
+              fluid(quality: 70) {
                 base64
                 aspectRatio
                 sizes
@@ -278,7 +278,7 @@ const getRecentPosts = async graphql => {
             publishDate
             slug
             images {
-              fluid(cropFocus: CENTER, quality: 90) {
+              fluid(cropFocus: CENTER, quality: 70) {
                 aspectRatio
                 sizes
                 src
@@ -312,7 +312,7 @@ const getReels = async graphql => {
           duration
         }
         videoThumbs {
-          fluid(quality: 90) {
+          fluid(quality: 70) {
             aspectRatio
             sizes
             src
