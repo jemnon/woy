@@ -1,4 +1,13 @@
 const React = require('react');
+const { renderToString } = require('react-dom/server');
+const inline = require('glamor-inline');
+
+exports.replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
+  const bodyHTML = renderToString(bodyComponent);
+  const inlinedHTML = inline(bodyHTML);
+
+  replaceBodyHTMLString(inlinedHTML);
+};
 
 exports.onRenderBody = function ({ setHeadComponents, setPreBodyComponents }) {
   setHeadComponents([

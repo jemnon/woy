@@ -57,7 +57,7 @@ const Footer: FC = () => {
             <Social colorTheme="light" />
           </StackItem>
           <StackItem bottomSpacing="md4">
-            <Grid columns={12} rowGap="md4" gap="sp-0">
+            <Grid columns={12} rowGap="md4" columnGap="sp-0">
               <GridCell width={isMediumUp ? 3 : 6}>
                 <Text
                   bottomSpacing="sm1"

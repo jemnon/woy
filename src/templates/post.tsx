@@ -212,7 +212,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
           <div id="skm-ad-tinybanner" />
         </AdUnit>
         <PageHeader>
-          <Grid columns={12} gap="sm4">
+          <Grid columns={12} columnGap="sm4">
             <GridCell width={9}>
               <BreadCrumbs
                 onClick={(): void => {
@@ -527,7 +527,7 @@ const PostPage: FC<PostPageProps> = ({ location, pageContext }) => {
             <StackItem bottomSpacing="xlg4">
               <H4>Related Recipes</H4>
               {isMediumUp ? (
-                <Grid columns={3} gap="sm4" rowGap="sm4">
+                <Grid columns={3} columnGap="sm4" rowGap="sm4">
                   {post.relatedRecipes.map(recipe => (
                     <GridCell key={recipe.slug} width={1}>
                       <Link to={`/post/${recipe.slug}`}>
