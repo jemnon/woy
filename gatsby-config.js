@@ -55,13 +55,18 @@ module.exports = {
   plugins: [
     `gatsby-plugin-react-helmet`,
     {
+      resolve: 'gatsby-plugin-webpack-bundle-analyser-v2',
+      options: {
+        devMode: true,
+      },
+    },
+    {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `images`,
         path: `${__dirname}/src/images`,
       },
     },
-
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
     {
@@ -78,10 +83,27 @@ module.exports = {
         ],
       },
     },
-    `gatsby-plugin-styled-components`,
+    {
+      resolve: `gatsby-plugin-styled-components`,
+      options: {
+        disableVendorPrefixes: true,
+      },
+    },
     `gatsby-plugin-typescript`,
     `gatsby-plugin-typescript-checker`,
-    `gatsby-plugin-robots-txt`,
+    `gatsby-plugin-glamor`,
+    {
+      resolve: 'gatsby-plugin-robots-txt',
+      options: {
+        host: 'https://www.whisperofyum.com',
+        sitemap: 'https://www.whisperofyum.com/sitemap.xml',
+        policy: [
+          {
+            userAgent: '*',
+          },
+        ],
+      },
+    },
     {
       resolve: 'gatsby-source-contentful',
       options: {

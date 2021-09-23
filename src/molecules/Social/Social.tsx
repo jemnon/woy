@@ -18,7 +18,7 @@ const SocialContainer = styled.section`
 
 const Social: FC<SocialProps> = ({ colorTheme = 'dark' }) => (
   <SocialContainer>
-    <Grid columns={3} gap="sm3">
+    <Grid columns={3} rowGap="sm3">
       <GridCell width={1}>
         <Link to="https://www.pinterest.com/whisperofyum/" target="_blank">
           <Pinterest

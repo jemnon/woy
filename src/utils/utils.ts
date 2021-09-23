@@ -20,16 +20,21 @@ export type SpacingProp = SpacingKeys | SpacingKeys[];
 export type FontSizeProp = FontSizeKeys | FontSizeKeys[];
 export type NonThemeProp =
   | string
+  | number
+  | number[]
   | null
   | null[]
   | string[]
-  | (string | null)[];
+  | (string | number | null)[];
 export type CustomInterpolation =
   | FlattenInterpolation<ThemeProps<DefaultTheme>>
   | SimpleInterpolation
   | string;
 export interface ThemeObject extends Spacing, FontSizes {}
 export type CSSProperty =
+  | 'grid-template-columns'
+  | 'column-gap'
+  | 'row-gap'
   | 'flex-direction'
   | 'font-size'
   | 'margin'
@@ -58,12 +63,21 @@ type GenerateWithBreakpoints = (
   options: BreakpointOptions,
 ) => CustomInterpolation;
 
-export const generateWithBreakpoints: GenerateWithBreakpoints = ({
+const parseForGridColumns = (
+  cssProperty: CSSProperty,
+  value: number | string,
+): number | string => {
+  if (cssProperty !== 'grid-template-columns') return value;
+  return typeof value === 'number' ? `repeat(${value}, 1fr)` : value;
+};
+const generateWithBreakpoints: GenerateWithBreakpoints = ({
   breakpointName,
   propValue,
   cssProperty,
 }) => {
-  const cssRule = propValue && `${cssProperty}: ${propValue}`;
+  const cssRule =
+    propValue &&
+    `${cssProperty}: ${parseForGridColumns(cssProperty, propValue)}`;
   const cssObj = css`
     ${up(breakpointName)} {
       ${cssRule};
@@ -119,7 +133,7 @@ export const generateResponsiveProps: GenerateResponsiveProps = ({
   // supports non mappable properties like width and height
   return themeObject && !Array.isArray(prop)
     ? `${cssProperty}: ${themeObject[prop as ThemeObjectKeys]}`
-    : `${cssProperty}: ${prop}`;
+    : `${cssProperty}: ${parseForGridColumns(cssProperty, prop as string)}`;
 };
 
 export const isDomUsable = (): boolean => {

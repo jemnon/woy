@@ -1,4 +1,20 @@
 const React = require('react');
+const { renderToString } = require('react-dom/server');
+const inline = require('glamor/inline');
+const Layout = require('./src/organisms/Layout').default;
+
+exports.replaceRenderer = ({ bodyComponent, replaceBodyHTMLString }) => {
+  const bodyHTML = renderToString(bodyComponent);
+  const inlinedHTML = inline(bodyHTML);
+
+  replaceBodyHTMLString(inlinedHTML);
+};
+
+exports.wrapPageElement = ({ element, props }) => {
+  // props provide same data to Layout as Page element will get
+  // including location, data, etc - you don't need to pass it
+  return <Layout {...props}>{element}</Layout>;
+};
 
 exports.onRenderBody = function ({ setHeadComponents, setPreBodyComponents }) {
   setHeadComponents([

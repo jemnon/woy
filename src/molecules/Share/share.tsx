@@ -28,7 +28,7 @@ const Share: FC<ShareProps> = ({ description, label, media, title, url }) => {
     <ShareContainer>
       {label && <ShareLabel>{label}</ShareLabel>}
       {description && title && url && (
-        <Grid columns={3} gap="sm1">
+        <Grid columns={3} rowGap="sm1">
           <GridCell width={1} middle>
             <SharePinterest description={description} media={media} url={url} />
           </GridCell>

@@ -62,7 +62,7 @@ const SideContent: FC<SideContentProps> = ({
         {featuredOn && (
           <div>
             <H4>Featured On</H4>
-            <Grid columns={3} rowGap="sm4" gap="sm4">
+            <Grid columns={3} rowGap="sm4" columnGap="sm4">
               {featuredOn.logos.map((logo, idx) => (
                 <Link key={idx} to={featuredOn.links[idx]} target="_blank">
                   <Box
@@ -89,7 +89,7 @@ const SideContent: FC<SideContentProps> = ({
           <div>
             <H4>Instagram</H4>
             <InstaDesktop>
-              <Grid columns={2} gap="sm4" rowGap="sm4">
+              <Grid columns={2} columnGap="sm4" rowGap="sm4">
                 {instagram.map(item => (
                   <GridCell key={item.node.id} width={1}>
                     <Link to={item.node.permalink} target="_blank">
