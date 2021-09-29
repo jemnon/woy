@@ -55,7 +55,7 @@ const Search: FC<SearchPageProps> = ({ location }) => {
                       description={
                         <div
                           dangerouslySetInnerHTML={{
-                            __html: hit.bodyPreview.childMarkdownRemark.html,
+                            __html: hit?.bodyPreview?.childMarkdownRemark?.html,
                           }}
                         />
                       }
